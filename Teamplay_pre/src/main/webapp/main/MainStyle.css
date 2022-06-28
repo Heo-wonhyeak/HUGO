@@ -1,0 +1,51 @@
+@charset "UTF-8";
+.HeaderContainer {
+	width: 90%;
+	margin : 0 auto;
+	height : 150px;	
+}
+.HeaderLogo {
+	display: inline-block;
+	width : 15%;
+	height : 80%;
+	position : relative;
+	left : 2%;
+	top : 5%;
+}
+.search {
+	display : inline-block;
+	width : 70%;
+	height : 20%;
+	position : relative;
+	top : 38%;
+	left : 3%;
+}
+
+.searchbox {
+	width : 90%;
+	height : 100%;
+}
+
+.searchBtn{
+	width : 4% ;
+	height : 100%;
+	background-color: #9bb7d6; 
+}
+.headerMenu{
+	display : inline-block;
+	position : relative;
+	bottom: 75%;
+	float : right;
+	color : #9bb7d6;
+}
+.serchDTL{
+	display : inline-block;
+	position : relative;
+	float : left;
+	left : 18.5%;
+	bottom: 20%;
+}
+.searchDTLBTN{
+	height : 30px;
+	background-color: #9bb7d6; 
+}
