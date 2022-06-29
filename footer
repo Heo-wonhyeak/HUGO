@@ -21,6 +21,7 @@
 .select *{
 	font-weight:bold;
 	vertical-align: middle;
+	text-decoration: none;
 }
 .select, .info {
 	padding-left: 30px;
