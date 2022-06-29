@@ -24,12 +24,14 @@
 .searchbox {
 	width : 90%;
 	height : 100%;
+	border-radius : 0.2em;
 }
 
 .searchBtn{
-	width : 4% ;
+	width : 38px ;
 	height : 100%;
 	background-color: #9bb7d6; 
+	border-radius : 0.5em;
 }
 .headerMenu{
 	display : inline-block;
@@ -43,9 +45,38 @@
 	position : relative;
 	float : left;
 	left : 18.5%;
-	bottom: 20%;
+	bottom: 20%;	
 }
 .searchDTLBTN{
 	height : 30px;
 	background-color: #9bb7d6; 
+	border-radius : 0.5em;
+}
+
+/* 슬라이드바에서 가져옴 다시 가져올것 수정함.*/
+.slideshow-container {
+	max-width: 1000px;
+	height: 450px;
+	position: relative;
+	margin: auto;
+}
+
+.mainContainer {
+	display : inline-block;
+	position : relative;
+	width : 75%;
+	left : 5%;
+	background-color: red;
+}
+
+#sidebarContainer {
+	position:absolute; 
+	top:610px; 
+	right:50%; 
+	margin-right:-670px;
+	width : 13%;
+}
+
+.sidebarImg { 
+	width : 100%;
 }
