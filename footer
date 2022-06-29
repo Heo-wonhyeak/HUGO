@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Footer</title>
+<style>
+
+.footer {
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+	padding: 30px 0 ;
+	
+	text-align: left;
+	size: 15px;
+	color: white;
+	background: #9bb7d6;
+}
+.select *{
+	font-weight:bold;
+	vertical-align: middle;
+}
+.select, .info {
+	padding-left: 30px;
+}
+
+</style>
+</head>
+<body>										
+   <div class="footer">
+   	 
+   	 <div class="select" >
+   	 	<img src="(로고)" width="70" height="70">&nbsp;&nbsp;
+		<a href=''>회사소개</a> |
+		<a href=''>개인정보처리방침</a> |
+		<a href=''>서비스약관</a>
+	 </div>
+	 <div class="info">
+	 	<p>**회사</p>
+	 	<p>서울특별시 서초구 서초대로77길 54 (서초더블유타워 13,14층)</p>
+	 	<p>대표자:***</p>
+	 	<p>사업자등록번호:1234567890</p>
+	 	<p>T. 02 - 1234 - 5678</p>
+	 
+	 </div>
+   </div>
+  
+
+</body>
+</html>
