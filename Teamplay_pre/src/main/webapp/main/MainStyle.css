@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* 헤더 CSS */
 .HeaderContainer {
 	width: 90%;
 	margin : 0 auto;
@@ -52,6 +53,7 @@
 	background-color: #9bb7d6; 
 	border-radius : 0.5em;
 }
+/* 헤더 CSS 종료 */
 
 /* 슬라이드바에서 가져옴 다시 가져올것 수정함.*/
 .slideshow-container {
@@ -68,7 +70,7 @@
 	left : 5%;
 	background-color: red;
 }
-
+/* sidebar CSS */
 #sidebarContainer {
 	position:absolute; 
 	top:610px; 
@@ -80,3 +82,27 @@
 .sidebarImg { 
 	width : 100%;
 }
+/* sidebar CSS 종료 */
+
+/* Footer CSS */
+.footer {
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+	padding: 30px 0 ;
+	
+	text-align: left;
+	size: 15px;
+	color: white;
+	background: #9bb7d6;
+}
+.select *{
+	font-weight:bold;
+	vertical-align: middle;
+	text-decoration: none;
+}
+.select, .info {
+	padding-left: 30px;
+}
+/* Footer CSS 종료 */
