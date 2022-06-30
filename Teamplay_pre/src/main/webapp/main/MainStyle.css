@@ -260,7 +260,7 @@ section {
 }
 
 .slide-image {
-	width: 100%;
+	width: 240px;
 	height: 200px;
 	margin-left: 10px;
 	cursor: pointer;
