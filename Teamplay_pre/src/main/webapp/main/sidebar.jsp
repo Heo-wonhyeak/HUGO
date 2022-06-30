@@ -21,9 +21,6 @@
 	</script>
 </head>
 <body>
-	<div class="HeaderContainer" style="background-color:red;">header</div>
-	<div class="slideshow-container" style="background-color:blue;">mainSlider</div>
-	<div class="mainContainer" style="height : 2500px;">main</div>
 	<div id="sidebarContainer">
 		<div class="sidebarEvent">
 			<a href="../eventPage/eventDTL.jsp">

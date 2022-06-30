@@ -10,7 +10,7 @@
 <body>
 	<%@ include file="Header.jsp" %>
 	<%@ include file="mainslider.jsp" %>
-	<div style="width : 70%; height : 2000px; background-color: red;"></div>
+	<%@ include file="mainsection.jsp" %>
 	<%@ include file="sidebar.jsp" %>
 	<%@ include file="Footer.jsp" %>
 </body>
