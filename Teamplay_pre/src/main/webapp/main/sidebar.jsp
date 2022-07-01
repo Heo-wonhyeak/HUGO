@@ -12,8 +12,8 @@
 	<script type="text/javascript">
 		$(window).scroll(function(){
 			var scrollTop = $(document).scrollTop();
-			if (scrollTop < 610) {
-			 scrollTop = 610;
+			if (scrollTop < 560) {
+			 scrollTop = 560;
 			}
 			$("#sidebarContainer").stop();
 			$("#sidebarContainer").animate( { "top" : scrollTop });

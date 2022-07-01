@@ -59,7 +59,7 @@
 #sidebarContainer {
 	position:absolute; 
 	top:560px; 
-	right:50%; 
+	right:42%; 
 	margin-right:-670px;
 	width : 13%;
 }
@@ -184,7 +184,7 @@ section {
 	margin-right: 100px;
 	overflow: visible;
 	width: 70%;
-	
+	margin-left:6%;
 }
 
 #menubox {
