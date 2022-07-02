@@ -12,7 +12,7 @@
    <div class="footer">
    	 
    	 <div class="select" >
-   	 	<img src="(로고)" width="70" height="70">&nbsp;&nbsp;
+   	 	<img src="../img/hugo_white.png" width="70" height="70">&nbsp;&nbsp;
 		<a href=''>회사소개</a> |
 		<a href=''>개인정보처리방침</a> |
 		<a href=''>서비스약관</a>

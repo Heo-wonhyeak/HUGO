@@ -18,7 +18,7 @@
 	width : 70%;
 	height : 20%;
 	position : relative;
-	top : 38%;
+	top : -10%;
 	left : 3%;
 }
 
@@ -46,7 +46,7 @@
 	position : relative;
 	float : left;
 	left : 18.5%;
-	bottom: 20%;	
+	bottom: 18%;	
 }
 .searchDTLBTN{
 	height : 30px;
