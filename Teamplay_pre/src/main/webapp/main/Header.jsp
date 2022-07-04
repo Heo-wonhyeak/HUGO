@@ -9,6 +9,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
 	<title>헤더</title>
+	<script>
+		function showMenu(){
+			if($(".myMenu").css("display")=="none"){
+				$(".myMenu").css("display","block")
+			}else{
+				$(".myMenu").css("display","none")
+			}
+		}
+	</script>
 </head>
 <body>
 	<div class="HeaderContainer">
@@ -24,8 +33,16 @@
 			<a>게시판</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a>고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a>로그인</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-			&nbsp;&nbsp;
-			<a><i class="fa-solid fa-chalkboard-user" class="user_info"></i></a>
+			<a onclick="return showMenu()"><i class="fa-solid fa-chalkboard-user" class="user_info"></i></a>
+			<div class="myMenu">
+				<ul>	
+					<li>ezen님</li>
+					<li>&nbsp;</li>
+					<li><a>회원정보</a></li>
+					<li><a>쿠폰함</a></li>
+					<li><a>찜리스트</a></li>
+			</ul>
+			</div>
 		</div>
 		<div class="serchDTL">
 			<button class="searchDTLBTN">세부검색</button>

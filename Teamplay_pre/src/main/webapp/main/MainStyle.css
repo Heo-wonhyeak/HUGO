@@ -13,6 +13,19 @@
 	left : 2%;
 	top : 5%;
 }
+/* 마이메뉴css */
+.myMenu{
+	display: none;
+	width: 100px;
+	height: 150px;
+	position: absolute;
+	left: 300px;
+	border : 1px solid #9bb7d6;
+	margin: 0px;
+}
+.myMenu ul{
+	list-style: none;
+}
 .search {
 	display : inline-block;
 	width : 70%;
