@@ -626,7 +626,16 @@
                         prevEl: '.Pbtn2',
                     },
                     // 반응형
-
+					breakpoints: {
+                        1280: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                        },
+                        720: {
+                            slidesPerView: 1,
+                            slidesPerGroup: 1,
+                        }
+                    }
                 });
                 // 가장 많은 찜 TOP10
                 const mySwiper3 = new Swiper('#steamed-third', {
@@ -644,7 +653,16 @@
                         nextEl: '.Nbtn3',
                         prevEl: '.Pbtn3',
                     },
-
+                    breakpoints: {
+                        1280: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                        },
+                        720: {
+                            slidesPerView: 1,
+                            slidesPerGroup: 1,
+                        }
+                    }
                 });
                 // 거리순 TOP 10
                 const mySwiper4 = new Swiper('#distance-fourth', {
