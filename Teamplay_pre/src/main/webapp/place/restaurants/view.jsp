@@ -2,7 +2,7 @@
 	파 일명 칭   : view.jsp
 	작 성 자    : 정 원 영
 	업데이트 날짜 : 2022. 07. 06 수
-	수 정 날 짜  : 
+	수 정 날 짜  : 2022. 07. 07 목
 	기  능      : 매장 상세보기 페이지 
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,74 +19,37 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-<link rel="stylesheet" href="restaurants.css" type="text/css" />
+<link rel="stylesheet" href="restaurants.css?after" type="text/css" >
 <style>
-.swiper-container {
-	margin-top: 20px;
-	width: 95%;
-	height: 350px;
-}
 
-.swiper-wrapper {
-	display: flex;
-	height: 345px;
-}
-
-.swiper-slide {
-	width: 20%;
-	height: 345px;
-	flex-direction: row;
-	opacity: 0.4;
-	transition: opacity 0.3s;
-}
-
-.slideMainImage {
-	width: 100%;
-	height: 395px;
-	border: 1px solid blue;
-}
-
-.swiper-slide-active, .swiper-slide-active+.swiper-slide,
-	.swiper-slide-active+.swiper-slide+.swiper-slide, .swiper-slide-active+.swiper-slide+.swiper-slide+.swiper-slide
-	{
-	opacity: 1
-}
-
-#image-more {
-	margin-top:10px;
-	width: 100%;
-	text-align: right;
-	border:1px solid red;
-}
-
-#image-more a {
-	padding-right: 150px;
-	color: gray;
-	font-size: 25px;
-	text-decoration: none;
-}
-
-#restaurants-view{
-	display:flex;
-	width:80%;
-	height: 600px;
+/* review section */
+.restaurants-review-section{
+	width: 80%;
+	height: 1200px;
+	border: 1px solid green;
 	margin: auto;
-	margin-top:10px;
+	margin-top: 100px;
 }
-#restaurants-info{
-	decoration:row;
-	width: 50%;
-	border:1px solid red;
-	height: 600px;
+.restaurants-review-header{
+	margin:auto;
+	width: 100%;
+	height: 50px;
+	font-size:35px;
+	font-weight:bold;
+	padding-left:30px;
 }
-#restaurants-map{
-	decoration:row;
-	width: 50%;
-	border:1px solid red;
-	height: 600px;
+.restaurants-review-sort{
+	width: 100%;
+	text-align:right;
+	border-bottom:2px solid black;
+	font-size:25px;
+	height: 50px;
+}
+.restaurants-review-sort span{
+	padding:10px 20px 10px 0;
 }
 </style>
-<title>dto.name</title>
+<title>돼통령 xx점</title>
 </head>
 <body>
 	<header>
@@ -130,12 +93,66 @@
 		<div class="swiper-button-next"></div>
 		<div class="swiper-button-prev"></div>
 	</div>
-	<div id="image-more">
+	<div class="image-more">
 		<a href="#">📷 more</a>
 	</div>
-	<section id="restaurants-view">
-		<div id="restaurants-info"></div>
-		<div id="restaurants-map"></div>
+	<!-- info and map -->
+	<section class="restaurants-view">
+		<div class="restaurants-info">
+			<div class="restaurants-info-head">
+				<div class="restaurants-name">돼통령 xx점</div>
+				<div class="restaurants-steamed">추천</div>
+			</div>
+			<div class="restaurants-info-head">
+				<div class="restaurants-count">
+					<span class="restaurants-count-info">⭐ 5.0</span>
+					<span class="restaurants-count-info">❤️ 5.0</span>
+					<span class="restaurants-count-info">😀 932 </span>
+				</div>
+				<div class="restaurants-fixInfo"><a href="#">✏️ 정보 수정 요청</a></div>
+			</div>
+			<div class = "restaurants-info-body">
+				<table colspan="2" class="restaurants-detail">
+					<tr>
+						<th>📞</th>
+						<td>02-xxxx-xxxx</td>
+					</tr>
+					<tr>
+						<th>🏠</th>
+						<td>서울시 ~~<br/>
+							<span class="restaurants-infoAddress-text">지번 &nbsp;진안동 884-8 1층</span>	
+						</td>
+					</tr>
+					<tr>
+						<th>⏰</th>
+						<td>연중 무휴<br/>
+							<span class="restaurants-infoTime-text">10:00 ~ 21:00</span>
+						</td>
+					</tr>
+					<tr>
+						<th>🔖</th>
+						<td>
+							<span class="restaurants-infoMenu-text">삼겹살 : 13,000 </span><br>
+							<span class="restaurants-infoMenu-text">삼겹살 : 13,000 </span><br>
+							<span class="restaurants-infoMenu-text">삼겹살 : 13,000 </span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="restaurants-info-update">2022.06.14 업데이트</div>
+		</div>
+		<div class="restaurants-map">
+		
+		</div>
+	</section>
+	<section class="restaurants-review-section">
+		<div class="restaurants-review-header">Review</div>
+		<div class="restaurants-review-sort">
+			<span id="restaurants-review-sort-new">최신순&nbsp;&nbsp;&nbsp;/&nbsp;</span>
+			<span id="restaurants-review-sort-star">별점순&nbsp;&nbsp;&nbsp;/&nbsp;</span>
+			<span id="restaurants-review-sort-visit">방문순&nbsp;&nbsp;&nbsp;/&nbsp;</span>
+			<span id="restaurants-review-sort-myReview">내가 쓴리뷰</span>
+		</div>
 	</section>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
@@ -159,8 +176,8 @@
 				// 반응형
 				breakpoints : {
 					1280 : {
-						slidesPerView : 4,
-						slidesPerGroup : 4,
+						slidesPerView : 3,
+						slidesPerGroup : 3,
 					},
 					720 : {
 						slidesPerView : 2,
