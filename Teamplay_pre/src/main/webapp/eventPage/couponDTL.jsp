@@ -28,11 +28,7 @@
 	</script>
 </head>
 <body>
-	<header>
-		<div class="h_wrap">
-			헤더
-		</div>
-	</header>
+	<%@ include file="../main/Header.jsp" %>
 	<table width="95%" align="center">
 		<tr>
 			<th class="DTLHeader" width="10%">게시물번호</th>
@@ -50,6 +46,8 @@
 	<div width="100%" align="center">
 		<img alt="강아지사진" src="../img/cuteDog.jpeg" width="90%"/>
 	</div>
+	
+	<%@ include file="../main/Footer.jsp" %>
 	
 </body>
 </html>

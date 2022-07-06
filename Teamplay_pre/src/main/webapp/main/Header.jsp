@@ -22,7 +22,7 @@
 <body>
 	<div class="HeaderContainer">
 		<div class="HeaderLogo">
-			<img src="../img/hugo_blue.png" width="80px" height ="90px">
+			<img src="../img/hugo_white_repair.jpeg" width="200px" height ="90px">
 		</div>
 		<div class="search">
 			<input type="text" class="searchbox"/>
