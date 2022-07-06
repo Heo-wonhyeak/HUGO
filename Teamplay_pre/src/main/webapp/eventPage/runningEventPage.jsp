@@ -6,18 +6,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>진행중 이벤트페이지</title>
-	<link rel ="stylesheet" href="event.css" type="text/css"/>
+	<link rel ="stylesheet" href="event.css?after" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
 		
 	</script>
 </head>
 <body>
-	<header>
-		<div class="h_wrap">
-			헤더
-		</div>
-	</header>
+	<%@ include file="../main/Header.jsp" %>
 	<table align="center" width="100%">
 		<tr align="center">
 			<td width="30%" id="selectTd" class="eventTd" onclick="location.href='runningEventPage.jsp'">
@@ -57,5 +53,7 @@
 			</td>
 		</tr>
 	</table>
+	
+	<%@ include file="../main/Footer.jsp" %>
 </body>
 </html>
