@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel ="stylesheet" href="MainStyle.css" type="text/css"/>
+	<link rel ="stylesheet" href="MainStyle.css?after" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
 	<title>헤더</title>
@@ -22,7 +22,7 @@
 <body>
 	<div class="HeaderContainer">
 		<div class="HeaderLogo">
-			<img src="../img/hugo_white_repair.jpeg" width="200px" height ="90px">
+			<img src="../img/hugo_white_repair.jpeg" style="width:100%; height:100%;">
 		</div>
 		<div class="search">
 			<input type="text" class="searchbox"/>

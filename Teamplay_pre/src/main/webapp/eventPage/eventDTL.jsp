@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>이벤트 상세 페이지</title>
-	<link rel ="stylesheet" href="event.css?after1" type="text/css"/>
+	<link rel ="stylesheet" href="event.css" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
 	<script type="text/javascript">
@@ -47,14 +47,14 @@
 </head>
 <body>
 	<%@ include file="../main/Header.jsp" %>
-	<table width="90%" align = "center">
-		<tr>
+	<table id="boardTitle" width="95%">
+		<tr align="center">
 			<th class="DTLHeader" width="10%">게시물번호</th>
 			<th class="DTLHeader" width="45%" align="left">제목</th>
 			<th class="DTLHeader" width="35%">이벤트 기간</th>
 			<th class="DTLHeader" width="10%">게시물작성자</th>
 		</tr>
-		<tr>
+		<tr align="center">
 			<th class="DTLLine" width="10%">no.021</th>
 			<th class="DTLLine" width="45%" align="left">아기고양이</th>
 			<th class="DTLLine" width="35%">2022-06-01 ~ 2022-06-30</th>
@@ -63,7 +63,7 @@
 	</table>
 	<div width="100%" align="center">
 		<img alt="고양이사진" src="../img/cuteCat.jpeg" width="90%"/>
-		<div style="width:90%;text-align:left;">내용</div>
+		<div style="width:90%; text-align:left;">내용</div>
 	</div>
 	
 	<div width="90%" id="replyBox">
@@ -115,7 +115,7 @@
 						<b>heo june</b>
 					</div>
 					<div class="enterReply">
-						<textarea width="100%" rows="5"></textarea>
+						<textarea style="width:100%; height:90%; border-radius : 0.5em;"></textarea>
 					</div>
 					<div class="replyEnterBtn">
 						<input type="button" value="등록" id="replyBtn"/>
@@ -129,7 +129,7 @@
 				<b>heo june</b>
 			</div>
 			<div class="enterReply">
-				<textarea cols="100%" rows="5"></textarea>
+				<textarea style="width:100%; height:90%; border-radius : 0.5em;"></textarea>
 			</div>
 			<div class="replyEnterBtn">
 				<input type="button" value="등록" id="replyBtn"/>

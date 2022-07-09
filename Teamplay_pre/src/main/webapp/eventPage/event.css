@@ -34,7 +34,7 @@
 	width : 70%;
 	height : 20%;
 	position : relative;
-	top : -10%;
+	bottom : 26%;
 	left : 3%;
 }
 
@@ -62,7 +62,7 @@
 	position : relative;
 	float : left;
 	left : 18.5%;
-	bottom: 18%;	
+	bottom: 20%;	
 }
 .searchDTLBTN{
 	height : 30px;
@@ -227,16 +227,20 @@ span{
 .enterReplyContainer{
 	width : 95%;
 	height : 130px;
-	background:#A4A4A4;
-	border-top : 1px #A4A4A4 solid;
+	background:#E6E6E6;
+	border-top : 1px #E6E6E6 solid;
 	margin-left:1%;
 	padding : 8px;	
+	margin-bottom : 10px;
+	border-radius : 0.3em;
+	margin-top:5px;
 }
 
 .enterReply{
 	display : inline-block;
 	position : static;
 	width : 75%;
+	height : 80%;
 	text-align : left;
 	margin : 10px 0 0 10px;
 }
@@ -250,8 +254,9 @@ span{
 }
 
 #replyBtn{
-	width : 80%;
+	width : 90%;
 	height : 50px;
+	border-radius : 0.5em;
 }
 
 #date{
@@ -266,4 +271,8 @@ span{
 #replyBox {
 	width : 90%;
 	margin : 0 auto;
+}
+#boardTitle{
+	text-align : center;
+	margin : auto;
 }

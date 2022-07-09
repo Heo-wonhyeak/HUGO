@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>쿠폰 상세페이지</title>
-	<link rel ="stylesheet" href="event.css?after" type="text/css"/>
+	<link rel ="stylesheet" href="event.css" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
 	<script type="text/javascript">

@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>쿠폰</title>
-	<link rel ="stylesheet" href="event.css?after" type="text/css"/>
+	<link rel ="stylesheet" href="event.css" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
 		
@@ -14,7 +14,7 @@
 </head>
 <body>
 	<%@ include file="../main/Header.jsp" %>
-	<table align="center" width="100%">
+	<table align="center" width="95%">
 		<tr align="center">
 			<td width="30%" class="eventTd" onclick="location.href='runningEventPage.jsp'">
 				진행중 이벤트
