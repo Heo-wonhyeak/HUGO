@@ -52,6 +52,10 @@
 				</div>
 			</td>
 		</tr>
+		<tr>
+			<td colspan="2">페이징</td>
+			<td><button onclick="location.href='eventWriter.jsp'" id="eventWriteBtn">글쓰기</button></td>
+		</tr>
 	</table>
 	
 	<%@ include file="../main/Footer.jsp" %>

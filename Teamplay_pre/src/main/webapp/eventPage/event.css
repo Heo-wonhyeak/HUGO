@@ -37,13 +37,11 @@
 	bottom : 26%;
 	left : 3%;
 }
-
 .searchbox {
 	width : 90%;
 	height : 100%;
 	border-radius : 0.2em;
 }
-
 .searchBtn{
 	width : 38px ;
 	height : 100%;
@@ -94,94 +92,7 @@
 }
 /* Footer CSS 종료 */
 
-table{
-	border-collapse: collapse;
-}
-.eventTd{
-	color : #A4A4A4;
-	border-bottom : solid 1px #A4A4A4;
-	cursor : pointer;
-}
-
-#selectTd{
-	border-bottom : solid 3px blue;
-	color : blue;
-	font : bold large;
-}
-
-.picture{
-	width : 90%;
-}
-
-.enterTitle{
-	cursor : pointer;
-}
-
-.eventTitle{
-	display : inline-block;
-	position : static;
-	width : 80%;
-	text-align : left;
-	font-weight : bold;
-}
-
-.eventCount{
-	display : inline-block;
-	position : static;
-	width : 15%;
-	text-align : right;
-}
-
-#list {
-	display : inline-block;
-	position : static;
-	width : 11%;
-	text-align:right;
-}
-
-#reply {
-	display : inline-block;
-	position : static;
-	width : 80%;
-	text-align : left;
-}
-
-#like {
-	display : inline-block;
-	position : static;
-	width : 8%;
-}
-
-.likeReply{
-	padding : 5px 0;
-	border-bottom : solid black 1px;
-}
-
-.eventPeriod{
-	display : inline-block;
-	position : static;
-	width: 95%;
-	text-align : left;
-}
-
-.DTLHeader{
-	border-bottom: solid 1px black;
-	border-top : solid 3px black;
-}
-
-.DTLLine { border-bottom: solid 1px black; }
-
-.h_wrap{
-	width:100%;
-	height : 150px;
-	background-color: #B4C3FF;
-	margin : 7px 0;
-}
-
-.endEventLine{
-	border-bottom: dotted 1px black;
-}
-
+/* tag CSS */
 a{
 	text-decoration: none;
 }
@@ -191,6 +102,86 @@ span{
 	position : static;
 }
 
+/* runningEventPage CSS */
+table{
+	border-collapse: collapse;
+}
+.eventTd{
+	color : #A4A4A4;
+	border-bottom : solid 1px #A4A4A4;
+	cursor : pointer;
+}
+#selectTd{
+	border-bottom : solid 3px blue;
+	color : blue;
+	font : bold large;
+}
+.picture{
+	width : 90%;
+}
+.enterTitle{
+	cursor : pointer;
+}
+.eventPeriod{
+	display : inline-block;
+	position : static;
+	width: 95%;
+	text-align : left;
+}
+.eventTitle{
+	display : inline-block;
+	position : static;
+	width : 80%;
+	text-align : left;
+	font-weight : bold;
+}
+.eventCount{
+	display : inline-block;
+	position : static;
+	width : 15%;
+	text-align : right;
+}
+
+/* eventDTL*/
+#list {
+	display : inline-block;
+	position : static;
+	width : 11%;
+	text-align:right;
+}
+#reply {
+	display : inline-block;
+	position : static;
+	width : 80%;
+	text-align : left;
+}
+#replyBox {
+	width : 90%;
+	margin : 0 auto;
+}
+#boardTitle{
+	text-align : center;
+	margin : auto;
+}
+#like {
+	display : inline-block;
+	position : static;
+	width : 8%;
+}
+#date{
+	display : inline-block;
+	position : static;
+	width :85%;
+}
+.likeReply{
+	padding : 5px 0;
+	border-bottom : solid black 1px;
+}
+.DTLHeader{
+	border-bottom: solid 1px black;
+	border-top : solid 3px black;
+}
+.DTLLine { border-bottom: solid 1px black; }
 .repleHead{
 	display : inline-block;
 	position : static;
@@ -198,32 +189,20 @@ span{
 	padding : 5px;
 	margin : 2px;
 }
-
+#declaration{
+	width : 5% ;
+	text-align : right;
+	cursor: pointer;
+}
+.replyContainer {
+	margin : 15px;
+}
 #replyContent{
 	display : inline-block;
 	position : static;
 	width : 80%;
 	text-align: left;
 }
-
-#reReply{
-	display : inline-block;
-	position : static;
-	width : 19%;
-	text-align : right;
-	cursor: pointer;
-}
-
-#declaration{
-	width : 5% ;
-	text-align : right;
-	cursor: pointer;
-}
-
-.replyContainer {
-	margin : 15px;
-}
-
 .enterReplyContainer{
 	width : 95%;
 	height : 130px;
@@ -235,7 +214,6 @@ span{
 	border-radius : 0.3em;
 	margin-top:5px;
 }
-
 .enterReply{
 	display : inline-block;
 	position : static;
@@ -244,7 +222,13 @@ span{
 	text-align : left;
 	margin : 10px 0 0 10px;
 }
-
+#reReply{
+	display : inline-block;
+	position : static;
+	width : 19%;
+	text-align : right;
+	cursor: pointer;
+}
 .replyEnterBtn{
 	display : inline-block;
 	position : absolute;
@@ -252,30 +236,30 @@ span{
 	margin-top : 25px;
 	width : 15%;
 }
-
 #replyBtn{
 	width : 90%;
 	height : 50px;
 	border-radius : 0.5em;
 }
-
-#date{
-	display : inline-block;
-	position : static;
-	width :85%;
-}
-
 #reReplyContainer{
 	display : none;
 }
-#replyBox {
-	width : 90%;
-	margin : 0 auto;
+/* eventDTL 종료 */
+
+/* 뭔지 모르겠음;; */
+.h_wrap{
+	width:100%;
+	height : 150px;
+	background-color: #B4C3FF;
+	margin : 7px 0;
 }
-#boardTitle{
-	text-align : center;
-	margin : auto;
+
+/* endEventPage */
+.endEventLine{
+	border-bottom: dotted 1px black;
 }
+/* endEventPage */
+
 /* 이벤트 글쓰기 */
 .eventWriter{
 	border-bottom : solid 1px black;
@@ -326,4 +310,4 @@ span{
 	height : 40px;
 	border-radius : 0.4em;
 }
-
+/* 이벤트 글쓰기 종료 */
