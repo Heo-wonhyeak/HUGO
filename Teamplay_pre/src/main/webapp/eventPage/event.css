@@ -36,11 +36,13 @@
 	position : relative;
 	bottom : 26%;
 	left : 3%;
+	
 }
 .searchbox {
 	width : 90%;
 	height : 100%;
 	border-radius : 0.2em;
+	font-size: 15px;
 }
 .searchBtn{
 	width : 38px ;
@@ -300,15 +302,11 @@ table{
 	border-radius : 0.2em;
 	width: 70%;
 }
-#eventWriteBtn {
-	margin : 10px auto;
-	position : relative;
-	left : 40px;
-}
 .eventBtn{
 	width : 80px;
 	height : 40px;
 	border-radius : 0.4em;
+	background-color : #9bb7d6;
 }
 #eventWriteBtn {
 	float : right;
@@ -317,5 +315,17 @@ table{
 	height : 40px;
 	font-size : 16px;
 	border-radius : 0.4em;
+	margin : 10px auto;
+	position : relative;
+	background-color : #9bb7d6;
+}
+.eventWriteBtn{
+	float : right;
+	left : 10px;
+	width : 300px;
+	height : 40px;
+	font-size : 16px;
+	margin : 10px auto;
+	position : relative;
 }
 /* 이벤트 글쓰기 종료 */

@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel ="stylesheet" href="event.css?after" type="text/css"/>
+	<link rel ="stylesheet" href="event.css" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
 	<script type="text/javascript">
@@ -41,10 +41,12 @@
 		<div id="eventFile">
 			<input type="file" class="fileBox"/>
 		</div>
-		<div id="eventWriteBtn">
+		<div class="eventWriteBtn">
 			<input type="button" value="등록" class="eventBtn"/>
 			<input type="reset" value="다시입력" class="eventBtn"/>
+			<input type="button" value="목록으로" class="eventBtn" onclick="location.href='../eventPage/runningEventPage.jsp'"/>
 		</div>
+		<div style="height: 90px;"></div>
 	</div>
 	
 	<%@ include file="../main/Footer.jsp" %>
