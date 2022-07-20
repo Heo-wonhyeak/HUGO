@@ -1,0 +1,343 @@
+@charset "UTF-8";
+/* 헤더 CSS */
+.HeaderContainer {
+	width: 90%;
+	margin : 0 auto;
+	height : 150px;	
+}
+.HeaderLogo {
+	display: inline-block;
+	width : 15%;
+	height : 80%;
+	position : relative;
+	left : 2%;
+	top : 5%;
+}
+/* 마이메뉴css */
+.myMenu{
+	display: none;
+	width: 80px;
+	height: 110px;
+	position: absolute;
+	left: 320px;
+	border : 1px solid #9bb7d6;
+	margin: 0px;
+}
+.myMenu ul{
+	list-style: none;
+	margin: 0px;
+	text-align:right;
+}
+.search {
+	display : inline-block;
+	width : 70%;
+	height : 20%;
+	position : relative;
+	bottom : 25%;
+	left : 3%;
+}
+
+.searchbox {
+	width : 90%;
+	height : 100%;
+	border-radius : 0.2em;
+	font-size: 15px;
+}
+
+.searchBtn{
+	width : 38px ;
+	height : 100%;
+	background-color: #9bb7d6; 
+	border-radius : 0.5em;
+}
+.headerMenu{
+	display : inline-block;
+	position : relative;
+	bottom: 75%;
+	float : right;
+	color : #9bb7d6;
+}
+.serchDTL{
+	display : inline-block;
+	position : relative;
+	float : left;
+	left : 18.5%;
+	bottom: 23%;	
+}
+.searchDTLBTN{
+	height : 30px;
+	background-color: #9bb7d6; 
+	border-radius : 0.5em;
+}
+/* 헤더 CSS 종료 */
+
+/* sidebar CSS */
+#sidebarContainer {
+	position:absolute; 
+	top:560px; 
+	right:42%; 
+	margin-right:-670px;
+	width : 13%;
+}
+
+.sidebarImg { 
+	width : 100%;
+}
+/* sidebar CSS 종료 */
+
+/* Footer CSS */
+.footer {
+    position:relative;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+	padding: 30px 0 ;
+	
+	text-align: left;
+	size: 15px;
+	color: white;
+	background: #9bb7d6;
+}
+.select *{
+	font-weight:bold;
+	vertical-align: middle;
+	text-decoration: none;
+}
+.select, .info {
+	padding-left: 30px;
+}
+/* Footer CSS 종료 */
+
+/* mainslider CSS */
+* {
+	/* margin: 0; */
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.slideshow-container {
+	max-width: 1000px;
+	max-height: 750px;
+	position: relative;
+	margin: auto;
+}
+
+.slideshow-container .mySlides img {
+	height: 400px;
+}
+
+.mySlides {
+	display: none;
+}
+
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
+
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text {
+	color: #f2f2f2;
+	font-size: 15px;
+	padding: 8px 12px;
+	position: absolute;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+}
+
+.numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+	background-color: #717171;
+}
+
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+/* mainslider CSS 종료*/
+
+/* mainsection CSS */
+section {
+	margin-right: 100px;
+	overflow: visible;
+	width: 70%;
+	margin-left:6%;
+}
+
+#menubox {
+	width: 1100px;
+	height: 50px;
+	margin: auto;
+}
+
+#menulist {
+	display: flex;
+	text-align: center;
+	list-style-type: none;
+}
+
+.top10list {
+	flex-direction: row;
+	background-color: #9bb7d6;
+	border: 1px solid #9bb7d6;
+	font-size: 17px;
+	width: 140px;
+	height: 50px;
+	display: block;
+	font-weight: bold;
+	margin: auto;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.top10head {
+	text-align: left;
+	width: 400px;
+	padding: 20px 0 30px 40px;
+	margin: 0 200px 0 0;
+	font-size: 1.7em;
+}
+
+.list-image {
+	border: 1px solid black;
+	width: 300px;
+	height: 250px;
+	margin-left: 30px;
+}
+
+.list-info {
+	margin-top: 10px;
+	width: 240px;
+	height: 45px;
+}
+
+.swiper-container {
+	margin-top: 20px;
+	width: 1300px;
+}
+
+.swiper-wrapper {
+	display: flex;
+	height: 300px;
+}
+
+.swiper-slide {
+	width: 250px;
+	flex-direction: row;
+	box-sizing: border-box;
+	padding: 0 0 0 30px;
+	opacity: 0.4;
+	transition: opacity 0.3s;
+}
+
+.swiper-slide-active,
+.swiper-slide-active+.swiper-slide,
+.swiper-slide-active+.swiper-slide+.swiper-slide {
+	opacity: 1
+}
+
+.slide-image {
+	width: 240px;
+	height: 200px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.slide-image2 {
+	width: 240px;
+	height: 200px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.slide-image3 {
+	width: 240px;
+	height: 200px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.view-more {
+	text-align: right;
+	margin-right: 30px;
+}
+
+.view-more a {
+	color: gray;
+}
+
+.list-info-name {
+	text-align: right;
+	font-size: 1.3em;
+	margin: 0 80px 0 25px;
+}
+
+.list-info-value {
+	text-align: left;
+	font-size: 1.3em;
+}
+
+#place_cate {
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	height: 150px;
+	width: 1300px;
+	margin-bottom: 70px;
+}
+
+.place_circle {
+	cursor: pointer;
+	flex-direction: row;
+	border: 1px solid black;
+	margin: auto;
+	margin: 30px 80px 100px 200px;
+	width: 150px;
+	height: 150px;
+	border: 1px solid black;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 1.7em;
+	line-height: 140px;
+	font-weight: bold;
+}
+/* mainsection CSS 종료*/
