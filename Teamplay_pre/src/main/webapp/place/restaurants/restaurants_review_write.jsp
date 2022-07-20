@@ -2,7 +2,7 @@
 	파 일명 칭   : restaurants_review_write.jsp
 	작 성 자    : 정 원 영
 	업데이트 날짜 : 2022. 07. 14 목
-	수 정 날 짜  : 2022. 07. 14 목
+	수 정 날 짜  : 2022. 07. 21 목
 	기  능      : 매장 상세보기 페이지 
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
