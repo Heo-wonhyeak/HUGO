@@ -197,6 +197,7 @@
 	width: 10%;
 	margin-right: 20px;
 	text-align: right;
+	
 }
 
 .restaurants-count-info {
@@ -294,8 +295,9 @@ a {
 	font-size: 1.4em;
 	font-weight: bold;
 	color: black;
-	background-color: #e7e7e7;
+	background-color: #9bb7d6;
 	cursor: pointer;
+	border-radius: 0.5em;
 }
 
 .restaurants-review-head-image {
@@ -520,6 +522,8 @@ a:active {
 	background-color: #e7e7e7;
 	color: black;
 	cursor: pointer;
+	border-radius: 0.5em;
+	background-color: #9bb7d6;
 }
 /* review 상세보기 종료*/
 
@@ -671,7 +675,18 @@ a:active {
 	height: 10%;
 	text-align: center;
 }
-
+#restaurant-review-write-modify {
+	border-radius: 0.5em;
+	background-color: #9bb7d6;
+}
+#restaurant-review-write-submit{
+	border-radius: 0.5em;
+	background-color: #9bb7d6;
+}
+#restaurant-review-write-delete{
+	border-radius: 0.5em;
+	background-color: #9bb7d6;
+}
 .restaurant-review-write-btn input {
 	width: 20%;
 	height: 70%;
@@ -680,6 +695,7 @@ a:active {
 	font-weight: bold;
 	background-color: white;
 }
+
 /* review 쓰기 종료 */
 
 /* photo more 팝업창 css*/
