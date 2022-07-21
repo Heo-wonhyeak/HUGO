@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+#wholeContainer {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.side {
+	width: 20%;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+
+/* 오늘의 화제, 답변이 필요해요 */
+.topContent {
+	display: flex;
+	justify-content: center;
+}
+
+.leftRight {
+	border: 2px solid  #9bb7d6;
+	margin: 20px;
+	padding: 20px;
+	width: 400px;
+	border-radius : 0.5em;
+}
+
+.leftRight ul {
+	padding-left: 0;
+	margin-bottom: 0;
+}
+
+.leftRight li {
+	border-bottom: 1px solid gray;
+	list-style: none;
+	margin-top: 10px;
+}
+
+
+/* 전체 맛집 명소 축제, 검색 */
+.cateArea {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid #9bb7d6;
+}
+
+#cate {
+	padding: 5px;
+}
+
+#cate a {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 5px;
+	cursor: pointer;
+	padding-right: 5px;
+}
+
+.cateArea #search {
+	padding: 3px;
+	background-color: #9bb7d6;
+	border-radius : 0.2em;
+}
+
+.cateArea #search select{
+	height: 25px;
+	width: 60px;
+	color: white;
+	background-color: #9bb7d6;
+	border: none;
+	cursor: pointer;
+}
+
+.cateArea #search input{
+	width: 200px;
+	height: 20px;
+	padding: 2px;
+}
+
+.cateArea #search button {
+	color: white;
+	background-color: #9bb7d6;
+	border: none;
+	cursor: pointer;
+}
+
+/* 추천,최신순 */
+.sort {
+	display: flex;
+	justify-content: flex-end;
+	margin: 10px 0;
+}
+
+
+/* 리스트 */
+.boardList {
+	display: flex;
+	justify-content: center;
+}
+
+.boardList table {
+	border: 1px solid #9bb7d6;
+	width: 100%;
+}
+
+tr {
+	height: 30px;
+}
+
+tr .cen {
+	text-align: center;
+}
+
+
+/* 글쓰기 버튼 */
+.postArea {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.postArea input {
+	font-size: 15px;
+	font-weight: bold;
+	color: white;
+	background-color: #9bb7d6;
+	padding: 10px;
+	border: none;
+	border-radius : 0.2em;
+	cursor: pointer;
+}
+
+
+/* 페이징 */
+.boardBottom {
+	display: flex;
+	justify-content: center;
+}
+
+.boardBottom #paging {
+	list-style: none;
+}
+
+.boardBottom #paging li {
+	margin: 10px;
+	float: left;
+	cursor: pointer;
+}

@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+
+/* 전체 틀 */
+#wholeContainer {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.side {
+	width: 20%;
+}
+
+.container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* 전체 맛집 명소 축제, 검색 */
+.cateArea {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid #9bb7d6;
+}
+
+#cate {
+	padding: 5px;
+}
+
+#cate a {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 5px;
+	cursor: pointer;
+	padding-right: 5px;
+}
+
+.cateArea #search {
+	padding: 3px;
+	background-color: #9bb7d6;
+	border-radius : 0.2em;
+}
+
+.cateArea #search select{
+	height: 25px;
+	width: 60px;
+	color: white;
+	background-color: #9bb7d6;
+	border: none;
+	cursor: pointer;
+}
+
+.cateArea #search input{
+	width: 200px;
+	height: 20px;
+	padding: 2px;
+}
+
+.cateArea #search button {
+	color: white;
+	background-color: #9bb7d6;
+	border: none;
+	cursor: pointer;
+}
+
+
+/* writeBox */
+#writeBox #title {
+	padding: 10px 5px;
+	background-color: #E7EEF5;
+	display: flex;
+	justify-content: space-between;
+}
+
+#writeBox #title #titleLeft #cate {
+	margin-right: 20px;
+}
+
+#writeBox #title input{
+	width: 300px;
+	height: 20px;
+	padding: 2px;
+}
+
+#writeBox {
+	height: 700px;
+}
+
+#writeBox #ir1 {
+	height: 570px;
+}
+
+/* 목록으로, 작성완료 */
+
+.btnBox {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.btnBox .btn {
+	margin-left: 10px;
+	font-size: 15px;
+	font-weight: bold;
+	color: white;
+	background-color: #9bb7d6;
+	padding: 10px;
+	border: none;
+	border-radius : 0.2em;
+	cursor: pointer;
+}
+
+

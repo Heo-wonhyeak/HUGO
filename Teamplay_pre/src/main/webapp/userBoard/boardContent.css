@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+/* 전체 틀 */
+#wholeContainer {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.side {
+	width: 20%;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+/* 전체 맛집 명소 축제, 검색 */
+.cateArea {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid #9bb7d6;
+}
+
+#cate {
+	padding: 5px;
+}
+
+#cate a {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 5px;
+	cursor: pointer;
+	padding-right: 5px;
+}
+
+.cateArea #search {
+	padding: 3px;
+	background-color: #9bb7d6;
+	border-radius : 0.2em;
+}
+
+.cateArea #search select{
+	height: 25px;
+	width: 60px;
+	color: white;
+	background-color: #9bb7d6;
+	border: none;
+	cursor: pointer;
+}
+
+.cateArea #search input{
+	width: 200px;
+	height: 20px;
+	padding: 2px;
+}
+
+.cateArea #search button {
+	color: white;
+	background-color: #9bb7d6;
+	border: none;
+	cursor: pointer;
+}
+
+/* 게시글 제목 라인 */
+
+#contentBox #titleBox {
+	background-color: #E7EEF5;
+	padding: 10px 5px;
+}
+
+#contentBox #titleBox #title {
+	font-size: 30px;
+	font-weight: bold;
+	margin: 10px 0 20px;
+}
+
+#contentBox #titleBox #userInfo{
+	display: flex;
+	justify-content: space-between;
+}
+
+
+/* 목록으로, 작성완료 */
+
+.btnBox {
+	border-bottom: 1px solid #9bb7d6;
+	padding: 10px 0;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.btnBox .btn {
+	font-size: 15px;
+	font-weight: bold;
+	color: white;
+	background-color: #9bb7d6;
+	padding: 10px;
+	border: none;
+	border-radius : 0.2em;
+	cursor: pointer;
+}
+
+
+/* 댓글 */
+
+.replyInfo {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #E7EEF5;
+}
+
+.replybtn .rebtn {
+	font-weight: bold;
+	color: white;
+	background-color: #9bb7d6;
+	padding: 10px;
+	border: none;
+	border-radius : 0.2em;
+	cursor: pointer;
+}
+
+#writeReply {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	background-color: #E7EEF5;
+}
+
+
+#writeReply #leaveReply {
+	font-weight: bold;
+	color: white;
+	background-color: #9bb7d6;
+	padding: 10px 20px;
+	border: none;
+	border-radius : 0.2em;
+	cursor: pointer;
+}
+
+
