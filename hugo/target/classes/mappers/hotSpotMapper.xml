@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hotSpotMapper">
+   
+   <select id="selectHotSpotList" parameterType="HotSpotDTO" resultType="HotSpotDTO">
+   		select * 
+   			from (
+   				select rownum rn, A.*
+   					from (
+   						select * from hotspot where hotspot_cd = #{hotspot_cd}
+   					)A
+   			)
+   		where rn between #{pageSize} * (#{page} - 1) + 1 and #{pageSize}*#{page}
+   </select>
+   
+   <select id="selectHotSpotListCount" parameterType="HotSpotDTO" resultType="int">
+   		select count(*) from hotspot where hotspot_cd = #{hotspot_cd}
+   </select>
+</mapper>
