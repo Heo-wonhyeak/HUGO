@@ -73,7 +73,7 @@
 		
 		<div id="buttons">
 			<input  id="btn_ChangeInfo" type="button" value="수정완료" onclick="location.href=''" />
-				<input  id="btn_ChangeInfo" type="button" value="화원정보" onclick="location.href=''" />
+				<input  id="btn_ChangeInfo" type="button" value="회원정보" onclick="location.href=''" />
 		</div>
 	</div> 
 

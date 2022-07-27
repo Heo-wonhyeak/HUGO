@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +11,7 @@
 	<link rel ="stylesheet" href="InfoStyle.css" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
-		function fn_Change_pwd(){
-			let ptr = "";
-			ptr += "<tr>";
-			ptr +=	"<td><input type='ps'/>"
-			ptr += "</tr>";
-			
-		}
+		
 	</script>
 </head>
 <title>회원정보조회</title>
@@ -32,7 +28,6 @@
 				<td class="infoName">비밀번호</td>
 				<td class="infoDetail">
 					<input class="pwd" type="password" value="0824asdqwe" disabled/>
-					<input class="Btn_pwd" type="button" value="변경" onclick="location.href=''" />
 				</td>
 			</tr>
 		
@@ -58,7 +53,7 @@
 			</tr>			
 		</table>
 		<div id="buttons">
-		<input  id="btn_ChangeInfo" type="button" value="회원정보수정" onclick="location.href=''" />
+		<input  id="btn_ChangeInfo" type="button" value="회원정보수정" onclick="location.href='ChkPwd.jsp'" />
 	</div>
 	</div> 
 	
