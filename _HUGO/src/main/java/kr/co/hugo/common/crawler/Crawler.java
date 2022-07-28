@@ -12,7 +12,7 @@ public class Crawler {
 	public static void main(String[] args) {
 		
 		try {
-			String url = "https://www.mangoplate.com/restaurants/exXLrKifzVdx";
+			String url = "https://www.mangoplate.com/restaurants/iXobcHXQf6";
 			Connection conn = Jsoup.connect(url);
 			
 			Document html = conn.get();
@@ -38,19 +38,44 @@ public class Crawler {
 			Element menu_info = html.getElementsByTag("tr").get(2);
 			String menu = menu_info.getElementsByTag("span").get(0).text();
 			
+			// 가격대
+			Element price_info = html.getElementsByTag("tr").get(3);
+			String price = price_info.getElementsByTag("td").get(0).text();
+			
+			// 가격대
+			Element park_ok = html.getElementsByTag("tr").get(4);
+			String park = park_ok.getElementsByTag("td").get(0).text();
+			
 			// 영업 시간
 			Element open_info = html.getElementsByTag("tr").get(5);
 			String open = open_info.getElementsByTag("td").get(0).text();
 			
-			// 음식 메뉴
-			Elements menu_size = html.getElementsByClass("Restaurant_MenuItem");
-			String menu1 ="";
-			if(!menu_size.isEmpty()) {
-				for(int i=0;i<menu_size.size();i++) {
-					menu1 += menu_size.get(i).text()+"|";
+			// 음식 리스트 / 가격
+			Elements _menu_list = html.getElementsByClass("Restaurant_MenuItem");
+			String menu_list ="";
+			if(!_menu_list.isEmpty()) {
+				for(int i=0;i<_menu_list.size();i++) {
+					menu += _menu_list.get(i).text()+"|";
 				}
 			}
-			System.out.print(restaurant_name+" | "+address+" | "+jibunAddress+" | "+phone+" | "+menu+" | "+open+" | "+menu1);
+			
+			// 업데이트 날짜
+			String update_date = html.getElementsByClass("update_date").get(0).text().split("업데이트 : ")[1];
+			
+			// 태그
+			Elements tag_info = html.getElementsByClass("tag-item");
+			String tag = "";
+			if(!tag_info.isEmpty()) {
+				for(int i=0;i<tag_info.size();i++) {
+					tag += tag_info.get(i).text()+" ";
+				}
+			}
+				
+			// 각 URL당 하나씩 db에 들어감
+			// 이미지 파일은 따로 크롤러 생성 (복잡)
+			System.out.print(restaurant_name+" | "+address+" | "+jibunAddress+
+							" | "+phone+" | "+menu+" | "+price+" | "+park+" | "
+							+open+" | "+menu_list+" | "+update_date+" | "+tag);
 			
 			
 		}catch(IOException e){
