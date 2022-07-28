@@ -11,4 +11,28 @@
 		<put-attribute name="body" value="/WEB-INF/views/restaurants/restaurantView.jsp"/>
 	</definition>	
 	
+	<!--  매장 리뷰 상세보기 --> 
+	<definition name="/restaurants/restaurantsReviewInfo" extends="popupLayout">
+		<put-attribute name="title" value="HUGO-매장상세리뷰보기" />
+		<put-attribute name="body" value="/WEB-INF/views/restaurants/restaurantsReviewInfo.jsp"/>
+	</definition>
+	
+	<!--  매장 리뷰 쓰기 --> 
+	<definition name="/restaurants/restaurantsReviewWrite" extends="popupLayout">
+		<put-attribute name="title" value="HUGO-매장상세리뷰보기" />
+		<put-attribute name="body" value="/WEB-INF/views/restaurants/restaurantsReviewWrite.jsp"/>
+	</definition>
+	
+	<!--  매장 리뷰 수정 --> 
+	<definition name="/restaurants/restaurantsReviewMod" extends="popupLayout">
+		<put-attribute name="title" value="HUGO-매장상세리뷰보기" />
+		<put-attribute name="body" value="/WEB-INF/views/restaurants/restaurantsReviewMod.jsp"/>
+	</definition>
+	
+	<!--  매장 사진 더보기 --> 
+	<definition name="/restaurants/restaurantsPhoto" extends="popupLayout">
+		<put-attribute name="title" value="HUGO-매장사진더보기" />
+		<put-attribute name="body" value="/WEB-INF/views/restaurants/restaurantsPhoto.jsp"/>
+	</definition>
+	
 </tiles-definitions>

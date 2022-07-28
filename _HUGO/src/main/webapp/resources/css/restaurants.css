@@ -606,6 +606,10 @@ a:active {
 	border-radius: 0.5em;
 	background-color: #9bb7d6;
 }
+#restaurant-review-write-reset{
+	border-radius: 0.5em;
+	background-color: #9bb7d6;
+}
 .restaurant-review-write-btn input {
 	width: 20%;
 	height: 70%;

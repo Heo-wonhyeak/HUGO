@@ -194,7 +194,7 @@
 			
 			const id = document.querySelector(".restaurants-review-contents-txt a");
 			const a = document.querySelector(".restaurants-review-contents-txt a");
-			const url ="restaurants_review_info.jsp?id="+id;
+			const url ="${contextPath }/restaurants/restaurantsReviewInfo.do"
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);
@@ -204,7 +204,7 @@
 		// 매장 상세보기 쓰기 팝업창 이동
 		// 로그인 검증 필요 없을시 alert창
 		function popUpWrite(){
-			const url ="restaurants_review_write.jsp";
+			const url ="${contextPath }/restaurants/restaurantsReviewWrite.do"
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);
@@ -213,7 +213,7 @@
 		// 매장 상세보기 수정/삭제 팝업창 이동
 		// 만약 작성자가 아닐시 보이지 않게 하기
 		function popUpFix(){
-			const url ="restaurants_review_write.jsp";
+			const url ="${contextPath }/restaurants/restaurantsReviewMod.do"
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);
@@ -221,7 +221,7 @@
 		}
 		// 사진 상세보기 팝업창 이동
 		function popUpPhoto(){
-			const url ="restaurants_photo.jsp";
+			const url ="${contextPath }/restaurants/restaurantsPhoto.do"
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);
@@ -231,7 +231,7 @@
 		function popUpImage(){
 			const id = $('.slideMainImage').val();
 			const a = document.querySelector(".slideMainImage");
-			const url ="restaurants_review_info.jsp?id="+10;
+			const url ="${contextPath }/restaurants/restaurantsReviewInfo.do"
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);
