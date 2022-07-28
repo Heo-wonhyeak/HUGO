@@ -5,7 +5,7 @@
   
 <configuration>
 	<typeAliases>
-		<typeAlias type="kr.co.lentcar.member.dto.MemberDTO" alias="memberDTO"/>
-		<typeAlias type="kr.co.lentcar.boarder.dto.BoardDTO" alias="boardDTO"/>
+		<typeAlias type="kr.co.hugo.member.dto.MemberDTO" alias="memberDTO"/>
+		<typeAlias type="kr.co.hugo.boarder.dto.BoardDTO" alias="boardDTO"/>
 	</typeAliases>
 </configuration>
