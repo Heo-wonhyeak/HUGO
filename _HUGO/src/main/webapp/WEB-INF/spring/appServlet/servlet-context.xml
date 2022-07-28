@@ -42,7 +42,7 @@
 	
 	<mvc:interceptors>
 		<mvc:interceptor>	
-			<mvc:mapping path="*.do"/>
+			<mvc:mapping path="/*.do"/>
 			<mvc:mapping path="/*/*.do"/>	<!-- 모든 요청에 대해 인터셉터를 수행함 -->
 			<mvc:mapping path="/*/*/*.do"/>
 			<beans:bean class="kr.co.hugo.common.interceptor.ViewNameInterceptor" />

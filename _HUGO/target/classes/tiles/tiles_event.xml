@@ -15,4 +15,29 @@
 		<put-attribute name="body" value="/WEB-INF/views/event/eventWriter.jsp"/>
 	</definition>
 	
+	<definition name="/event/eventDTL" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO-이벤트상세보기" />
+		<put-attribute name="body" value="/WEB-INF/views/event/eventDTL.jsp"/>
+	</definition>
+	
+	<definition name="/event/endEventPage" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO-종료된이벤트" />
+		<put-attribute name="body" value="/WEB-INF/views/event/endEventPage.jsp"/>
+	</definition>
+	
+	<definition name="/event/couponPage" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO-종료된이벤트" />
+		<put-attribute name="body" value="/WEB-INF/views/event/couponPage.jsp"/>
+	</definition>
+	
+	<definition name="/event/couponDTL" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO-쿠폰상세보기" />
+		<put-attribute name="body" value="/WEB-INF/views/event/couponDTL.jsp"/>
+	</definition>
+	
+	<definition name="/event/declaration" extends="footerOnlyLayout">
+		<put-attribute name="title" value="HUGO-신고하기" />
+		<put-attribute name="body" value="/WEB-INF/views/event/declaration.jsp"/>
+	</definition>
+	
 </tiles-definitions>

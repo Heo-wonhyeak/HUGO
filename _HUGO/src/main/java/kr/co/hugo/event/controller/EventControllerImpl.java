@@ -30,4 +30,54 @@ public class EventControllerImpl implements EventController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/event/eventDTL.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView eventDTL(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/event/endEventPage.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView endEventPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/event/couponPage.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView couponPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/event/couponDTL.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView couponDTL(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/event/declaration.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView declaration(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		
+		return mav;
+	}
 }
