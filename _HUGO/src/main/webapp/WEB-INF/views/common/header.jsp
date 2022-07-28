@@ -43,9 +43,9 @@
 				<ul>	
 					<li>ezen님</li>
 					<li>&nbsp;</li>
-					<li><a>회원정보</a></li>
-					<li><a>쿠폰함</a></li>
-					<li><a>찜리스트</a></li>
+					<li><a href="${contextPath }/memberInfo/viewMemberInfo.do">회원정보</a></li>
+					<li><a href="${contextPath }/memberInfo/couponList.do">쿠폰함</a></li>
+					<li><a href="${contextPath }/memberInfo/wishList.do">찜리스트</a></li>
 				</ul>
 			</div>
 		</div>

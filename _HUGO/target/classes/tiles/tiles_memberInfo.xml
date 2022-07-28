@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- 회원정보조회 -->
+	<definition name="/memberInfo/viewMemberInfo" extends="baseLayout" >
+		<put-attribute name="title" value="회원정보조회" />
+		<put-attribute name="body" value="/WEB-INF/views/memberInfo/viewMemberInfo.jsp"/>
+	</definition>	
+	
+	<!-- 비밀번호확인 -->
+	<definition name="/memberInfo/checkPwd" extends="baseLayout" >
+		<put-attribute name="title" value="비밀번호 확인" />
+		<put-attribute name="body" value="/WEB-INF/views/memberInfo/checkPwd.jsp"/>
+	</definition>	
+	
+	<!-- 회원정보변경 -->
+	<definition name="/memberInfo/changeMemberInfo" extends="baseLayout" >
+		<put-attribute name="title" value="회원정보변경" />
+		<put-attribute name="body" value="/WEB-INF/views/memberInfo/changeMemberInfo.jsp"/>
+	</definition>	
+	
+	<!-- 쿠폰함 -->
+	<definition name="/memberInfo/couponList" extends="baseLayout" >
+		<put-attribute name="title" value="쿠폰함" />
+		<put-attribute name="body" value="/WEB-INF/views/memberInfo/couponList.jsp"/>
+	</definition>
+	
+	<!-- 찜리스트 -->
+	<definition name="/memberInfo/wishList" extends="baseLayout" >
+		<put-attribute name="title" value="찜리스트" />
+		<put-attribute name="body" value="/WEB-INF/views/memberInfo/wishList.jsp"/>
+	</definition>	
+	
+	
+</tiles-definitions>
+

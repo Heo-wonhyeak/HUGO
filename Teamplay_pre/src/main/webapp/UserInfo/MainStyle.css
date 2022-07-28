@@ -13,10 +13,6 @@
 	left : 2%;
 	top : 5%;
 }
-.headerMenu a{
-	text-decoration:none;
-	color : #9bb7d6;
-}
 /* 마이메뉴css */
 .myMenu{
 	display: none;
@@ -345,8 +341,3 @@ section {
 	font-weight: bold;
 }
 /* mainsection CSS 종료*/
-
-/* layout */
-.clear {
-	clear : both;
-}
