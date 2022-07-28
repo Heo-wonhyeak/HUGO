@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="/event/runningEventPage" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO-이벤트페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/event/runningEventPage.jsp"/>
+	</definition>	
+	
+	<definition name="/event/eventWriter" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO-이벤트글쓰기" />
+		<put-attribute name="body" value="/WEB-INF/views/event/eventWriter.jsp"/>
+	</definition>
+	
+</tiles-definitions>

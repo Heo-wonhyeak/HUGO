@@ -1,0 +1,331 @@
+@charset "UTF-8";
+*{
+	margin : 0 auto;
+}
+/* 헤더 CSS */
+.HeaderContainer {
+	width: 90%;
+	margin : 0 auto;
+	height : 150px;	
+}
+.HeaderLogo {
+	display: inline-block;
+	width : 15%;
+	height : 80%;
+	position : relative;
+	left : 2%;
+	top : 5%;
+}
+/* 마이메뉴css */
+.myMenu{
+	display: none;
+	width: 100px;
+	height: 150px;
+	position: absolute;
+	left: 300px;
+	border : 1px solid #9bb7d6;
+	margin: 0px;
+}
+.myMenu ul{
+	list-style: none;
+}
+.search {
+	display : inline-block;
+	width : 70%;
+	height : 20%;
+	position : relative;
+	bottom : 26%;
+	left : 3%;
+	
+}
+.searchbox {
+	width : 90%;
+	height : 100%;
+	border-radius : 0.2em;
+	font-size: 15px;
+}
+.searchBtn{
+	width : 38px ;
+	height : 100%;
+	background-color: #9bb7d6; 
+	border-radius : 0.5em;
+}
+.headerMenu{
+	display : inline-block;
+	position : relative;
+	bottom: 75%;
+	float : right;
+	color : #9bb7d6;
+}
+.serchDTL{
+	display : inline-block;
+	position : relative;
+	float : left;
+	left : 18.5%;
+	bottom: 20%;	
+}
+.searchDTLBTN{
+	height : 30px;
+	background-color: #9bb7d6; 
+	border-radius : 0.5em;
+}
+/* 헤더 CSS 종료 */
+
+/* Footer CSS */
+.footer {
+    position:relative;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+	padding: 30px 0 ;
+	
+	text-align: left;
+	size: 15px;
+	color: white;
+	background: #9bb7d6;
+}
+.select *{
+	font-weight:bold;
+	vertical-align: middle;
+	text-decoration: none;
+}
+.select, .info {
+	padding-left: 30px;
+}
+/* Footer CSS 종료 */
+
+/* tag CSS */
+a{
+	text-decoration: none;
+}
+
+span{
+	display : inline-block;
+	position : static;
+}
+
+/* runningEventPage CSS */
+table{
+	border-collapse: collapse;
+}
+.eventTd{
+	color : #A4A4A4;
+	border-bottom : solid 1px #A4A4A4;
+	cursor : pointer;
+}
+#selectTd{
+	border-bottom : solid 3px blue;
+	color : blue;
+	font : bold large;
+}
+.picture{
+	width : 90%;
+}
+.enterTitle{
+	cursor : pointer;
+}
+.eventPeriod{
+	display : inline-block;
+	position : static;
+	width: 95%;
+	text-align : left;
+}
+.eventTitle{
+	display : inline-block;
+	position : static;
+	width : 80%;
+	text-align : left;
+	font-weight : bold;
+}
+.eventCount{
+	display : inline-block;
+	position : static;
+	width : 15%;
+	text-align : right;
+}
+
+/* eventDTL*/
+#list {
+	display : inline-block;
+	position : static;
+	width : 11%;
+	text-align:right;
+}
+#reply {
+	display : inline-block;
+	position : static;
+	width : 80%;
+	text-align : left;
+}
+#replyBox {
+	width : 90%;
+	margin : 0 auto;
+}
+#boardTitle{
+	text-align : center;
+	margin : auto;
+}
+#like {
+	display : inline-block;
+	position : static;
+	width : 8%;
+}
+#date{
+	display : inline-block;
+	position : static;
+	width :85%;
+}
+.likeReply{
+	padding : 5px 0;
+	border-bottom : solid black 1px;
+}
+.DTLHeader{
+	border-bottom: solid 1px black;
+	border-top : solid 3px black;
+}
+.DTLLine { border-bottom: solid 1px black; }
+.repleHead{
+	display : inline-block;
+	position : static;
+	font-size : 20px;
+	padding : 5px;
+	margin : 2px;
+}
+#declaration{
+	width : 5% ;
+	text-align : right;
+	cursor: pointer;
+}
+.replyContainer {
+	margin : 15px;
+}
+#replyContent{
+	display : inline-block;
+	position : static;
+	width : 80%;
+	text-align: left;
+}
+.enterReplyContainer{
+	width : 95%;
+	height : 130px;
+	background:#E6E6E6;
+	border-top : 1px #E6E6E6 solid;
+	margin-left:1%;
+	padding : 8px;	
+	margin-bottom : 10px;
+	border-radius : 0.3em;
+	margin-top:5px;
+}
+.enterReply{
+	display : inline-block;
+	position : static;
+	width : 75%;
+	height : 80%;
+	text-align : left;
+	margin : 10px 0 0 10px;
+}
+#reReply{
+	display : inline-block;
+	position : static;
+	width : 19%;
+	text-align : right;
+	cursor: pointer;
+}
+.replyEnterBtn{
+	display : inline-block;
+	position : absolute;
+	text-align : right;
+	margin-top : 25px;
+	width : 15%;
+}
+#replyBtn{
+	width : 90%;
+	height : 50px;
+	border-radius : 0.5em;
+}
+#reReplyContainer{
+	display : none;
+}
+/* eventDTL 종료 */
+
+/* 뭔지 모르겠음;; */
+.h_wrap{
+	width:100%;
+	height : 150px;
+	background-color: #B4C3FF;
+	margin : 7px 0;
+}
+
+/* endEventPage */
+.endEventLine{
+	border-bottom: dotted 1px black;
+}
+/* endEventPage */
+
+/* 이벤트 글쓰기 */
+.eventWriter{
+	border-bottom : solid 1px black;
+	width : 95%;
+	padding : 20px;
+}
+#selectBox {
+	margin : 0px auto;
+	width : 95%;
+	height : 100%;
+}
+#boarderSelect {
+	margin : 10px;
+	width: 59%;
+	font-size : 20px;
+}
+#writeHeaderSelect{
+	margin : 10px;
+	width: 27%;
+	font-size : 20px;
+}
+#eventTitle{
+	width : 80%;
+	height : 36px;
+	margin-left : 40px;
+}
+#eventContent {
+	width : 80%;
+	height : 506px;
+	margin : 20px 0 10px 40px;
+}
+#eventFile {
+	margin : 10px auto;
+	width : 80%;
+}
+.fileBox{
+	border : 1px solid #A4A4A4;
+	border-radius : 0.2em;
+	width: 70%;
+}
+.eventBtn{
+	width : 80px;
+	height : 40px;
+	border-radius : 0.4em;
+	background-color : #9bb7d6;
+}
+#eventWriteBtn {
+	float : right;
+	left : 10px;
+	width : 90px;
+	height : 40px;
+	font-size : 16px;
+	border-radius : 0.4em;
+	margin : 10px auto;
+	position : relative;
+	background-color : #9bb7d6;
+}
+.eventWriteBtn{
+	float : right;
+	left : 10px;
+	width : 300px;
+	height : 40px;
+	font-size : 16px;
+	margin : 10px auto;
+	position : relative;
+}
+/* 이벤트 글쓰기 종료 */

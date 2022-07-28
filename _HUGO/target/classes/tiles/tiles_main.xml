@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- 메인 레이아웃 -->
+	<definition name="mainBaseLayout" template="/WEB-INF/views/common/mainLayout.jsp">
+		<put-attribute name="title" value="레이아웃 페이지" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="mainslider" value="/WEB-INF/views/common/mainslider.jsp"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" /> 
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<!-- 메인 외 레이아웃 -->
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="title" value="레이아웃 페이지" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<!-- 메인화면의 뷰 -->
+	<definition name="/main/main" extends="mainBaseLayout" >
+		<put-attribute name="title" value="HUGO - 메인페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+	</definition>	
+	
+
+	
+</tiles-definitions>
+

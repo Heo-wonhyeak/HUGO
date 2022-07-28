@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="mapper.member">
+
+	<resultMap type="memberDTO" id="memResult">	
+		<result property="id" column="id" />	
+		<result property="pw" column="pw" />
+		<result property="nickname" column="nickname" />
+		<result property="name" column="name" />
+		<result property="birth" column="birth" />
+		<result property="gender" column="gender" />
+		<result property="phonenum" column="phonenum" />
+		<result property="email" column="email" />
+	</resultMap>
+	
+	<insert id="insertMember" parameterType="memberDTO">
+		<![CDATA[
+			INSERT INTO test_member 
+			VALUES (#{id},#{pw},#{name},#{nickname},#{birth},#{gender},#{phonenum},#{email})	
+		]]>
+	</insert>
+	
+	<select id="duplicatecheck" parameterType="String" resultType="String">
+		<![CDATA[
+			SELECT decode(COUNT(*),1, 'true', 0, 'false')
+			FROM test_member 
+			WHERE ID = #{id }
+		]]>
+	</select>
+</mapper>

@@ -1,0 +1,228 @@
+@charset "UTF-8";
+
+
+/* 전체 틀 */
+#wholeContainer {
+	justify-content: space-between;
+	width: 90%;
+	margin : 0 auto;
+}
+
+.side {
+	width: 20%;
+}
+
+.container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* 전체 맛집 명소 축제, 검색 */
+.cateArea {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid #9bb7d6;
+}
+
+#cate {
+	padding: 5px;
+}
+
+#cate a {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 5px;
+	cursor: pointer;
+	padding-right: 5px;
+}
+
+.cateArea #search {
+	padding: 3px;
+	background-color: #9bb7d6;
+	border-radius : 0.2em;
+}
+
+.cateArea #search select{
+	height: 25px;
+	width: 60px;
+	color: white;
+	background-color: #9bb7d6;
+	border: none;
+	cursor: pointer;
+}
+
+.cateArea #search input{
+	width: 200px;
+	height: 20px;
+	padding: 2px;
+}
+
+.cateArea #search button {
+	color: white;
+	background-color: #9bb7d6;
+	border: none;
+	cursor: pointer;
+}
+
+
+/* writeBox */
+#writeBox #title {
+	padding: 10px 5px;
+	background-color: #E7EEF5;
+	display: flex;
+	justify-content: space-between;
+}
+
+#writeBox #title #titleLeft #cate {
+	margin-right: 20px;
+}
+
+#writeBox #title input{
+	width: 300px;
+	height: 20px;
+	padding: 2px;
+}
+
+#writeBox {
+	height: 700px;
+}
+
+#writeBox #ir1 {
+	height: 570px;
+}
+#nickname {
+	border : none;
+	background: transparent;
+}
+
+/* 목록으로, 작성완료 */
+
+.btnBox {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.btnBox .btn {
+	margin-left: 10px;
+	font-size: 15px;
+	font-weight: bold;
+	color: white;
+	background-color: #9bb7d6;
+	padding: 10px;
+	border: none;
+	border-radius : 0.2em;
+	cursor: pointer;
+}
+/* 게시글쓰기 완료 */
+
+/* 전체 맛집 명소 축제, 검색 */
+.cateArea {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid #9bb7d6;
+}
+
+#cate {
+	padding: 5px;
+}
+
+#cate a {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 5px;
+	cursor: pointer;
+	padding-right: 5px;
+}
+
+.cateArea #search {
+	padding: 3px;
+	background-color: #9bb7d6;
+	border-radius : 0.2em;
+}
+
+.cateArea #search select{
+	height: 25px;
+	width: 60px;
+	color: white;
+	background-color: #9bb7d6;
+	border: none;
+	cursor: pointer;
+}
+
+.cateArea #search input{
+	width: 200px;
+	height: 20px;
+	padding: 2px;
+}
+
+.cateArea #search button {
+	color: white;
+	background-color: #9bb7d6;
+	border: none;
+	cursor: pointer;
+}
+
+/* 추천,최신순 */
+.sort {
+	display: flex;
+	justify-content: flex-end;
+	margin: 10px 0;
+}
+
+
+/* 리스트 */
+.boardList {
+	display: flex;
+	justify-content: center;
+}
+
+.boardList table {
+	border: 1px solid #9bb7d6;
+	width: 100%;
+}
+
+tr {
+	height: 30px;
+}
+
+tr .cen {
+	text-align: center;
+}
+
+
+/* 글쓰기 버튼 */
+.postArea {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.postArea input {
+	font-size: 15px;
+	font-weight: bold;
+	color: white;
+	background-color: #9bb7d6;
+	padding: 10px;
+	border: none;
+	border-radius : 0.2em;
+	cursor: pointer;
+}
+
+
+/* 페이징 */
+.boardBottom {
+	display: flex;
+	justify-content: center;
+}
+
+.boardBottom #paging {
+	list-style: none;
+}
+
+.boardBottom #paging li {
+	margin: 10px;
+	float: left;
+	cursor: pointer;
+}

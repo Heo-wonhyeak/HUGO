@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="mapper.board">
+
+	<resultMap type="boardDTO" id="boardResult">	
+		<result property="articleNO" column="articleNO" />	
+		<result property="cate" column="cate" />
+		<result property="title" column="title" />
+		<result property="nickname" column="nickname" />
+		<result property="content" column="content" />
+		<result property="regDate" column="regDate" />
+	</resultMap>
+	
+	<!-- 추가하는 새글에대한 글번호 추출 -->
+	<select id="selectNewArticleNo" resultType="int">
+		<![CDATA[ 		
+			SELECT NVL(MAX(ARTICLENO),0)+1 AS ARTICLENO 
+			FROM TEST_BOARD
+		 ]]>
+	</select>
+	
+	<!-- 글 정보를 Map으로 전달함 -->
+	<insert id="insertNewArticle" parameterType="java.util.Map">
+		<![CDATA[ 		
+			INSERT INTO TEST_BOARD VALUES 
+			(#{articleNO},#{cate},#{title},#{nickname},#{content},sysdate)
+		 ]]>
+	</insert>
+	
+	<select id="selectAllArticlesList" resultMap="boardResult" parameterType="java.util.Map">
+		<![CDATA[ 		
+			SELECT *
+			FROM TEST_BOARD 
+			ORDER BY articleNO DESC
+		 ]]>
+	</select>
+	
+</mapper>
