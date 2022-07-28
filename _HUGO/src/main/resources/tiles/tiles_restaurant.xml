@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- 매장 상세보기 -->
+	<definition name="/restaurants/restaurantView" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO-매장상세보기" />
+		<put-attribute name="body" value="/WEB-INF/views/restaurants/restaurantView.jsp"/>
+	</definition>	
+	
+</tiles-definitions>
