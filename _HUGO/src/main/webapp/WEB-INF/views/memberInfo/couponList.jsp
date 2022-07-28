@@ -86,7 +86,7 @@
 			
 			<tr>
 				<td>
-					<a class="couponName" href='${contexPath }/event/couponDTL.do'>아기 강아지</a>
+					<a class="couponName" href="${contextPath}/event/couponDTL.do">아기 강아지</a>
 				</td>
 				<td>
 					<input type="text" class="couponStack" value="1">
@@ -101,7 +101,7 @@
 			
 			<tr>
 				<td>
-					<a class="couponName" href='${contexPath }/event/couponDTL.do'>신규 가입 기념 할인 쿠폰</a>
+					<a class="couponName" href='${contextPath}/event/couponDTL.do'>신규 가입 기념 할인 쿠폰</a>
 				</td>
 				<td>
 					<input type="text" class="couponStack" value="1">
@@ -116,7 +116,7 @@
 			
 			<tr>
 				<td>
-					<a class="couponName" href='${contexPath }/event/couponDTL.do'>여름휴가 기념 할인 쿠폰</a>
+					<a class="couponName" href='${contextPath}/event/couponDTL.do'>여름휴가 기념 할인 쿠폰</a>
 				</td>
 				<td>
 					<input type="text" class="couponStack" value="2">
