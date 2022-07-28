@@ -26,17 +26,17 @@
 <body>
 	<div id="sidebarContainer">
 		<div class="sidebarEvent">
-			<a href="../eventPage/eventDTL.jsp">
+			<a href="${contextPath }/event/eventDTL.do">
 				<img class="sidebarImg" alt="고양이사진" src="${contextPath }/resources/img/cuteCat.jpeg" />
 			</a>
 		</div>
 		<div class="sidebarEvent">
-			<a href="../eventPage/couponDTL.jsp">
+			<a href="${contextPath }/event/couponDTL.do">
 				<img class="sidebarImg" alt="강아지사진" src="${contextPath }/resources/img/cuteDog.jpeg" />
 			</a>
 		</div>
 		<div class="sidebarEvent">
-			<a href="../eventPage/eventDTL.jsp">
+			<a href="${contextPath }/event/eventDTL.do">
 				<img class="sidebarImg" alt="고양이사진" src="${contextPath }/resources/img/cuteCat.jpeg" />
 			</a>
 		</div>

@@ -9,6 +9,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>HUGO - 이벤트 글쓰기</title>
+	<link rel ="stylesheet" href="${contextPath }/resources/css/event.css" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
 </head>

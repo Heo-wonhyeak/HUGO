@@ -19,10 +19,10 @@
 			<td width="30%" id="selectTd" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do'">
 				진행중 이벤트
 			</td>
-			<td width="30%" class="eventTd" onclick="location.href='endEventPage.jsp'">
+			<td width="30%" class="eventTd" onclick="location.href='${contextPath}/event/endEventPage.do'">
 				종료된 이벤트
 			</td>
-			<td width="30%" class="eventTd" onclick="location.href='coupon.jsp'">
+			<td width="30%" class="eventTd" onclick="location.href='${contextPath}/event/couponPage.do'">
 				쿠폰
 			</td>
 		</tr>
@@ -32,21 +32,21 @@
 		<tr align="center" style="width:90%;">
 			<td>
 				<img src="${contextPath }/resources/img/cuteCat.jpeg" alt="고양이 사진" class="picture"/>
-				<div class="enterTitle" onclick="location.href='eventDTL.jsp'">
-					<span class="eventTitle">아기고양이 </span> <span class="eventCount"> [160]</span><br/>
-					<span class="eventPeriod"> 2022.06.16~ 2022.07.16</span>
-				</div>
-			</td>
-			<td>
-				<img src="${contextPath }/resources/img/cuteCat.jpeg" alt="강아지 사진" class="picture"/>
-				<div class="enterTitle" onclick="location.href='eventDTL.jsp'">
+				<div class="enterTitle" onclick="location.href='${contextPath}/event/eventDTL.do'">
 					<span class="eventTitle">아기고양이 </span> <span class="eventCount"> [160]</span><br/>
 					<span class="eventPeriod"> 2022.06.16~ 2022.07.16</span>
 				</div>
 			</td>
 			<td>
 				<img src="${contextPath }/resources/img/cuteCat.jpeg" alt="고양이 사진" class="picture"/>
-				<div class="enterTitle" onclick="location.href='eventDTL.jsp'">
+				<div class="enterTitle" onclick="location.href='${contextPath}/event/eventDTL.do'">
+					<span class="eventTitle">아기고양이 </span> <span class="eventCount"> [160]</span><br/>
+					<span class="eventPeriod"> 2022.06.16~ 2022.07.16</span>
+				</div>
+			</td>
+			<td>
+				<img src="${contextPath }/resources/img/cuteCat.jpeg" alt="고양이 사진" class="picture"/>
+				<div class="enterTitle" onclick="location.href='${contextPath}/event/eventDTL.do'">
 					<span class="eventTitle">아기고양이 </span> <span class="eventCount"> [160]</span><br/>
 					<span class="eventPeriod"> 2022.06.16~ 2022.07.16</span>
 				</div>
