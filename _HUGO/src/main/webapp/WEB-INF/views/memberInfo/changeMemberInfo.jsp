@@ -254,7 +254,7 @@
 		</table>
 		
 		<div id="buttons">
-			<input  id="btn_ChangeInfo" type="button" value="확인용" onclick="fn_changeMemberInfo()" />
+			<input  id="btn_ChangeInfo" type="button" value="수정완료" onclick="fn_changeMemberInfo()" />
 			<input  id="btn_ChangeInfo" type="button" value="회원정보" onclick="location.href='${contextPath}/memberInfo/viewMemberInfo.do'" />
 		</div>
 	</div> 
