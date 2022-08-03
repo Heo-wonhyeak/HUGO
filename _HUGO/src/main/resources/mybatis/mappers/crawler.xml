@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="crawler">
+
+	<resultMap type="restInfoDTO" id="restInfoResult">	
+		<result property="urlNO" column="urlNO" />	
+		<result property="name" column="name" />
+		<result property="url" column="url" />
+	</resultMap>
+	
+	<select id="selectAllRestURL" resultType="restInfoDTO" parameterType="java.util.List">
+		<![CDATA[
+			SELECT * FROM URL_INFO where urlno = 1000
+		]]>	
+	</select>
+
+</mapper>
