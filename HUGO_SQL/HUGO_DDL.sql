@@ -63,24 +63,31 @@ CREATE TABLE URL_info (
 
 DROP TABLE restaurant_info CASCADE CONSTRAINTS;
 CREATE TABLE restaurant_info(
-	rest_idx number(38) PRIMARY KEY, -- pk
-	rest_name varchar2(200) NOT NULL,
-	rest_address varchar2(500),
-	rest_jibunAddress varchar2(300),
-	rest_phone varchar2(100),
-	rest_menu varchar2(100),
-	rest_price varchar2(200),
-	rest_park varchar2(200),
-	rest_open varchar2(200),
-	rest_menu_list varchar2(1000),
-	rest_update_date date DEFAULT sysdate,
-	rest_tag varchar2(1000),
-	rest_starAvg number(10) DEFAULT 0,
-	rest_visitCount number(10) DEFAULT 0,
-	rest_reviewCount number(10) DEFAULT 0,
-	rest_jjim number(10) DEFAULT 0,
-	hotplace_idx number(10) DEFAULT 1
+	restIdx number(38) PRIMARY KEY, -- pk
+	restName varchar2(200) NOT NULL,
+	restAddress varchar2(500),
+	restJibunAddress varchar2(300),
+	restPhone varchar2(100),
+	restMenu varchar2(100),
+	restPrice varchar2(200),
+	restPark varchar2(200),
+	restOpen varchar2(200),
+	restMenuList varchar2(1000),
+	restUpdateDate date DEFAULT sysdate,
+	restTag varchar2(1000),
+	restStarAvg number(10) DEFAULT 0,
+	restVisitCount number(10) DEFAULT 0,
+	restReviewCount number(10) DEFAULT 0,
+	restJjim number(10) DEFAULT 0,
+	hotplaceIdx number(10) DEFAULT 1
 );
+
+-- restaurant_info insert query
+
+INSERT INTO ADMIN.RESTAURANT_INFO
+(RESTIDX, RESTNAME, RESTADDRESS, RESTJIBUNADDRESS, RESTPHONE, RESTMENU, RESTPRICE, RESTPARK, RESTOPEN, RESTMENULIST, RESTTAG)
+VALUES(0, '', '', '', '', '', '', '', '', '', '');
+
 
 
 

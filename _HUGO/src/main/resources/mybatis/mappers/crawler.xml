@@ -2,8 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
-<mapper namespace="crawler">
+<mapper namespace="mapper.crawler">
 
 	<resultMap type="restInfoDTO" id="restInfoResult">	
 		<result property="urlNO" column="urlNO" />	
@@ -11,10 +10,19 @@
 		<result property="url" column="url" />
 	</resultMap>
 	
-	<select id="selectAllRestURL" resultType="restInfoDTO" parameterType="java.util.List">
+	<select id="selectAllRestURL" resultMap="restInfoResult">
 		<![CDATA[
-			SELECT * FROM URL_INFO where urlno = 1000
+			SELECT * FROM URL_INFO order by urlno
 		]]>	
 	</select>
 
+	<insert id="insertRestInfo" parameterType="RestInfoDTO">
+		<![CDATA[
+			INSERT INTO ADMIN.RESTAURANT_INFO
+			(RESTIDX, RESTNAME, RESTADDRESS, RESTJIBUNADDRESS, RESTPHONE, RESTMENU, 
+			RESTPRICE, RESTPARK, RESTOPEN, RESTMENULIST, RESTTAG)
+			VALUES(#{restIdx}, #{restName}, #{restAddress}, #{restJibunAddress}, #{restPhone},
+				   #{restMenu}, #{restPrice}, #{restPark}, #{restOpen}, #{restMenuList}, #{restTag})
+		]]>
+	</insert>
 </mapper>

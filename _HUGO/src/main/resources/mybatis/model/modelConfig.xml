@@ -8,6 +8,6 @@
 		<typeAlias type="kr.co.hugo.member.dto.MemberDTO" alias="memberDTO"/>
 		<typeAlias type="kr.co.hugo.boarder.dto.BoardDTO" alias="boardDTO"/>
 		<typeAlias type="kr.co.hugo.restaurant.dto.RestaurantDTO" alias="restaurantDTO"/>
-		<typeAlias type="kr.co.hugo.common.crawler.restinfo.dto.RestInfoDTO" alias="restInfoDTO"/>
+		<typeAlias type="kr.co.hugo.crawler.restinfo.dto.RestInfoDTO" alias="restInfoDTO"/>
 	</typeAliases>
 </configuration>
