@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.restaurant">
+
+	<resultMap type="restaurantDTO" id="restResult">
+		<result property="restIdx" column="restIdx" />
+		<result property="restName" column="restName" />
+		<result property="restAddress" column="restAddress" />
+		<result property="restJibunAddress" column="restJibunAddress" />
+		<result property="restPhone" column="restPhone" />
+		<result property="restMenu" column="restMenu" />
+		<result property="restPrice" column="restPrice" />
+		<result property="restPark" column="restPark" />
+		<result property="restOpen" column="restOpen" />
+		<result property="restMenuList" column="restMenuList" />
+		<result property="restTag" column="restTag" />
+	</resultMap>
+
+
+	<insert id="insertMember" parameterType="memberDTO">
+		<![CDATA[
+			INSERT INTO test_member 
+			VALUES (#{id},#{pw},#{name},#{nickname},#{birth},#{gender},#{phonenum},#{email})	
+		]]>
+	</insert>
+
+</mapper>
