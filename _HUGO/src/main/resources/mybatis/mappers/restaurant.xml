@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.restaurant">
+
+	<resultMap type="restaurantDTO" id="restResult">
+		<result property="restIdx" column="restIdx" />
+		<result property="restName" column="restName" />
+		<result property="restAddress" column="restAddress" />
+		<result property="restJibunAddress" column="restJibunAddress" />
+		<result property="restPhone" column="restPhone" />
+		<result property="restMenu" column="restMenu" />
+		<result property="restPrice" column="restPrice" />
+		<result property="restPark" column="restPark" />
+		<result property="restOpen" column="restOpen" />
+		<result property="restMenuList" column="restMenuList" />
+		<result property="restTag" column="restTag" />
+		<result property="restUpdateDate" column="restUpdateDate" />
+		<result property="restStarAvg" column="restStarAvg" />
+		<result property="restVisitCount" column="restVisitCount" />
+		<result property="restReviewCount" column="restReviewCount" />
+		<result property="restJjim" column="restJjim" />
+		<result property="hotplaceIdx" column="hotplaceIdx" />
+	</resultMap>
+
+
+	<select id="selectRestView" resultType="restaurantDTO"
+		parameterType="int">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO WHERE RESTIDX = #{restIdx}
+		]]>
+	</select>
+
+</mapper>

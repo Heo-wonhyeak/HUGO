@@ -16,6 +16,7 @@
 		<result property="email" column="email" />
 	</resultMap>
 	
+	
 	<insert id="insertMember" parameterType="memberDTO">
 		<![CDATA[
 			INSERT INTO test_member 
