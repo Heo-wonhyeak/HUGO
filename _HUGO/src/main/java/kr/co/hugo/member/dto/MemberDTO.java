@@ -14,23 +14,23 @@ import org.springframework.stereotype.Component;
 @Component("memberDTO")
 public class MemberDTO {
 	private String id;
-	private String pw;
+	private String pwd;
 	private String nickname;
 	private String name;
-	private String birth;
+	private String birthday;
 	private String gender;
-	private String phonenum;
+	private String callnum;
 	private String email;
 	
 	public MemberDTO() {}
 	
-	public MemberDTO(String id, String pw,String name, String nickname, String phonenum, String email) {
+	public MemberDTO(String id, String pwd,String name, String nickname, String callnum, String email) {
 //		super();
 		this.id = id;
-		this.pw = pw;
+		this.pwd = pwd;
 		this.name = name;
 		this.nickname = nickname;
-		this.phonenum = phonenum;
+		this.callnum = callnum;
 		this.email = email;
 	}
 
@@ -50,12 +50,12 @@ public class MemberDTO {
 		this.id = id;
 	}
 
-	public String getPw() {
-		return pw;
+	public String getPwd() {
+		return pwd;
 	}
 
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	public String getNickname() {
@@ -66,12 +66,12 @@ public class MemberDTO {
 		this.nickname = nickname;
 	}
 
-	public String getBirth() {
-		return birth;
+	public String getBirthday() {
+		return birthday;
 	}
 
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 
 	public String getGender() {
@@ -82,12 +82,12 @@ public class MemberDTO {
 		this.gender = gender;
 	}
 
-	public String getPhonenum() {
-		return phonenum;
+	public String getCallnum() {
+		return callnum;
 	}
 
-	public void setPhonenum(String phonenum) {
-		this.phonenum = phonenum;
+	public void setCallnum(String callnum) {
+		this.callnum = callnum;
 	}
 
 	public String getEmail() {

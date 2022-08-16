@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="mapper.event">
+ 	<resultMap type="eventDTO" id="eventResult">	
+		<result property="event_idx" column="event_idx" />	
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="event_period" column="event_period" />
+		<result property="id" column="id" />
+		<result property="ofile" column="ofile" />
+		<result property="like_count" column="like_count" />
+		<result property="visit_count" column="visit_count"/>
+		<result property="create_date" column="create_date"/>
+	</resultMap>
+	
+	<resultMap type="eventImageDTO" id="eventImageResult">	
+		<result property="img_idx" column="img_idx" />	
+		<result property="img_name" column="img_name" />
+		<result property="event_idx" column="event_idx" />
+	</resultMap>
+	
+	<!-- 추가하는 새글에대한 글번호 추출 -->
+	<select id="selectNewEventIdx" resultType="int">
+		<![CDATA[ 		
+			SELECT NVL(MAX(event_idx),0)+1 AS ARTICLENO 
+			FROM HUGO_EVENT_BOARD
+		 ]]>
+	</select>
+	
+	<!-- 글 정보를 Map으로 전달함 -->
+	<insert id="insertNewEvent" parameterType="java.util.Map">
+		<![CDATA[ 		
+			INSERT INTO HUGO_EVENT_BOARD (event_idx,title,content,event_period,id,ofile) VALUES 
+			(#{event_idx},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{event_period},#{id},#{ofile,jdbcType=VARCHAR})
+		 ]]>
+	</insert>
+	
+	<!-- 새 이미지 번호 가져오기 -->
+	<select id="selectNewImageFileNO" resultType="int">
+		<![CDATA[ 		
+			SELECT NVL(MAX(IMG_IDX),0) AS IMG_IDX 
+			FROM HUGO_EVENT_IMAGE
+		 ]]>
+	</select>
+	
+	<!-- 한번에 여러개의 레코드(ex.이미지) 추가 할때 foreach 사용! -->
+	<insert id="insertNewImage" parameterType="java.util.Map">
+		<foreach collection="list" item="item" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">
+			INTO HUGO_EVENT_IMAGE (IMG_IDX,IMG_NAME,EVENT_IDX)  
+			 VALUES (#{item.img_idx},#{item.img_name},#{item.event_idx})
+		</foreach>
+	</insert>
+	
+	
+ 	
+ </mapper>

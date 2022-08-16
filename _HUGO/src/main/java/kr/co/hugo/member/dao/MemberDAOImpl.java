@@ -22,6 +22,12 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public String selectDuplicateCheck(String id) throws DataAccessException {
 		String result = (String)sqlSession.selectOne("mapper.member.duplicatecheck",id);
+		
 		return result;
+	}
+
+	@Override
+	public MemberDTO loginById(MemberDTO member) throws DataAccessException {
+		return sqlSession.selectOne("mapper.member.loginById", member);
 	}
 }

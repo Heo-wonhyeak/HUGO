@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.hugo.member.dto.MemberDTO;
 import kr.co.hugo.member.service.MemberService;
@@ -53,6 +54,15 @@ public class MemberControllerImpl implements MemberController {
 		mav.setViewName(viewName);
 		return mav;
 	}
+	
+	@RequestMapping(value="/member/agree.do",method = RequestMethod.GET)
+	public ModelAndView agree(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		return mav;
+	}
 
 	@Override
 	@RequestMapping(value = "/member/addMember.do", method = RequestMethod.POST)
@@ -68,12 +78,37 @@ public class MemberControllerImpl implements MemberController {
 
 	@Override
 	@RequestMapping(value="/member/duplicateCheck.do",method = RequestMethod.POST)
-	public ResponseEntity<String> duplicateCheck(String id, HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	public ResponseEntity<String> duplicateCheck (@RequestParam(value = "id", required = false) String id, 
+				HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println(id);
 		String result = memberService.duplicateCheck(id);
+		System.out.println("======="+result);
 		ResponseEntity<String> resEntity = new ResponseEntity<String>(result, HttpStatus.OK);
 		
 		return resEntity;
+	}
+
+	
+	@Override
+	@RequestMapping(value="/member/login.do",method= RequestMethod.POST)
+	public ModelAndView login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttributes, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		
+		memberDTO = memberService.login(member);
+		
+		if(memberDTO != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("member", memberDTO);
+			session.setAttribute("isLogOn", true);
+			
+			mav.setViewName("redirect:/main/main.do");
+		} else {
+			rAttributes.addAttribute("result", "loginFailed");		//로그인 실패 시 실패 메시지를 로그인창 전달
+			mav.setViewName("redirect:/member/loginForm.do");		//로그인 실패 시 다시 로그인창으로 리다이렉트함
+		}
+		
+		return mav;
 	}
 	
 	

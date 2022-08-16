@@ -25,4 +25,9 @@ public class MemberServiceImpl implements MemberService {
 	public String duplicateCheck(String id) throws Exception {
 		return memberDAO.selectDuplicateCheck(id);
 	}
+
+	@Override
+	public MemberDTO login(MemberDTO member) throws DataAccessException {
+		return memberDAO.loginById(member);
+	}
 }
