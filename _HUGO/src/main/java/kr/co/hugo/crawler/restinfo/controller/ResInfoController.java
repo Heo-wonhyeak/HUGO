@@ -32,7 +32,7 @@ public class ResInfoController {
 		List<RestInfoDTO> lists = restInfoService.listURL();
 		System.out.println(lists.size()); // 2708
 			// 혹시 몰라서 20개씩 끊어서 하는중
-		for (int i = 106; i < 300; i++) {
+		for (int i = 0; i < lists.size(); i++) {
 
 			try {
 				String url = lists.get(i).getUrl();
@@ -98,7 +98,7 @@ public class ResInfoController {
 				Elements _menu_list = html.getElementsByClass("Restaurant_MenuItem");
 				if (!_menu_list.isEmpty()) {
 					for (int j = 0; j < _menu_list.size(); j++) {
-						restMenuList += _menu_list.get(j).text() + "|";
+						restMenuList += _menu_list.get(j).text() + "cut";
 					}
 				}
 				// 태그

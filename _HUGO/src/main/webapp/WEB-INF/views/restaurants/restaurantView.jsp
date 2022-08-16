@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="restaurant" value="${restMap.restaurant }" />
+<c:set var="menuListarr" value="${restMap.menuListarr }"/>
+<%-- <c:set var="imageFileList" value="${articleMap.imageFileList }" /> --%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,15 +68,15 @@
 	<section class="restaurants-view">
 		<div class="restaurants-info">
 			<div class="restaurants-info-head">
-				<div class="restaurants-name">돼통령 xx점</div>			<!-- 별점 ajax로 구현 -->
+				<div class="restaurants-name">${restaurant.restName }</div>			<!-- 별점 ajax로 구현 -->
 				<div class="restaurants-steamed"><input type="button" id="restaurants-star1" value="☆">
 				</div>
 			</div>
 			<div class="restaurants-info-head">
 				<div class="restaurants-count">
-					<span class="restaurants-count-info">⭐ 5.0</span>
-					<span class="restaurants-count-info">❤️ 5.0</span>
-					<span class="restaurants-count-info">😀 932 </span>
+					<span class="restaurants-count-info">⭐ ${restaurant.restStarAvg }</span>
+					<span class="restaurants-count-info">❤️ ${restaurant.restReviewCount }</span>
+					<span class="restaurants-count-info">😀 ${restaurant.restVisitCount }</span>
 				</div>
 				<div class="restaurants-fixInfo"><a href="#">✏️ 정보 수정 요청</a></div>
 			</div>
@@ -78,31 +84,43 @@
 				<table colspan="2" class="restaurants-detail">
 					<tr>
 						<th>📞</th>
-						<td>02-xxxx-xxxx</td>
+						<td>${restaurant.restPhone }</td>
 					</tr>
 					<tr>
 						<th>🏠</th>
-						<td>서울시 ~~<br/>
-							<span class="restaurants-infoAddress-text">지번 &nbsp;진안동 884-8 1층</span>	
+						<td style="font-size:0.8em;">${restaurant.restAddress }<br/>
+							지번<span class="restaurants-infoAddress-text" style="font-size:0.7em; color:gray;"> &nbsp;${restaurant.restJibunAddress }</span>	
 						</td>
+					</tr>
+					<tr>
+						<th>🍱</th>
+						<td>${restaurant.restMenu }</td>
 					</tr>
 					<tr>
 						<th>⏰</th>
-						<td>연중 무휴<br/>
-							<span class="restaurants-infoTime-text">10:00 ~ 21:00</span>
+						<td> 
+							<span class="restaurants-infoTime-text">${restaurant.restOpen }</span>
 						</td>
 					</tr>
 					<tr>
-						<th>🔖</th>
+						<th>🚗</th>
+						
 						<td>
-							<span class="restaurants-infoMenu-text">삼겹살 : 13,000 </span><br>
-							<span class="restaurants-infoMenu-text">삼겹살 : 13,000 </span><br>
-							<span class="restaurants-infoMenu-text">삼겹살 : 13,000 </span>
+							${restaurant.restPark }
+						</td>
+					</tr>
+					
+					<tr>
+						<th>🔖</th>
+						<td style="font-size:0.9em">
+							<c:forEach var="menu" items="${menuListarr}" varStatus="status">
+								<p><c:out value="${menu }"/></p>
+							</c:forEach>
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div class="restaurants-info-update">2022.06.14 업데이트</div>
+			<div class="restaurants-info-update">${restaurant.restUpdateDate } 업데이트</div>
 		</div>
 		<div class="restaurants-map">
 			<%@ include file="Naver_api.jsp" %>
@@ -112,6 +130,7 @@
 	<section class="restaurants-review-section">
 		<div class="restaurants-review-header">Review</div>
 		<div class="restaurants-review-sort">
+		<!-- board 게시판 보고 작업 -->
 			<span id="restaurants-review-sort-new">최신순</span>&nbsp;&nbsp;&nbsp;/&nbsp;
 			<span id="restaurants-review-sort-star">별점순</span>&nbsp;&nbsp;&nbsp;/&nbsp;
 			<span id="restaurants-review-sort-visit">방문순</span>&nbsp;&nbsp;&nbsp;/&nbsp;

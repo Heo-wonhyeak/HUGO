@@ -17,14 +17,20 @@
 		<result property="restOpen" column="restOpen" />
 		<result property="restMenuList" column="restMenuList" />
 		<result property="restTag" column="restTag" />
+		<result property="restUpdateDate" column="restUpdateDate" />
+		<result property="restStarAvg" column="restStarAvg" />
+		<result property="restVisitCount" column="restVisitCount" />
+		<result property="restReviewCount" column="restReviewCount" />
+		<result property="restJjim" column="restJjim" />
+		<result property="hotplaceIdx" column="hotplaceIdx" />
 	</resultMap>
 
 
-	<insert id="insertMember" parameterType="memberDTO">
+	<select id="selectRestView" resultType="restaurantDTO"
+		parameterType="int">
 		<![CDATA[
-			INSERT INTO test_member 
-			VALUES (#{id},#{pw},#{name},#{nickname},#{birth},#{gender},#{phonenum},#{email})	
+			SELECT * FROM RESTAURANT_INFO WHERE RESTIDX = #{restIdx}
 		]]>
-	</insert>
+	</select>
 
 </mapper>

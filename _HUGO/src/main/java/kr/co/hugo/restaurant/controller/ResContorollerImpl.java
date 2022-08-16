@@ -1,12 +1,15 @@
 package kr.co.hugo.restaurant.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.hugo.member.dto.MemberDTO;
+import kr.co.hugo.restaurant.service.ResService;
 
-@Controller
+@Controller("resController")
 public class ResContorollerImpl implements ResController{
+	
+	@Autowired
+	ResService resService;
 	
 	@RequestMapping(value="/restaurants/restaurantView.do" , method= {RequestMethod.GET,RequestMethod.POST})
 	@Override
@@ -33,15 +40,13 @@ public class ResContorollerImpl implements ResController{
 		}
 		
 		Map<String, Object> viewMap = new HashMap<>();
-//		viewMap.put("articleNO", articleNO);
-		viewMap.put("id", id);
-
-		// Map<String, Object> articleMap = boardService.viewArticle(articleNO); // 조회할 글 정보,이미지파일 정보를 articleMap에 설정
-//		Map<String, Object> articleMap = boardService.viewArticle(viewMap);
+		viewMap.put("restIdx", restIdx);
+		viewMap.put("id", id);	
+		Map<String, Object> restMap = resService.restaurantView(viewMap);
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
-//		mav.addObject("articleMap", articleMap);
-
+		mav.addObject("restMap", restMap);
 		return mav;
 	}
 	@RequestMapping(value="/restaurants/restaurantsReviewInfo.do" , method= {RequestMethod.GET,RequestMethod.POST})

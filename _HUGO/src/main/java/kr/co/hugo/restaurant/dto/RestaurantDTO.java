@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("restaurantDTO")
 public class RestaurantDTO {
 	
 	private int restIdx;
