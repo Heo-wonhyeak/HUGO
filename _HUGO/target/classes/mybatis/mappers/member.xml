@@ -7,28 +7,34 @@
 
 	<resultMap type="memberDTO" id="memResult">	
 		<result property="id" column="id" />	
-		<result property="pw" column="pw" />
+		<result property="pwd" column="pwd" />
 		<result property="nickname" column="nickname" />
 		<result property="name" column="name" />
-		<result property="birth" column="birth" />
+		<result property="birthday" column="birthday" />
 		<result property="gender" column="gender" />
-		<result property="phonenum" column="phonenum" />
+		<result property="callnum" column="callnum" />
 		<result property="email" column="email" />
 	</resultMap>
 	
-	
 	<insert id="insertMember" parameterType="memberDTO">
 		<![CDATA[
-			INSERT INTO test_member 
-			VALUES (#{id},#{pw},#{name},#{nickname},#{birth},#{gender},#{phonenum},#{email})	
+			INSERT INTO HUGO_USER_INFO (ID, PWD, NAME, NICKNAME, BIRTHDAY, GENDER,CALLNUM, EMAIL)
+			VALUES (#{id},#{pwd},#{name},#{nickname},#{birthday},#{gender},#{callnum},#{email})	
 		]]>
 	</insert>
 	
 	<select id="duplicatecheck" parameterType="String" resultType="String">
 		<![CDATA[
 			SELECT decode(COUNT(*),1, 'true', 0, 'false')
-			FROM test_member 
-			WHERE ID = #{id }
+			FROM HUGO_USER_INFO 
+			WHERE ID = #{id}
+		]]>
+	</select>
+	
+	<select id="loginById" resultType="memberDTO" parameterType="memberDTO">
+		<![CDATA[
+			SELECT * FROM HUGO_USER_INFO
+			WHERE ID = #{id} AND PWD = #{pwd}			
 		]]>
 	</select>
 </mapper>

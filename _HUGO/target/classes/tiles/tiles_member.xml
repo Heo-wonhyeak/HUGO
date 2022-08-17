@@ -7,8 +7,20 @@
 
 	<!-- 회원가입 뷰 -->
 	<definition name="/member/signupForm" extends="baseLayout" >
-		<put-attribute name="title" value="회원가입 페이지" />
+		<put-attribute name="title" value="HUGO - 회원가입 페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/member/signupForm.jsp"/>
+	</definition>	
+	
+	<!-- 약관동의 뷰 -->
+	<definition name="/member/agree" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO - 약관동의" />
+		<put-attribute name="body" value="/WEB-INF/views/member/agree.jsp"/>
+	</definition>	
+	
+	<!-- 로그인 뷰 -->
+	<definition name="/member/loginForm" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO - 로그인" />
+		<put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp"/>
 	</definition>	
 	
 	
