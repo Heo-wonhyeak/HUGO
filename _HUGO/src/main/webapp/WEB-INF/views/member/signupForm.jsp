@@ -9,10 +9,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link rel ="stylesheet" href="${contextPath }/resources/css/main.css" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
-	<style>
+	<style type="text/css">
 		.text-field {
 			font-size: 14px;
 			padding: 10px;
@@ -21,7 +20,6 @@
 			margin-bottom: 10px;
 			background-color: #EEEFF1;
 		}
-		
 		#input {
 			text-align: center;
 		}
@@ -43,7 +41,7 @@
 			margin-bottom: 20px;
 		}
 		
-		#next_btn{
+		#next_btn,#reset_btn{
 		  font-size: 14px;
 		  border: none;
 		  padding: 10px;
@@ -67,13 +65,14 @@
 				alert('id를 입력하세요');
 				return;
 			}
-	
+			
+			/* ajax 진입 안됨.. 해결 요망 */
 			$.ajax({
 				type: "post"
 				,url: "${contextPath }/member/duplicateCheck.do"
-				,dataType: "text"
-				,data: {id: _id}
+				,data: { id : _id}
 				,success: function (data,textStatus) {
+					alert("성공진입"); 
 					if(data == 'false') {
 						alert('사용가능한 아이디 입니다');
 						$('#check_btn').prop('disabled',true);
@@ -91,9 +90,9 @@
 		}
 		$(document).ready(function() {
 			$('#signupForm').submit(function() {
-				if($('#pw').val() == "") {
+				if($('#pwd').val() == "") {
 					alert("비밀번호 입력해주세요");
-					$('#pw').focus();
+					$('#pwd').focus();
 					return false;
 				}
 				if($('#pw_check').val() == "") {
@@ -101,9 +100,9 @@
 					$('#pw_check').focus();
 					return false;
 				}
-				if($('#pw').val() != $('#pw_check').val()) {
+				if($('#pwd').val() != $('#pw_check').val()) {
 					alert("비밀번호가 다릅니다.");
-					$('#pw').focus();
+					$('#pwd').focus();
 					return false;
 				}
 				if($('#name').val() == "") {
@@ -116,9 +115,9 @@
 					$('#nickname').focus();
 					return false;
 				}
-				if($('#phonenum').val() == "") {
+				if($('#callnum').val() == "") {
 					alert("번호를 입력해주세요");
-					$('#phonenum').focus();
+					$('#callnum').focus();
 					return false;
 				}
 				if($('#email').val() == "") {
@@ -131,13 +130,12 @@
 	</script>
 </head>
 <body>
-	<h2>회원가입</h2>
 		<h2 style="text-align: center;">2.회원가입</h2>
 		<h3 style="color: #808080; text-align: center;" >회원정보를 입력해주세요</h3>	
 		<hr style="border: thin 2px #808080;">
 		<br />
 
-	<form id="signupForm" action="${contextPath }/member/addMember.do" method="post">		
+	<form id="signupForm" action="${contextPath }/member/addMember.do" method="post" enctype="multipart/form-data">		
 		<div id="input">
 			<div class="info">
 				<input type="text" class="text-field" name="_id" id="_id" placeholder="아이디">&nbsp;&nbsp;
@@ -146,7 +144,7 @@
 			</div>
 
 			<div class="info">
-				<input type="password" class="text-field" name="pw" id="pw" placeholder="비밀번호">
+				<input type="password" class="text-field" name="pwd" id="pwd" placeholder="비밀번호">
 			</div>
 
 			<div class="info">
@@ -164,7 +162,7 @@
 			</div>
 
 			<div class="info">
-				<input type="date" class="text-field" name="birth" id="birth" placeholder="생년월일">
+				<input type="date" class="text-field" name="birthday" id="birthday" placeholder="생년월일">
 			</div>
 
 			<div class="info">
@@ -175,7 +173,7 @@
 			</div>
 
 			<div class="info">
-				<input type="tel" class="text-field" name="phonenum" id="phonenum" placeholder="전화번호">
+				<input type="tel" class="text-field" name="callnum" id="callnum" placeholder="전화번호">
 			</div>
 
 			<div class="info">
@@ -187,7 +185,7 @@
 		<br/>
 		<div align="center">
 			<input type="submit" id="next_btn" value="가입완료" />
-			<input type="reset" id="next_btn" value="다시입력" />
+			<input type="reset" id="reset_btn" value="다시입력" />
 		</div>
 		<br/>
 	</form>

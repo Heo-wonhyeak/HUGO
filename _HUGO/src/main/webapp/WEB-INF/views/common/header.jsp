@@ -37,7 +37,16 @@
 			<a href="${contextPath }/event/runningEventPage.do">이벤트/쿠폰</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a href="${contextPath }/board/listArticles.do">게시판</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a>고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a href="${contextPath }/member/signupForm.do">회원가입</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<c:choose>
+				<c:when test="${isLogOn == true &&  member != null}">
+					${member.name }
+					<a href="${contextPath}/member/logout.do">로그 아웃</a> 
+				</c:when>
+				<c:otherwise>
+					<a href="${contextPath }/member/loginForm.do">로그인</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				</c:otherwise>
+			</c:choose>
+			
 			<a onclick="return showMenu()"><i class="fa-solid fa-chalkboard-user" class="user_info"></i></a>
 			<div class="myMenu">
 				<ul>	
