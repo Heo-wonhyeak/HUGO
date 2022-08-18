@@ -24,13 +24,11 @@ public class ResServiceImpl implements ResService{
 		int restIdx =(int) viewMap.get("restIdx");
 		RestaurantDTO restaurant = resDAO.selectRestView(restIdx);
 		String menuList = restaurant.getRestMenuList();
-		System.out.println(menuList);
 		String[] menuListTemp = menuList.split("cut");
 		List<String> menuListarr = new ArrayList<>();
 		for(int i=0;i<menuListTemp.length;i++) {
 			menuListarr.add(menuListTemp[i]);
 		}
-		System.out.println(menuListarr.size());
 		restMap.put("menuListarr",menuListarr);
 		
 		// 이미지 부분 정보 요청

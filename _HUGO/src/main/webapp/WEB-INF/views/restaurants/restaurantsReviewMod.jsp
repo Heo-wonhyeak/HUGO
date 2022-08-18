@@ -51,9 +51,9 @@ html,body{
                </div>
                <div class="upload-subImage">
                     <div class="upload-title">photo</div>
-                    <input type='file' name='subImage' id='subImage1'/><label for='subImage1'><div class="upload-box">➕</div></label>
-                    <input type='file' name='subImage' id='subImage2'/><label for='subImage2'><div class="upload-box">➕</div></label>
-                    <input type='file' name='subImage' id='subImage3'/><label for='subImage3'><div class="upload-box">➕</div></label>
+                    <input type='file' name='subImage1' id='subImage1'/><div class="upload-box">➕</div>
+                    <input type='file' name='subImage2' id='subImage2'/><label for='subImage2'><div class="upload-box">➕</div></label>
+                    <input type='file' name='subImage3' id='subImage3'/><label for='subImage3'><div class="upload-box">➕</div></label>
                </div>
             </div>
             <div class="restaurant-review-write-btn">

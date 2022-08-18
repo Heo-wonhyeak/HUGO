@@ -47,13 +47,33 @@ html,body{
             <div class="restaurant-review-write-ImageUpload">
                <div class="upload-mainImage">
                     <div class="upload-title">main</div>
-                    <input type='file' name='mainImage' id='mainImage'/><label for='mainImage'><div class="upload-box">➕</div></label>
+                    <input type='file' name='mainImage' id='mainImage' onchange="readURLMain(this, 0)"/>
+                    <label for="mainImage">
+                    	<div class="upload-box">
+                    		<img class="img-box"  id="mainView" alt="+" src="#" />
+                    	</div>
+                    </label>
                </div>
                <div class="upload-subImage">
                     <div class="upload-title">photo</div>
-                    <input type='file' name='subImage' id='subImage1'/><label for='subImage1'><div class="upload-box">➕</div></label>
-                    <input type='file' name='subImage' id='subImage2'/><label for='subImage2'><div class="upload-box">➕</div></label>
-                    <input type='file' name='subImage' id='subImage3'/><label for='subImage3'><div class="upload-box">➕</div></label>
+                    <input type='file' name='subImage1' id='subImage1' onchange="readURL(this, 1)"/>
+                    	<label for='subImage1'>
+                    		<div class="upload-box" >
+                    			<img class="img-box" id="subView1" alt="+" src="#" />
+                    		</div>
+                    	</label>
+                    <input type='file' name='subImage2' id='subImage2' onchange="readURL(this, 2)"/>
+                    	<label for='subImage2'>
+                    		<div class="upload-box" >
+                    			<img class="img-box" id="subView2" alt="+" src="#" />
+                    		</div>
+                    	</label>
+                    <input type='file' name='subImage3' id='subImage3' onchange="readURL(this, 3)"/>
+                    	<label for='subImage3'>
+                    		<div class="upload-box" >
+                    			<img class="img-box" id="subView3" alt="+ " src="#" />
+                    		</div>
+                    	</label>
                </div>
             </div>
             <div class="restaurant-review-write-btn">
@@ -62,8 +82,25 @@ html,body{
             </div>
     </form>
     <script>
-        // 폼양식 디비에 올리기
-        
+    function readURLMain(input, index) {
+		if (input.files && input.files[0]) {
+			const reader = new FileReader();
+			reader.onload = function(e){
+				$('#mainView').attr('src',e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}  
+    
+    function readURL(input, index) {
+		if (input.files && input.files[0]) {
+			const reader = new FileReader();
+			reader.onload = function(e){
+				$('#subView'+index).attr('src',e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}   
     </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="restaurant" value="${restMap.restaurant }" />
-<c:set var="menuListarr" value="${restMap.menuListarr }"/>
+<c:set var="menuListarr" value="${restMap.menuListarr }" />
 <%-- <c:set var="imageFileList" value="${articleMap.imageFileList }" /> --%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -20,7 +20,11 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-<link rel ="stylesheet" href="${contextPath }/resources/css/restaurants.css" type="text/css"/>
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=tzhnxmtsbm&submodules=geocoder"></script>
+</head>
+<link rel="stylesheet"
+	href="${contextPath }/resources/css/restaurants.css" type="text/css" />
 <title>돼통령 xx점</title>
 </head>
 <body>
@@ -68,19 +72,25 @@
 	<section class="restaurants-view">
 		<div class="restaurants-info">
 			<div class="restaurants-info-head">
-				<div class="restaurants-name">${restaurant.restName }</div>			<!-- 별점 ajax로 구현 -->
-				<div class="restaurants-steamed"><input type="button" id="restaurants-star1" value="☆">
+				<div class="restaurants-name">${restaurant.restName }</div>
+				<!-- 별점 ajax로 구현 -->
+				<div class="restaurants-steamed">
+					<input type="button" id="restaurants-star1" value="☆">
 				</div>
 			</div>
 			<div class="restaurants-info-head">
 				<div class="restaurants-count">
-					<span class="restaurants-count-info">⭐ ${restaurant.restStarAvg }</span>
-					<span class="restaurants-count-info">❤️ ${restaurant.restReviewCount }</span>
-					<span class="restaurants-count-info">😀 ${restaurant.restVisitCount }</span>
+					<span class="restaurants-count-info">⭐
+						${restaurant.restStarAvg }</span> <span class="restaurants-count-info">❤️
+						${restaurant.restReviewCount }</span> <span
+						class="restaurants-count-info">😀
+						${restaurant.restVisitCount }</span>
 				</div>
-				<div class="restaurants-fixInfo"><a href="#">✏️ 정보 수정 요청</a></div>
+				<div class="restaurants-fixInfo">
+					<a href="#">✏️ 정보 수정 요청</a>
+				</div>
 			</div>
-			<div class = "restaurants-info-body">
+			<div class="restaurants-info-body">
 				<table colspan="2" class="restaurants-detail">
 					<tr>
 						<th>📞</th>
@@ -88,8 +98,10 @@
 					</tr>
 					<tr>
 						<th>🏠</th>
-						<td style="font-size:0.8em;">${restaurant.restAddress }<br/>
-							지번<span class="restaurants-infoAddress-text" style="font-size:0.7em; color:gray;"> &nbsp;${restaurant.restJibunAddress }</span>	
+						<td style="font-size: 0.8em;">${restaurant.restAddress }<br />
+							지번<span class="restaurants-infoAddress-text"
+							style="font-size: 0.7em; color: gray;">
+								&nbsp;${restaurant.restJibunAddress }</span>
 						</td>
 					</tr>
 					<tr>
@@ -98,59 +110,67 @@
 					</tr>
 					<tr>
 						<th>⏰</th>
-						<td> 
-							<span class="restaurants-infoTime-text">${restaurant.restOpen }</span>
+						<td><span class="restaurants-infoTime-text">${restaurant.restOpen }</span>
 						</td>
 					</tr>
 					<tr>
 						<th>🚗</th>
-						
-						<td>
-							${restaurant.restPark }
-						</td>
+
+						<td>${restaurant.restPark }</td>
 					</tr>
-					
+
 					<tr>
 						<th>🔖</th>
-						<td style="font-size:0.9em">
-							<c:forEach var="menu" items="${menuListarr}" varStatus="status">
-								<p><c:out value="${menu }"/></p>
-							</c:forEach>
-						</td>
+						<td style="font-size: 0.9em"><c:forEach var="menu"
+								items="${menuListarr}" varStatus="status">
+								<p>
+									<c:out value="${menu }" />
+								</p>
+							</c:forEach></td>
 					</tr>
 				</table>
 			</div>
-			<div class="restaurants-info-update">${restaurant.restUpdateDate } 업데이트</div>
+			<div class="restaurants-info-update">${restaurant.restUpdateDate }
+				업데이트</div>
 		</div>
 		<div class="restaurants-map">
-			<%@ include file="Naver_api.jsp" %>
+			<div id="map"></div>
 		</div>
 	</section>
 	<!-- review section -->
 	<section class="restaurants-review-section">
 		<div class="restaurants-review-header">Review</div>
 		<div class="restaurants-review-sort">
-		<!-- board 게시판 보고 작업 -->
+			<!-- board 게시판 보고 작업 -->
 			<span id="restaurants-review-sort-new">최신순</span>&nbsp;&nbsp;&nbsp;/&nbsp;
 			<span id="restaurants-review-sort-star">별점순</span>&nbsp;&nbsp;&nbsp;/&nbsp;
 			<span id="restaurants-review-sort-visit">방문순</span>&nbsp;&nbsp;&nbsp;/&nbsp;
 			<span id="restaurants-review-sort-myReview">내가 쓴리뷰</span>
 		</div>
-		<div class="restaurants-review-writeInfo"><a onClick="popUpWrite()" target="_parent">✏️ 리뷰 쓰기 </a></div>
+
+		<div class="restaurants-review-writeInfo">
+			<a onClick="popUpWrite(${isLogOn})" target="_parent">✏️ 리뷰 쓰기 </a>
+		</div>
 		<div class="restaurants-review-list">
 			<div class="restaurants-review-head">
 				<div class="restaurants-review-head-image">이미지</div>
 				<div class="restaurants-review-head-name">정원영</div>
 				<div class="restaurants-review-head-star5">⭐ ⭐ ⭐ ⭐ ⭐</div>
-				<div class="restaurants-review-head-revise"><a onClick="popUpFix()" target="_parent">✏️ 수정/삭제</a></div>
+				<div class="restaurants-review-head-revise">
+					<a onClick="popUpFix(${isLogOn})" target="_parent">✏️ 수정/삭제</a>
+				</div>
 			</div>
 			<div class="restaurants-review-contents">
-				<div class="restaurants-review-contents-txt">1212<a onClick="popUp()" target="_parent">...더보기</a></div>
+				<div class="restaurants-review-contents-txt">
+					1212<a onClick="popUp()" target="_parent">...더보기</a>
+				</div>
 				<div class="restaurants-review-contents-image">
 					<div class="restaurants-review-contents-imageInfo"></div>
 					<div class="restaurants-review-contents-imageInfo"></div>
 					<div class="restaurants-review-contents-imageInfo"></div>
-					<div class="restaurants-review-contents-imageInfo-plus"><a onClick="popUp()" target="_parent">more</a></div>
+					<div class="restaurants-review-contents-imageInfo-plus">
+						<a onClick="popUp()" target="_parent">more</a>
+					</div>
 				</div>
 			</div>
 			<div class="restaurants-review-steamed" onClick="goodCheck()">추천해요😀(1)</div>
@@ -161,7 +181,7 @@
               <span class="RestaurantReviewList__EmptyDescription">앱에서 해당 식당의 첫 리뷰를 작성해주시겠어요?</span>
             </div>
 		-->
-            <div class="restaurants-review-list-plus" role="button">더보기</div>
+		<div class="restaurants-review-list-plus" role="button">더보기</div>
 	</section>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
@@ -213,30 +233,40 @@
 			
 			const id = document.querySelector(".restaurants-review-contents-txt a");
 			const a = document.querySelector(".restaurants-review-contents-txt a");
-			const url ="${contextPath }/restaurants/restaurantsReviewInfo.do"
+			const url ="${contextPath }/restaurants/restaurantsReviewInfo.do?articleNO=${articleNO}"
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);
 			a.focus();
 
 		}
+
 		// 매장 상세보기 쓰기 팝업창 이동
 		// 로그인 검증 필요 없을시 alert창
-		function popUpWrite(){
-			const url ="${contextPath }/restaurants/restaurantsReviewWrite.do"
-			const name = "a";
-			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
-			window.open(url,name,option);
-			a.focus();
+		function popUpWrite(isLogOn){
+			if (isLogOn != '' && isLogOn != 'false') {
+				const url ="${contextPath }/restaurants/restaurantsReviewWrite.do"
+					const name = "a";
+					const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
+					window.open(url,name,option);
+					a.focus();
+			} else {
+				alert("로그인 후 글쓰기가 가능합니다.");
+				return;
+			}
+			
 		}
 		// 매장 상세보기 수정/삭제 팝업창 이동
 		// 만약 작성자가 아닐시 보이지 않게 하기
-		function popUpFix(){
-			const url ="${contextPath }/restaurants/restaurantsReviewMod.do"
-			const name = "a";
-			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
-			window.open(url,name,option);
-			a.focus();
+		function popUpFix(isLogOn){
+			if (isLogOn != '' && isLogOn != 'false') {
+				const url ="${contextPath }/restaurants/restaurantsReviewMod.do"
+				const name = "a";
+				const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
+				window.open(url,name,option);
+			}else{
+				alert("")
+			}
 		}
 		// 사진 상세보기 팝업창 이동
 		function popUpPhoto(){
@@ -244,7 +274,6 @@
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);
-			a.focus();
 		}
 		// 슬라이드 이미지 클릭시 상세보기 페이지로 이동
 		function popUpImage(){
@@ -254,8 +283,32 @@
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);
-			a.focus();
 		}
+		
+		// 네이버 지도 api 
+		const restAddress = "${restaurant.restAddress }";
+		$(function() {
+			naver.maps.Service.geocode({
+				query : restAddress
+		}, function(status, response) {
+				if (status !== naver.maps.Service.Status.OK) {
+					return alert('Something wrong!');
+				} 
+				const result = response.v2, // 검색 결과의 컨테이너
+		        items = result.addresses;
+				const x = parseFloat(items[0].x); // 경도
+				const y = parseFloat(items[0].y); // 위도
+					
+				var map = new naver.maps.Map('map', {
+					center : new naver.maps.LatLng(y, x),
+					zoom : 19
+				});
+				var marker = new naver.maps.Marker({
+					position : new naver.maps.LatLng(y, x),
+					map : map
+				});
+			});
+		});
 		// 더보기 기능 구현 
 		// $(function(){
 		// 	$("div").slice(0, 10).show(); // 최초 10개 선택

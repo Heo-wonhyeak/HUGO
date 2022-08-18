@@ -26,12 +26,12 @@ public class ResInfoController {
 
 	@Autowired
 	RestInfoService restInfoService;
-
-	@RequestMapping(value = "/crawler/doing", method = { RequestMethod.GET, RequestMethod.POST })
+	// 잘못 요청 방지용 doing 뒤에 숫자제거 후 사용
+	@RequestMapping(value = "/crawler/doing2323232323232323232", method = { RequestMethod.GET, RequestMethod.POST })
 	public void listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<RestInfoDTO> lists = restInfoService.listURL();
 		System.out.println(lists.size()); // 2708
-			// 혹시 몰라서 20개씩 끊어서 하는중
+			// 혹시 몰라서 20개씩 끊어서 하는중 for문 lists.size() 조정
 		for (int i = 0; i < lists.size(); i++) {
 
 			try {
