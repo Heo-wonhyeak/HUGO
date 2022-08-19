@@ -64,15 +64,11 @@
 	</style>
 	<script type="text/javascript">
 		function fn_pwChk(){
-				if($("#inputPw").val()==null){
-					alert("비밀번호를 입력해 주세요")
-					return false
-				}
-				else if($("#inputPw").val()!=${member.pwd}){
-					alert("비밀번호가 일치하지 않습니다")
+				if($("#inputPw").val()==null || $("#inputPw").val()!=${member.pwd}){
+					alert("비밀번호를 확인해 주세요")
 					return false
 				}else{
-					location.href='${contextPath}/memberInfo/changeMemberInfo.do'
+					location.href='${contextPath}/memberInfo/updateMemberForm.do'
 				}
 		}
 	</script>
