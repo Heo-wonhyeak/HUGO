@@ -31,11 +31,11 @@
 			text-align: center;
 			font-size: 30px;
 		}
-		#chkPwd #infoTable .inputPwTr{
+		#chkPwd #infoTable .inputPwdTr{
 			text-align: center;
 		}
 		
-		#chkPwd #infoTable .inputPw{
+		#chkPwd #infoTable .inputPwd{
 			width: 80%;
 			height: 50px;
 			color:  #A4A4A4;
@@ -62,20 +62,6 @@
 			border-radius: 0.4em;
 		}
 	</style>
-	<script type="text/javascript">
-		function fn_pwChk(){
-				if($("#inputPw").val()==null){
-					alert("비밀번호를 입력해 주세요")
-					return false
-				}
-				else if($("#inputPw").val()!=${member.pwd}){
-					alert("비밀번호가 일치하지 않습니다")
-					return false
-				}else{
-					location.href='${contextPath}/memberInfo/changeMemberInfo.do'
-				}
-		}
-	</script>
 </head>
 <body>
 	<div id="chkPwd">
@@ -84,10 +70,8 @@
 				<td class="memberInfo" rowspan="5">Member Info</td>
 			</tr>
 			<tr></tr><tr></tr><tr></tr><tr></tr>
-			<tr class="inputPwTr">
-				<td><input id="inputPw" class="inputPw" type="text" placeholder="비밀번호"/></td>
-				<br/>
-				<td><a>${member.pwd }</a></td>
+			<tr class="inputPwdTr">
+				<td><input class="inputPwd" type="text" onfocus="this.type='password', this.value='';"  value="&nbsp;&nbsp;비밀번호"/></td>
 			</tr>
 			<tr>
 				<td ><p class="guide">회원정보를 변경하기 위해 비밀번호를 입력해 주세요</p></td>
@@ -95,7 +79,7 @@
 		</table>
 		
 		<div id="buttons">
-			<input  id="btn_ChangeInfo" type="button" value="비밀번호확인"  onclick="fn_pwChk()" />
+			<input  id="btn_ChangeInfo" type="button" value="비밀번호확인" onclick="location.href='${contextPath}/memberInfo/changeMemberInfo.do'" />
 		</div>
 	</div> 
 </body>

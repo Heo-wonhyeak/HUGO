@@ -20,10 +20,10 @@
 /* 마이메뉴css */
 .myMenu{
 	display: none;
-	width: 120px;
-	height: 135px;
+	width: 80px;
+	height: 110px;
 	position: absolute;
-	left: 200px;
+	left: 320px;
 	border : 1px solid #9bb7d6;
 	margin: 0px;
 }

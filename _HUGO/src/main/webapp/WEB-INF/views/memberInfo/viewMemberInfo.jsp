@@ -75,34 +75,34 @@
 		<table id="infoTable">
 			<tr>
 				<td class="infoName">아이디</td>
-				<td class="infoDetail"><input type="text" value="${member.id }" disabled/></td>
+				<td class="infoDetail"><input type="text" value="EZEN" disabled/></td>
 			</tr>
 			<tr id="tr_pwd">
 				<td class="infoName">비밀번호</td>
 				<td class="infoDetail">
-					<input class="pwd" type="password" value="${member.pwd }" disabled/>
+					<input class="pwd" type="password" value="0824asdqwe" disabled/>
 				</td>
 			</tr>
 		
 			<tr>
 				<td class="infoName">이름</td>
-				<td class="infoDetail"><input type="text" value="${member.name }" disabled/></td>
+				<td class="infoDetail"><input type="text" value="이젠" disabled/></td>
 			</tr>
 			<tr>
 				<td class="infoName">닉네임</td>
-				<td class="infoDetail"><input type="text" value="${member.nickname }" disabled/></td>
+				<td class="infoDetail"><input type="text" value="EZEN강남" disabled/></td>
 			</tr>
 			<tr>
 				<td class="infoName">이메일</td>
-				<td class="infoDetail"><input type="text" value="${member.email }" disabled/></td>
+				<td class="infoDetail"><input type="text" value="ezen0824@gmail.com" disabled/></td>
 			</tr>
 			<tr>
 				<td class="infoName">생년월일</td>
-				<td class="infoDetail"><input type="text" value="${member.birthday }" disabled/></td>
+				<td class="infoDetail"><input type="text" value="2022.08.24" disabled/></td>
 			</tr>
 			<tr>
 				<td class="infoName">전화번호</td>
-				<td class="infoDetail"><input type="text" value="${member.callnum }" disabled/></td>
+				<td class="infoDetail"><input type="text" value="010-5555-8888" disabled/></td>
 			</tr>			
 		</table>
 		<div id="buttons">

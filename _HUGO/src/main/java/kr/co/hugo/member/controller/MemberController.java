@@ -18,7 +18,6 @@ public interface MemberController {
 	public ResponseEntity<String> duplicateCheck(@RequestParam("id") String id,
 			HttpServletRequest request,HttpServletResponse response) throws Exception; 
 	
-	public	ResponseEntity login(@ModelAttribute("member")MemberDTO member,HttpServletRequest request,
-			HttpServletResponse response,  RedirectAttributes rAttributes) throws Exception;
-	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response)  throws Exception; 
+	public ModelAndView login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttributes, 
+			 HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
