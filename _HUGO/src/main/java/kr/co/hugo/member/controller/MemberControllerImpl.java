@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -88,26 +89,48 @@ public class MemberControllerImpl implements MemberController {
 		return resEntity;
 	}
 
-	
-	@Override
-	@RequestMapping(value="/member/login.do",method= RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttributes, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	 @Override  
+	  @RequestMapping(value="/member/login.do",method = RequestMethod.POST) public
+	  ResponseEntity login(@ModelAttribute("member")MemberDTO member,
+	  HttpServletRequest request, HttpServletResponse response,
+	  RedirectAttributes rAttributes) throws Exception { 
+		  memberDTO = memberService.login(member);
+	  
+		  HttpHeaders responseHeaders = new HttpHeaders();
+		  responseHeaders.add("Content-Type", "text/html; charset=utf-8"); String
+		  message; ResponseEntity resEnt = null;
+		  
+		  if (memberDTO != null) {
+			  HttpSession session = request.getSession(); 
+			  session.setAttribute("member", memberDTO);
+			  session.setAttribute("isLogOn", true);
+			  message = "<script>"; 
+			  message += " location.href='"+request.getContextPath()+"/main/main.do';";
+			  message += "</script>"; 
+			  resEnt = new ResponseEntity(message, responseHeaders,HttpStatus.CREATED); 
+			  }
+		  else {
+			  message = "<script>"; 
+			  message += "alert('아이디나 비밀번호가 틀렸습니다');";
+			  message += " location.href='"+request.getContextPath()+"/member/loginForm.do';";
+			  message += "</script>"; 
+			  resEnt = new ResponseEntity(message, responseHeaders,HttpStatus.CREATED); 
+		  }
+		 
+		  return resEnt; 
+	}
+
+	  @Override
+	  @RequestMapping(value = "/member/logout.do", method = RequestMethod.GET)
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		 
 		ModelAndView mav = new ModelAndView();
 		
-		memberDTO = memberService.login(member);
+		HttpSession session = request.getSession();
+		session.removeAttribute("member");
+		session.removeAttribute("isLogOn");
 		
-		if(memberDTO != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("member", memberDTO);
-			session.setAttribute("isLogOn", true);
-			
-			mav.setViewName("redirect:/main/main.do");
-		} else {
-			rAttributes.addAttribute("result", "loginFailed");		//로그인 실패 시 실패 메시지를 로그인창 전달
-			mav.setViewName("redirect:/member/loginForm.do");		//로그인 실패 시 다시 로그인창으로 리다이렉트함
-		}
-		
+		mav.setViewName("redirect:/main/main.do");
 		return mav;
 	}
 	

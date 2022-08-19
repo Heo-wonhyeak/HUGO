@@ -39,22 +39,21 @@
 			<a>고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<c:choose>
 				<c:when test="${isLogOn == true &&  member != null}">
-					${member.name }
-					<a href="${contextPath}/member/logout.do">로그 아웃</a> 
+					<a onclick="return showMenu()"><i class="fa-solid fa-chalkboard-user" class="user_info"></i></a>
 				</c:when>
 				<c:otherwise>
-					<a href="${contextPath }/member/loginForm.do">로그인</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a href="${contextPath }/member/loginForm.do">로그인</a><!-- &nbsp;&nbsp;|&nbsp;&nbsp; -->
 				</c:otherwise>
 			</c:choose>
 			
-			<a onclick="return showMenu()"><i class="fa-solid fa-chalkboard-user" class="user_info"></i></a>
 			<div class="myMenu">
 				<ul>	
-					<li>ezen님</li>
+					<li>${member.nickname}&nbsp;님</li>
 					<li>&nbsp;</li>
 					<li><a href="${contextPath }/memberInfo/viewMemberInfo.do">회원정보</a></li>
 					<li><a href="${contextPath }/memberInfo/couponList.do">쿠폰함</a></li>
 					<li><a href="${contextPath }/memberInfo/wishList.do">찜리스트</a></li>
+					<a href="${contextPath}/member/logout.do">로그 아웃</a> 
 				</ul>
 			</div>
 		</div>
