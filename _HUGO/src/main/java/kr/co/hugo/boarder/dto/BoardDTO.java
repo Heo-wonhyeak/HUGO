@@ -1,72 +1,78 @@
 package kr.co.hugo.boarder.dto;
 
 import org.springframework.stereotype.Component;
-/*
- articleNO number(10) PRIMARY KEY
-	,cate varchar2(10) NOT NULL
-	,title varchar2(100) NOT NULL
-	,nickname varchar2(20) NOT NULL
-	,content varchar2(1000) NOT NULL
-	,regDate DATE DEFAULT sysdate
- */
+
 @Component("boardDTO")
 public class BoardDTO {
-	private String articleNO;
-	private String cate;
-	private String title;
-	private String nickname;
-	private String content;
+	private String articleIdx;
+	private String hotplaceIdx;
+	private String contents;
+	private String username;
+	private int userTotalReview;
+	private int restIdx;
 	private String regDate;
+	private int reviewStamp;
 	
 	public BoardDTO() {}
 
-	public BoardDTO(String articleNO, String cate, String title, String nickname, String content) {
-//		super();
-		this.articleNO = articleNO;
-		this.cate = cate;
-		this.title = title;
-		this.nickname = nickname;
-		this.content = content;
+	public BoardDTO(String articleIdx, String hotplaceIdx, String contents, String username, int userTotalReview,
+			int restIdx, String regDate, int reviewStamp) {
+		this.articleIdx = articleIdx;
+		this.hotplaceIdx = hotplaceIdx;
+		this.contents = contents;
+		this.username = username;
+		this.userTotalReview = userTotalReview;
+		this.restIdx = restIdx;
+		this.regDate = regDate;
+		this.reviewStamp = reviewStamp;
 	}
 
-	public String getArticleNO() {
-		return articleNO;
+	public String getArticleIdx() {
+		return articleIdx;
 	}
 
-	public void setArticleNO(String articleNO) {
-		this.articleNO = articleNO;
+	public void setArticleIdx(String articleIdx) {
+		this.articleIdx = articleIdx;
 	}
 
-	public String getCate() {
-		return cate;
+	public String getHotplaceIdx() {
+		return hotplaceIdx;
 	}
 
-	public void setCate(String cate) {
-		this.cate = cate;
+	public void setHotplaceIdx(String hotplaceIdx) {
+		this.hotplaceIdx = hotplaceIdx;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getContents() {
+		return contents;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getContent() {
-		return content;
+	public int getUserTotalReview() {
+		return userTotalReview;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setUserTotalReview(int userTotalReview) {
+		this.userTotalReview = userTotalReview;
+	}
+
+	public int getRestIdx() {
+		return restIdx;
+	}
+
+	public void setRestIdx(int restIdx) {
+		this.restIdx = restIdx;
 	}
 
 	public String getRegDate() {
@@ -76,6 +82,15 @@ public class BoardDTO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+
+	public int getReviewStamp() {
+		return reviewStamp;
+	}
+
+	public void setReviewStamp(int reviewStamp) {
+		this.reviewStamp = reviewStamp;
+	}
+
 	
 	
 	
