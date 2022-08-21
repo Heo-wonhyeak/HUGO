@@ -10,6 +10,17 @@
 		<result property="url" column="url" />
 	</resultMap>
 	
+	<resultMap type="boardDTO" id="boardResult">	
+		<result property="articleIdx" column="articleIdx" />	
+		<result property="hotplaceIdx" column="hotplaceIdx" />
+		<result property="contents" column="contents" />
+		<result property="username" column="username" />
+		<result property="userTotalReview" column="userTotalReview" />
+		<result property="restIdx" column="restIdx" />
+		<result property="regDate" column="regDate" />
+		<result property="reviewStamp" column="reviewStamp" />
+	</resultMap>
+	
 	<select id="selectAllRestURL" resultMap="restInfoResult">
 		<![CDATA[
 			SELECT * FROM URL_INFO order by urlno
@@ -25,4 +36,19 @@
 				   #{restMenu}, #{restPrice}, #{restPark}, #{restOpen}, #{restMenuList}, #{restTag})
 		]]>
 	</insert>
+	
+	<!--  리뷰 매장 idx 수정 --> 
+	<select id="selectReviews" resultMap="boardResult" parameterType="int">
+		<![CDATA[
+			SELECT urlNO FROM URL_INFO WHERE url = #{resIdxURL} 
+		]]>	
+	</select>
+	
+	<update id="modReviewIdx" parameterType="java.util.Map">
+		<![CDATA[
+			UPDATE REVIEW_BOARD SET RESTIDX = #{ResNo} WHERE ARTICLEIDX = #{ReviewIdx}
+		]]>
+	</update>
+	
+	
 </mapper>

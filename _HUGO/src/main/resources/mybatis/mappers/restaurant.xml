@@ -32,5 +32,11 @@
 			SELECT * FROM RESTAURANT_INFO WHERE RESTIDX = #{restIdx}
 		]]>
 	</select>
+	
+	<select id="selectAllViews" resultType="restResult">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO ORDER BY RESTIDX
+		]]>
+	</select>
 
 </mapper>

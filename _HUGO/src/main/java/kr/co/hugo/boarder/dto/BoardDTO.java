@@ -4,19 +4,19 @@ import org.springframework.stereotype.Component;
 
 @Component("boardDTO")
 public class BoardDTO {
-	private String articleIdx;
+	private int articleIdx;
 	private String hotplaceIdx;
 	private String contents;
 	private String username;
 	private int userTotalReview;
-	private int restIdx;
+	private String restIdx;
 	private String regDate;
 	private int reviewStamp;
 	
 	public BoardDTO() {}
 
-	public BoardDTO(String articleIdx, String hotplaceIdx, String contents, String username, int userTotalReview,
-			int restIdx, String regDate, int reviewStamp) {
+	public BoardDTO(int articleIdx, String hotplaceIdx, String contents, String username, int userTotalReview,
+			String restIdx, String regDate, int reviewStamp) {
 		this.articleIdx = articleIdx;
 		this.hotplaceIdx = hotplaceIdx;
 		this.contents = contents;
@@ -27,11 +27,11 @@ public class BoardDTO {
 		this.reviewStamp = reviewStamp;
 	}
 
-	public String getArticleIdx() {
+	public int getArticleIdx() {
 		return articleIdx;
 	}
 
-	public void setArticleIdx(String articleIdx) {
+	public void setArticleIdx(int articleIdx) {
 		this.articleIdx = articleIdx;
 	}
 
@@ -67,11 +67,11 @@ public class BoardDTO {
 		this.userTotalReview = userTotalReview;
 	}
 
-	public int getRestIdx() {
+	public String getRestIdx() {
 		return restIdx;
 	}
 
-	public void setRestIdx(int restIdx) {
+	public void setRestIdx(String restIdx) {
 		this.restIdx = restIdx;
 	}
 

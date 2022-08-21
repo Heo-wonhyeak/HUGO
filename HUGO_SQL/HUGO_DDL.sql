@@ -118,6 +118,21 @@ CREATE TABLE URL_info (
 	url varchar2(1000)
 );
 
+-- board
+
+DROP TABLE Review_board CASCADE CONSTRAINTS;
+CREATE TABLE Review_board(
+	articleIdx number(20) PRIMARY KEY, --pk
+	hotplaceIdx number(5) DEFAULT 1, -- fk
+	contents varchar2(2000) NOT NULL,
+	username varchar2(100) NOT NULL,
+	userTotalReview number(10) NOT NULL DEFAULT 0,
+	restIdx varchar2(2000) NOT null,		-- fk	
+	regdate DATE DEFAULT sysdate,
+	reviewStamp number(5) DEFAULT 0;
+	
+);
+
 -- restaurant
 
 DROP TABLE restaurant_info CASCADE CONSTRAINTS;
@@ -141,9 +156,5 @@ CREATE TABLE restaurant_info(
 	hotplaceIdx number(10) DEFAULT 1
 );
 
--- restaurant_info insert query
 
-INSERT INTO ADMIN.RESTAURANT_INFO
-(RESTIDX, RESTNAME, RESTADDRESS, RESTJIBUNADDRESS, RESTPHONE, RESTMENU, RESTPRICE, RESTPARK, RESTOPEN, RESTMENULIST, RESTTAG)
-VALUES(0, '', '', '', '', '', '', '', '', '', '');
 

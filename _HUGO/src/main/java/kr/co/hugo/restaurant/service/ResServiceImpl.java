@@ -40,4 +40,10 @@ public class ResServiceImpl implements ResService{
 		return restMap;
 	}
 
+	@Override
+	public List<RestaurantDTO> resAllList() throws Exception {
+		List<RestaurantDTO> resAllList = resDAO.selectAllViews();
+		return resAllList;
+	}
+
 }
