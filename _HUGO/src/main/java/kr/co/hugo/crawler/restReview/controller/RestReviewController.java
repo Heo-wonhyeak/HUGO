@@ -1,5 +1,10 @@
 package kr.co.hugo.crawler.restReview.controller;
 
+import java.io.BufferedInputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,27 +32,27 @@ public class RestReviewController {
 	RestInfoService restInfoService;
 
 	// 크롤링한 리뷰들 (Page_URL -> 매장idx)와 articlesIdx 변환
-	@RequestMapping(value = "crawler/idxChangeDoing", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "crawler/idxChangeDoing232323", method = { RequestMethod.GET, RequestMethod.POST })
 	public void articlesIdxChange(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<RestInfoDTO> lists = restInfoService.listURL();
+		System.out.println(lists.size());
 		for (int i = 0; i < lists.size(); i++) {
 			String ResIdxURL = lists.get(i).getUrl();
-			// db상에는 문자이므로 문자열로 변경
-			String ResNo = lists.get(i).getUrlNO()+"";
+			int RestaurantIdx = lists.get(i).getUrlNO();
 			List<BoardDTO> ReviewLists = restReviewService.listReview(ResIdxURL);
-			
+			System.out.println(ReviewLists.size());
 			for(int j=0;j<ReviewLists.size();j++) {				
 				if(ReviewLists.size()==0) {
 					break;		// 리뷰가 한개도 없는 경우
 				}
 				int ReviewIdx = ReviewLists.get(j).getArticleIdx();
-				String ReviewURL = ReviewLists.get(j).getRestIdx();
+				String ReviewURL = ReviewLists.get(j).getRestURL();
 				Map<Object,Object> reviewMap = new HashMap<>();
-				reviewMap.put("ResNo", ResNo);
+				reviewMap.put("RestaurantIdx", RestaurantIdx);
 				reviewMap.put("ReviewIdx", ReviewIdx);
 				int result = restReviewService.modReviewIdx(reviewMap);
 				if(result == 1) {
-					System.out.println(ReviewIdx+"번 성공"+ReviewURL+" -> "+ResNo);
+					System.out.println(ReviewIdx+"번 성공"+ReviewURL+" - "+RestaurantIdx);
 				}
 			}
 			
@@ -58,6 +63,21 @@ public class RestReviewController {
 	// 폴더에 저장
 	@RequestMapping(value = "crawler/imageDoing", method = { RequestMethod.GET, RequestMethod.POST })
 	public void downloadURLImage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		List<BoardDTO> lists = restReviewService.AllReview();
+//		System.out.println(lists.size());
+//		
+//		for(int i=0;i<lists.size();i++) {
+//			String MainImage = lists.get(i).getMainImage();
+//			if(MainImage !=null) {
+//				
+//			}
+//		}
+		String FILE_URL = "https://mp-seoul-image-production-s3.mangoplate.com/1937806_1653285997953407.jpg";
+		String OUTPUT_FILE_PATH ="/Users/jeong-won-yeong/Documents/HUGO/RestaurantImage/1";
+		try(BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream())) {
+			Path imagePath = Paths.get(OUTPUT_FILE_PATH);
+			Files.copy(in, imagePath);
+		}
 	}
 
 	// username, userTotalReview member에 저장

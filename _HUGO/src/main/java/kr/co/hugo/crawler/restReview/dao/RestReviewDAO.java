@@ -26,4 +26,9 @@ public class RestReviewDAO {
 		result = sqlSession.update("mapper.crawler.modReviewIdx", reviewMap);
 		return result;
 	}
+
+	public List<BoardDTO> selectAllReview() {
+		List<BoardDTO> AllReview = sqlSession.selectList("mapper.crawler.selectAllReview");
+		return AllReview;
+	}
 }

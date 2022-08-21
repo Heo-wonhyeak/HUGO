@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kr.co.hugo.boarder.dto.BoardDTO;
 import kr.co.hugo.crawler.restReview.dao.RestReviewDAO;
-import kr.co.hugo.crawler.restinfo.dto.RestInfoDTO;
-import kr.co.hugo.restaurant.dao.ResDAO;
 
+@Service
 public class RestReviewService {
 
 	@Autowired
@@ -30,6 +30,13 @@ public class RestReviewService {
 		
 		result = restReviewDAO.modReviewIdx(reviewMap);
 		return result;
+	}
+
+
+
+	public List<BoardDTO> AllReview() {
+		List<BoardDTO> AllReview = restReviewDAO.selectAllReview();
+		return AllReview;
 	}
 
 }

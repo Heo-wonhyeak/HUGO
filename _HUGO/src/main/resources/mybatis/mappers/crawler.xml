@@ -19,6 +19,11 @@
 		<result property="restIdx" column="restIdx" />
 		<result property="regDate" column="regDate" />
 		<result property="reviewStamp" column="reviewStamp" />
+		<result property="mainImage" column="mainImage" />
+		<result property="subImage1" column="subImage1" />
+		<result property="subImage2" column="subImage2" />
+		<result property="subImage3" column="subImage3" />
+		<result property="defaultImage" column="defaultImage" />
 	</resultMap>
 	
 	<select id="selectAllRestURL" resultMap="restInfoResult">
@@ -38,17 +43,22 @@
 	</insert>
 	
 	<!--  리뷰 매장 idx 수정 --> 
-	<select id="selectReviews" resultMap="boardResult" parameterType="int">
+	<select id="selectReviews" resultMap="boardResult" parameterType="String">
 		<![CDATA[
-			SELECT urlNO FROM URL_INFO WHERE url = #{resIdxURL} 
+			SELECT articleIdx FROM REVIEW_BOARD WHERE resturl = #{resIdxURL} 
 		]]>	
 	</select>
 	
-	<update id="modReviewIdx" parameterType="java.util.Map">
+	<insert id="modReviewIdx" parameterType="java.util.Map">
 		<![CDATA[
-			UPDATE REVIEW_BOARD SET RESTIDX = #{ResNo} WHERE ARTICLEIDX = #{ReviewIdx}
+			UPDATE REVIEW_BOARD SET restaurantIdx = #{RestaurantIdx} WHERE ARTICLEIDX = #{ReviewIdx}
 		]]>
-	</update>
+	</insert>
 	
-	
+	<!-- 리뷰 이미지 다운 -->
+	<select id="selectAllReview" resultMap="boardResult">
+		<![CDATA[
+			SELECT * FROM REVIEW_BOARD order by articleIdx 
+		]]>	
+	</select>
 </mapper>

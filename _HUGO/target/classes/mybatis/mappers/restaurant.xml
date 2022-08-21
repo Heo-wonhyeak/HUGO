@@ -33,7 +33,7 @@
 		]]>
 	</select>
 	
-	<select id="selectAllViews" resultType="restResult">
+	<select id="selectAllViews" resultType="restaurantDTO">
 		<![CDATA[
 			SELECT * FROM RESTAURANT_INFO ORDER BY RESTIDX
 		]]>

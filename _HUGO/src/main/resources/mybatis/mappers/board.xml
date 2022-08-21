@@ -6,12 +6,19 @@
 <mapper namespace="mapper.board">
 
 	<resultMap type="boardDTO" id="boardResult">	
-		<result property="articleNO" column="articleNO" />	
-		<result property="cate" column="cate" />
-		<result property="title" column="title" />
-		<result property="nickname" column="nickname" />
-		<result property="content" column="content" />
+		<result property="articleIdx" column="articleIdx" />	
+		<result property="hotplaceIdx" column="hotplaceIdx" />
+		<result property="contents" column="contents" />
+		<result property="username" column="username" />
+		<result property="userTotalReview" column="userTotalReview" />
+		<result property="restIdx" column="restIdx" />
 		<result property="regDate" column="regDate" />
+		<result property="reviewStamp" column="reviewStamp" />
+		<result property="mainImage" column="mainImage" />
+		<result property="subImage1" column="subImage1" />
+		<result property="subImage2" column="subImage2" />
+		<result property="subImage3" column="subImage3" />
+		<result property="defaultImage" column="defaultImage" />
 	</resultMap>
 	
 	<!-- 추가하는 새글에대한 글번호 추출 -->
