@@ -126,7 +126,7 @@ SELECT urlNO FROM URL_INFO WHERE url = 'https://www.mangoplate.com/restaurants/n
 
 DROP TABLE Review_board CASCADE CONSTRAINTS;
 CREATE TABLE Review_board(
-	articleIdx number(20) PRIMARY KEY, --pk
+	articleIdx number(10) PRIMARY KEY, --pk
 	hotplaceIdx number(10) DEFAULT 1, -- fk
 	contents varchar2(10000),
 	NICKNAME varchar2(100) NOT NULL,
@@ -142,12 +142,30 @@ CREATE TABLE Review_board(
 	restaurantIdx number(10) DEFAULT 0
 );
 
+
 INSERT INTO ADMIN.REVIEW_BOARD
 (ARTICLEIDX, HOTPLACEIDX, CONTENTS, nickname, USERTOTALREVIEW, RESTIDX, REGDATE, REVIEWSTAMP, MAINIMAGE)
 VALUES(0, 1, 'test', 'test', 0 , '22', sysdate, 0, '22');
 
 UPDATE REVIEW_BOARD SET RESTIDX = 25 WHERE ARTICLEIDX = 0;
 
+SELECT * FROM REVIEW_BOARD order by articleIdx ;
+
+-- image
+
+DROP TABLE Image_INFO CASCADE CONSTRAINTS;
+CREATE TABLE Image_INFO(
+	imageFileNo number(10) PRIMARY KEY,	--pk
+	imageFileName varchar2(1000) NOT NULL,
+	articleIdx number(10),				--fk
+	restaurantIdx number(38),			--fk
+	regDate DATE DEFAULT sysdate
+);
+
+INSERT INTO ADMIN.IMAGE_INFO
+(IMAGEFILENO, IMAGEFILENAME, ARTICLEIDX, RESTAURANTIDX, REGDATE)
+VALUES(0, '', 0, 0, sysdate
+);
 
 
 -- restaurant
@@ -177,6 +195,7 @@ CREATE TABLE restaurant_info(
 -- 매장 전체 정보 조회
 
 SELECT * FROM RESTAURANT_INFO ORDER BY RESTIDX ;
+
 
 
 

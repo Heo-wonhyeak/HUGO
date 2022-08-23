@@ -61,4 +61,12 @@
 			SELECT * FROM REVIEW_BOARD order by articleIdx 
 		]]>	
 	</select>
+	
+	<insert id="addImageInfo" parameterType="java.util.Map">
+		<![CDATA[
+			INSERT INTO IMAGE_INFO
+			(IMAGEFILENO, IMAGEFILENAME, ARTICLEIDX, RESTAURANTIDX)
+			VALUES(#{imageFileNO}, #{imageFileName}, #{articleIdx}, #{restaurantIdx})
+		]]>
+	</insert>
 </mapper>

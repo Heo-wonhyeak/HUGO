@@ -39,4 +39,14 @@ public class RestReviewService {
 		return AllReview;
 	}
 
+
+
+	public int addImageList(Map<Object, Object> imageInfo) {
+		int result = 0;
+		
+		result = restReviewDAO.addImageList(imageInfo);
+		
+		return 0;
+	}
+
 }

@@ -31,4 +31,10 @@ public class RestReviewDAO {
 		List<BoardDTO> AllReview = sqlSession.selectList("mapper.crawler.selectAllReview");
 		return AllReview;
 	}
+
+	public int addImageList(Map<Object, Object> imageInfo) {
+		int result = 0;
+		result = sqlSession.insert("mapper.crawler.addImageInfo",imageInfo);
+		return 0;
+	}
 }
