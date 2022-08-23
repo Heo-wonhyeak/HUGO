@@ -201,7 +201,7 @@
 
 /* mainsection CSS */
 section {
-	margin-right: 100px;
+	
 	overflow: visible;
 	width: 70%;
 	margin-left:6%;
@@ -229,7 +229,7 @@ section {
 	display: block;
 	font-weight: bold;
 	margin: auto;
-	margin-right: 10px;
+	margin-right: 20px;
 	cursor: pointer;
 }
 
@@ -245,7 +245,7 @@ section {
 	border: 1px solid black;
 	width: 300px;
 	height: 250px;
-	margin-left: 30px;
+	margin-left: 20px;
 }
 
 .list-info {
@@ -255,20 +255,22 @@ section {
 }
 
 .swiper-container {
+	margin:auto;
 	margin-top: 20px;
-	width: 1300px;
+	width: 1200px;
 }
 
 .swiper-wrapper {
 	display: flex;
 	height: 300px;
+	
 }
 
 .swiper-slide {
 	width: 250px;
 	flex-direction: row;
 	box-sizing: border-box;
-	padding: 0 0 0 30px;
+	padding: 0 0 0 15px;
 	opacity: 0.4;
 	transition: opacity 0.3s;
 }
@@ -329,21 +331,6 @@ section {
 	margin-bottom: 70px;
 }
 
-.place_circle {
-	cursor: pointer;
-	flex-direction: row;
-	border: 1px solid black;
-	margin: auto;
-	margin: 30px 80px 100px 200px;
-	width: 150px;
-	height: 150px;
-	border: 1px solid black;
-	border-radius: 50%;
-	text-align: center;
-	font-size: 1.7em;
-	line-height: 140px;
-	font-weight: bold;
-}
 /* mainsection CSS 종료*/
 
 /* layout */
