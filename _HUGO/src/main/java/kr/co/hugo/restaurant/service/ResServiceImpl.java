@@ -46,4 +46,34 @@ public class ResServiceImpl implements ResService{
 		return resAllList;
 	}
 
+	@Override
+	public List<RestaurantDTO> resSteamList() throws Exception {
+		List<RestaurantDTO> resSteamList = resDAO.selectSteamList();
+		return resSteamList;
+	}
+
+	@Override
+	public List<RestaurantDTO> resVisitList() throws Exception {
+		List<RestaurantDTO> resVisitList = resDAO.selectVisitList();
+		return resVisitList;
+	}
+
+	@Override
+	public List<RestaurantDTO> resStarList() throws Exception {
+		List<RestaurantDTO> resStarList = resDAO.selectStarList();
+		return resStarList;
+	}
+
+	@Override
+	public List<RestaurantDTO> resDistanceList() throws Exception {
+		List<RestaurantDTO> resDistanceList = resDAO.selectDistanceList();
+		return resDistanceList;
+	}
+
+	@Override
+	public List<RestaurantDTO> resFamousList() throws Exception {
+		List<RestaurantDTO> resFamousList = resDAO.selectFamousList();
+		return resFamousList;
+	}
+
 }

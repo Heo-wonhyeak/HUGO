@@ -38,5 +38,39 @@
 			SELECT * FROM RESTAURANT_INFO ORDER BY RESTIDX
 		]]>
 	</select>
+	<!-- 찜 TOP 50 조회 -->
+	<select id="selectSteamList" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO WHERE rownum <= 50 ORDER BY RESTSTARAVG desc	
+		]]>
+	</select>
+	
+	<!-- 방문 TOP 50 조회 -->
+	<select id="selectVisitList" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO WHERE rownum <= 50 ORDER BY restVisitCount desc
+		]]>
+	</select>
+	
+	<!-- 별점 TOP 50 조회 -->
+	<select id="selectStarList" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO WHERE rownum <= 50 ORDER BY restStarAvg desc
+		]]>
+	</select>
+	
+	<!-- 거리 TOP 50 조회 -->
+	<select id="selectDistanceList" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO WHERE RESTADDRESS  like '%서울%' AND rownum<=50
+		]]>
+	</select>
+	
+	<!-- 인기 TOP 50 조회 -->
+	<select id="selectFamousList" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT * FROM (SELECT * FROM RESTAURANT_INFO ORDER BY restVisitCount desc) WHERE rownum <= 50 ORDER BY RESTSTARAVG desc
+		]]>
+	</select>
 
 </mapper>

@@ -9,4 +9,9 @@ import kr.co.hugo.restaurant.dto.RestaurantDTO;
 public interface ResDAO {
 	public RestaurantDTO selectRestView(int restIdx) throws DataAccessException;
 	public List<RestaurantDTO> selectAllViews() throws DataAccessException;
+	public List<RestaurantDTO> selectSteamList() throws DataAccessException;
+	public List<RestaurantDTO> selectVisitList() throws DataAccessException;
+	public List<RestaurantDTO> selectStarList() throws DataAccessException;
+	public List<RestaurantDTO> selectDistanceList() throws DataAccessException;
+	public List<RestaurantDTO> selectFamousList() throws DataAccessException;
 }

@@ -28,4 +28,33 @@ public class ResDAOImpl implements ResDAO{
 		return AllResList;
 	}
 
+	@Override
+	public List<RestaurantDTO> selectSteamList() throws DataAccessException {
+		List<RestaurantDTO> steamList = sqlSession.selectList("mapper.restaurant.selectSteamList");
+		return steamList;
+	}
+	@Override
+	public List<RestaurantDTO> selectVisitList() throws DataAccessException {
+		List<RestaurantDTO> visitList = sqlSession.selectList("mapper.restaurant.selectVisitList");
+		return visitList;
+	}
+
+	@Override
+	public List<RestaurantDTO> selectStarList() throws DataAccessException {
+		List<RestaurantDTO> starList = sqlSession.selectList("mapper.restaurant.selectStarList");
+		return starList;
+	}
+
+	@Override
+	public List<RestaurantDTO> selectDistanceList() throws DataAccessException {
+		List<RestaurantDTO> distanceList = sqlSession.selectList("mapper.restaurant.selectDistanceList");
+		return distanceList;
+	}
+
+	@Override
+	public List<RestaurantDTO> selectFamousList() throws DataAccessException {
+		List<RestaurantDTO> famousList = sqlSession.selectList("mapper.restaurant.selectFamousList");
+		return famousList;
+	}
+
 }
