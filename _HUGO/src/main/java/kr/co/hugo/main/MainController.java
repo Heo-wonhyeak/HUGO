@@ -1,6 +1,8 @@
 package kr.co.hugo.main;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,16 +27,24 @@ public class MainController {
 		
 		List<RestaurantDTO> starList = resService.resStarList();
 		List<RestaurantDTO> steamedList = resService.resSteamList();
-		List<RestaurantDTO> vistList = resService.resVisitList();
+		List<RestaurantDTO> visitList = resService.resVisitList();
 		List<RestaurantDTO> distanceList = resService.resDistanceList();
 		List<RestaurantDTO> famousList = resService.resFamousList();
+		Map<Object,Object> top10List = new HashMap<>();
+		top10List.put("starList", starList);
+		top10List.put("steamedList", steamedList);
+		top10List.put("visitList",visitList);
+		top10List.put("distanceList", distanceList);
+		top10List.put("famousList", famousList);
+		
+		
 		
 		
 		
 		ModelAndView mav = new ModelAndView();
 		String viewName = (String)request.getAttribute("viewName");
 		mav.setViewName(viewName);
-		
+		mav.addObject("top10List", top10List);
 		
 		return mav;
 	}

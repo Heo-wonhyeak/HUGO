@@ -3,7 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+<c:set var="starList" value="${top10List.starList }" />
+<c:set var="steamedList" value="${top10List.steamedList }" />
+<c:set var="visitList" value="${top10List.visitList}"/>
+<c:set var="distanceList" value="${top10List.distanceList }" />
+<c:set var="famousList" value="${top10List.famousList}"/>
     <!DOCTYPE html>
     <html lang="UTF-8">
 
@@ -29,81 +33,23 @@
                     </li>
                     <li><input type="button" class="top10list" onclick="listfocus()" id="distance" value="거리순" /></li>
                     <li><input type="button" class="top10list" onclick="listfocus()" id="popularity" value="인기순" /></li>
-                    <li><input type="button" class="top10list" onclick="listfocus()" id="festival" value="축제" /></li>
-                    <li><input type="button" class="top10list" onclick="listfocus()" id="sights" value="명소" /></li>
                     <li><input type="button" class="top10list" onclick="listfocus()" value="(TOP 10)" disabled /></li>
                 </ul>
             </div>
             <div class="swiper-container" id="star-first">
                 <h3 class="top10head" id="star-view-focus">별점 TOP 10</h3>
                 <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="star1">
-                            <div class="list-image"></div>
-                            <div class="list-info">
-                                <span class="list-info-name">이젠</span><span class="list-info-value">⭐️</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="star2">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="star3">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="star4">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="star5">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="star6">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="star7">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="star8">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="star9">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="star10">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                </div>
-
+					<c:forEach items="${starList}" var="item" varStatus="status" end="10">
+						<div class="swiper-slide">
+	                        <div class="slide-image" id="star1">
+	                            <div class="list-image"></div>
+	                            <div class="list-info">
+	                                <span class="list-info-name">${item.restName }</span><span class="list-info-value">⭐&nbsp;&nbsp;${item.restStarAvg }</span>
+	                            </div>
+	                        </div>
+	                    </div>
+					</c:forEach>          
+				</div>
                 <!-- 양옆 좌우버튼 -->
                 <div class="swiper-button-next Nbtn1"></div>
                 <div class="swiper-button-prev Pbtn1"></div>
@@ -114,68 +60,17 @@
             <div class="swiper-container" id="visit-second">
                 <h3 class="top10head" id="visit-focus">방문횟수 TOP 10</h3>
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="visit1">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="visit2">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="visit3">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="visit4">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="visit5">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="visit6">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="visit7">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="visit8">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="visit9">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="visit10">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
+                    <c:forEach items="${visitList}" var="item" varStatus="status" end="10">
+						<div class="swiper-slide">
+	                        <div class="slide-image" id="star1">
+	                            <div class="list-image"></div>
+	                            <div class="list-info">
+	                                <span class="list-info-name">${item.restName }</span><span class="list-info-value">😀&nbsp;&nbsp;${item.restVisitCount }</span>
+	                            </div>
+	                        </div>
+	                    </div>
+					</c:forEach>
                 </div>
-
                 <div class="swiper-button-next Nbtn2"></div>
                 <div class="swiper-button-prev Pbtn2"></div>
 
@@ -185,66 +80,16 @@
             <div class="swiper-container" id="steamed-third">
                 <h3 class="top10head" id="steamed-focus">가장 많은 찜 TOP 10</h3>
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="steamed1">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="steamed2">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="steamed3">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="steamed4">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="steamed5">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="steamed6">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="steamed7">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="steamed8">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="steamed9">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="steamed10">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
+               		  <c:forEach items="${steamedList}" var="item" varStatus="status" end="10">
+							<div class="swiper-slide">
+	                     	   <div class="slide-image" id="star1">
+	                     	       <div class="list-image"></div>
+	                         	   <div class="list-info">	
+	                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">❤️ &nbsp;&nbsp;${item.restVisitCount }</span>
+	                            </div>
+	                        </div>
+	                    </div>
+					</c:forEach>
                 </div>
                 <div class="swiper-button-next Nbtn3"></div>
                 <div class="swiper-button-prev Pbtn3"></div>
@@ -254,67 +99,17 @@
 
             <div class="swiper-container" id="distance-fourth">
                 <h3 class="top10head" id="distance-focus">거리순 TOP 10</h3>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="distance1">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="distance2">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="distance3">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="distance4">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="distance5">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="distance6">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="distance7">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="distance8">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="distance9">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="distance10">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
+                	<div class="swiper-wrapper">
+	                	<c:forEach items="${distanceList}" var="item" varStatus="status" end="10">
+								<div class="swiper-slide">
+		                     	   <div class="slide-image" id="star1">
+		                     	       <div class="list-image"></div>
+		                         	   <div class="list-info">	
+		                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">️ &nbsp;&nbsp;100&nbsp;&nbsp;m</span>
+		                            </div>
+		                        </div>
+		                    </div>
+						</c:forEach>
                 </div>
                 <div class="swiper-button-next Nbtn4"></div>
                 <div class="swiper-button-prev Pbtn4"></div>
@@ -324,208 +119,20 @@
 
             <div class="swiper-container" id="popularity-fifth">
                 <h3 class="top10head" id="popularity-focus">인기순 TOP 10</h3>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="popularity1">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="popularity2">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="popularity3">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="popularity4">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="popularity5">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="popularity6">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="popularity7">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="popularity8">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="popularity9">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image" id="popularity10">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
+                	<div class="swiper-wrapper">
+	                	<c:forEach items="${famousList}" var="item" varStatus="status" end="10">
+								<div class="swiper-slide">
+		                     	   <div class="slide-image" id="star1">
+		                     	       <div class="list-image"></div>
+		                         	   <div class="list-info">	
+		                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">️👍 &nbsp;&nbsp;${item.restStarAvg }</span>
+		                            </div>
+		                        </div>
+		                    </div>
+						</c:forEach>
                 </div>
                 <div class="swiper-button-next Nbtn5"></div>
                 <div class="swiper-button-prev Pbtn5"></div>
-                <p class="view-more"><a href="#">더보기</a></p>
-            </div>
-
-            <div class="swiper-container" id="festival-sixth">
-                <h3 class="top10head" id="festival-focus">축제 TOP 10</h3>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="slide-image2" id="festival1">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image2" id="festival2">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image2" id="festival3">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image2" id="festival4">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image2" id="festival5">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image2" id="festival6">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image2" id="festival7">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image2" id="festival8">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image2" id="festival9">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image2" id="festival10">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-button-next Nbtn6"></div>
-                <div class="swiper-button-prev Pbtn6"></div>
-                <p class="view-more"><a href="#">더보기</a></p>
-            </div>
-
-            <div class="swiper-container" id="sights-seventh">
-                <h3 class="top10head" id="sights-focus">명소 TOP 10</h3>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="slide-image3" id="sights1">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image3" id="sights2">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image3" id="sights3">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image3" id="sights4">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image3" id="sights5">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image3" id="sights6">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image3" id="sights7">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image3" id="sights8">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image3" id="sights9">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-image3" id="sights10">
-                            <div class="list-image"></div>
-                            <div class="list-info"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-button-next Nbtn7"></div>
-                <div class="swiper-button-prev Pbtn7"></div>
                 <p class="view-more"><a href="#">더보기</a></p>
             </div>
         </section>
@@ -562,22 +169,6 @@
                     const offset = $('#sights-focus').offset();
                     $('html').animate({ scrollTop: offset.top }, 400);
                 });
-
-                /* 클릭시 상세보기 페이지로 바로이동 */
-                $('.slide-image').click(function () {
-                    const id = document.getElementById;
-                    location.href = "../place/restaurants/view.jsp?restaurant_idx=" + id.resturants_idx;
-                });
-                $('.slide-image2').click(function () {
-                    const id = document.getElementById;
-                    location.href = "../place/festival/view.jsp?festival_idx=" + id.festival_idx;
-                });
-                $('.slide-image3').click(function () {
-                    const id = document.getElementById;
-                    location.href = "../place/sights/view.jsp?sights_idx=" + id.sights_idx;
-                });
-
-
             });
             document.addEventListener("DOMContentLoaded", function () {
 
