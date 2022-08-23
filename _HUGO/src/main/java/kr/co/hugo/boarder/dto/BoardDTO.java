@@ -1,72 +1,92 @@
 package kr.co.hugo.boarder.dto;
 
 import org.springframework.stereotype.Component;
-/*
- articleNO number(10) PRIMARY KEY
-	,cate varchar2(10) NOT NULL
-	,title varchar2(100) NOT NULL
-	,nickname varchar2(20) NOT NULL
-	,content varchar2(1000) NOT NULL
-	,regDate DATE DEFAULT sysdate
- */
+
 @Component("boardDTO")
 public class BoardDTO {
-	private String articleNO;
-	private String cate;
-	private String title;
-	private String nickname;
-	private String content;
+	private int articleIdx;
+	private String hotplaceIdx;
+	private String contents;
+	private String username;
+	private int userTotalReview;
+	private String restURL;
 	private String regDate;
+	private int reviewStamp;
+	private String mainImage;
+	private String subImage1;
+	private String subImage2;
+	private String subImage3;
+	private String defaultImage;
+	private int restaurantIdx;
 	
 	public BoardDTO() {}
 
-	public BoardDTO(String articleNO, String cate, String title, String nickname, String content) {
-//		super();
-		this.articleNO = articleNO;
-		this.cate = cate;
-		this.title = title;
-		this.nickname = nickname;
-		this.content = content;
+	public BoardDTO(int articleIdx, String hotplaceIdx, String contents, String username, int userTotalReview,
+			String restURL, String regDate, int reviewStamp, String mainImage, String subImage1, String subImage2,
+			String subImage3, String defaultImage, int restaurantIdx) {
+		super();
+		this.articleIdx = articleIdx;
+		this.hotplaceIdx = hotplaceIdx;
+		this.contents = contents;
+		this.username = username;
+		this.userTotalReview = userTotalReview;
+		this.restURL = restURL;
+		this.regDate = regDate;
+		this.reviewStamp = reviewStamp;
+		this.mainImage = mainImage;
+		this.subImage1 = subImage1;
+		this.subImage2 = subImage2;
+		this.subImage3 = subImage3;
+		this.defaultImage = defaultImage;
+		this.restaurantIdx = restaurantIdx;
 	}
 
-	public String getArticleNO() {
-		return articleNO;
+	public int getArticleIdx() {
+		return articleIdx;
 	}
 
-	public void setArticleNO(String articleNO) {
-		this.articleNO = articleNO;
+	public void setArticleIdx(int articleIdx) {
+		this.articleIdx = articleIdx;
 	}
 
-	public String getCate() {
-		return cate;
+	public String getHotplaceIdx() {
+		return hotplaceIdx;
 	}
 
-	public void setCate(String cate) {
-		this.cate = cate;
+	public void setHotplaceIdx(String hotplaceIdx) {
+		this.hotplaceIdx = hotplaceIdx;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getContents() {
+		return contents;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getContent() {
-		return content;
+	public int getUserTotalReview() {
+		return userTotalReview;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setUserTotalReview(int userTotalReview) {
+		this.userTotalReview = userTotalReview;
+	}
+
+	public String getRestURL() {
+		return restURL;
+	}
+
+	public void setRestURL(String restURL) {
+		this.restURL = restURL;
 	}
 
 	public String getRegDate() {
@@ -76,7 +96,63 @@ public class BoardDTO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	
+
+	public int getReviewStamp() {
+		return reviewStamp;
+	}
+
+	public void setReviewStamp(int reviewStamp) {
+		this.reviewStamp = reviewStamp;
+	}
+
+	public String getMainImage() {
+		return mainImage;
+	}
+
+	public void setMainImage(String mainImage) {
+		this.mainImage = mainImage;
+	}
+
+	public String getSubImage1() {
+		return subImage1;
+	}
+
+	public void setSubImage1(String subImage1) {
+		this.subImage1 = subImage1;
+	}
+
+	public String getSubImage2() {
+		return subImage2;
+	}
+
+	public void setSubImage2(String subImage2) {
+		this.subImage2 = subImage2;
+	}
+
+	public String getSubImage3() {
+		return subImage3;
+	}
+
+	public void setSubImage3(String subImage3) {
+		this.subImage3 = subImage3;
+	}
+
+	public String getDefaultImage() {
+		return defaultImage;
+	}
+
+	public void setDefaultImage(String defaultImage) {
+		this.defaultImage = defaultImage;
+	}
+
+	public int getRestaurantIdx() {
+		return restaurantIdx;
+	}
+
+	public void setRestaurantIdx(int restaurantIdx) {
+		this.restaurantIdx = restaurantIdx;
+	}
+
 	
 	
 	

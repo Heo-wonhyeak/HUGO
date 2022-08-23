@@ -7,7 +7,7 @@
 
 	<!-- 회원정보조회 -->
 	<definition name="/memberInfo/viewMemberInfo" extends="baseLayout" >
-		<put-attribute name="title" value="HUGO-회원정보변경" />
+		<put-attribute name="title" value="HUGO-회원정보조희" />
 		<put-attribute name="body" value="/WEB-INF/views/memberInfo/viewMemberInfo.jsp"/>
 	</definition>	
 	
@@ -18,20 +18,20 @@
 	</definition>	
 	
 	<!-- 회원정보변경 -->
-	<definition name="/memberInfo/changeMemberInfo" extends="baseLayout" >
+	<definition name="/memberInfo/updateMemberForm" extends="baseLayout" >
 		<put-attribute name="title" value="HUGO-회원정보변경" />
-		<put-attribute name="body" value="/WEB-INF/views/memberInfo/changeMemberInfo.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/memberInfo/updateMemberForm.jsp"/>
 	</definition>	
 	
 	<!-- 쿠폰함 -->
 	<definition name="/memberInfo/couponList" extends="baseLayout" >
-		<put-attribute name="title" value="HUGO-회원정보변경" />
+		<put-attribute name="title" value="HUGO-쿠폰함" />
 		<put-attribute name="body" value="/WEB-INF/views/memberInfo/couponList.jsp"/>
 	</definition>
 	
 	<!-- 찜리스트 -->
 	<definition name="/memberInfo/wishList" extends="baseLayout" >
-		<put-attribute name="title" value="HUGO-회원정보변경" />
+		<put-attribute name="title" value="HUGO-찜리스트" />
 		<put-attribute name="body" value="/WEB-INF/views/memberInfo/wishList.jsp"/>
 	</definition>	
 	

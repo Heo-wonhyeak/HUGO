@@ -13,9 +13,8 @@ import kr.co.hugo.member.dto.MemberDTO;
 public interface MemberInfoController {
 	
 	public ModelAndView memberInfoForm(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	//public ModelAndView viewMemberInfo(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	//public ModelAndView checkPwd(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	//public ModelAndView changeMemberInfo(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView viewMemberInfo(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ResponseEntity changeMemberInfo(@ModelAttribute MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	//public ModelAndView wishList(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }

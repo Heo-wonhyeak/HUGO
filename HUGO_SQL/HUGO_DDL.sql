@@ -118,7 +118,58 @@ CREATE TABLE URL_info (
 	url varchar2(1000)
 );
 
+-- url로 매장 urlno 조회
+
+SELECT urlNO FROM URL_INFO WHERE url = 'https://www.mangoplate.com/restaurants/nWdsVJ5zukDH'; 
+
+-- board
+
+DROP TABLE Review_board CASCADE CONSTRAINTS;
+CREATE TABLE Review_board(
+	articleIdx number(10) PRIMARY KEY, --pk
+	hotplaceIdx number(10) DEFAULT 1, -- fk
+	contents varchar2(10000),
+	NICKNAME varchar2(100) NOT NULL,
+	userTotalReview number(10) DEFAULT 0 NOT NULL, 
+	restURL varchar2(2000) NOT null,		-- fk	
+	regdate DATE DEFAULT sysdate,
+	reviewStamp number(10) DEFAULT 0,
+	MainImage varchar2(2000) DEFAULT 'x',
+	SubImage1 varchar2(2000) DEFAULT 'x',
+	SubImage2 varchar2(2000) DEFAULT 'x',
+	SubImage3 varchar2(2000) DEFAULT 'x',
+	defaultImage varchar2(2000) DEFAULT 'x',
+	restaurantIdx number(10) DEFAULT 0
+);
+
+
+INSERT INTO ADMIN.REVIEW_BOARD
+(ARTICLEIDX, HOTPLACEIDX, CONTENTS, nickname, USERTOTALREVIEW, RESTIDX, REGDATE, REVIEWSTAMP, MAINIMAGE)
+VALUES(0, 1, 'test', 'test', 0 , '22', sysdate, 0, '22');
+
+UPDATE REVIEW_BOARD SET RESTIDX = 25 WHERE ARTICLEIDX = 0;
+
+SELECT * FROM REVIEW_BOARD order by articleIdx ;
+
+-- image
+
+DROP TABLE Image_INFO CASCADE CONSTRAINTS;
+CREATE TABLE Image_INFO(
+	imageFileNo number(10) PRIMARY KEY,	--pk
+	imageFileName varchar2(1000) NOT NULL,
+	articleIdx number(10),				--fk
+	restaurantIdx number(38),			--fk
+	regDate DATE DEFAULT sysdate
+);
+
+INSERT INTO ADMIN.IMAGE_INFO
+(IMAGEFILENO, IMAGEFILENAME, ARTICLEIDX, RESTAURANTIDX, REGDATE)
+VALUES(0, '', 0, 0, sysdate
+);
+
+
 -- restaurant
+
 
 DROP TABLE restaurant_info CASCADE CONSTRAINTS;
 CREATE TABLE restaurant_info(
@@ -141,9 +192,10 @@ CREATE TABLE restaurant_info(
 	hotplaceIdx number(10) DEFAULT 1
 );
 
--- restaurant_info insert query
+-- 매장 전체 정보 조회
 
-INSERT INTO ADMIN.RESTAURANT_INFO
-(RESTIDX, RESTNAME, RESTADDRESS, RESTJIBUNADDRESS, RESTPHONE, RESTMENU, RESTPRICE, RESTPARK, RESTOPEN, RESTMENULIST, RESTTAG)
-VALUES(0, '', '', '', '', '', '', '', '', '', '');
+SELECT * FROM RESTAURANT_INFO ORDER BY RESTIDX ;
+
+
+
 

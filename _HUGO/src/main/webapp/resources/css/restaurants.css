@@ -81,6 +81,11 @@
 	margin-left: 100px;
 	padding: 20px;
 }
+#map{
+	width:100%; 
+	height:500px;
+	border: 3px solid black;
+}
 
 
 .restaurants-info-head {
@@ -543,7 +548,7 @@ a:active {
 .restaurant-review-write-ImageUpload {
 	display: flex;
 	flex-direction: row;
-	width: 70%;
+	width: 80%;
 	height: 20%;
 	margin: auto;
 }
@@ -551,7 +556,7 @@ a:active {
 .upload-mainImage {
 	margin: auto;
 	display: flex;
-	width: 35%;
+	width: 30%;
 	height: 80%;
 }
 
@@ -568,17 +573,22 @@ a:active {
 }
 
 .upload-box {
+	display:flex;
 	border: 1px solid black;
-	width: 90%;
+	width: 80%;
 	height: 100%;
-	margin-left: 60px;
+	margin-left: 30px;
+	margin-right: 50px;
 	text-align: center;
 	font-weight: bold;
 	line-height: 90px;
 	background-color: #e7e7e7;
 	font-size: 2em;
 }
-
+.img-box{
+	flex:1;
+	margin-right:10px;
+}
 .upload-title {
 	width: 20%;
 	text-align: center;
