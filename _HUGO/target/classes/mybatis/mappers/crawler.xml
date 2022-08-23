@@ -18,7 +18,7 @@
 
 	<insert id="insertRestInfo" parameterType="RestInfoDTO">
 		<![CDATA[
-			INSERT INTO ADMIN.RESTAURANT_INFO
+			INSERT INTO RESTAURANT_INFO
 			(RESTIDX, RESTNAME, RESTADDRESS, RESTJIBUNADDRESS, RESTPHONE, RESTMENU, 
 			RESTPRICE, RESTPARK, RESTOPEN, RESTMENULIST, RESTTAG)
 			VALUES(#{restIdx}, #{restName}, #{restAddress}, #{restJibunAddress}, #{restPhone},

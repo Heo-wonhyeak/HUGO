@@ -120,6 +120,7 @@ table{
 }
 .picture{
 	width : 90%;
+	max-height: 350px;
 }
 .enterTitle{
 	cursor : pointer;
@@ -129,6 +130,7 @@ table{
 	position : static;
 	width: 95%;
 	text-align : left;
+	padding-left :3%;
 }
 .eventTitle{
 	display : inline-block;
@@ -136,14 +138,27 @@ table{
 	width : 80%;
 	text-align : left;
 	font-weight : bold;
+	padding-left :3%;
 }
 .eventCount{
 	display : inline-block;
 	position : static;
 	width : 15%;
 	text-align : right;
+	padding-right:3%;
 }
-
+#more{
+	cursor: pointer;
+	border-style : solid;
+	border-color: black;
+	border-width: 1px;
+	width : 80%;
+	text-align: center;
+	font-size:25px;
+	border-radius : 0.25em;
+	margin-top:10px;
+	margin-bottom:10px;
+}
 /* eventDTL*/
 #list {
 	display : inline-block;
@@ -246,6 +261,20 @@ table{
 #reReplyContainer{
 	display : none;
 }
+.modBtn,.delBtn {
+	width : 90px;
+	height : 40px;
+	font-size : 16px;
+	border-radius : 0.4em;
+	margin : 10px auto;
+	background-color : #9bb7d6;
+}
+.modAndDel {
+	text-align: right;
+    padding-right: 5%;
+}
+
+    
 /* eventDTL 종료 */
 
 /* 뭔지 모르겠음;; */
@@ -333,4 +362,5 @@ table{
 	margin : 10px auto;
 	position : relative;
 }
+
 /* 이벤트 글쓰기 종료 */

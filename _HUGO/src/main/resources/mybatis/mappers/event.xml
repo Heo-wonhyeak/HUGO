@@ -22,10 +22,25 @@
 		<result property="event_idx" column="event_idx" />
 	</resultMap>
 	
+	<resultMap type="eventReplyDTO" id="eventReplyResult">
+		<result property="event_reply_idx" column="event_reply_idx"/>
+		<result property="nickname" column="nickname"/>
+		<result property="writedate" column="writedate"/>
+		<result property="content" column="content"/>
+		<result property="event_idx" column="event_idx"/>
+	</resultMap>
+	
+	<resultMap type="eventLikeDTO" id="eventLikeResult">
+		<result property="like_idx" column="like_idx"/>
+		<result property="like_yn" column="like_yn"/>
+		<result property="event_idx" column="event_idx"/>
+		<result property="id" column="id"/>
+	</resultMap>
+	
 	<!-- 추가하는 새글에대한 글번호 추출 -->
 	<select id="selectNewEventIdx" resultType="int">
 		<![CDATA[ 		
-			SELECT NVL(MAX(event_idx),0)+1 AS ARTICLENO 
+			SELECT NVL(MAX(event_idx),0)+1 as event_idx 
 			FROM HUGO_EVENT_BOARD
 		 ]]>
 	</select>
@@ -54,6 +69,79 @@
 		</foreach>
 	</insert>
 	
+	<!-- 목록 보기 -->
+	<select id="selectAllEvent" resultMap="eventResult" parameterType="java.util.Map">
+		<![CDATA[ 
+			SELECT * FROM HUGO_EVENT_BOARD ORDER BY event_idx DESC
+		]]>
+	</select>
 	
+	<!-- 이미지 이름 등록 -->
+	<update id="updateOfile" parameterType="java.util.Map">
+		<![CDATA[ 
+			UPDATE HUGO_EVENT_BOARD SET OFILE = #{ofile} WHERE EVENT_IDX = #{event_idx}
+		]]>
+	</update>
+	
+	<!-- 게시글 상세보기 -->
+	<select id="selectEvent" resultType="eventDTO" parameterType="int">
+		<![CDATA[ 
+			SELECT * FROM HUGO_EVENT_BOARD WHERE EVENT_IDX = #{event_idx}
+		]]>
+	</select>
+	
+	<!-- 상세보기 이미지 -->
+	<select id="selectEventImages" resultMap="eventImageResult" parameterType="int">
+		<![CDATA[ 
+			SELECT * FROM HUGO_EVENT_IMAGE
+			WHERE event_idx = #{event_idx}
+			ORDER BY IMG_IDX
+		]]>
+	</select>
+	
+	<update id="updateViewCount" parameterType="int">
+		<![CDATA[ 
+			UPDATE HUGO_EVENT_BOARD SET VISIT_COUNT  = VISIT_COUNT +1 WHERE EVENT_IDX = #{event_idx}
+		]]>
+	</update>
+	
+	<delete id="deleteEvent" parameterType="int">
+		<![CDATA[ 
+			DELETE HUGO_EVENT_BOARD WHERE EVENT_IDX = #{event_idx}
+		]]>
+	</delete>
+	
+	<update id="modEvent" parameterType="java.util.Map">
+		<![CDATA[ 
+			UPDATE HUGO_EVENT_BOARD 
+			SET TITLE = #{title,jdbcType=VARCHAR}
+				,CONTENT = #{content,jdbcType=VARCHAR}
+				,EVENT_PERIOD = #{event_period}
+				,OFILE =#{ofile,jdbcType=VARCHAR}
+			WHERE EVENT_IDX = #{event_idx}
+		]]>
+	</update>
+
+	<!-- 추가하는 댓글에대한 글번호 추출 -->
+	<select id="selectNewReplyIdx" resultType="int">
+		<![CDATA[ 		
+			SELECT NVL(MAX(event_reply_idx),0)+1 as event_reply_idx
+			FROM HUGO_EVENT_REPLY
+		 ]]>
+	</select>
+	
+	<insert id="insertNewReply" parameterType="java.util.Map">
+		<![CDATA[ 		
+			INSERT INTO HUGO_EVENT_REPLY (event_reply_idx,nickname,content,event_idx) VALUES
+ 			(#{event_reply_idx},#{nickname,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{event_idx})
+		 ]]>
+	</insert>
+	
+	<select id="selectEventReples" resultMap="eventReplyResult" parameterType="int">
+		<![CDATA[ 		
+			SELECT * FROM HUGO_EVENT_REPLY 
+			 WHERE EVENT_IDX = #{event_idx} ORDER BY EVENT_REPLY_IDX DESC
+		 ]]>
+	</select>
  	
  </mapper>

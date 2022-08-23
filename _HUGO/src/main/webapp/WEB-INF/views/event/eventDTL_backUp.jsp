@@ -19,7 +19,7 @@
 		function declaration() {
   			window.open("${contextPath}/event/declaration.do","a","width=400, height=500px, left=100, top=50")
   		}
-/* 		
+		
 		function fn_like() {
 			let like = document.getElementById("like");
 			let unlike = document.getElementById("unlike");
@@ -32,49 +32,21 @@
 			}
 			
 		}
-		 */
-		$(document).ready(function () {
-			// 좋아요 갯수
-			let like_count = document.getElementById('like_count').value;
-			// 좋아요 여부
-			let like_yn = document.getElementById('like_yn').value;
-			// 로그인된 id
-			const id = '${member.id }';
-			// 게시글 번호
-			const event_idx = '${event.event_idx}';
-			// 좋아요 span 내부
-			const like = document.getElementById('like');
+		
+		$(document).ready(function(){
 			
-			// 좋아요 체크되어있다면 채워진 하트
-			if(like_yn != 0) {
-				like.innerHTML = "<i class='fa-regular fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}";
-			} else {
-				like.innerHTML = "<i class='fa-solid fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}";
-			}
-			
-			${'#like'}.on("click",function() {
-				$.ajax({
-					url : "${contextPath}/event/like.do"
-					,type : 'post'
-					,data : {
-						'event_idx' : event_idx
-						, 'id' : id
-					}
-					,success : function(data) {
-						if(data == 1) {
-							$('#like').html("<i class='fa-regular fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}");
-							lacation.reload();
-						} else {
-							$('#like').html("<i class='fa-solid fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}");
-							loacation.reload();
-						}
-					} , error : function() {
-						alert("에러가 발생했습니다.");
-					}
-				});
-			});
-			
-		});
+			$("#reReply").click(function(){
+				let reReply = $(this).next("div");
+				
+				if(reReply.css('display','none')) {
+					reReply.css('display','block');
+				} 
+				
+				/* if(reReply.css('display','block')) {
+					reReply.css('display','none');
+				} */
+			})
+		})
 		
 		function fn_delEvent(url,event_idx) {
 			//변수 선언 후 삭제 확인창 띄우기
@@ -109,7 +81,6 @@
 				location.href="${contextPath}/board/viewArticle.do?articleNO="+articleNO;
 			}	
 		}
-
 		
 	</script>
 </head>
@@ -135,25 +106,14 @@
 	
 	<div width="90%" id="replyBox">
 		<div class="likeReply" width="90%">
-			<c:if test="${member.id eq null || member.id == '' }">
-				<span id="like" style="cursor:pointer;">
-					<i class="fa-regular fa-heart" style="color:red;"></i>
-					&nbsp;좋아요&nbsp;${event.like_count }
-				</span>
-				<input type="hidden" id="like_count" value="${event.like_count }"/>
-			</c:if>
-			<%-- 여기부터 추가해줘야함 --%>
-			<c:if test="${member.id ne null and member.id != '' }">
-				<span id="like" style="cursor:pointer;">
-					<i class="fa-regular fa-heart" style="color:red;"></i>
-					&nbsp;좋아요&nbsp;${event.like_count }
-					<input type="hidden" id="like_yn" value="${like.like_yn }"/>
-					<input type="hidden" id="like_count" value="${event.like_count }"/>
-				</span>
-			</c:if>
+			<span id="like" style="cursor:pointer;" onclick="fn_like()">
+				<i class="fa-regular fa-heart" style="color:red;"></i>
+				&nbsp;좋아요&nbsp;0 
+				<input type="hidden" id="unlike" value="unlike"/>
+			</span>
 			<span id="reply" >
 				<i class="fa-regular fa-comment-dots"></i>
-				&nbsp;댓글수&nbsp;${eventMap.replyCount }
+				&nbsp;댓글수&nbsp;1
 			</span>
 			<span id="list"><a href="${contextPath }/event/runningEventPage.do"><i class="fa-solid fa-list-ul"></i>목록</a></span>
 		</div>
@@ -166,33 +126,46 @@
 			</div>
 		</div>
 		
-		<c:forEach var="reply" items="${reples }">
+		<div>
 			<div>
-				<div>
-					<span>
-						<b>${reply.nickname }</b>
-					</span>
-					<span id="date">
-						${reply.writedate }
-					</span>
-					<span id="declaration" class="declaration" onclick="declaration()">
-						|&nbsp;신고
-					</span>
-				</div>
-				<div class="replyContainer">
-					<div id="replyContent">
-						${reply.content }
-					</div>
-					<div id="reReply">
-						<i class="fa-solid fa-check"></i>
-					</div>
-					
-				</div>
+				<span>
+					[heo june]
+				</span>
+				<span id="date">
+					2022/06/20 21:53:23
+				</span>
+				<span id="declaration" class="declaration" onclick="declaration()">
+					|&nbsp;신고
+				</span>
 			</div>
-		</c:forEach>
+			<div class="replyContainer">
+				<div id="replyContent">
+					아아아아아아
+					<br/>
+					아아아아아
+					<br/>
+					아아아아
+				</div>
+				<div id="reReply">
+					<i class="fa-solid fa-check"></i>댓글의 댓글 달기
+				</div>
+				<div id="reReplyContainer"class="enterReplyContainer" width="90%">
+					<div>
+						<b>heo june</b>
+					</div>
+					<div class="enterReply">
+						<textarea style="width:100%; height:90%; border-radius : 0.5em;"></textarea>
+					</div>
+					<div class="replyEnterBtn">
+						<input type="button" value="등록" id="replyBtn"/>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
 		
-		
-		<form action="${contextPath }/event/eventReply.do?event_idx=${event.event_idx}" method="post" enctype="multipart/form-data">
+		<form action="${contextPath }/event/eventReply.do?event_idx=${event_idx}" method="post">
 			<div class="enterReplyContainer" >
 				<div>
 					<c:if test="${member.id eq null || member.id == '' }">
@@ -205,13 +178,12 @@
 					<textarea name="content" style="width:100%; height:90%; border-radius : 0.5em;"></textarea>
 				</div>
 				<div class="replyEnterBtn">
-					<c:if test="${member.id ne null and member.id != '' }">
-						<input type="submit" value="등록" id="replyBtn">
-					</c:if>
+					<input type="button" value="등록" id="replyBtn"/>
 				</div>
 			</div>
 		</form>
-
+	</div>
+	
 	<c:if test="${member.id == event.id }">
 		<div class="modAndDel">
 			<input type="button" value="수정" class="modBtn" onclick="location.href='${contextPath}/event/modEventWriter.do?event_idx=${event.event_idx }'"/>

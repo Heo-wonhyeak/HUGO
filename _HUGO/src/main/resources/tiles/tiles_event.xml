@@ -40,4 +40,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/event/declaration.jsp"/>
 	</definition>
 	
+	<definition name="/event/modEventWriter" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO-이벤트글수정" />
+		<put-attribute name="body" value="/WEB-INF/views/event/modEventWriter.jsp"/>
+	</definition>
+	
 </tiles-definitions>

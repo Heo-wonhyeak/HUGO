@@ -12,5 +12,7 @@
 		<typeAlias type="kr.co.hugo.event.dto.EventDTO" alias="eventDTO"/>
 		<typeAlias type="kr.co.hugo.event.dto.EventImageDTO" alias="eventImageDTO"/>
 		<typeAlias type="kr.co.hugo.event.dto.CouponImageDTO" alias="couponImageDTO"/>
+		<typeAlias type="kr.co.hugo.event.dto.EventReplyDTO" alias="eventReplyDTO"/>
+		<typeAlias type="kr.co.hugo.event.dto.EventLikeDTO" alias="eventLikeDTO"/>
 	</typeAliases>
 </configuration>

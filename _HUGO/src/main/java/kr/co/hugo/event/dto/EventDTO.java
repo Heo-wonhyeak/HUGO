@@ -12,7 +12,7 @@ public class EventDTO {
 	private int like_count;
 	private int visit_count;
 	private Date create_date;
-	
+
 	public int getEvent_idx() {
 		return event_idx;
 	}
