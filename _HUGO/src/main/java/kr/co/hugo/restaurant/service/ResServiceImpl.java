@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.hugo.boarder.dto.ImageDTO;
 import kr.co.hugo.restaurant.dao.ResDAO;
 import kr.co.hugo.restaurant.dto.RestaurantDTO;
 
@@ -74,6 +75,12 @@ public class ResServiceImpl implements ResService{
 	public List<RestaurantDTO> resFamousList() throws Exception {
 		List<RestaurantDTO> resFamousList = resDAO.selectFamousList();
 		return resFamousList;
+	}
+
+	@Override
+	public ImageDTO resImgList(int restaurantIdx) throws Exception {	
+		ImageDTO imageFileList = resDAO.selectresImgList(restaurantIdx);
+		return imageFileList;
 	}
 
 }

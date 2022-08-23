@@ -201,7 +201,7 @@
 
 /* mainsection CSS */
 section {
-	
+	margin-top:50px;
 	overflow: visible;
 	width: 70%;
 	margin-left:6%;
@@ -239,6 +239,7 @@ section {
 	padding: 20px 0 30px 40px;
 	margin: 0 200px 0 0;
 	font-size: 1.7em;
+	font-weight: bold;
 }
 
 .list-image {

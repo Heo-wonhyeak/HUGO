@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import kr.co.hugo.boarder.dto.ImageDTO;
 import kr.co.hugo.restaurant.dto.RestaurantDTO;
 
 @Repository
@@ -55,6 +56,12 @@ public class ResDAOImpl implements ResDAO{
 	public List<RestaurantDTO> selectFamousList() throws DataAccessException {
 		List<RestaurantDTO> famousList = sqlSession.selectList("mapper.restaurant.selectFamousList");
 		return famousList;
+	}
+
+	@Override
+	public ImageDTO selectresImgList(int restaurantIdx) throws DataAccessException {
+		ImageDTO imgList = sqlSession.selectOne("mapper.restaurant.selectImgList",restaurantIdx);
+		return imgList;
 	}
 
 }

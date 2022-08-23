@@ -3,11 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <% request.setCharacterEncoding("UTF-8"); %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="starList" value="${top10List.starList }" />
 <c:set var="steamedList" value="${top10List.steamedList }" />
 <c:set var="visitList" value="${top10List.visitList}"/>
 <c:set var="distanceList" value="${top10List.distanceList }" />
 <c:set var="famousList" value="${top10List.famousList}"/>
+<c:set var="starImgList" value="${top10List.starImgList }" />
+<c:set var="steamedImgList" value="${top10List.steamedImgList }" />
+<c:set var="visitImgList" value="${top10List.visitImgList}"/>
+<c:set var="distanceImgList" value="${top10List.distanceImgList }" />
+<c:set var="famousImgList" value="${top10List.famousImgList}"/>
     <!DOCTYPE html>
     <html lang="UTF-8">
 
@@ -42,7 +48,7 @@
 					<c:forEach items="${starList}" var="item" varStatus="status" end="10">
 						<div class="swiper-slide">
 	                        <div class="slide-image" id="star1">
-	                            <div class="list-image"></div>
+	                            <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${starImgList[status.index].imageFileName}&imageFileNO=${starImgList[status.index].imageFileNO}&restaurantIdx=${starImgList[status.index].restaurantIdx}"></img>
 	                            <div class="list-info">
 	                                <span class="list-info-name">${item.restName }</span><span class="list-info-value">⭐&nbsp;&nbsp;${item.restStarAvg }</span>
 	                            </div>
@@ -60,12 +66,12 @@
             <div class="swiper-container" id="visit-second">
                 <h3 class="top10head" id="visit-focus">방문횟수 TOP 10</h3>
                 <div class="swiper-wrapper">
-                    <c:forEach items="${visitList}" var="item" varStatus="status" end="10">
+                    <c:forEach items="${visitList}" var="visitList" varStatus="status" end="10">
 						<div class="swiper-slide">
 	                        <div class="slide-image" id="star1">
-	                            <div class="list-image"></div>
+	                            <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${visitImgList[status.index].imageFileName}&imageFileNO=${visitImgList[status.index].imageFileNO}&restaurantIdx=${visitImgList[status.index].restaurantIdx}"></img>
 	                            <div class="list-info">
-	                                <span class="list-info-name">${item.restName }</span><span class="list-info-value">😀&nbsp;&nbsp;${item.restVisitCount }</span>
+	                                <span class="list-info-name">${visitList.restName }</span><span class="list-info-value">😀&nbsp;&nbsp;${visitList.restVisitCount }</span>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -83,7 +89,7 @@
                		  <c:forEach items="${steamedList}" var="item" varStatus="status" end="10">
 							<div class="swiper-slide">
 	                     	   <div class="slide-image" id="star1">
-	                     	       <div class="list-image"></div>
+	                     	        <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${steamedImgList[status.index].imageFileName}&imageFileNO=${steamedImgList[status.index].imageFileNO}&restaurantIdx=${steamedImgList[status.index].restaurantIdx}"></img>
 	                         	   <div class="list-info">	
 	                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">❤️ &nbsp;&nbsp;${item.restVisitCount }</span>
 	                            </div>
@@ -103,7 +109,7 @@
 	                	<c:forEach items="${distanceList}" var="item" varStatus="status" end="10">
 								<div class="swiper-slide">
 		                     	   <div class="slide-image" id="star1">
-		                     	       <div class="list-image"></div>
+		                     	      <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${distanceImgList[status.index].imageFileName}&imageFileNO=${distanceImgList[status.index].imageFileNO}&restaurantIdx=${distanceImgList[status.index].restaurantIdx}"></img>
 		                         	   <div class="list-info">	
 		                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">️ &nbsp;&nbsp;100&nbsp;&nbsp;m</span>
 		                            </div>
@@ -123,7 +129,7 @@
 	                	<c:forEach items="${famousList}" var="item" varStatus="status" end="10">
 								<div class="swiper-slide">
 		                     	   <div class="slide-image" id="star1">
-		                     	       <div class="list-image"></div>
+		                     	       <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${famousImgList[status.index].imageFileName}&imageFileNO=${famousImgList[status.index].imageFileNO}&restaurantIdx=${famousImgList[status.index].restaurantIdx}"></img>
 		                         	   <div class="list-info">	
 		                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">️👍 &nbsp;&nbsp;${item.restStarAvg }</span>
 		                            </div>

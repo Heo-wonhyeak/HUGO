@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 
+import kr.co.hugo.boarder.dto.ImageDTO;
 import kr.co.hugo.restaurant.dto.RestaurantDTO;
 
 public interface ResDAO {
@@ -14,4 +15,5 @@ public interface ResDAO {
 	public List<RestaurantDTO> selectStarList() throws DataAccessException;
 	public List<RestaurantDTO> selectDistanceList() throws DataAccessException;
 	public List<RestaurantDTO> selectFamousList() throws DataAccessException;
+	public ImageDTO selectresImgList(int restaurantIdx) throws DataAccessException;
 }
