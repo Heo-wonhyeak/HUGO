@@ -19,20 +19,7 @@
 		function declaration() {
   			window.open("${contextPath}/event/declaration.do","a","width=400, height=500px, left=100, top=50")
   		}
-/* 		
-		function fn_like() {
-			let like = document.getElementById("like");
-			let unlike = document.getElementById("unlike");
-			if(unlike.value == "unlike") {
-				like.innerHTML = "<i class='fa-solid fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;0<input type='hidden' id='unlike' value='like'/>";
-			}
-			
-			if(unlike.value == "like") {
-				like.innerHTML = "<i class='fa-regular fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;0<input type='hidden' id='unlike' value='unlike'/>";
-			}
-			
-		}
-		 */
+		 
 		$(document).ready(function () {
 			// 좋아요 갯수
 			let like_count = document.getElementById('like_count').value;
@@ -43,31 +30,27 @@
 			// 게시글 번호
 			const event_idx = '${event.event_idx}';
 			// 좋아요 span 내부
-			const like = document.getElementById('like');
+			let like = document.getElementById('like');
 			
 			// 좋아요 체크되어있다면 채워진 하트
-			if(like_yn != 0) {
+			if(like_yn == 0) {
 				like.innerHTML = "<i class='fa-regular fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}";
 			} else {
 				like.innerHTML = "<i class='fa-solid fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}";
 			}
 			
-			${'#like'}.on("click",function() {
+			$('#like').on("click",function() {
 				$.ajax({
 					url : "${contextPath}/event/like.do"
 					,type : 'post'
 					,data : {
 						'event_idx' : event_idx
 						, 'id' : id
+						, 'like_yn' : like_yn
 					}
 					,success : function(data) {
-						if(data == 1) {
-							$('#like').html("<i class='fa-regular fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}");
-							lacation.reload();
-						} else {
-							$('#like').html("<i class='fa-solid fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}");
-							loacation.reload();
-						}
+						// 페이지 새로고침(좋아요 적용)
+						document.location.href = document.location.href;
 					} , error : function() {
 						alert("에러가 발생했습니다.");
 					}
@@ -112,6 +95,11 @@
 
 		
 	</script>
+	<style type="text/css">
+		a{
+			color : #9bb7d6;
+		}
+	</style>
 </head>
 <body>
 	<table id="boardTitle" width="95%">
@@ -129,7 +117,7 @@
 		</tr>
 	</table>
 	<div width="100%" align="center">
-		<img alt="고양이사진" src="${contextPath }/resources/img/event/${event.event_idx }/${event.ofile}" width="90%"/>
+		<img alt="사진" src="${contextPath }/resources/img/event/${event.event_idx }/${event.ofile}" width="90%"/>
 		<div style="width:90%; text-align:left;">${event.content }</div>
 	</div>
 	
@@ -147,9 +135,9 @@
 				<span id="like" style="cursor:pointer;">
 					<i class="fa-regular fa-heart" style="color:red;"></i>
 					&nbsp;좋아요&nbsp;${event.like_count }
-					<input type="hidden" id="like_yn" value="${like.like_yn }"/>
-					<input type="hidden" id="like_count" value="${event.like_count }"/>
 				</span>
+				<input type="hidden" id="like_yn" value="${eventMap.like_yn }"/>
+				<input type="hidden" id="like_count" value="${event.like_count }"/>
 			</c:if>
 			<span id="reply" >
 				<i class="fa-regular fa-comment-dots"></i>
@@ -160,9 +148,25 @@
 		<div width="90%">
 			<div class="repleHead"><b>댓글</b></div>
 			<div class="repleHead">
-				<span>등록순</span>
-				<span>&nbsp;|&nbsp;</span>
-				<span>최신순</span>
+				<c:if test="${param.action eq 'registration' }">
+					<span id="registration">
+						<b><a href="${contextPath }/event/eventDTL.do?event_idx=${event.event_idx}&action=registration">등록순</a></b>
+					</span>
+					<span>&nbsp;| &nbsp;</span>
+					<span id="lastest">
+						<a href="${contextPath }/event/eventDTL.do?event_idx=${event.event_idx}&action=lastest">최신순</a>
+					</span>
+				</c:if>
+				
+				<c:if test="${param.action eq 'lastest' }">
+					<span id="registration">
+						<a href="${contextPath }/event/eventDTL.do?event_idx=${event.event_idx}&action=registration">등록순</a>
+					</span>
+					<span>&nbsp;| &nbsp;</span>
+					<span id="lastest">
+						<b><a href="${contextPath }/event/eventDTL.do?event_idx=${event.event_idx}&action=lastest">최신순</a></b>
+					</span>
+				</c:if>
 			</div>
 		</div>
 		
@@ -214,7 +218,7 @@
 
 	<c:if test="${member.id == event.id }">
 		<div class="modAndDel">
-			<input type="button" value="수정" class="modBtn" onclick="location.href='${contextPath}/event/modEventWriter.do?event_idx=${event.event_idx }'"/>
+			<input type="button" value="수정" class="modBtn" onclick="location.href='${contextPath}/event/modEventWriter.do?event_idx=${event.event_idx }&action=registration'"/>
 			<input type="button" value="삭제" class="delBtn" onclick="fn_delEvent('${contextPath}/event/removeEvent.do',${event.event_idx })"/>
 		</div>
 	</c:if>

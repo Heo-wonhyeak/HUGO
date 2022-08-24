@@ -24,6 +24,14 @@
 		<result property="restJjim" column="restJjim" />
 		<result property="hotplaceIdx" column="hotplaceIdx" />
 	</resultMap>
+	
+	<resultMap type="imageDTO" id="imgResult">
+		<result property="imageFileNO" column="imageFileNO" />
+		<result property="imageFileName" column="imageFileName" />
+		<result property="regDate" column="regDate" />
+		<result property="articleIdx" column="articleIdx" />
+		<result property="restaurantIdx" column="restaurantIdx" />
+	</resultMap>
 
 
 	<select id="selectRestView" resultType="restaurantDTO"
@@ -36,6 +44,46 @@
 	<select id="selectAllViews" resultType="restaurantDTO">
 		<![CDATA[
 			SELECT * FROM RESTAURANT_INFO ORDER BY RESTIDX
+		]]>
+	</select>
+	<!-- 찜 TOP 50 조회 -->
+	<select id="selectSteamList" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO WHERE rownum <= 50 ORDER BY RESTSTARAVG desc	
+		]]>
+	</select>
+	
+	<!-- 방문 TOP 50 조회 -->
+	<select id="selectVisitList" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO WHERE rownum <= 50 ORDER BY restVisitCount desc
+		]]>
+	</select>
+	
+	<!-- 별점 TOP 50 조회 -->
+	<select id="selectStarList" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO WHERE rownum <= 50 ORDER BY restStarAvg desc
+		]]>
+	</select>
+	
+	<!-- 거리 TOP 50 조회 -->
+	<select id="selectDistanceList" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO WHERE RESTADDRESS  like '%서울%' AND rownum<=50
+		]]>
+	</select>
+	
+	<!-- 인기 TOP 50 조회 -->
+	<select id="selectFamousList" resultType="restaurantDTO">
+		<![CDATA[
+			SELECT * FROM (SELECT * FROM RESTAURANT_INFO ORDER BY restVisitCount desc) WHERE rownum <= 50 ORDER BY RESTSTARAVG desc
+		]]>
+	</select>
+	<!-- 메인 이미지 조회 -->
+	<select id="selectImgList" resultType="imageDTO">
+		<![CDATA[
+			SELECT * FROM IMAGE_INFO WHERE RESTAURANTIDX = #{restaurantIdx} AND ROWnum<=1 ORDER BY SYSDATE desc
 		]]>
 	</select>
 

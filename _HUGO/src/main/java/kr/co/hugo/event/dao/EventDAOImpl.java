@@ -76,8 +76,8 @@ public class EventDAOImpl implements EventDAO {
 
 	//이벤트 목록
 	@Override
-	public List<EventDTO> selectAllEvent() throws Exception {
-		List<EventDTO> eventList = sqlSession.selectList("mapper.event.selectAllEvent");
+	public List<EventDTO> selectAllEvent(String boarder) throws Exception {
+		List<EventDTO> eventList = sqlSession.selectList("mapper.event.selectAllEvent",boarder);
 		return eventList;
 	}
 
@@ -117,6 +117,42 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public List<EventReplyDTO> selectEventReples(int event_idx) throws Exception {
 		return sqlSession.selectList("mapper.event.selectEventReples", event_idx);
+	}
+
+	@Override
+	public int selectEventLike(Map likeMap) throws Exception {
+		return sqlSession.selectOne("mapper.event.selectEventLike", likeMap);
+	}
+
+	@Override
+	public void insertLike(Map likeMap) throws Exception {
+		int like_idx = selectNewLikeIdx();
+		likeMap.put("like_idx", like_idx);
+		sqlSession.insert("mapper.event.insertLike", likeMap);
+	}
+
+	private int selectNewLikeIdx() {
+		return sqlSession.selectOne("mapper.event.selectNewLikeIdx");
+	}
+
+	@Override
+	public void deleteLike(Map likeMap) throws Exception {
+		sqlSession.delete("mapper.event.deleteLike", likeMap);
+	}
+
+	@Override
+	public void updateLikeCountUp(Map likeMap) throws Exception {
+		sqlSession.update("mapper.event.updateLikeCountUp", likeMap);
+	}
+
+	@Override
+	public void updateLikeCountDown(Map likeMap) throws Exception {
+		sqlSession.update("mapper.event.updateLikeCountDown", likeMap);
+	}
+
+	@Override
+	public List<EventReplyDTO> selectEventReplesD(int event_idx) throws Exception {
+		return sqlSession.selectList("mapper.event.selectEventReplesD", event_idx);
 	}
 
 

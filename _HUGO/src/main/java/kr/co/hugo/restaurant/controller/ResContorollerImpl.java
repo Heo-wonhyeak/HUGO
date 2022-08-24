@@ -24,6 +24,7 @@ public class ResContorollerImpl implements ResController{
 	
 	@Autowired
 	ResService resService;
+
 	
 	@RequestMapping(value="/restaurants/restaurantView.do" , method= {RequestMethod.GET,RequestMethod.POST})
 	@Override
@@ -83,6 +84,15 @@ public class ResContorollerImpl implements ResController{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		
+		return mav;
+	}
+	
+	@RequestMapping(value="/restaurants/restaurantsList.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView restaurantList(HttpServletRequest request,HttpServletResponse response)throws Exception{
+		
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
 		return mav;
 	}
 	

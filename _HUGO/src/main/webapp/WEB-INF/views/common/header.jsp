@@ -9,7 +9,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link rel ="stylesheet" href="${contextPath }/resources/css/main.css" type="text/css"/>
+	<link rel ="stylesheet" href="${contextPath }/resources/css/main.css?after20220823" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
 	<script>
@@ -34,7 +34,7 @@
 			<button class="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
 		</div>
 		<div class="headerMenu">
-			<a href="${contextPath }/event/runningEventPage.do">이벤트/쿠폰</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="${contextPath }/event/runningEventPage.do?boarder=runningEvent">이벤트/쿠폰</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a href="${contextPath }/board/listArticles.do">게시판</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a>고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<c:choose>

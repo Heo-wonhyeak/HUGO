@@ -14,7 +14,7 @@ public interface EventDAO {
 	// 새로운 이미지 등록
 	public void insertNewImage(Map eventMap) throws Exception;
 	//이벤트 리스트 받기
-	public List<EventDTO> selectAllEvent() throws Exception;
+	public List<EventDTO> selectAllEvent(String boarder) throws Exception;
 	//파일이름 받아오기
 	public void updateOfile(Map eventMap) throws Exception;
 	//상세보기 이벤트 찾기
@@ -31,5 +31,16 @@ public interface EventDAO {
 	public void insertNewReply(Map replyMap) throws Exception;
 	//상세보기 댓글 가져오기
 	public List<EventReplyDTO> selectEventReples(int event_idx) throws Exception;
-
+	//좋아요 여부 확인
+	public int selectEventLike(Map likeMap) throws Exception;
+	// 좋아요 입력
+	public void insertLike(Map likeMap) throws Exception;
+	// 좋아요 취소
+	public void deleteLike(Map likeMap) throws Exception;
+	// 게시글에 좋아요 카운트 증가
+	public void updateLikeCountUp(Map likeMap) throws Exception;
+	// 게시글에 좋아요 카운트 다운
+	public void updateLikeCountDown(Map likeMap) throws Exception;
+	// 댓글 최신순
+	public List<EventReplyDTO> selectEventReplesD(int event_idx) throws Exception;
 }

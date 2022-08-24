@@ -37,7 +37,7 @@ import kr.co.hugo.member.dto.MemberDTO;
 @Controller
 public class EventControllerImpl implements EventController {
 	
-	private static String ARTICLE_IMAGE_REFO = "/Users/hwh/workspace-Spring/HUGO/_HUGO/src/main/webapp/resources/img";
+	private static String ARTICLE_IMAGE_REFO = "/Users/hwh/Documents/HUGO/_HUGO/src/main/webapp/resources/img";
 	
 	@Autowired
 	private EventService eventService;
@@ -48,8 +48,10 @@ public class EventControllerImpl implements EventController {
 		
 		String viewName = (String)request.getAttribute("viewName");
 		
-		List<EventDTO> eventList = eventService.listEvent();
+		String boarder =(String)request.getParameter("boarder");
 		
+		List<EventDTO> eventList = eventService.listEvent(boarder);
+
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		
@@ -89,6 +91,9 @@ public class EventControllerImpl implements EventController {
 		viewMap.put("event_idx", event_idx);
 		viewMap.put("id", id);
 		
+		String action = request.getParameter("action");
+		viewMap.put("action", action);
+		
 		Map<String, Object> eventMap = eventService.viewEvent(viewMap);
 		
 		ModelAndView mav = new ModelAndView();
@@ -120,41 +125,14 @@ public class EventControllerImpl implements EventController {
 		viewMap.put("event_idx", event_idx);
 		viewMap.put("id", id);
 		
+		String action = request.getParameter("action");
+		viewMap.put("action", action);
+		
 		Map<String, Object> eventMap = eventService.viewEvent(viewMap);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		mav.addObject("eventMap",eventMap);
-		
-		return mav;
-	}
-	
-	@RequestMapping(value="/event/endEventPage.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView endEventPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		String viewName = (String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
-		
-		return mav;
-	}
-	
-	@RequestMapping(value="/event/couponPage.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView couponPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		String viewName = (String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
-		
-		return mav;
-	}
-	
-	@RequestMapping(value="/event/couponDTL.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView couponDTL(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		String viewName = (String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
 		
 		return mav;
 	}
@@ -204,8 +182,7 @@ public class EventControllerImpl implements EventController {
 		
 		ResponseEntity resEnt = null;
 		
-		//진행중 이벤트 라면 
-		if(border.equals("runningEvent")) {
+		//게시글 저장 -- 분기 지움
 			List<EventImageDTO> imageFileList = new ArrayList<>();
 			System.out.println("imageFileList" + imageFileList);
 			if(fileList != null && fileList.size() != 0) {
@@ -270,7 +247,7 @@ public class EventControllerImpl implements EventController {
 				// 새 글이 정상적으로 등로된 케이스
 				message ="<script>";
 				message +="alert('새글을 추가했습니다.');";
-				message +="location.href='"+multipartRequest.getContextPath()+"/event/runningEventPage.do';";
+				message +="location.href='"+multipartRequest.getContextPath()+"/event/runningEventPage.do?boarder=runningEvent';";
 				message +="</script>";
 				// 새 글을 추가한 후 메시지를 전달함
 				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED); 
@@ -294,68 +271,6 @@ public class EventControllerImpl implements EventController {
 					}
 				}
 			}
-		}
-		// 쿠폰 페이지라면 
-		else {
-			List<CouponImageDTO> imageFileList = new ArrayList<>();
-			if(fileList != null && fileList.size() != 0) {
-				//전송되는 이미지 정보를 ImageDTO 객체의 속성에 차례대로 저장한 후 imageFileList에 다시 저장함
-				for(String fileName : fileList) {
-					CouponImageDTO imageDTO = new CouponImageDTO();
-					imageDTO.setImg_name(fileName);
-					imageFileList.add(imageDTO);
-				}
-				//imageFileList 를 다시 eventMap에 저장함
-				eventMap.put("imageFileList", imageFileList);
-			}
-			
-			HttpHeaders responseHeaders = new HttpHeaders();
-			responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-			
-			String message;
-			
-			
-			try {
-				int coupon_idx = eventService.addNewCoupon(eventMap);
-				if(imageFileList != null && imageFileList.size() != 0) {
-					// 첨부한 이미지들을 for문을 이용해 업로드함
-					for(CouponImageDTO imageDTO : imageFileList) {
-						// temp => articleNO 이미지 이동
-						imageFileName = imageDTO.getImg_name();
-						File srcFile = new File(ARTICLE_IMAGE_REFO+"/temp/"+imageFileName);
-						File destFile = new File(ARTICLE_IMAGE_REFO+"/coupon/"+coupon_idx);
-						// 소스파일 , 이동 파일 , 디렉토리 생성 여부 --> 확인해서 이동
-						FileUtils.moveFileToDirectory(srcFile, destFile, true);
-					}
-				}
-				// 새 글이 정상적으로 등로된 케이스
-				message ="<script>";
-				message +="alert('새글을 추가했습니다.');";
-				message +="location.href='"+multipartRequest.getContextPath()+"/event/couponPage.do';";
-				message +="</script>";
-				// 새 글을 추가한 후 메시지를 전달함
-				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED); 
-			} catch (Exception e) {
-				if(imageFileList != null && imageFileList.size() != 0) {
-					//오류발생시 Temp폴더의 이미지 삭제!
-					for(CouponImageDTO imageDTO : imageFileList) {
-						// temp => articleNO 이미지 이동
-						imageFileName = imageDTO.getImg_name();
-						File srcFile = new File(ARTICLE_IMAGE_REFO+"/temp/"+imageFileName);
-						srcFile.delete();
-						
-						message ="<script>";
-						message +="alert('오류가 발생했습니다.');";
-						message +="location.href='"+multipartRequest.getContextPath()+"/event/eventWriter.do';";
-						message +="</script>";
-						
-						resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED); 
-						
-						e.printStackTrace();
-					}
-				}
-			}
-		}
 		
 		return resEnt;
 	}
@@ -433,8 +348,7 @@ public class EventControllerImpl implements EventController {
 		String imageFileName = null;
 		ResponseEntity resEnt = null;
 		
-		// 게시판이 같을때!
-		if(boarder.equals("runningEvent")) {
+		// 분기 제거
 			List<EventImageDTO> imageFileList = new ArrayList<>();
 			System.out.println("imageFileList" + imageFileList);
 			if(fileList != null && fileList.size() != 0) {
@@ -504,7 +418,7 @@ public class EventControllerImpl implements EventController {
 				// 새 글이 정상적으로 등로된 케이스
 				message ="<script>";
 				message +="alert('글을 수정했습니다.');";
-				message +="location.href='"+multipartRequest.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"';";
+				message +="location.href='"+multipartRequest.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"&action=registration';";
 				message +="</script>";
 				// 새 글을 추가한 후 메시지를 전달함
 				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED); 
@@ -528,7 +442,7 @@ public class EventControllerImpl implements EventController {
 					}
 				}
 			}
-		}
+		
 		return resEnt;
 	}
 
@@ -557,7 +471,7 @@ public class EventControllerImpl implements EventController {
 			
 			message ="<script>";
 			message +="alert('글을 삭제했습니다.');";
-			message +="location.href='"+request.getContextPath()+"/event/runningEventPage.do';";
+			message +="location.href='"+request.getContextPath()+"/event/runningEventPage.do?boarder=runningEvent';";
 			message +="</script>";
 			
 			// 글을 삭제한 후 메시지를 전달함
@@ -629,6 +543,66 @@ public class EventControllerImpl implements EventController {
 		
 		System.out.println(message);
 		
+		
+		
+		
+		return resEnt;
+	}
+	
+	
+	@Override
+	@RequestMapping(value="/event/like.do",method=RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity like(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		response.setContentType("text/html; charset=utf-8");
+		
+		//문제 발생 소지를 없애기 위해 세팅
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		String message;
+		ResponseEntity resEnt = null;
+		
+		int event_idx = Integer.parseInt(request.getParameter("event_idx"));
+		String id = request.getParameter("id");
+		int like_yn = Integer.parseInt(request.getParameter("like_yn"));
+		
+		Map likeMap = new HashMap<>();
+		likeMap.put("event_idx", event_idx);
+		likeMap.put("id", id);
+		
+		if(like_yn == 0) {
+			try {
+				eventService.insertLike(likeMap);
+				
+				message ="<script>";
+//				message +="$('#like').html(\"<i class='fa-solid fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}\");";
+				message +="location.href='"+request.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"';";
+				message +="</script>";
+				
+				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK); 
+				
+			} catch (Exception e) {
+				System.out.println("좋아요 입력 오류");
+				e.printStackTrace();
+
+			}
+		} else {
+			try {
+				eventService.deleteLike(likeMap);
+				
+				message ="<script>";
+				message +="$('#like').html(\"<i class='fa-regular fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}\");";
+				message +="location.reload();";
+				message +="</script>";
+				
+				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK); 
+			} catch (Exception e) {
+				System.out.println("좋아요 취소 오류");
+				e.printStackTrace();
+			}
+		}
 		
 		
 		

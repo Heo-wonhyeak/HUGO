@@ -5,6 +5,9 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ImageDTO {
 	
 	private int imageFileNO;
