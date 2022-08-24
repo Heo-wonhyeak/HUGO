@@ -9,5 +9,7 @@ public interface MemberDAO {
 	public int insertMember(MemberDTO memberDTO) throws DataAccessException;
 	public String selectDuplicateCheck(String id) throws DataAccessException;
 	public MemberDTO loginById(MemberDTO member) throws DataAccessException;
-	
+	public String searchId(MemberDTO member) throws DataAccessException;
+	public int searchPw(MemberDTO member) throws DataAccessException;
+	public void updatePw(MemberDTO member) throws DataAccessException;
 }

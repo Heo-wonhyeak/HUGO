@@ -31,10 +31,32 @@
 		]]>
 	</select>
 	
-	<select id="loginById" resultType="memberDTO" parameterType="memberDTO">
+	<select id="loginById" parameterType="memberDTO" resultType="memberDTO" >
 		<![CDATA[
 			SELECT * FROM HUGO_USER_INFO
 			WHERE ID = #{id} AND PWD = #{pwd}			
 		]]>
 	</select>
+	
+	<select id="searchId" parameterType="memberDTO" resultType="String">
+		<![CDATA[
+			SELECT ID FROM HUGO_USER_INFO
+			WHERE NAME = #{name} AND EMAIL = #{email}			
+		]]>
+	</select>
+	
+	<select id="searchPw" parameterType="memberDTO" resultType="int">
+		<![CDATA[
+			SELECT count(*) FROM HUGO_USER_INFO
+			WHERE ID = #{id} AND EMAIL = #{email}			
+		]]>
+	</select>
+	
+	<update id="updatePw" parameterType="memberDTO">
+		<![CDATA[
+			UPDATE HUGO_USER_INFO 
+				SET PWD = #{pwd}
+				WHERE ID = #{id} AND EMAIL = #{email}			
+		]]>
+	</update>
 </mapper>

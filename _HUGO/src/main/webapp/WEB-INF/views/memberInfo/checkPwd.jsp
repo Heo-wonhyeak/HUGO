@@ -82,8 +82,6 @@
 			<tr></tr><tr></tr><tr></tr><tr></tr>
 			<tr class="inputPwTr">
 				<td><input id="inputPw" class="inputPw" type="text" placeholder="비밀번호"/></td>
-				<br/>
-				<td><a>${member.pwd }</a></td>
 			</tr>
 			<tr>
 				<td ><p class="guide">회원정보를 변경하기 위해 비밀번호를 입력해 주세요</p></td>

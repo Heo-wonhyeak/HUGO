@@ -13,12 +13,17 @@ import kr.co.hugo.member.dto.MemberDTO;
 
 public interface MemberController {
 
-	public ModelAndView addMember(@ModelAttribute("member") MemberDTO memberDTO,HttpServletRequest request, 
+	public ResponseEntity addMember(@ModelAttribute("member") MemberDTO memberDTO,HttpServletRequest request, 
 			HttpServletResponse response) throws Exception;
 	public ResponseEntity<String> duplicateCheck(@RequestParam("id") String id,
 			HttpServletRequest request,HttpServletResponse response) throws Exception; 
-	
 	public	ResponseEntity login(@ModelAttribute("member")MemberDTO member,HttpServletRequest request,
 			HttpServletResponse response,  RedirectAttributes rAttributes) throws Exception;
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response)  throws Exception; 
+	public ResponseEntity searchPw(@ModelAttribute("member")MemberDTO member, HttpServletRequest request,
+			HttpServletResponse response) throws Exception; 
+	public ResponseEntity searchId(@ModelAttribute("member")MemberDTO member, HttpServletRequest request,
+			HttpServletResponse response) throws Exception; 
+	public ResponseEntity changePw(@RequestParam("pwd") String pwd ,HttpServletRequest request, HttpServletResponse response)  
+			throws Exception; 
 }

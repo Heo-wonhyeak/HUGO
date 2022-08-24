@@ -30,4 +30,20 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDTO login(MemberDTO member) throws DataAccessException {
 		return memberDAO.loginById(member);
 	}
+	
+	@Override
+	public String searchId(MemberDTO member) throws Exception {
+		return memberDAO.searchId(member);
+	}
+	
+	@Override
+	public int searchPw(MemberDTO member) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDAO.searchPw(member);
+	}
+	@Override
+	public void updatePw(MemberDTO member) throws Exception {
+		memberDAO.updatePw(member);
+		
+	}
 }
