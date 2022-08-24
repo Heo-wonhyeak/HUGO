@@ -9,7 +9,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link rel ="stylesheet" href="${contextPath }/resources/css/main.css" type="text/css"/>
+	<link rel ="stylesheet" href="${contextPath }/resources/css/main.css?after20220823" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
 	<script>

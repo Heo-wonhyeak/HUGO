@@ -120,6 +120,9 @@ public class EventControllerImpl implements EventController {
 		viewMap.put("event_idx", event_idx);
 		viewMap.put("id", id);
 		
+		String action = request.getParameter("action");
+		viewMap.put("action", action);
+		
 		Map<String, Object> eventMap = eventService.viewEvent(viewMap);
 		
 		ModelAndView mav = new ModelAndView();
@@ -629,6 +632,66 @@ public class EventControllerImpl implements EventController {
 		
 		System.out.println(message);
 		
+		
+		
+		
+		return resEnt;
+	}
+	
+	
+	@Override
+	@RequestMapping(value="/event/like.do",method=RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity like(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		response.setContentType("text/html; charset=utf-8");
+		
+		//문제 발생 소지를 없애기 위해 세팅
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		String message;
+		ResponseEntity resEnt = null;
+		
+		int event_idx = Integer.parseInt(request.getParameter("event_idx"));
+		String id = request.getParameter("id");
+		int like_yn = Integer.parseInt(request.getParameter("like_yn"));
+		
+		Map likeMap = new HashMap<>();
+		likeMap.put("event_idx", event_idx);
+		likeMap.put("id", id);
+		
+		if(like_yn == 0) {
+			try {
+				eventService.insertLike(likeMap);
+				
+				message ="<script>";
+//				message +="$('#like').html(\"<i class='fa-solid fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}\");";
+				message +="location.href='"+request.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"';";
+				message +="</script>";
+				
+				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK); 
+				
+			} catch (Exception e) {
+				System.out.println("좋아요 입력 오류");
+				e.printStackTrace();
+
+			}
+		} else {
+			try {
+				eventService.deleteLike(likeMap);
+				
+				message ="<script>";
+				message +="$('#like').html(\"<i class='fa-regular fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}\");";
+				message +="location.reload();";
+				message +="</script>";
+				
+				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK); 
+			} catch (Exception e) {
+				System.out.println("좋아요 취소 오류");
+				e.printStackTrace();
+			}
+		}
 		
 		
 		

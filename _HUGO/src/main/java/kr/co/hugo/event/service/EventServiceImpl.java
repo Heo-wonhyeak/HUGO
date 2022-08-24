@@ -78,11 +78,28 @@ public class EventServiceImpl implements EventService {
 		eventMap.put("event", eventDTO);
 		eventMap.put("images", images);
 		
-		// 댓글 정보 가져오기
-		List<EventReplyDTO> reples = eventDAO.selectEventReples(event_idx);
-		int replyCount = reples.size();
-		eventMap.put("reples", reples);
-		eventMap.put("replyCount", replyCount);
+		String action = (String)viewMap.get("action");
+
+		if(action.equals("registration")) {
+			// 댓글 정보 가져오기
+			List<EventReplyDTO> reples = eventDAO.selectEventReples(event_idx);
+			int replyCount = reples.size();
+			eventMap.put("reples", reples);
+			eventMap.put("replyCount", replyCount);
+		}else if(action.equals("lastest")) {
+			List<EventReplyDTO> reples = eventDAO.selectEventReplesD(event_idx);
+			int replyCount = reples.size();
+			eventMap.put("reples", reples);
+			eventMap.put("replyCount", replyCount);
+		} 
+		
+		Map likeMap = new HashMap<>();
+		likeMap.put("id", id);
+		likeMap.put("event_idx", event_idx);
+		
+		// 좋아요 여부 확인하기
+		int like_yn = eventDAO.selectEventLike(likeMap);
+		eventMap.put("like_yn", like_yn);
 		
 		return eventMap;
 	}
@@ -99,6 +116,19 @@ public class EventServiceImpl implements EventService {
 			eventDAO.insertNewImage(eventMap);
 		}
 		eventDAO.modEvent(eventMap);
+	}
+
+	@Override
+	public void insertLike(Map likeMap) throws Exception {
+		eventDAO.insertLike(likeMap);
+		eventDAO.updateLikeCountUp(likeMap);
+	}
+
+	@Override
+	public void deleteLike(Map likeMap) throws Exception {
+		eventDAO.deleteLike(likeMap);
+		eventDAO.updateLikeCountDown(likeMap);
+		
 	}
 
 

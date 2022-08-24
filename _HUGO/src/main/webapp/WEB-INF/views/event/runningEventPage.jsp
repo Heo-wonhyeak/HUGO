@@ -66,7 +66,7 @@
 								<td class="eventArticle">
 									이벤트 번호 : ${event.event_idx } / 이벤트 파일명 :  ${event.ofile}
 									<img src="${contextPath }/resources/img/event/${event.event_idx }/${event.ofile}" alt=" 사진" class="picture"/>
-									<div class="enterTitle" onclick="location.href='${contextPath}/event/eventDTL.do?event_idx=${event.event_idx }'">
+									<div class="enterTitle" onclick="location.href='${contextPath}/event/eventDTL.do?event_idx=${event.event_idx }&action=registration'">
 										<span class="eventTitle">${event.title }</span> <span class="eventCount"> [${event.visit_count }]</span><br/>
 										<span class="eventPeriod"> ${event.event_period }</span>
 									</div>
@@ -75,7 +75,7 @@
 							<c:if test="${eventNum.index >= 9 }" >
 								<td class="eventArticle" style="display:none;">
 									<img src="${contextPath }/resources/img/event/${event.event_idx }/${event.ofile}" alt="사진" class="picture"/>
-									<div class="enterTitle" onclick="location.href='${contextPath}/event/eventDTL.do?event_idx=${event.event_idx }'">
+									<div class="enterTitle" onclick="location.href='${contextPath}/event/eventDTL.do?event_idx=${event.event_idx }&action=registration'">
 										<span class="eventTitle">${event.title }</span> <span class="eventCount"> [${event.visit_count }]</span><br/>
 										<span class="eventPeriod"> ${event.event_period }</span>
 									</div>
