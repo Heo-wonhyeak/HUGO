@@ -32,48 +32,17 @@
 </head>
 <body>
 	<table align="center" width="95%" >
-		<c:choose>
-			<c:when test="${param.boarder eq 'runningEvent' }">
-				<tr align="center">
-					<td width="30%" id="selectTd" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=runningEvent'">
-						진행중 이벤트
-					</td>
-					<td width="30%" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=endEvent'">
-						종료된 이벤트
-					</td>
-					<td width="30%" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=coupone'">
-						쿠폰
-					</td>
-				</tr>
-			</c:when>
-			<c:when test="${param.boarder eq 'endEvent' }">
-				<tr align="center">
-					<td width="30%" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=runningEvent'">
-						진행중 이벤트
-					</td>
-					<td width="30%" id="selectTd" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=endEvent'">
-						종료된 이벤트
-					</td>
-					<td width="30%" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=coupone'">
-						쿠폰
-					</td>
-				</tr>
-			</c:when>
-			<c:when test="${param.boarder eq 'coupone' }">
-				<tr align="center">
-					<td width="30%" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=runningEvent'">
-						진행중 이벤트
-					</td>
-					<td width="30%" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=endEvent'">
-						종료된 이벤트
-					</td>
-					<td width="30%" id="selectTd" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=coupone'">
-						쿠폰
-					</td>
-				</tr>
-			</c:when>
-		</c:choose>
-
+		<tr align="center">
+			<td width="30%" id="selectTd" class="eventTd" onclick="location.href='${contextPath}/event/runningEventPage.do'">
+				진행중 이벤트
+			</td>
+			<td width="30%" class="eventTd" onclick="location.href='${contextPath}/event/endEventPage.do'">
+				종료된 이벤트
+			</td>
+			<td width="30%" class="eventTd" onclick="location.href='${contextPath}/event/couponPage.do'">
+				쿠폰
+			</td>
+		</tr>
 		<tr>
 			<td colspan="3"><div style="margin : 3px 0;"></div></td>
 		</tr>
@@ -124,6 +93,6 @@
 				</c:if>
 			</c:if>
 		</tr>
-		
+	</table>
 </body>
 </html>

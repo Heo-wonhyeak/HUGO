@@ -10,10 +10,8 @@ public interface EventService {
 
 	//이벤트 게시글 추가
 	public int addNewEvent(Map eventMap) throws Exception;
-	//미정의
-	public int addNewCoupon(Map eventMap) throws Exception;
 	//이벤트 게시글 리스트
-	public List<EventDTO> listEvent() throws Exception;
+	public List<EventDTO> listEvent(String boarder) throws Exception;
 	//이벤트 이미지이름 받아오기
 	public void updateOfile(Map eventMap) throws Exception;
 	// 이벤트 상세보기

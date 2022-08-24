@@ -76,8 +76,8 @@ public class EventDAOImpl implements EventDAO {
 
 	//이벤트 목록
 	@Override
-	public List<EventDTO> selectAllEvent() throws Exception {
-		List<EventDTO> eventList = sqlSession.selectList("mapper.event.selectAllEvent");
+	public List<EventDTO> selectAllEvent(String boarder) throws Exception {
+		List<EventDTO> eventList = sqlSession.selectList("mapper.event.selectAllEvent",boarder);
 		return eventList;
 	}
 
@@ -154,10 +154,6 @@ public class EventDAOImpl implements EventDAO {
 	public List<EventReplyDTO> selectEventReplesD(int event_idx) throws Exception {
 		return sqlSession.selectList("mapper.event.selectEventReplesD", event_idx);
 	}
-	
-	
-	
-	
 
 
 }

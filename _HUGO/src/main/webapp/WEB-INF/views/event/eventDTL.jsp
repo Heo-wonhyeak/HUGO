@@ -218,7 +218,7 @@
 
 	<c:if test="${member.id == event.id }">
 		<div class="modAndDel">
-			<input type="button" value="수정" class="modBtn" onclick="location.href='${contextPath}/event/modEventWriter.do?event_idx=${event.event_idx }'"/>
+			<input type="button" value="수정" class="modBtn" onclick="location.href='${contextPath}/event/modEventWriter.do?event_idx=${event.event_idx }&action=registration'"/>
 			<input type="button" value="삭제" class="delBtn" onclick="fn_delEvent('${contextPath}/event/removeEvent.do',${event.event_idx })"/>
 		</div>
 	</c:if>

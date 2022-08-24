@@ -41,9 +41,9 @@ public class MainController {
 		
 		for(int i=0;i<10;i++) {
 			
-			int restaurantIdx = starList.get(i).getRestIdx();
-			ImageDTO starImag = resService.resImgList(restaurantIdx);
-			starImgList.add(starImag); 
+//			int restaurantIdx = starList.get(i).getRestIdx();
+//			ImageDTO starImag = resService.resImgList(restaurantIdx);
+//			starImgList.add(starImag); 
 		}
 		for(int i=0;i<steamedList.size();i++) {
 			int restaurantIdx = steamedList.get(i).getRestIdx();

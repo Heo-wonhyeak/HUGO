@@ -14,6 +14,8 @@
 		<result property="like_count" column="like_count" />
 		<result property="visit_count" column="visit_count"/>
 		<result property="create_date" column="create_date"/>
+		<result property="writeHeader" column="writeHeader"/>
+		<result property="boarder" column="boarder"/>
 	</resultMap>
 	
 	<resultMap type="eventImageDTO" id="eventImageResult">	
@@ -37,12 +39,14 @@
 		<result property="id" column="id"/>
 	</resultMap>
 	
+	<!-- 좋아요 수 감소 -->
 	<update id="updateLikeCountDown" parameterType="int">
 		<![CDATA[ 
 			UPDATE HUGO_EVENT_BOARD SET LIKE_COUNT = LIKE_COUNT -1 WHERE EVENT_IDX = #{event_idx}
 		]]>
 	</update>
 	
+	<!-- 좋아요 수 증가 -->
 	<update id="updateLikeCountUp" parameterType="int">
 		<![CDATA[ 
 			UPDATE HUGO_EVENT_BOARD SET LIKE_COUNT = LIKE_COUNT +1 WHERE EVENT_IDX = #{event_idx}
@@ -90,8 +94,9 @@
 	<!-- 글 정보를 Map으로 전달함 -->
 	<insert id="insertNewEvent" parameterType="java.util.Map">
 		<![CDATA[ 		
-			INSERT INTO HUGO_EVENT_BOARD (event_idx,title,content,event_period,id,ofile) VALUES 
-			(#{event_idx},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{event_period},#{id},#{ofile,jdbcType=VARCHAR})
+			INSERT INTO HUGO_EVENT_BOARD (event_idx,title,content,event_period,id,ofile,writeHeader,boarder) VALUES 
+			(#{event_idx},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{event_period},#{id},#{ofile,jdbcType=VARCHAR}
+			,#{writeHeader,jdbcType=VARCHAR},#{boarder,jdbcType=VARCHAR})
 		 ]]>
 	</insert>
 	
@@ -112,9 +117,9 @@
 	</insert>
 	
 	<!-- 목록 보기 -->
-	<select id="selectAllEvent" resultMap="eventResult" parameterType="java.util.Map">
+	<select id="selectAllEvent" resultMap="eventResult" parameterType="String">
 		<![CDATA[ 
-			SELECT * FROM HUGO_EVENT_BOARD ORDER BY event_idx DESC
+			SELECT * FROM HUGO_EVENT_BOARD WHERE BOARDER = #{boarder} ORDER BY event_idx DESC
 		]]>
 	</select>
 	

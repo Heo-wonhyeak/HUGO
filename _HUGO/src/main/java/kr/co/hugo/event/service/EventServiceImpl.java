@@ -39,16 +39,10 @@ public class EventServiceImpl implements EventService {
 		
 	}
 
-	@Override
-	public int addNewCoupon(Map eventMap) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	//이벤트 목록
 	@Override
-	public List<EventDTO> listEvent() throws Exception {
-		List<EventDTO> eventList = eventDAO.selectAllEvent();
+	public List<EventDTO> listEvent(String boarder) throws Exception {
+		List<EventDTO> eventList = eventDAO.selectAllEvent(boarder);
 		return eventList;
 	}
 
@@ -130,6 +124,8 @@ public class EventServiceImpl implements EventService {
 		eventDAO.updateLikeCountDown(likeMap);
 		
 	}
+
+
 
 
 

@@ -12,7 +12,21 @@ public class EventDTO {
 	private int like_count;
 	private int visit_count;
 	private Date create_date;
+	private String writeHeader;
+	private String boarder;
 
+	public String getWriteHeader() {
+		return writeHeader;
+	}
+	public void setWriteHeader(String writeHeader) {
+		this.writeHeader = writeHeader;
+	}
+	public String getBoarder() {
+		return boarder;
+	}
+	public void setBoarder(String boarder) {
+		this.boarder = boarder;
+	}
 	public int getEvent_idx() {
 		return event_idx;
 	}
