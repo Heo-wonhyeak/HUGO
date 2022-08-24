@@ -75,6 +75,8 @@ ROLLBACK;
 
 SELECT * FROM HUGO_EVENT_IMAGE;
 
+
+
 -- Event Table End
 
 -- user info start

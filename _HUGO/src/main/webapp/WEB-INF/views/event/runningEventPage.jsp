@@ -116,6 +116,7 @@
 				</tr>
 			</c:when>
 		</c:choose>
+		
 		<tr>
 			<td colspan="2"><div id="more">+ 더보기</div></td>
 			<c:if test="${isLogOn}">
@@ -124,6 +125,5 @@
 				</c:if>
 			</c:if>
 		</tr>
-		
 </body>
 </html>
