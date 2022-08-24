@@ -309,6 +309,7 @@ section {
 .view-more {
 	text-align: right;
 	margin-right: 30px;
+	font-size:1.2em;
 }
 
 .view-more a {
