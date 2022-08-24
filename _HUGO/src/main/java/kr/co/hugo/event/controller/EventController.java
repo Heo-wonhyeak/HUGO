@@ -19,7 +19,10 @@ public interface EventController {
 	public ResponseEntity removeEvent(@RequestParam("event_idx") int event_idx, HttpServletRequest request, 
 			HttpServletResponse response) throws Exception;
 	// 댓글 추가
-		public ResponseEntity eventReply(@RequestParam("event_idx") int event_idx,MultipartHttpServletRequest multipartRequest,
-				HttpServletResponse response) throws Exception;
+	public ResponseEntity eventReply(@RequestParam("event_idx") int event_idx,MultipartHttpServletRequest multipartRequest,
+			HttpServletResponse response) throws Exception;
+	// 좋아요
+	public ResponseEntity like(HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
 
 }

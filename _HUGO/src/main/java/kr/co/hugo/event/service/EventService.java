@@ -24,5 +24,9 @@ public interface EventService {
 	public void modEvent(Map<String, Object> eventMap, List<String> fileList) throws Exception;
 	// 이벤트 댓글 등록
 	public void addEventReply(Map replyMap) throws Exception;
+	// 좋아요 등록
+	public void insertLike(Map likeMap) throws Exception;
+	// 좋아요 취소
+	public void deleteLike(Map likeMap) throws Exception;
 
 }
