@@ -56,17 +56,19 @@
 		  padding: 10px;
 		  width: 130px;
 		  background-color:#9bb7d6;
-		  margin-bottom: 30px;
+		  margin-bottom: 10px;
 		  color: white;
 		  text-align: center;
-		  
 		}
 		.nologin{
 		 text-align: right;
 		}
 		
 		#id_remember{
-		 display:inherit;
+		 display:inline;
+		}
+		.nologin .searchbtn2{
+			cursor: pointer;
 		}
 		
 	</style>
@@ -78,7 +80,7 @@
 				<input type="text" name="id" class="text-field" placeholder="아이디"><br/>
 				<input type="password" name="pwd" class="text-field" placeholder="비밀번호"><br/>
 				
-				<input type="checkbox" id="id_remeber" name="id_remeber" >아이디 저장<br/><br/>
+				<input type="checkbox" id="id_remember" name="id_remember" >아이디 저장<br/><br/>
 				
 				<input type="submit"  name="login" class="submit-btn" value="로그인"><br/>
 				<!-- 수정해야함 -->
@@ -89,9 +91,10 @@
 	     <!-- 수정해야함 -->
 	      <div class="nologin">
 	      		<a>아직 회원이 아니세요?</a>
-	      		<input type="button" name="signup" class="submit-btn-small" value="회원가입" onClick="location.href='agree.jsp'"> <br>
-	      		<a>아이디,비밀번호를 잊으셨나요?</a>
-				<input type="button" name="findID/PW" class="submit-btn-small" value="ID/PW찾기" onClick="window.open('http://localhost:8080/HUGO/idpw/search.jsp')" >
+	      		<input type="button" name="signup" class="submit-btn-small" value="회원가입" onClick="location.href='agree.do'"> <br>
+	      		<a class="searchbtn2" onClick="window.open('searchIdForm.do')">아이디&nbsp;&nbsp;·</a>
+	      		<a class="searchbtn2" onClick="window.open('searchPwForm.do')">&nbsp;&nbsp;비밀번호 찾기</a>
+				<!-- <input type="button" name="findID/PW" class="submit-btn-small" value="ID/PW찾기" > -->
            </div>
 		</form>
 		

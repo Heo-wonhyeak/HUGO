@@ -67,14 +67,24 @@ public class MemberControllerImpl implements MemberController {
 
 	@Override
 	@RequestMapping(value = "/member/addMember.do", method = RequestMethod.POST)
-	public ModelAndView addMember(@ModelAttribute("member") MemberDTO memberDTO, HttpServletRequest request, HttpServletResponse response)
+	public ResponseEntity addMember(@ModelAttribute("member") MemberDTO memberDTO, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
 		
-		//설정된 MemberDTO 객체를 SQL문으로 전달해 회원등록 함
+		 HttpHeaders responseHeaders = new HttpHeaders();
+		 responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		 String message; 
+		 ResponseEntity resEnt = null;
+		
 		int result = memberService.addMember(memberDTO);
-		ModelAndView mav = new ModelAndView("redirect:/main/main.do");
-		return mav;
+		
+		 message = "<script>"; 
+		 message += "alert('회원가입이 완료되었습니다.')";
+		 message += " location.href='"+request.getContextPath()+"/main/main.do';";
+		 message += "</script>"; 
+		 resEnt = new ResponseEntity(message, responseHeaders,HttpStatus.CREATED); 
+		 
+		 return resEnt;
 	}
 
 	@Override
@@ -97,8 +107,9 @@ public class MemberControllerImpl implements MemberController {
 		  memberDTO = memberService.login(member);
 	  
 		  HttpHeaders responseHeaders = new HttpHeaders();
-		  responseHeaders.add("Content-Type", "text/html; charset=utf-8"); String
-		  message; ResponseEntity resEnt = null;
+		  responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		  String message; 
+		  ResponseEntity resEnt = null;
 		  
 		  if (memberDTO != null) {
 			  HttpSession session = request.getSession(); 
@@ -133,6 +144,82 @@ public class MemberControllerImpl implements MemberController {
 		mav.setViewName("redirect:/main/main.do");
 		return mav;
 	}
+	  
+	  @Override
+	  @RequestMapping(value = "/member/searchId.do", method = RequestMethod.POST)
+	public ResponseEntity searchId(MemberDTO member, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		  	
+		  	HttpHeaders responseHeaders = new HttpHeaders();
+			 responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+			 String message; 
+			 ResponseEntity resEnt = null; 
+			 
+			 String id = memberService.searchId(member);
+			 message = "<script>"; 
+			  message += "alert('보유하신 아이디는 "+id+" 입니다.');";
+			  message += " location.href='"+request.getContextPath()+"/member/loginForm.do';";
+			  message += "</script>"; 
+			  resEnt = new ResponseEntity(message, responseHeaders,HttpStatus.OK); 
+			 return resEnt;
+	}
+	  
+	  @Override
+	  @RequestMapping(value = "/member/searchPw.do", method = RequestMethod.POST)
+	public ResponseEntity searchPw(MemberDTO member, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		  HttpHeaders responseHeaders = new HttpHeaders();
+		  responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		  String message; 
+		  ResponseEntity resEnt = null; 
+		  
+		int isExist = memberService.searchPw(member);
+		
+		
+		if(isExist==1) {
+			HttpSession session = request.getSession();
+			session.setAttribute("member", member);
+			 message = "<script>"; 
+			 message += " location.href='"+request.getContextPath()+"/member/changePwForm.do';";
+			 message += "</script>"; 
+			 resEnt = new ResponseEntity(message, responseHeaders,HttpStatus.OK); 
+		}else {
+			  message = "<script>"; 
+			  message += "alert('아이디가 존재하지 않습니다');";
+			  message += " location.href='"+request.getContextPath()+"/member/searchPwForm.do';";
+			  message += "</script>"; 
+			  resEnt = new ResponseEntity(message, responseHeaders,HttpStatus.OK); 
+		}
+		
+		return resEnt;
+	}
+	  
 	
+	  
+	@Override
+	 @RequestMapping(value = "/member/updatePw.do", method = RequestMethod.POST)
+	public ResponseEntity changePw(String pwd, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		HttpSession session = request.getSession();
+		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		System.out.println(member.getId());
+		System.out.println(member.getEmail());
+		member.setPwd(pwd);
+		memberService.updatePw(member);
+		
+		 HttpHeaders responseHeaders = new HttpHeaders();
+		 responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		 String message; 
+		 ResponseEntity resEnt = null; 
+		
+		 message = "<script>"; 
+		  message += "alert('비밀번호가 변경되었습니다. 신규 비밀번호로 로그인해 주세요');";
+		  message += " location.href='"+request.getContextPath()+"/member/loginForm.do';";
+		  message += "</script>"; 
+		  
+		  resEnt = new ResponseEntity(message, responseHeaders,HttpStatus.OK);
+		  return resEnt;
+	}
 	
 }
