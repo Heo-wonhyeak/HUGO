@@ -37,7 +37,7 @@ import kr.co.hugo.member.dto.MemberDTO;
 @Controller
 public class EventControllerImpl implements EventController {
 	
-	private static String ARTICLE_IMAGE_REFO = "/Users/hwh/Documents/GitHub/HUGO/_HUGO/src/main/webapp/resources/img";
+	private static String ARTICLE_IMAGE_REFO = "/Users/hwh/Documents/HUGO/_HUGO/src/main/webapp/resources/img";
 	
 	@Autowired
 	private EventService eventService;

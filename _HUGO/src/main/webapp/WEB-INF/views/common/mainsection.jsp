@@ -139,7 +139,7 @@
                 </div>
                 <div class="swiper-button-next Nbtn5"></div>
                 <div class="swiper-button-prev Pbtn5"></div>
-                <p class="view-more"><a href="#">더보기</a></p>
+                <p class="view-more"><a href="${contextPath}/restaurants/restaurantsList.do">더보기</a></p>
             </div>
         </section>
         <script>
