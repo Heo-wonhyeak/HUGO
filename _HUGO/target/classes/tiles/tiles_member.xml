@@ -7,7 +7,7 @@
 
 	<!-- 회원가입 뷰 -->
 	<definition name="/member/signupForm" extends="baseLayout" >
-		<put-attribute name="title" value="HUGO - 회원가입 페이지" />
+		<put-attribute name="title" value="HUGO - 회원가입" />
 		<put-attribute name="body" value="/WEB-INF/views/member/signupForm.jsp"/>
 	</definition>	
 	
@@ -16,6 +16,26 @@
 		<put-attribute name="title" value="HUGO - 약관동의" />
 		<put-attribute name="body" value="/WEB-INF/views/member/agree.jsp"/>
 	</definition>	
+	
+	<!-- 비밀번호 찾기뷰-->
+	<definition name="/member/searchIdForm" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO - 아이디 찾기" />
+		<put-attribute name="body" value="/WEB-INF/views/member/searchIdForm.jsp"/>
+	</definition>	
+	
+	<!-- 비밀번호 찾기뷰-->
+	<definition name="/member/searchPwForm" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO - 비밀번호 찾기" />
+		<put-attribute name="body" value="/WEB-INF/views/member/searchPwForm.jsp"/>
+	</definition>	
+	
+	<!-- 비밀번호 변경 뷰-->
+	<definition name="/member/changePwForm" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO - 비밀번호 변경" />
+		<put-attribute name="body" value="/WEB-INF/views/member/changePwForm.jsp"/>
+	</definition>	
+	
+
 	
 	<!-- 로그인 뷰 -->
 	<definition name="/member/loginForm" extends="baseLayout" >

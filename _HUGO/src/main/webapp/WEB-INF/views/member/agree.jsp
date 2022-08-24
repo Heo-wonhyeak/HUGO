@@ -168,6 +168,28 @@
 		}
 
 	</style>
+	<script type="text/javascript">
+		
+		function fn_chkAll(){
+			if($("#chkAll").is(':checked')) {
+				$(".chk").prop("checked", true);
+			} else {
+				$(".chk").prop("checked", false);
+			}
+		}
+	
+	
+	
+		function fn_goSignUp(){
+			if($("#chk1").is(':checked') && $("#chk2").is(':checked') && $("#chk3").is(':checked')) {
+				location.href='${contextPath}/member/signupForm.do'
+			}else{
+				alert("약관에 모두 동의하셔야 합니다.")
+				return false
+			}
+		} 
+	
+	</script>
 </head>
 <body>
 		<h2 class="h2">홈페이지 이용약관</h2>
@@ -300,7 +322,7 @@ HUGO 서비스와 관련하여 궁금하신 사항이 있으시면 고객센터(
 			</textarea>
 		</div>
 		<p>
-			<input type="checkbox" id="chk1"><label for="chk1">홈페이지
+			<input type="checkbox" id="chk1" class="chk"><label for="chk1">홈페이지
 				이용약관에 동의합니다.(동의하지 않을경우 가입되지 않습니다.)</label>
 		</p><br>
 
@@ -371,7 +393,7 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 			</textarea>
 		</div>
 		<p>
-			<input type="checkbox" id="chk2"><label for="chk2">홈페이지
+			<input type="checkbox" id="chk2" class="chk"><label for="chk2" >홈페이지
 				개인정보 처리방침에 동의합니다.(동의하지 않을경우 가입되지 않습니다.)</label>
 		</p><br>
 		
@@ -452,15 +474,15 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
          </textarea>
 		</div>
 		<p>
-			<input type="checkbox" id="chk3"><label for="chk3">홈페이지
-				위치기반 서비스 이용약관에 동의합니다.(동의하지 않을경우 가입되지 않습니다.)</label>
+			<input type="checkbox" id="chk3" class="chk">
+			<label for="chk3">홈페이지 위치기반 서비스 이용약관에 동의합니다.(동의하지 않을경우 가입되지 않습니다.)</label>
 		</p>
 		
 		<p>
-			<input type="checkbox" id="chk3"><label for="chk3">
-				위 약관에 모두 동의 하십니까?</label>
+			<input type="checkbox" id="chkAll" onClick="fn_chkAll()">
+			<label for="chkAll">위 약관에 모두 동의 하십니까?</label>
 				<!-- onClick 함수 정의하여 javascript 로 체크 여부 확인 후 다음 단계로 이동 -->
-			<input type="button" id="next_btn" value="다음단계로" onClick="location.href='${contextPath}/member/signupForm.do'"/>
+			<input type="button" id="next_btn" value="다음단계로" onClick="fn_goSignUp()"/>
 		</p><br>
 		
 	</div>

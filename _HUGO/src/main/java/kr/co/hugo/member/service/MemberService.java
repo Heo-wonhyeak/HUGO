@@ -10,6 +10,8 @@ public interface MemberService {
 
 	public String duplicateCheck(String id) throws Exception;
 
-	public MemberDTO login(MemberDTO member)throws DataAccessException;
-
+	public MemberDTO login(MemberDTO member) throws Exception;
+	public String searchId(MemberDTO member) throws Exception;
+	public int searchPw(MemberDTO member) throws Exception;
+	public void updatePw(MemberDTO member) throws Exception;
 }

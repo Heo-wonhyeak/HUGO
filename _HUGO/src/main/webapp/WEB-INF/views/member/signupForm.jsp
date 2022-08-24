@@ -71,8 +71,7 @@
 				type: "post"
 				,url: "${contextPath }/member/duplicateCheck.do"
 				,data: { id : _id}
-				,success: function (data,textStatus) {
-					alert("성공진입"); 
+				,success: function (data,textStatus) { 
 					if(data == 'false') {
 						alert('사용가능한 아이디 입니다');
 						$('#check_btn').prop('disabled',true);
@@ -95,7 +94,7 @@
 					$('#pwd').focus();
 					return false;
 				}
-				if($('#pw_check').val() == "") {
+				if($('#pw_check').val() == "" ) {
 					alert("비밀번호 확인을 입력해주세요");
 					$('#pw_check').focus();
 					return false;
@@ -111,7 +110,7 @@
 					return false;
 				}
 				if($('#nickname').val() == "") {
-					alert("별명 입력해주세요");
+					alert("닉네임을 입력해주세요");
 					$('#nickname').focus();
 					return false;
 				}

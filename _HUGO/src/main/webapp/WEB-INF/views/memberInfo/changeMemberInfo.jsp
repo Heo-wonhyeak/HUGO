@@ -167,7 +167,7 @@
 			if($(".Btn_pwd").val()=="취소"){
 				if($("#pwd_chk").val()==${member.pwd}){
 					if($("#pwd_new1").val()==$("#pwd_new2").val()){
-						$("#pw").val()=$("#pw_new1").val()
+						$("#pw").val($("#pw_new1").val())
 					}else{
 						elert("신규 비밀번호가 일치하지 않습니다")
 						return false;
