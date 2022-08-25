@@ -481,7 +481,7 @@ public class EventControllerImpl implements EventController {
 			
 			message ="<script>";
 			message +="alert('오류가 발생했습니다.');";
-			message +="location.href='"+request.getContextPath()+"/event/eventDTL.do?event_idx='"+event_idx+";";
+			message +="location.href='"+request.getContextPath()+"/event/eventDTL.do?event_idx='"+event_idx+"&action=registration;";
 			message +="</script>";
 			
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED); 
@@ -524,7 +524,7 @@ public class EventControllerImpl implements EventController {
 			
 			message ="<script>";
 			message +="alert('댓글이 작성되었습니다');";
-			message +="location.href='"+multipartRequest.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"';";
+			message +="location.href='"+multipartRequest.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"&action=registration';";
 			message +="</script>";
 			
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK); 
@@ -533,7 +533,7 @@ public class EventControllerImpl implements EventController {
 			
 			message ="<script>";
 			message +="alert('댓글 입력중 오류가 발생했습니다.');";
-			message +="location.href='"+multipartRequest.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"';";
+			message +="location.href='"+multipartRequest.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"&action=registration';";
 			message +="</script>";
 			
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK); 
@@ -578,7 +578,7 @@ public class EventControllerImpl implements EventController {
 				
 				message ="<script>";
 //				message +="$('#like').html(\"<i class='fa-solid fa-heart' style='color:red;'></i> &nbsp;좋아요&nbsp;${event.like_count}\");";
-				message +="location.href='"+request.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"';";
+				message +="location.href='"+request.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"&action=registration';";
 				message +="</script>";
 				
 				resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.OK); 
@@ -605,6 +605,48 @@ public class EventControllerImpl implements EventController {
 		}
 		
 		
+		
+		return resEnt;
+	}
+
+	@RequestMapping(value="/event/removeReply.do",method=RequestMethod.POST)
+	@Override
+	@ResponseBody
+	public ResponseEntity removeReply(@RequestParam("event_reply_idx") int event_reply_idx,@RequestParam("event_idx") int event_idx, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=utf-8");
+		
+		//문제 발생 소지를 없애기 위해 세팅
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		String message;
+		ResponseEntity resEnt = null;
+		
+		
+		try {
+			eventService.removeReply(event_reply_idx);
+			
+			message ="<script>";
+			message +="alert('댓글을 삭제했습니다.');";
+			message +="location.href='"+request.getContextPath()+"/event/eventDTL.do?event_idx="+event_idx+"&action=registration';";
+			message +="</script>";
+			
+			// 글을 삭제한 후 메시지를 전달함
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			
+		} catch (Exception e) {
+			
+			message ="<script>";
+			message +="alert('오류가 발생했습니다.');";
+			message +="location.href='"+request.getContextPath()+"/event/eventDTL.do?event_idx='"+event_idx+"&action=registration;";
+			message +="</script>";
+			
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED); 
+			
+			e.printStackTrace();
+			
+		}
 		
 		return resEnt;
 	}

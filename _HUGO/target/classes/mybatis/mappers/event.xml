@@ -158,6 +158,12 @@
 		]]>
 	</delete>
 	
+	<delete id="deleteReply" parameterType="int">
+		<![CDATA[ 
+			DELETE HUGO_EVENT_REPLY WHERE event_reply_idx = #{event_reply_idx}
+		]]>
+	</delete>
+	
 	<update id="modEvent" parameterType="java.util.Map">
 		<![CDATA[ 
 			UPDATE HUGO_EVENT_BOARD 

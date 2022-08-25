@@ -14,10 +14,10 @@
 	<title>Insert title here</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
-	<link rel ="stylesheet" href="${contextPath }/resources/css/event.css?after20220820" type="text/css"/>	
+	<link rel ="stylesheet" href="${contextPath }/resources/css/event.css?after20220825" type="text/css"/>	
 	<script type="text/javascript">
-		function declaration() {
-  			window.open("${contextPath}/event/declaration.do","a","width=400, height=500px, left=100, top=50")
+		function declaration(idx) {
+  			window.open("${contextPath}/event/declaration.do?event_reply_idx="+idx,"a","width=400, height=500px, left=100, top=50")
   		}
 		 
 		$(document).ready(function () {
@@ -74,13 +74,13 @@
 				form.setAttribute("action",url);
 				
 				//js 이용해 동적으로 input 태그를 만드는 역할!
-				let articleNoInput = document.createElement("input");
-				articleNoInput.setAttribute("type", "hidden");
-				articleNoInput.setAttribute("name", "event_idx");	// articleNO 가 네이밍이 밑에 있는데 괜찮을까?
-				articleNoInput.setAttribute("value", event_idx);
+				let eventNoInput = document.createElement("input");
+				eventNoInput.setAttribute("type", "hidden");
+				eventNoInput.setAttribute("name", "event_idx");	// articleNO 가 네이밍이 밑에 있는데 괜찮을까?
+				eventNoInput.setAttribute("value", event_idx);
 				
 				//form 태그 아래에 input 태그를 넣음(부모자식)
-				form.appendChild(articleNoInput);
+				form.appendChild(eventNoInput);
 				//body 아래에 form 태그를 넣음 (부모자식)
 				document.body.appendChild(form);
 				
@@ -89,8 +89,46 @@
 			} else {
 				//취소 클릭시 alert 창띄우고 다시 게시글 상세보기 화면 출력
 				alert("취소되었습니다.");
-				location.href="${contextPath}/board/viewArticle.do?articleNO="+articleNO;
+				location.href="${contextPath}/event/eventDTL.do?event_idx="+event_idx+"&action=registration";
 			}	
+		}
+		
+		function fn_del_reply(url,event_reply_idx,event_idx) {
+			//변수 선언 후 삭제 확인창 띄우기
+			let del;
+			del = confirm("삭제하시겠습니까?");
+			
+			//확인 클릭시!
+			if(del == true) {
+				//js 이용해 동적으로 form tag를 만드는 역할!
+				let form = document.createElement("form");
+				form.setAttribute("method", "post");
+				form.setAttribute("action",url);
+				
+				//js 이용해 동적으로 input 태그를 만드는 역할!
+				let repleNoInput = document.createElement("input");
+				repleNoInput.setAttribute("type", "hidden");
+				repleNoInput.setAttribute("name", "event_reply_idx");
+				repleNoInput.setAttribute("value", event_reply_idx);
+				
+				let eventNoInput = document.createElement("input");
+				eventNoInput.setAttribute("type", "hidden");
+				eventNoInput.setAttribute("name", "event_idx");	
+				eventNoInput.setAttribute("value", event_idx);
+				
+				//form 태그 아래에 input 태그를 넣음(부모자식)
+				form.appendChild(repleNoInput);
+				form.appendChild(eventNoInput);
+				//body 아래에 form 태그를 넣음 (부모자식)
+				document.body.appendChild(form);
+				
+				//서버로 요청 전송!
+				form.submit();
+			} else {
+				//취소 클릭시 alert 창띄우고 다시 게시글 상세보기 화면 출력
+				alert("취소되었습니다.");
+				location.href="${contextPath}/event/eventDTL.do?event_idx="+event_idx+"&action=registration";
+			}
 		}
 
 		
@@ -111,7 +149,25 @@
 		</tr>
 		<tr align="center">
 			<th class="DTLLine" width="10%">No.${event.event_idx }</th>
-			<th class="DTLLine" width="45%" align="left">${event.title }</th>
+			<th class="DTLLine" width="45%" align="left">
+				<c:if test="${event.writeHeader ne null }">
+					<c:choose>
+						<c:when test="${event.writeHeader eq 'attendance'}">
+							[출첵 Event]
+						</c:when>
+						<c:when test="${event.writeHeader eq 'monthly'}">
+							[이달의 Event]
+						</c:when>
+						<c:when test="${event.writeHeader eq 'birth'}">
+							[생일 Event]
+						</c:when>
+						<c:when test="${event.writeHeader eq 'new'}">
+							[신규 Event]
+						</c:when>
+					</c:choose>
+				</c:if>
+				${event.title }
+			</th>
 			<th class="DTLLine" width="35%">${event.event_period }</th>
 			<th class="DTLLine" width="10%">${event.id }</th>
 		</tr>
@@ -143,7 +199,7 @@
 				<i class="fa-regular fa-comment-dots"></i>
 				&nbsp;댓글수&nbsp;${eventMap.replyCount }
 			</span>
-			<span id="list"><a href="${contextPath }/event/runningEventPage.do"><i class="fa-solid fa-list-ul"></i>목록</a></span>
+			<span id="list"><a href="${contextPath }/event/runningEventPage.do?boarder=runningEvent"><i class="fa-solid fa-list-ul"></i>목록</a></span>
 		</div>
 		<div width="90%">
 			<div class="repleHead"><b>댓글</b></div>
@@ -173,13 +229,13 @@
 		<c:forEach var="reply" items="${reples }">
 			<div>
 				<div>
-					<span>
+					<span id="replyId">
 						<b>${reply.nickname }</b>
 					</span>
 					<span id="date">
 						${reply.writedate }
 					</span>
-					<span id="declaration" class="declaration" onclick="declaration()">
+					<span id="declaration" class="declaration" onclick="declaration(${reply.event_reply_idx})">
 						|&nbsp;신고
 					</span>
 				</div>
@@ -187,9 +243,11 @@
 					<div id="replyContent">
 						${reply.content }
 					</div>
-					<div id="reReply">
-						<i class="fa-solid fa-check"></i>
-					</div>
+					<c:if test="${member.nickname == reply.nickname }">
+						<div id="replyDelete" onclick="fn_del_reply('${contextPath }/event/removeReply.do',${reply.event_reply_idx},${reply.event_idx} )">
+							<i class="fa-solid fa-trash-can"></i>
+						</div>
+					</c:if>
 					
 				</div>
 			</div>

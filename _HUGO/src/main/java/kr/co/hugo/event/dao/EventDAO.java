@@ -43,4 +43,6 @@ public interface EventDAO {
 	public void updateLikeCountDown(Map likeMap) throws Exception;
 	// 댓글 최신순
 	public List<EventReplyDTO> selectEventReplesD(int event_idx) throws Exception;
+	// 댓글 삭제
+	public void deleteReply(int event_reply_idx) throws Exception;
 }

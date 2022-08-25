@@ -16,9 +16,9 @@
 		$(document).ready(function() {
 			
 		});
+		let end = 9;
 		$(function(){
-			let end = 9;
-
+			
 			$("#more").click(function(e){ // Load More를 위한 클릭 이벤트e
 				e.preventDefault();
 				$(".eventArticle:hidden").slice(0, end).show(); // 숨김 설정된 다음 9개를 선택하여 표시
@@ -92,13 +92,32 @@
 							<c:if test="${eventNum.index%3 == 0 }">
 								</tr><tr align="center" style="width:90%;">
 							</c:if>
-							<!-- 사진 경로만 수정하면 됨 -->
 							<c:if test="${eventNum.index < 9 }" >
 								<td class="eventArticle">
-									이벤트 번호 : ${event.event_idx } / 이벤트 파일명 :  ${event.ofile}
 									<img src="${contextPath }/resources/img/event/${event.event_idx }/${event.ofile}" alt=" 사진" class="picture"/>
 									<div class="enterTitle" onclick="location.href='${contextPath}/event/eventDTL.do?event_idx=${event.event_idx }&action=registration'">
-										<span class="eventTitle">${event.title }</span> <span class="eventCount"> [${event.visit_count }]</span><br/>
+										<span class="eventTitle">
+											<c:if test="${event.writeHeader ne null }">
+												<c:choose>
+													<c:when test="${event.writeHeader eq 'attendance'}">
+														[출첵 Event]
+													</c:when>
+													<c:when test="${event.writeHeader eq 'monthly'}">
+														[이달의 Event]
+													</c:when>
+													<c:when test="${event.writeHeader eq 'birth'}">
+														[생일 Event]
+													</c:when>
+													<c:when test="${event.writeHeader eq 'new'}">
+														[신규 Event]
+													</c:when>
+												</c:choose>
+											</c:if>
+											${event.title }
+										</span> 
+										<span class="eventCount"> 
+											[${event.visit_count }]
+										</span><br/>
 										<span class="eventPeriod"> ${event.event_period }</span>
 									</div>
 								</td>
@@ -124,6 +143,6 @@
 				</c:if>
 			</c:if>
 		</tr>
-		
+	</table>
 </body>
 </html>

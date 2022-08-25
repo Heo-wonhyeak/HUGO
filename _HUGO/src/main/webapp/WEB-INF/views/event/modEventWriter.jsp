@@ -21,7 +21,7 @@
 			<div id="selectBox">
 				<select name="boarder" id="boarderSelect">
 				    <option value="">게시판을 선택해 주세요</option>
-				    <option value="runningEvent" selected="selected">진행중 이벤트</option>
+				    <option value="runningEvent">진행중 이벤트</option>
 				    <option value="endEvent">종료된 이벤트</option>
 				    <option value="coupone">쿠폰</option>
 				</select>

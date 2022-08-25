@@ -125,6 +125,11 @@ public class EventServiceImpl implements EventService {
 		
 	}
 
+	@Override
+	public void removeReply(int event_reply_idx) throws Exception {
+		eventDAO.deleteReply(event_reply_idx);	
+	}
+
 
 
 
