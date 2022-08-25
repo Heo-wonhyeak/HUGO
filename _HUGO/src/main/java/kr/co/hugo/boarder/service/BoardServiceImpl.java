@@ -32,10 +32,33 @@ public class BoardServiceImpl implements BoardService {
 
 	/* 매장 상세페이지 모든 리뷰 불러오기 default */
 	@Override
-	public Map<Object,Object> listReviews(int restIdx) throws Exception {
+	public Map<Object,Object> listReviews(int restIdx,int list,String nickname) throws Exception {
 		Map<Object,Object> reviewsMap = new HashMap<>();
 		List<ImageDTO> imgList = new ArrayList<>();
-		List<BoardDTO> reviewList = boardDAO.selectAllReviewsList(restIdx);	
+		List<BoardDTO> reviewList = new ArrayList<>();
+		if(list ==11) {
+			System.out.println("최신순 호출 !");
+			reviewList = boardDAO.selectAllReviewsList(restIdx);
+		}
+		else if(list ==12) {
+			System.out.println("별점순 호출 !");
+			reviewList = boardDAO.selectAllSteamList(restIdx);
+		}
+		else if(list ==13) {
+			System.out.println("방문순 호출 !");
+			reviewList = boardDAO.selectAllVisitList(restIdx);
+		}
+		else if(list == 14) {
+			System.out.println("내가쓴리뷰  호출 !");
+			List<BoardDTO> reviewListIdx = new ArrayList<>();
+			reviewListIdx = boardDAO.selectAllReviewsList(restIdx);
+			for(int i=0;i<reviewListIdx.size();i++) {
+				String _nickName = reviewListIdx.get(i).getNickName();
+				if(nickname == _nickName) {
+					boardDAO.selectMyReviewList(restIdx,nickname);
+				}
+			}
+		}	
 		for(int i=0;i<reviewList.size();i++) {
 			int reviewIdx = reviewList.get(i).getArticleIdx();
 			ImageDTO reviewImg = boardDAO.selectReviewImage(reviewIdx);
@@ -46,5 +69,6 @@ public class BoardServiceImpl implements BoardService {
 		reviewsMap.put("imgList", imgList);
 		return reviewsMap;
 	}
+
 
 }

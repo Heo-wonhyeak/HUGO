@@ -117,10 +117,10 @@
 	<section class="restaurants-review-section">
 		<div class="restaurants-review-header">Review</div>
 		<div class="restaurants-review-sort">
-			<span id="restaurants-review-sort-new"><a href="${contextPath }/board/reReviewArray.do?array=11">최신순</a></span>&nbsp;&nbsp;&nbsp;/&nbsp;
-			<span id="restaurants-review-sort-star"><a href="${contextPath }/board/reReviewArray.do?array=12">별점순</a></span>&nbsp;&nbsp;&nbsp;/&nbsp;
-			<span id="restaurants-review-sort-visit"><a href="${contextPath }/board/reReviewArray.do?array=13">방문순</a></span>&nbsp;&nbsp;&nbsp;/&nbsp;
-			<span id="restaurants-review-sort-myReview"><a href="${contextPath }/board/reReviewArray.do?array=14">내가 쓴리뷰</a></span>
+			<span id="restaurants-review-sort-new"><a href="${contextPath }/restaurants/restaurantView.do?restIdx=${restaurant.restIdx }&array=11">최신순</a></span>&nbsp;&nbsp;&nbsp;/&nbsp;
+			<span id="restaurants-review-sort-star"><a href="${contextPath }/restaurants/restaurantView.do?restIdx=${restaurant.restIdx }&array=12">별점순</a></span>&nbsp;&nbsp;&nbsp;/&nbsp;
+			<span id="restaurants-review-sort-visit"><a href="${contextPath }/restaurants/restaurantView.do?restIdx=${restaurant.restIdx }&array=13">방문순</a></span>&nbsp;&nbsp;&nbsp;/&nbsp;
+			<span id="restaurants-review-sort-myReview"><a href="${contextPath }/restaurants/restaurantView.do?restIdx=${restaurant.restIdx }&array=14">내가 쓴리뷰</a></span>
 		</div>
 
 		<div class="restaurants-review-writeInfo">
@@ -141,9 +141,9 @@
 			
 						<div class="restaurants-review-contents">
 							<div class="restaurants-review-contents-txt">${reviewList.contents }
-								<p><a onClick="popUp('${reviewList.articleIdx }')" target="_parent">...더보기</a></p>
+									<p><a onClick="popUp('${reviewList.articleIdx }')" target="_parent">...더보기</a></p>
 							</div>
-						
+					
 							<div class="restaurants-review-contents-image">											
 										<img class="restaurants-review-contents-imageInfo" alt="" src="${contextPath}/download.do?imageFileName=${imgList2[status.index].imageFileName}&imageFileNO=${imgList2[status.index].imageFileNO}&restaurantIdx=${imgList2[status.index].restaurantIdx}" />						
 								<div class="restaurants-review-contents-imageInfo-plus">

@@ -50,7 +50,7 @@
                 <div class="swiper-wrapper">
 					<c:forEach items="${starList}" var="starList" varStatus="status" end="10">
 						<div class="swiper-slide">
-	                        <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${starImgList[status.index].restaurantIdx}'">
+	                        <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${starImgList[status.index].restaurantIdx}&array=11'">
 	                            <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${starImgList[status.index].imageFileName}&imageFileNO=${starImgList[status.index].imageFileNO}&restaurantIdx=${starImgList[status.index].restaurantIdx}"></img>
 	                            <div class="list-info">
 	                                <span class="list-info-name">${starList.restName }</span><span class="list-info-value">⭐&nbsp;&nbsp;${starList.restStarAvg }</span>
@@ -71,7 +71,7 @@
                 <div class="swiper-wrapper">
                     <c:forEach items="${visitList}" var="visitList" varStatus="status" end="10">
 						<div class="swiper-slide">
-	                        <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${visitImgList[status.index].restaurantIdx}'">
+	                        <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${visitImgList[status.index].restaurantIdx}&array=11'">
 	                            <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${visitImgList[status.index].imageFileName}&imageFileNO=${visitImgList[status.index].imageFileNO}&restaurantIdx=${visitImgList[status.index].restaurantIdx}"></img>
 	                            <div class="list-info">
 	                                <span class="list-info-name">${visitList.restName }</span><span class="list-info-value">😀&nbsp;&nbsp;${visitList.restVisitCount }</span>
@@ -91,7 +91,7 @@
                 <div class="swiper-wrapper">
                		  <c:forEach items="${steamedList}" var="item" varStatus="status" end="10">
 							<div class="swiper-slide">
-	                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${steamedImgList[status.index].restaurantIdx}'">
+	                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${steamedImgList[status.index].restaurantIdx}&array=11'">
 	                     	        <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${steamedImgList[status.index].imageFileName}&imageFileNO=${steamedImgList[status.index].imageFileNO}&restaurantIdx=${steamedImgList[status.index].restaurantIdx}" />
 	                         	   <div class="list-info">	
 	                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">❤️ &nbsp;&nbsp;${item.restVisitCount }</span>
@@ -111,7 +111,7 @@
                 	<div class="swiper-wrapper">
 	                	<c:forEach items="${distanceList}" var="item" varStatus="status" end="10">
 								<div class="swiper-slide">						
-		                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${distanceImgList[status.index].restaurantIdx}'">
+		                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${distanceImgList[status.index].restaurantIdx}&array=11'">
 		                     	      <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${distanceImgList[status.index].imageFileName}&imageFileNO=${distanceImgList[status.index].imageFileNO}&restaurantIdx=${distanceImgList[status.index].restaurantIdx}"/>
 		                         	   <div class="list-info">	
 		                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">️ &nbsp;&nbsp;100&nbsp;&nbsp;m</span>
@@ -130,7 +130,7 @@
                 	<div class="swiper-wrapper">
 	                	<c:forEach items="${famousList}" var="item" varStatus="status" end="10">
 								<div class="swiper-slide">
-		                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${famousImgList[status.index].restaurantIdx}'">
+		                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${famousImgList[status.index].restaurantIdx}&array=11'">
 		                     	       <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${famousImgList[status.index].imageFileName}&imageFileNO=${famousImgList[status.index].imageFileNO}&restaurantIdx=${famousImgList[status.index].restaurantIdx}"></img>
 		                         	   <div class="list-info">	
 		                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">️👍 &nbsp;&nbsp;${item.restStarAvg }</span>

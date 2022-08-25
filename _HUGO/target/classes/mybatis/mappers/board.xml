@@ -46,9 +46,31 @@
 		 ]]>
 	</insert> -->
 	
+	<!-- default 리뷰 (최신순) -->
 	<select id="selectAllReviewList" resultType="boardDTO" parameterType="int">
 		<![CDATA[ 		
 			SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = #{restIdx} order by SYSDATE
+		 ]]>
+	</select>
+	
+	<!-- 리뷰 (별점순) -->
+	<select id="selectAllStemaList" resultType="boardDTO" parameterType="int">
+		<![CDATA[ 		
+			SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = #{restIdx} order by starcount
+		 ]]>
+	</select>
+	
+	<!-- 리뷰 (방문순) -->
+	<select id="selectAllVisitList" resultType="boardDTO" parameterType="int">
+		<![CDATA[ 		
+			SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = #{restIdx} order by usertotalreview
+		 ]]>
+	</select>
+	
+	<!-- 내가쓴 리뷰 -->
+	<select id="selectMyList" resultType="boardDTO" parameterType="String">
+		<![CDATA[ 		
+			SELECT * FROM REVIEW_BOARD WHERE nickname = #{nickname} order by SYSDATE
 		 ]]>
 	</select>
 	

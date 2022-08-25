@@ -8,7 +8,7 @@
 .swiper-container {
 	margin-top: 40px;
 	width: 100%;
-	height: 45%;
+	height: 50%;
 }
 
 .swiper-wrapper {
@@ -16,6 +16,7 @@
 	flex-direction: row;
 	height: 100%;
 	width: 90%;
+	margin-bottom:50px;
 }
 
 .swiper-slide {
@@ -28,10 +29,10 @@
 .slideMainImage {
 	border:5px solid #9bb7d6;
 	margin-left: 30px;
-	margin-top: 20px;
 	width: 82%;
 	height: 250px;
 	cursor: pointer;
+	margin-bottom:50px;
 }
 
 .swiper-slide-active, .swiper-slide-active+.swiper-slide,
@@ -167,6 +168,7 @@ a {
 	font-size: 35px;
 	font-weight: bold;
 	padding-left: 30px;
+	color: #9bb7d6;
 }
 
 .restaurants-review-sort {
@@ -179,6 +181,13 @@ a {
 
 .restaurants-review-sort span {
 	padding: 10px 20px 10px 0;
+}
+.RestaurantReviewList__Empty{
+	margin:auto;
+	text-align: center;
+	font-size: 1.5em;
+	margin-top: 50px;
+	color: #9bb7d6;
 }
 
 .restaurants-review-writeInfo {
@@ -208,7 +217,7 @@ a {
 .restaurants-review-contents {
 	width: 60%;
 	height: 200px;
-	font-size:0.9em;
+	font-size:1.2em;
 }
 
 .restaurants-review-steamed {

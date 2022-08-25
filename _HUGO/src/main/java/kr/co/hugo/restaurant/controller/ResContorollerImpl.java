@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.hugo.boarder.dto.BoardDTO;
 import kr.co.hugo.boarder.dto.ImageDTO;
 import kr.co.hugo.boarder.service.BoardService;
 import kr.co.hugo.member.dto.MemberDTO;
@@ -34,14 +33,17 @@ public class ResContorollerImpl implements ResController {
 
 	@RequestMapping(value="/restaurants/restaurantView.do" , method= {RequestMethod.GET,RequestMethod.POST})
 	@Override
-	public ModelAndView restaurantView(@RequestParam("restIdx") int restIdx,HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView restaurantView(@RequestParam("restIdx") int restIdx,@RequestParam("array") int list,
+									HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String viewName = (String)request.getAttribute("viewName");	
 		HttpSession session = request.getSession();
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		String id = null;
+		String nickname = null;
 		if (memberDTO != null) {
 			id = memberDTO.getId();
+			nickname=memberDTO.getNickname();
 			
 		}
 		Map<String, Object> viewMap = new HashMap<>();
@@ -49,14 +51,15 @@ public class ResContorollerImpl implements ResController {
 		viewMap.put("id", id);	
 		// 상세보기 이미지, 정보 요청
 		Map<String, Object> restMap = resService.restaurantView(viewMap);
-		
 		// 상세보기 리뷰 이미지 정보 요청.
-		Map<Object,Object> reviewsMap = boardService.listReviews(restIdx); 
-		reviewsMap.put("id", id);
+		Map<Object,Object> reviewsMap = new HashMap<>();
+		reviewsMap = boardService.listReviews(restIdx,list,nickname); 	
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
-		mav.addObject("restMap", restMap);
+		reviewsMap.put("id", id);
 		mav.addObject("reviewsMap", reviewsMap);
+		mav.addObject("restMap", restMap);
+		
 		return mav;
 	}
 
@@ -107,7 +110,7 @@ public class ResContorollerImpl implements ResController {
 
 		return mav;
 	}
-
+	@Override
 	@RequestMapping(value = "/restaurants/restaurantTOP50.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView restaurantTop50(@RequestParam("array") int list, HttpServletRequest request,
 			HttpServletResponse response) {

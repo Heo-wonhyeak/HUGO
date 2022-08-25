@@ -1,5 +1,6 @@
 package kr.co.hugo.boarder.controller;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -15,12 +16,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.hugo.boarder.dto.BoardDTO;
+import kr.co.hugo.boarder.dto.ImageDTO;
 import kr.co.hugo.boarder.service.BoardService;
+import kr.co.hugo.restaurant.dto.RestaurantDTO;
 
 
 
@@ -75,5 +79,5 @@ public class BoardControllerImpl implements BoardController {
 		
 		return resEnt;
 	}
-
+	
 }
