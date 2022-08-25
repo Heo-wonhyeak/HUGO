@@ -10,5 +10,6 @@ public interface ResController {
 	
 	// 매장 상세보기 창
 	public ModelAndView restaurantView(@RequestParam("restIdx") int restIdx, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
+	// 매장 이미지 더보기 창
+	ModelAndView restaurantsPhoto(@RequestParam("restIdx") int restIdx, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

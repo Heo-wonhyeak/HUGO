@@ -37,6 +37,7 @@ public class MainController {
 		List<ImageDTO> visitImgList = new ArrayList<>();
 		List<ImageDTO> distanceImgList = new ArrayList<>();
 		List<ImageDTO> famousImgList = new ArrayList<>();
+		String star50List = "starList";
 		System.out.println(starList.size());
 		
 		for(int i=0;i<10;i++) {
@@ -76,6 +77,7 @@ public class MainController {
 		top10List.put("visitImgList",visitImgList);
 		top10List.put("distanceImgList", distanceImgList);
 		top10List.put("famousImgList", famousImgList);	
+		top10List.put("star50List",star50List);
 		ModelAndView mav = new ModelAndView();
 		String viewName = (String)request.getAttribute("viewName");
 		mav.setViewName(viewName);
