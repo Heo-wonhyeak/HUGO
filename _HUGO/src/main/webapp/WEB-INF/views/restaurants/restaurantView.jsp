@@ -5,7 +5,11 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="restaurant" value="${restMap.restaurant }" />
 <c:set var="menuListarr" value="${restMap.menuListarr }" />
-<%-- <c:set var="imageFileList" value="${articleMap.imageFileList }" /> --%>
+<c:set var="imgList" value="${restMap.imgList }" />
+<c:set var="reviewList" value="${reviewsMap.reviewList }" />
+<c:set var="imgList2" value="${reviewsMap.imgList}" />
+
+
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -25,41 +29,16 @@
 </head>
 <link rel="stylesheet"
 	href="${contextPath }/resources/css/restaurants.css" type="text/css" />
-<title>돼통령 xx점</title>
+<title></title>
 </head>
-<body>
+<body id="restaurantView_body">
 	<div class="swiper-container" id="restaurants-swiperImage">
 		<div class="swiper-wrapper">
+		<c:forEach items="${imgList}" var="imgList" varStatus="status">
 			<div class="swiper-slide">
-				<div class="slideMainImage" onClick="popUpImage()" target="_parent"></div>
+					<img class="slideMainImage" onClick="popUpImage()" target="_parent" alt="" src="${contextPath}/download.do?imageFileName=${imgList.imageFileName}&imageFileNO=${imgList.imageFileNO}&restaurantIdx=${imgList.restaurantIdx}" />
 			</div>
-			<div class="swiper-slide">
-				<div class="slideMainImage" onClick="popUpImage()" target="_parent"></div>
-			</div>
-			<div class="swiper-slide">
-				<div class="slideMainImage" onClick="popUpImage()" target="_parent"></div>
-			</div>
-			<div class="swiper-slide">
-				<div class="slideMainImage" onClick="popUpImage()" target="_parent"></div>
-			</div>
-			<div class="swiper-slide">
-				<div class="slideMainImage" onClick="popUpImage()" target="_parent"></div>
-			</div>
-			<div class="swiper-slide">
-				<div class="slideMainImage" onClick="popUpImage()" target="_parent"></div>
-			</div>
-			<div class="swiper-slide">
-				<div class="slideMainImage" onClick="popUpImage()" target="_parent"></div>
-			</div>
-			<div class="swiper-slide">
-				<div class="slideMainImage" onClick="popUpImage()" target="_parent"></div>
-			</div>
-			<div class="swiper-slide">
-				<div class="slideMainImage" onClick="popUpImage()" target="_parent"></div>
-			</div>
-			<div class="swiper-slide">
-				<div class="slideMainImage" onClick="popUpImage()" target="_parent"></div>
-			</div>
+		</c:forEach>
 		</div>
 		<!-- 양옆 좌우버튼 -->
 		<div class="swiper-button-next"></div>
@@ -115,18 +94,15 @@
 					</tr>
 					<tr>
 						<th>🚗</th>
-
 						<td>${restaurant.restPark }</td>
 					</tr>
-
 					<tr>
 						<th>🔖</th>
-						<td style="font-size: 0.9em"><c:forEach var="menu"
-								items="${menuListarr}" varStatus="status">
-								<p>
-									<c:out value="${menu }" />
-								</p>
-							</c:forEach></td>
+						<td style="font-size: 0.9em">
+							<c:forEach var="menu" items="${menuListarr}" varStatus="status">
+								<p> <c:out value="${menu }" /> </p>
+							</c:forEach>
+						</td>
 					</tr>
 				</table>
 			</div>
@@ -141,47 +117,51 @@
 	<section class="restaurants-review-section">
 		<div class="restaurants-review-header">Review</div>
 		<div class="restaurants-review-sort">
-			<!-- board 게시판 보고 작업 -->
-			<span id="restaurants-review-sort-new">최신순</span>&nbsp;&nbsp;&nbsp;/&nbsp;
-			<span id="restaurants-review-sort-star">별점순</span>&nbsp;&nbsp;&nbsp;/&nbsp;
-			<span id="restaurants-review-sort-visit">방문순</span>&nbsp;&nbsp;&nbsp;/&nbsp;
-			<span id="restaurants-review-sort-myReview">내가 쓴리뷰</span>
+			<span id="restaurants-review-sort-new"><a href="${contextPath }/board/reReviewArray.do?array=11">최신순</a></span>&nbsp;&nbsp;&nbsp;/&nbsp;
+			<span id="restaurants-review-sort-star"><a href="${contextPath }/board/reReviewArray.do?array=12">별점순</a></span>&nbsp;&nbsp;&nbsp;/&nbsp;
+			<span id="restaurants-review-sort-visit"><a href="${contextPath }/board/reReviewArray.do?array=13">방문순</a></span>&nbsp;&nbsp;&nbsp;/&nbsp;
+			<span id="restaurants-review-sort-myReview"><a href="${contextPath }/board/reReviewArray.do?array=14">내가 쓴리뷰</a></span>
 		</div>
 
 		<div class="restaurants-review-writeInfo">
 			<a onClick="popUpWrite(${isLogOn})" target="_parent">✏️ 리뷰 쓰기 </a>
 		</div>
-		<div class="restaurants-review-list">
-			<div class="restaurants-review-head">
-				<div class="restaurants-review-head-image">이미지</div>
-				<div class="restaurants-review-head-name">정원영</div>
-				<div class="restaurants-review-head-star5">⭐ ⭐ ⭐ ⭐ ⭐</div>
-				<div class="restaurants-review-head-revise">
-					<a onClick="popUpFix(${isLogOn})" target="_parent">✏️ 수정/삭제</a>
-				</div>
-			</div>
-			<div class="restaurants-review-contents">
-				<div class="restaurants-review-contents-txt">
-					1212<a onClick="popUp()" target="_parent">...더보기</a>
-				</div>
-				<div class="restaurants-review-contents-image">
-					<div class="restaurants-review-contents-imageInfo"></div>
-					<div class="restaurants-review-contents-imageInfo"></div>
-					<div class="restaurants-review-contents-imageInfo"></div>
-					<div class="restaurants-review-contents-imageInfo-plus">
-						<a onClick="popUp()" target="_parent">more</a>
-					</div>
-				</div>
-			</div>
-			<div class="restaurants-review-steamed" onClick="goodCheck()">추천해요😀(1)</div>
-		</div>
-		<!--
-		<div class="RestaurantReviewList__Empty">
-              <span class="RestaurantReviewList__EmptyTitle">아직 작성된 리뷰가 없네요.</span>
-              <span class="RestaurantReviewList__EmptyDescription">앱에서 해당 식당의 첫 리뷰를 작성해주시겠어요?</span>
-            </div>
-		-->
-		<div class="restaurants-review-list-plus" role="button">더보기</div>
+			<c:choose>
+				<c:when test="${!empty reviewList }">
+					<c:forEach items="${reviewList}" var="reviewList" varStatus="status">
+						<div class="restaurants-review-list">
+							<div class="restaurants-review-head">
+								<img class="restaurants-review-head-image" alt="default" src="${contextPath }/resources/img/restaurant/user_default.jpg"/>
+								<div class="restaurants-review-head-name">${reviewList.nickName }</div>
+								<div class="restaurants-review-head-star5">⭐&nbsp;${reviewList.starCount } 점</div>
+								<div class="restaurants-review-head-revise">
+									<a onClick="popUpFix(${isLogOn})" target="_parent">✏️ 수정/삭제</a>
+								</div>
+							</div>
+			
+						<div class="restaurants-review-contents">
+							<div class="restaurants-review-contents-txt">${reviewList.contents }
+								<p><a onClick="popUp('${reviewList.articleIdx }')" target="_parent">...더보기</a></p>
+							</div>
+						
+							<div class="restaurants-review-contents-image">											
+										<img class="restaurants-review-contents-imageInfo" alt="" src="${contextPath}/download.do?imageFileName=${imgList2[status.index].imageFileName}&imageFileNO=${imgList2[status.index].imageFileNO}&restaurantIdx=${imgList2[status.index].restaurantIdx}" />						
+								<div class="restaurants-review-contents-imageInfo-plus">
+									<a onClick="popUp('${reviewList.articleIdx }')" target="_parent">more</a>
+								</div>
+							</div>
+							</div>
+							<div class="restaurants-review-steamed" onClick="goodCheck()">추천해요😀(1)</div>
+						</div>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<div class="RestaurantReviewList__Empty">
+	             	<span class="RestaurantReviewList__EmptyTitle">아직 작성된 리뷰가 없네요.</span>
+	              	<span class="RestaurantReviewList__EmptyDescription">앱에서 해당 식당의 첫 리뷰를 작성해주시겠어요?</span>
+	            </div>
+			</c:otherwise>
+		</c:choose>
 	</section>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
@@ -189,11 +169,11 @@
 			//initialize swiper when document ready
 			// 상단 이미지 슬라이드
 			const mySwiper = new Swiper('#restaurants-swiperImage', {
-				slidesPerView : 4, // 슬라이드 한번에 3개를 보여줌
-				slidesPerGroup : 4, // 그룹으로 묶을 수
+				slidesPerView : 3, // 슬라이드 한번에 3개를 보여줌
+				slidesPerGroup : 3, // 그룹으로 묶을 수
 				observer : true,
 				observeParents : true,
-				spaceBetween : 5, // 슬라이드간 간격
+				spaceBetween : 0, // 슬라이드간 간격
 				// 그룹수가 맞지 않을 경우 빈칸으로 메우기
 				loopFillGroupWithBlank : false,
 				loop : false, // true 할경우 무한반복
@@ -229,11 +209,11 @@
 		const nTop = Math.round(window.screenY + (window.outerHeight/2) - (popHeight/2));
 
 		// 매장 상세보기 팝업창 이동
-		function popUp(){
+		function popUp(reviewIdx){
 			
 			const id = document.querySelector(".restaurants-review-contents-txt a");
 			const a = document.querySelector(".restaurants-review-contents-txt a");
-			const url ="${contextPath }/restaurants/restaurantsReviewInfo.do?articleNO=${articleNO}"
+			const url ="${contextPath }/restaurants/restaurantsReviewInfo.do?articleNO="+reviewIdx
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);
@@ -259,18 +239,18 @@
 		// 매장 상세보기 수정/삭제 팝업창 이동
 		// 만약 작성자가 아닐시 보이지 않게 하기
 		function popUpFix(isLogOn){
-			if (isLogOn != '' && isLogOn != 'false') {
+			if (isLogOn == '' && isLogOn == 'false') {
 				const url ="${contextPath }/restaurants/restaurantsReviewMod.do"
 				const name = "a";
 				const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 				window.open(url,name,option);
 			}else{
-				alert("")
+				alert("본인이 아니면 삭제할수 없습니다.")
 			}
 		}
 		// 사진 상세보기 팝업창 이동
 		function popUpPhoto(){
-			const url ="${contextPath }/restaurants/restaurantsPhoto.do"
+			const url ="${contextPath}/restaurants/restaurantsPhoto.do?restIdx="+"${restaurant.restIdx}"
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);

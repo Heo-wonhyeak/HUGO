@@ -14,6 +14,9 @@
 <c:set var="visitImgList" value="${top10List.visitImgList}"/>
 <c:set var="distanceImgList" value="${top10List.distanceImgList }" />
 <c:set var="famousImgList" value="${top10List.famousImgList}"/>
+<%
+	String starList = "starList";
+%>
     <!DOCTYPE html>
     <html lang="UTF-8">
 
@@ -59,7 +62,7 @@
                 <!-- 양옆 좌우버튼 -->
                 <div class="swiper-button-next Nbtn1"></div>
                 <div class="swiper-button-prev Pbtn1"></div>
-                <p class="view-more"><a href="#">더보기</a></p>
+                <p class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=1">더보기</a></p>
             </div>
             
 
@@ -80,7 +83,7 @@
                 <div class="swiper-button-next Nbtn2"></div>
                 <div class="swiper-button-prev Pbtn2"></div>
 
-                <p class="view-more"><a href="#">더보기</a></p>
+                <p class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=2">더보기</a></p>
             </div>
 
             <div class="swiper-container" id="steamed-third">
@@ -99,7 +102,7 @@
                 </div>
                 <div class="swiper-button-next Nbtn3"></div>
                 <div class="swiper-button-prev Pbtn3"></div>
-                <p class="view-more"><a href="#">더보기</a></p>
+                <p class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=3">더보기</a></p>
             </div>
 
 
@@ -107,23 +110,19 @@
                 <h3 class="top10head" id="distance-focus">거리순 TOP 10</h3>
                 	<div class="swiper-wrapper">
 	                	<c:forEach items="${distanceList}" var="item" varStatus="status" end="10">
-	                		
-								<div class="swiper-slide">
-							
+								<div class="swiper-slide">						
 		                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${distanceImgList[status.index].restaurantIdx}'">
 		                     	      <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${distanceImgList[status.index].imageFileName}&imageFileNO=${distanceImgList[status.index].imageFileNO}&restaurantIdx=${distanceImgList[status.index].restaurantIdx}"/>
 		                         	   <div class="list-info">	
 		                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">️ &nbsp;&nbsp;100&nbsp;&nbsp;m</span>
 		                            </div>
 		                        </div>
-		              
-		                    </div>
-		                   
+		                    </div>                   
 						</c:forEach>
                 </div>
                 <div class="swiper-button-next Nbtn4"></div>
                 <div class="swiper-button-prev Pbtn4"></div>
-                <p class="view-more"><a href="#">더보기</a></p>
+                <p class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=4">더보기</a></p>
             </div>
 
             <div class="swiper-container" id="popularity-fifth">
@@ -142,7 +141,7 @@
                 </div>
                 <div class="swiper-button-next Nbtn5"></div>
                 <div class="swiper-button-prev Pbtn5"></div>
-                <p class="view-more"><a href="${contextPath}/restaurants/restaurantsList.do">더보기</a></p>
+                <p class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=5">더보기</a></p>
             </div>
         </section>
         <script>
@@ -378,10 +377,7 @@
                 });
 
             });
-			// 이미지나 정보클릭시
-			function f_restInfo(restIdx){
-				location.href="${contextPath}/restaurants/restaurantView.do?restIdx=restIdx"
-			}
+			
         </script>
     </body>
 
