@@ -9,39 +9,52 @@
 		<result property="articleIdx" column="articleIdx" />	
 		<result property="hotplaceIdx" column="hotplaceIdx" />
 		<result property="contents" column="contents" />
-		<result property="username" column="username" />
+		<result property="nickName" column="nickName" />
 		<result property="userTotalReview" column="userTotalReview" />
-		<result property="restIdx" column="restIdx" />
+		<result property="restaurantIdx" column="restaurantIdx" />
 		<result property="regDate" column="regDate" />
 		<result property="reviewStamp" column="reviewStamp" />
 		<result property="mainImage" column="mainImage" />
 		<result property="subImage1" column="subImage1" />
 		<result property="subImage2" column="subImage2" />
 		<result property="subImage3" column="subImage3" />
-		<result property="defaultImage" column="defaultImage" />
+		<result property="defaultImage" column="defaultImage"/>
+		<result property="starCount" column="starCount"/>
+	</resultMap>
+	
+	<resultMap type="imageDTO" id="imgResult">
+		<result property="imageFileNO" column="imageFileNO" />
+		<result property="imageFileName" column="imageFileName" />
+		<result property="regDate" column="regDate" />
+		<result property="articleIdx" column="articleIdx" />
+		<result property="restaurantIdx" column="restaurantIdx" />
 	</resultMap>
 	
 	<!-- 추가하는 새글에대한 글번호 추출 -->
-	<select id="selectNewArticleNo" resultType="int">
+	<!-- <select id="selectNewArticleNo" resultType="int">
 		<![CDATA[ 		
 			SELECT NVL(MAX(ARTICLENO),0)+1 AS ARTICLENO 
 			FROM TEST_BOARD
 		 ]]>
 	</select>
 	
-	<!-- 글 정보를 Map으로 전달함 -->
+	글 정보를 Map으로 전달함
 	<insert id="insertNewArticle" parameterType="java.util.Map">
 		<![CDATA[ 		
 			INSERT INTO TEST_BOARD VALUES 
 			(#{articleNO},#{cate},#{title},#{nickname},#{content},sysdate)
 		 ]]>
-	</insert>
+	</insert> -->
 	
-	<select id="selectAllArticlesList" resultMap="boardResult" parameterType="java.util.Map">
+	<select id="selectAllReviewList" resultType="boardDTO" parameterType="int">
 		<![CDATA[ 		
-			SELECT *
-			FROM TEST_BOARD 
-			ORDER BY articleNO DESC
+			SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = #{restIdx} order by SYSDATE
+		 ]]>
+	</select>
+	
+	<select id="selectAllReviewImgList" resultType="imageDTO" parameterType="int">
+		<![CDATA[ 		
+			SELECT * FROM IMAGE_INFO WHERE ARTICLEIDX = #{reviewIdx} and rownum<=1 order by SYSDATE
 		 ]]>
 	</select>
 	
