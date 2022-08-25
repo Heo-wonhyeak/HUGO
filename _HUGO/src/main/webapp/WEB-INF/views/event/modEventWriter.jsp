@@ -50,7 +50,7 @@
 			<div class="eventWriteBtn">
 				<input type="submit" value="등록" class="eventBtn"/>
 				<input type="reset" value="다시입력" class="eventBtn"/>
-				<input type="button" value="목록으로" class="eventBtn" onclick="location.href='${contextPath}/event/runningEventPage.do'"/>
+				<input type="button" value="목록으로" class="eventBtn" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=runningEvent'"/>
 			</div>
 			<div style="height: 90px;"></div>
 		</div>

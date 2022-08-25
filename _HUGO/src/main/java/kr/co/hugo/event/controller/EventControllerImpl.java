@@ -175,11 +175,7 @@ public class EventControllerImpl implements EventController {
 		//하단으로 옮겨서 사용 해보기
 		List<String> fileList = upload(multipartRequest);
 		System.out.println("controller - fileList : " + fileList);
-		
-		
-		// 어떤 게시판을 선택할 것인지 확인
-		String border = multipartRequest.getParameter("boarder");
-		
+
 		ResponseEntity resEnt = null;
 		
 		//게시글 저장 -- 분기 지움
@@ -343,8 +339,6 @@ public class EventControllerImpl implements EventController {
 		//하단으로 옮겨서 사용 해보기
 		List<String> fileList = upload(multipartRequest);
 		
-		String boarder = (String)eventMap.get("boarder");
-		
 		String imageFileName = null;
 		ResponseEntity resEnt = null;
 		
@@ -357,6 +351,8 @@ public class EventControllerImpl implements EventController {
 					EventImageDTO imageDTO = new EventImageDTO();
 					imageDTO.setImg_name(fileName);
 					imageFileList.add(imageDTO);
+					String img_name = imageDTO.getImg_name();
+					eventMap.put("img_name", img_name);
 				}
 				//imageFileList 를 다시 eventMap에 저장함
 				eventMap.put("imageFileList", imageFileList);
@@ -381,7 +377,7 @@ public class EventControllerImpl implements EventController {
 				 */
 				if(imageFileList != null && imageFileList.size() != 0) {
 					
-					File destDir = new File(ARTICLE_IMAGE_REFO+"/"+event_idx);
+					File destDir = new File(ARTICLE_IMAGE_REFO+"/event/"+event_idx);
 					//기존 이미지 파일이 저장된 폴더(디렉토리)도 삭제함
 					FileUtils.deleteDirectory(destDir);
 					
@@ -465,7 +461,8 @@ public class EventControllerImpl implements EventController {
 			eventService.removeEvent(event_idx);
 			
 			//첨부 이미지 폴더 받아오기
-			File destDir = new File(ARTICLE_IMAGE_REFO+"/"+event_idx);
+			File destDir = new File(ARTICLE_IMAGE_REFO+"/event/"+event_idx);
+			System.out.println("delete 시 destDir : " +destDir);
 			//첨부된 이미지 파일이 저장된 폴더(디렉토리)도 삭제함
 			FileUtils.deleteDirectory(destDir);
 			

@@ -45,4 +45,6 @@ public interface EventDAO {
 	public List<EventReplyDTO> selectEventReplesD(int event_idx) throws Exception;
 	// 댓글 삭제
 	public void deleteReply(int event_reply_idx) throws Exception;
+	// 이미지 수정
+	public void modNewImage(Map<String, Object> eventMap) throws Exception;
 }

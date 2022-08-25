@@ -107,7 +107,7 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public void modEvent(Map<String, Object> eventMap,List<String> fileList) throws Exception {
 		if(fileList != null || fileList.size() != 0) {
-			eventDAO.insertNewImage(eventMap);
+			eventDAO.modNewImage(eventMap);
 		}
 		eventDAO.modEvent(eventMap);
 	}

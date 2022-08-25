@@ -160,5 +160,11 @@ public class EventDAOImpl implements EventDAO {
 		sqlSession.delete("mapper.event.deleteReply", event_reply_idx);
 	}
 
+	@Override
+	public void modNewImage(Map<String, Object> eventMap) throws Exception {
+		sqlSession.update("mapper.event.modNewImage", eventMap);
+		
+	}
+
 
 }

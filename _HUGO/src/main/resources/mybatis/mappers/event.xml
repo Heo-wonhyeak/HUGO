@@ -205,5 +205,11 @@
 			 WHERE EVENT_IDX = #{event_idx} ORDER BY EVENT_REPLY_IDX DESC
 		 ]]>
 	</select>
+	
+	<update id="modNewImage" parameterType="java.util.Map">
+		<![CDATA[ 
+			UPDATE HUGO_EVENT_IMAGE SET IMG_NAME = #{img_name} WHERE EVENT_IDX = #{event_idx}
+		 ]]>
+	</update>
  	
  </mapper>
