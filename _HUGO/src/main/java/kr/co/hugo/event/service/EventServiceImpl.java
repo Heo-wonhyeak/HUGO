@@ -107,7 +107,7 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public void modEvent(Map<String, Object> eventMap,List<String> fileList) throws Exception {
 		if(fileList != null || fileList.size() != 0) {
-			eventDAO.insertNewImage(eventMap);
+			eventDAO.modNewImage(eventMap);
 		}
 		eventDAO.modEvent(eventMap);
 	}
@@ -123,6 +123,11 @@ public class EventServiceImpl implements EventService {
 		eventDAO.deleteLike(likeMap);
 		eventDAO.updateLikeCountDown(likeMap);
 		
+	}
+
+	@Override
+	public void removeReply(int event_reply_idx) throws Exception {
+		eventDAO.deleteReply(event_reply_idx);	
 	}
 
 

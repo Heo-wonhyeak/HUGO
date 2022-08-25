@@ -24,5 +24,8 @@ public interface EventController {
 	// 좋아요
 	public ResponseEntity like(HttpServletRequest request, HttpServletResponse response)
 			throws Exception;
+	// 댓글 삭제
+	public ResponseEntity removeReply(@RequestParam("event_reply_idx") int event_reply_idx,@RequestParam("event_idx") int event_idx, HttpServletRequest request, 
+			HttpServletResponse response) throws Exception;
 
 }

@@ -21,7 +21,7 @@
 			<div id="selectBox">
 				<select name="boarder" id="boarderSelect">
 				    <option value="">게시판을 선택해 주세요</option>
-				    <option value="runningEvent" selected="selected">진행중 이벤트</option>
+				    <option value="runningEvent">진행중 이벤트</option>
 				    <option value="endEvent">종료된 이벤트</option>
 				    <option value="coupone">쿠폰</option>
 				</select>
@@ -50,7 +50,7 @@
 			<div class="eventWriteBtn">
 				<input type="submit" value="등록" class="eventBtn"/>
 				<input type="reset" value="다시입력" class="eventBtn"/>
-				<input type="button" value="목록으로" class="eventBtn" onclick="location.href='${contextPath}/event/runningEventPage.do'"/>
+				<input type="button" value="목록으로" class="eventBtn" onclick="location.href='${contextPath}/event/runningEventPage.do?boarder=runningEvent'"/>
 			</div>
 			<div style="height: 90px;"></div>
 		</div>

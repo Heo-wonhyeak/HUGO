@@ -155,5 +155,16 @@ public class EventDAOImpl implements EventDAO {
 		return sqlSession.selectList("mapper.event.selectEventReplesD", event_idx);
 	}
 
+	@Override
+	public void deleteReply(int event_reply_idx) throws Exception {
+		sqlSession.delete("mapper.event.deleteReply", event_reply_idx);
+	}
+
+	@Override
+	public void modNewImage(Map<String, Object> eventMap) throws Exception {
+		sqlSession.update("mapper.event.modNewImage", eventMap);
+		
+	}
+
 
 }

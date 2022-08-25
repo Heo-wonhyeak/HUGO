@@ -26,5 +26,7 @@ public interface EventService {
 	public void insertLike(Map likeMap) throws Exception;
 	// 좋아요 취소
 	public void deleteLike(Map likeMap) throws Exception;
+	// 댓글 삭제
+	public void removeReply(int event_reply_idx) throws Exception;
 
 }

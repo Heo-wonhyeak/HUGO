@@ -158,6 +158,12 @@
 		]]>
 	</delete>
 	
+	<delete id="deleteReply" parameterType="int">
+		<![CDATA[ 
+			DELETE HUGO_EVENT_REPLY WHERE event_reply_idx = #{event_reply_idx}
+		]]>
+	</delete>
+	
 	<update id="modEvent" parameterType="java.util.Map">
 		<![CDATA[ 
 			UPDATE HUGO_EVENT_BOARD 
@@ -199,5 +205,11 @@
 			 WHERE EVENT_IDX = #{event_idx} ORDER BY EVENT_REPLY_IDX DESC
 		 ]]>
 	</select>
+	
+	<update id="modNewImage" parameterType="java.util.Map">
+		<![CDATA[ 
+			UPDATE HUGO_EVENT_IMAGE SET IMG_NAME = #{img_name} WHERE EVENT_IDX = #{event_idx}
+		 ]]>
+	</update>
  	
  </mapper>
