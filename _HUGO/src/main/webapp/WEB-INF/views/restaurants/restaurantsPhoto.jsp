@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
-
+<c:set var="imgList" value="${restMap.imgList}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,24 +30,15 @@ html,body{
           <!-- Swiper -->
 	<div class="swiper-container gallery-top">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide"><div class="swiper-slide-container">Slide 1</div></div>
-                <div class="swiper-slide"><div class="swiper-slide-container">Slide 2</div></div>
-                <div class="swiper-slide"><div class="swiper-slide-container">Slide 3</div></div>
-                <div class="swiper-slide"><div class="swiper-slide-container">Slide 4</div></div>
-                <div class="swiper-slide"><div class="swiper-slide-container">Slide 5</div></div>
+				<c:forEach items="${imgList}" var="imgList" varStatus="status">
+					<div class="swiper-slide">
+						<img alt="" src="${contextPath}/download.do?imageFileName=${imgList.imageFileName}&imageFileNO=${imgList.imageFileNO}&restaurantIdx=${imgList.restaurantIdx}" class="swiper-slide-container" />
+					</div>
+            	</c:forEach>	
 			</div>
 			<!-- Add Arrows -->
 			<div class="swiper-button-next"></div>
 			<div class="swiper-button-prev"></div>
-	</div>
-	<div class="swiper-container gallery-thumbs">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide"><div class="swiper-slide-container">Slide 1</div></div>
-                <div class="swiper-slide"><div class="swiper-slide-container">Slide 2</div></div>
-                <div class="swiper-slide"><div class="swiper-slide-container">Slide 3</div></div>
-                <div class="swiper-slide"><div class="swiper-slide-container">Slide 4</div></div>
-                <div class="swiper-slide"><div class="swiper-slide-container">Slide 5</div></div>
-			</div>
 	</div>
    </section>
 <script>
@@ -60,20 +51,6 @@ html,body{
 	 		loop: true,
 			loopedSlides: 4
     });
-    var galleryThumbs = new Swiper('.gallery-thumbs', {
-      spaceBetween: 10,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      touchRatio: 0.2,
-      slideToClickedSlide: true,
-			loop: true,
-			loopedSlides: 4
-    });
-    galleryTop.controller.control = galleryThumbs;
-    galleryThumbs.controller.control = galleryTop;
-
-    // 모든 사진 넣기
-    // swiper wrapper 계속 늘리기
 </script>
 </body>
 </html>
