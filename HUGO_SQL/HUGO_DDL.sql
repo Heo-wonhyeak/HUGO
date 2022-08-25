@@ -174,7 +174,8 @@ CREATE TABLE Review_board(
 	defaultImage varchar2(2000) DEFAULT 'x',
 	restaurantIdx number(10) DEFAULT 0
 );
-
+-- review_board 별점 추
+ALTER TABLE Review_board ADD starCount number(3) DEFAULT 5;
 
 INSERT INTO ADMIN.REVIEW_BOARD
 (ARTICLEIDX, HOTPLACEIDX, CONTENTS, nickname, USERTOTALREVIEW, RESTIDX, REGDATE, REVIEWSTAMP, MAINIMAGE)
@@ -182,7 +183,7 @@ VALUES(0, 1, 'test', 'test', 0 , '22', sysdate, 0, '22');
 
 UPDATE REVIEW_BOARD SET RESTIDX = 25 WHERE ARTICLEIDX = 0;
 
-SELECT * FROM REVIEW_BOARD order by articleIdx ;
+SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = 1 order by SYSDATE ;
 
 -- image
 

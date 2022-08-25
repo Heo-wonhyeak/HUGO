@@ -8,7 +8,6 @@ import kr.co.hugo.boarder.dto.BoardDTO;
 public interface BoardService {
 
 	public int addNewArticle(Map articleMap) throws Exception;
-
-	public List<BoardDTO> listArticles() throws Exception;
+	public Map<Object,Object> listReviews(int restIdx) throws Exception;
 	
 }

@@ -16,4 +16,5 @@ public interface ResDAO {
 	public List<RestaurantDTO> selectDistanceList() throws DataAccessException;
 	public List<RestaurantDTO> selectFamousList() throws DataAccessException;
 	public ImageDTO selectresImgList(int restaurantIdx) throws DataAccessException;
+	public List<ImageDTO> resImgList(int restIdx);
 }

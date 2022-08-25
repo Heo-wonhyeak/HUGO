@@ -33,11 +33,11 @@ public class ResServiceImpl implements ResService{
 		restMap.put("menuListarr",menuListarr);
 		
 		// 이미지 부분 정보 요청
-//		List<ImageDTO> imageFileList = boardDAO.selectImageFileLIst(articleNO);
+		List<ImageDTO> imgList = resDAO.resImgList(restIdx);
 		
 		restMap.put("restaurant", restaurant);
 		restMap.put("menuList",menuList);
-//		articleMap.put("imageFileList", imageFileList);
+		restMap.put("imgList", imgList);
 		return restMap;
 	}
 

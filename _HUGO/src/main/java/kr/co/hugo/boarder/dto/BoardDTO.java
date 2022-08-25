@@ -7,7 +7,7 @@ public class BoardDTO {
 	private int articleIdx;
 	private String hotplaceIdx;
 	private String contents;
-	private String username;
+	private String nickName;
 	private int userTotalReview;
 	private String restURL;
 	private String regDate;
@@ -18,17 +18,18 @@ public class BoardDTO {
 	private String subImage3;
 	private String defaultImage;
 	private int restaurantIdx;
+	private int starCount;
 	
 	public BoardDTO() {}
 
-	public BoardDTO(int articleIdx, String hotplaceIdx, String contents, String username, int userTotalReview,
+	public BoardDTO(int articleIdx, String hotplaceIdx, String contents, String nickName, int userTotalReview,
 			String restURL, String regDate, int reviewStamp, String mainImage, String subImage1, String subImage2,
-			String subImage3, String defaultImage, int restaurantIdx) {
+			String subImage3, String defaultImage, int restaurantIdx,int starCount) {
 		super();
 		this.articleIdx = articleIdx;
 		this.hotplaceIdx = hotplaceIdx;
 		this.contents = contents;
-		this.username = username;
+		this.nickName = nickName;
 		this.userTotalReview = userTotalReview;
 		this.restURL = restURL;
 		this.regDate = regDate;
@@ -39,6 +40,7 @@ public class BoardDTO {
 		this.subImage3 = subImage3;
 		this.defaultImage = defaultImage;
 		this.restaurantIdx = restaurantIdx;
+		this.starCount=starCount;
 	}
 
 	public int getArticleIdx() {
@@ -65,12 +67,12 @@ public class BoardDTO {
 		this.contents = contents;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public int getUserTotalReview() {
@@ -111,6 +113,15 @@ public class BoardDTO {
 
 	public void setMainImage(String mainImage) {
 		this.mainImage = mainImage;
+	}
+	
+
+	public int getStarCount() {
+		return starCount;
+	}
+
+	public void setStarCount(int starCount) {
+		this.starCount = starCount;
 	}
 
 	public String getSubImage1() {
