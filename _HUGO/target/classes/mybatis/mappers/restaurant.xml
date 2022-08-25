@@ -33,7 +33,7 @@
 		<result property="restaurantIdx" column="restaurantIdx" />
 	</resultMap>
 
-
+	<!-- 매장 상세보기  -->
 	<select id="selectRestView" resultType="restaurantDTO"
 		parameterType="int">
 		<![CDATA[
@@ -46,6 +46,14 @@
 			SELECT * FROM RESTAURANT_INFO ORDER BY RESTIDX
 		]]>
 	</select>
+	
+	<select id="selectAllresImgList" resultType="imageDTO"
+		parameterType="int">
+		<![CDATA[
+			SELECT * FROM IMAGE_INFO WHERE RESTAURANTIDX = #{restIdx}
+		]]>
+	</select>
+	
 	<!-- 찜 TOP 50 조회 -->
 	<select id="selectSteamList" resultType="restaurantDTO">
 		<![CDATA[
@@ -86,5 +94,7 @@
 			SELECT * FROM IMAGE_INFO WHERE RESTAURANTIDX = #{restaurantIdx} AND ROWnum<=1 ORDER BY SYSDATE desc
 		]]>
 	</select>
+	
+	
 
 </mapper>
