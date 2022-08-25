@@ -76,16 +76,4 @@ public class BoardControllerImpl implements BoardController {
 		return resEnt;
 	}
 
-	@Override
-	@RequestMapping(value="/board/listArticles.do",method = { RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String)request.getAttribute("viewName");
-		
-		List<BoardDTO> articlesList = boardService.listArticles();
-		
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("articlesList", articlesList);
-		
-		return mav;
-	}
 }
