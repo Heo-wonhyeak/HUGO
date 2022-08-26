@@ -22,7 +22,7 @@ html,body{
 <body>
     <form action="#" method="post" id="restaurant-review-write-form">
         <!-- 히든 속성으로 매장 번호와 사용자 가져오기 -->
-        <div class="restaurant-review-write-out"><a onClick="window.close()">✖️<a></div>
+        <div class="restaurant-review-write-out"><a onClick="window.close()">✖️</a></div>
         <div class="restaurant-review-write-title"><div id="review-title">title</div><input id="title" type="text" name="title" /></div>
         <div class="restaurant-review-write-section-wrap">
              <div class="restaurant-review-write-content_star">

@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="review" value="${reviewsMap.review }" />
+<c:set var="imgList" value="${reviewsMap.imgList}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,35 +23,33 @@ html,body{
 <body>
     <section class="restaurants_review_info_popup">
         <div class="restaurants_review_info_image">
-            <div class="restaurants_review_info_mainImage"></div>
+        	<img class="restaurants_review_info_mainImage" alt="" src="${contextPath}/download.do?imageFileName=${imgList[0].imageFileName}&imageFileNO=${imgList[0].imageFileNO}&restaurantIdx=${imgList[0].restaurantIdx}" />
             <div class="restaurants_review_info_subImages">
-            <!-- 있는 갯수 만큼 보이기 -->
-                <div class="restaurants_review_info_subImage"></div> 
-                <div class="restaurants_review_info_subImage"></div>
-                <div class="restaurants_review_info_subImage"></div>
-                <div class="restaurants_review_info_subImage"></div>
+           		<c:forEach items="${imgList}" var="imgList" varStatus="status">
+                	<img class="restaurants_review_info_subImage" alt="" src="${contextPath}/download.do?imageFileName=${imgList.imageFileName}&imageFileNO=${imgList.imageFileNO}&restaurantIdx=${imgList.restaurantIdx}" />
+                </c:forEach>
             </div>
         </div>
         <div class="restaurants_review_info_txt">
             <div class="restaurants_review_info_header">
                 <div class="restaurants_review_info_user">
-                    <div class="restaurants_review_info_userImg"></div>
+                    <img class="restaurants_review_info_userImg" alt="default" src="${contextPath }/resources/img/restaurant/user_default.jpg"/>
                     <div class="restaurants_review_info_userInfo">
                         <table>
                             <tr>
-                                <td>닉시아</td><td>2022 - 06 - 12</td>
+                                <td>${review.nickName}</td><td>${review.regDate}</td>
                             </tr>
                             <tr>
-                                <td>추천 1</td><td>쓴 리뷰 30</td>
+                                <td>추천&nbsp;&nbsp;${review.reviewStamp}</td><td>쓴 리뷰&nbsp;&nbsp;${review.userTotalReview}</td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <div class="restaurants_review_info_out"><a onClick="window.close()">✖️<a></div>
+                <div class="restaurants_review_info_out"><a onClick="window.close()">✖️</a></div>
             </div>
-            <div class="restaurants_review_info_star">⭐️⭐️⭐️⭐️⭐️</div>
-            <div class="restaurants_review_info_contents">12121212</div>
-            <div class="restaurants_review_info_recommend">추천해요😀</div>
+            <div class="restaurants_review_info_star">⭐&nbsp;️️${review.starCount}&nbsp;️️점</div>
+            <div class="restaurants_review_info_contents">${review.contents }</div>
+            <div class="restaurants_review_info_recommend">추천해요😀${review.reviewStamp }</div>
         </div>
     </section>
 
