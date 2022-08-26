@@ -19,7 +19,12 @@ public interface BoardDAO {
 	public List<BoardDTO> selectAllVisitList(int restIdx) throws DataAccessException;
 	// 내가 쓴리뷰
 	public List<BoardDTO> selectMyReviewList(int restIdx, String nickname) throws DataAccessException;
+	// 이미지 정보 가져오기 (매장 상세정보)
 	public ImageDTO selectReviewImage(int reviewIdx) throws DataAccessException;
+	// 리뷰 상세정보 가져오기
+	public BoardDTO selectReview(int reviewIdx) throws DataAccessException;
+	// 리뷰 상세정보 이미지 가져오기
+	public List<ImageDTO> selectReviewImageOne(int reviewIdx) throws DataAccessException;
 	
 
 }

@@ -73,10 +73,24 @@
 			SELECT * FROM REVIEW_BOARD WHERE nickname = #{nickname} order by SYSDATE
 		 ]]>
 	</select>
-	
+	<!-- 매장 상세정보 모든 리뷰 이미지 불러오기 -->
 	<select id="selectAllReviewImgList" resultType="imageDTO" parameterType="int">
 		<![CDATA[ 		
 			SELECT * FROM IMAGE_INFO WHERE ARTICLEIDX = #{reviewIdx} and rownum<=1 order by SYSDATE
+		 ]]>
+	</select>
+	
+	<!-- 리뷰 상세보기 -->
+	<select id="selectReview" resultType="boardDTO" parameterType="int">
+		<![CDATA[ 		
+			SELECT * FROM REVIEW_BOARD WHERE ARTICLEIDX = #{reviewIdx} 
+		 ]]>
+	</select>
+	
+	<!-- 리뷰 상세보기 (이미지)-->
+	<select id="selectImg" resultType="imageDTO" parameterType="int">
+		<![CDATA[ 		
+			SELECT * FROM IMAGE_INFO WHERE ARTICLEIDX = #{reviewIdx} 
 		 ]]>
 	</select>
 	

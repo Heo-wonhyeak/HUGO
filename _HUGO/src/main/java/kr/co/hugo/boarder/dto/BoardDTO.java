@@ -25,7 +25,6 @@ public class BoardDTO {
 	public BoardDTO(int articleIdx, String hotplaceIdx, String contents, String nickName, int userTotalReview,
 			String restURL, String regDate, int reviewStamp, String mainImage, String subImage1, String subImage2,
 			String subImage3, String defaultImage, int restaurantIdx,int starCount) {
-		super();
 		this.articleIdx = articleIdx;
 		this.hotplaceIdx = hotplaceIdx;
 		this.contents = contents;

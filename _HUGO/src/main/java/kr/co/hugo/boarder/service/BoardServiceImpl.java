@@ -36,20 +36,20 @@ public class BoardServiceImpl implements BoardService {
 		Map<Object,Object> reviewsMap = new HashMap<>();
 		List<ImageDTO> imgList = new ArrayList<>();
 		List<BoardDTO> reviewList = new ArrayList<>();
+		// 최신순 호출 
 		if(list ==11) {
-			System.out.println("최신순 호출 !");
 			reviewList = boardDAO.selectAllReviewsList(restIdx);
 		}
+		// 별점순 호출
 		else if(list ==12) {
-			System.out.println("별점순 호출 !");
 			reviewList = boardDAO.selectAllSteamList(restIdx);
 		}
+		// 방문순 호출
 		else if(list ==13) {
-			System.out.println("방문순 호출 !");
 			reviewList = boardDAO.selectAllVisitList(restIdx);
 		}
+		// 내가쓴 리뷰 호출
 		else if(list == 14) {
-			System.out.println("내가쓴리뷰  호출 !");
 			List<BoardDTO> reviewListIdx = new ArrayList<>();
 			reviewListIdx = boardDAO.selectAllReviewsList(restIdx);
 			for(int i=0;i<reviewListIdx.size();i++) {
@@ -66,6 +66,17 @@ public class BoardServiceImpl implements BoardService {
 		}
 		
 		reviewsMap.put("reviewList", reviewList);
+		reviewsMap.put("imgList", imgList);
+		return reviewsMap;
+	}
+	/* 리뷰 상세보기 가져오기 */
+	@Override
+	public Map<Object, Object> reviewInfo(int reviewIdx) throws Exception {
+		Map<Object,Object> reviewsMap = new HashMap<>();
+		List<ImageDTO> imgList = new ArrayList<>();
+		BoardDTO review = boardDAO.selectReview(reviewIdx);
+		imgList = boardDAO.selectReviewImageOne(reviewIdx);
+		reviewsMap.put("review", review);
 		reviewsMap.put("imgList", imgList);
 		return reviewsMap;
 	}

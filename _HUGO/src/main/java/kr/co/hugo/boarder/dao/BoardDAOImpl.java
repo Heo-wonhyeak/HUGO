@@ -66,6 +66,20 @@ public class BoardDAOImpl implements BoardDAO {
 		ImageDTO reviewImgList = sqlSession.selectOne("mapper.board.selectAllReviewImgList",reviewIdx);
 		return reviewImgList;
 	}
+	
+	// 리뷰 상세보기 가져오기
+	@Override
+	public BoardDTO selectReview(int reviewIdx) throws DataAccessException {
+		BoardDTO reviewList = sqlSession.selectOne("mapper.board.selectReview",reviewIdx);
+		return reviewList;
+	}
+	
+	// 리뷰 상세보기 이미지 가져오기
+	@Override
+	public List<ImageDTO> selectReviewImageOne(int reviewIdx) throws DataAccessException {
+		List<ImageDTO> imageList = sqlSession.selectList("mapper.board.selectImg",reviewIdx);
+		return imageList;
+	}
 
 	
 

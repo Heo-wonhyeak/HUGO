@@ -14,4 +14,6 @@ public interface ResController {
 	ModelAndView restaurantsPhoto(@RequestParam("restIdx") int restIdx, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	// 매장 TOP50 리스트 정렬
 	public ModelAndView restaurantTop50(@RequestParam("array") int list, HttpServletRequest request, HttpServletResponse response);
+	// 매장 리뷰 상세보기 창
+	public ModelAndView restaurantsReviewInfo(@RequestParam("restIdx") int restIdx, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
