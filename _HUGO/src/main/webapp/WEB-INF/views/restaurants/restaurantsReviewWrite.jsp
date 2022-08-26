@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>매장 수정/삭제/쓰기</title>
 <link rel ="stylesheet" href="${contextPath }/resources/css/restaurants.css" type="text/css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 html,body{
     width:100%;
@@ -20,7 +21,7 @@ html,body{
 </style>
 </head>
 <body>
-    <form action="#" method="post" id="restaurant-review-write-form">
+    <form action="${contextPath}/board/addNewReview.do" method="post" id="restaurant-review-write-form" onSubmit="form_check(form)">
         <!-- 히든 속성으로 매장 번호와 사용자 가져오기 -->
         <div class="restaurant-review-write-out"><a onClick="window.close()">✖️</a></div>
         <div class="restaurant-review-write-title"><div id="review-title">title</div><input id="title" type="text" name="title" /></div>
@@ -82,6 +83,7 @@ html,body{
             </div>
     </form>
     <script>
+    // 메인 이미지 미리보기
     function readURLMain(input, index) {
 		if (input.files && input.files[0]) {
 			const reader = new FileReader();
@@ -92,6 +94,7 @@ html,body{
 		}
 	}  
     
+ // 서브 이미지 미리보기
     function readURL(input, index) {
 		if (input.files && input.files[0]) {
 			const reader = new FileReader();
@@ -101,6 +104,33 @@ html,body{
 			reader.readAsDataURL(input.files[0]);
 		}
 	}   
+    // 유효성 체크
+    function form_check(form){
+		const title = document.getElementById("title");
+		const content = document.getElementById("content");
+		const mainView = document.getElementById("mainView");
+		
+		if(title.value ==""){
+			alert("제목은 반드시 입력해야 합니다.");
+			title.focus();
+			return false;
+		}
+		if(content.value ==""){
+			alert("내용은 반드시 입력해야 합니다.");
+			content.focus();
+			return false;
+		}
+		if(mainView.value ==""){
+			alert("메인 이미지는 반드시 첨부해 주셔야 합니다.");
+			mainView.focus();
+			return false;
+		}
+		if($("input[name=reviewStar]:radio:checked").length<1){
+			alert("별점을 체크해 주셔야 합니다.");
+			return false;
+		}
+		
+	}
     </script>
 </body>
 </html>

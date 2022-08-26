@@ -486,12 +486,14 @@ a:active {
 }
 
 .restaurant-review-write-out {
+	background-color:#9bb7d6;
+	color:white;
 	width: 4%;
 	height: 7%;
 	margin: auto;
 	border: 1px solid black;
 	font-size: 1.2em;
-	margin-left: 900px;
+	margin-left: 1000px;
 	margin-top: 10px;
 	font-weight: bold;
 	text-align: center;
@@ -530,6 +532,7 @@ a:active {
 .restaurant-review-write-content_star {
 	direction: rtl;
 	width: 20%;
+	padding-right:10px;
 }
 
 .restaurant-review-write-left input[type=radio] {
