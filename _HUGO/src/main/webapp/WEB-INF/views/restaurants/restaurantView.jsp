@@ -125,7 +125,7 @@
 		</div>
 
 		<div class="restaurants-review-writeInfo">
-			<a onClick="popUpWrite(${isLogOn})" target="_parent">✏️ 리뷰 쓰기 </a>
+			<a onClick="popUpWrite('${isLogOn}','${restaurant.restIdx }')" target="_parent">✏️ 리뷰 쓰기 </a>
 		</div>
 			<c:choose>
 				<c:when test="${!empty reviewList }">
@@ -224,9 +224,9 @@
 
 		// 매장 상세보기 쓰기 팝업창 이동
 		// 로그인 검증 필요 없을시 alert창
-		function popUpWrite(isLogOn){
+		function popUpWrite(isLogOn,restIdx){
 			if (isLogOn != '' && isLogOn != 'false') {
-				const url ="${contextPath }/restaurants/restaurantsReviewWrite.do"
+				const url ="${contextPath }/restaurants/restaurantsReviewWrite.do?restIdx="+restIdx
 					const name = "a";
 					const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 					window.open(url,name,option);

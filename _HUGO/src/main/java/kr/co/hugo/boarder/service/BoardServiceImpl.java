@@ -24,10 +24,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int addNewArticle(Map articleMap) throws Exception {
 		// 글 정보를 저장한 후 글 번호를 가져옴
-		int articleNO = boardDAO.insertNewArticle(articleMap);
+		int articleIdx = boardDAO.insertNewArticle(articleMap);
 		// 글번호를 articleMap에 저장한 후
-		articleMap.put("articleNO", articleNO);
-		return articleNO;
+		articleMap.put("articleIdx", articleIdx);
+		
+		boardDAO.insertNewImage(articleMap);
+		return articleIdx;
 	}
 
 	/* 매장 상세페이지 모든 리뷰 불러오기 default */
@@ -79,6 +81,12 @@ public class BoardServiceImpl implements BoardService {
 		reviewsMap.put("review", review);
 		reviewsMap.put("imgList", imgList);
 		return reviewsMap;
+	}
+	/* 파일이름 변환할 모든 이미지 갯수 가져오기 */
+	@Override
+	public int allImageCount() {
+		int count = boardDAO.selectAllImageCount();
+		return count;
 	}
 
 

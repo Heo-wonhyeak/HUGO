@@ -23,7 +23,7 @@ public class BoardDAOImpl implements BoardDAO {
 	public int insertNewArticle(Map articleMap) throws DataAccessException {
 		int articleNO = selectNewArticleNO();
 		articleMap.put("articleNO", articleNO);
-		int result=sqlSession.insert("mapper.board.insertNewArticle", articleMap);
+		sqlSession.insert("mapper.board.insertNewArticle", articleMap);
 		
 		return articleNO;
 	}
@@ -80,6 +80,34 @@ public class BoardDAOImpl implements BoardDAO {
 		List<ImageDTO> imageList = sqlSession.selectList("mapper.board.selectImg",reviewIdx);
 		return imageList;
 	}
+	
+	// 총 이미지 + 1 갯수 가져오기
+	@Override
+	public int selectAllImageCount() throws DataAccessException {
+		int imgCount = sqlSession.selectOne("mapper.board.selectImgCount");
+		return imgCount;
+	}
+
+	@Override
+	public void insertNewImage(Map articleMap) {
+		// 새글에 대한 새로운 이미지 번호 가져옴
+		int imageFileNO = selectAllImageCount(); 
+		List<ImageDTO> imgFileList = (List<ImageDTO>) articleMap.get("imgFileList");
+		int articleIdx = (Integer) articleMap.get("articleIdx"); // articleMap에 있는 글 번호를 가져옴
+		int restaurantIdx = (Integer) articleMap.get("restaurantIdx");
+		
+		if (imgFileList != null && imgFileList.size() != 0) {
+			for (ImageDTO imageDTO : imgFileList) {
+				imageDTO.setArticleIdx(articleIdx);
+				imageDTO.setImageFileNO(imageFileNO);
+				imageDTO.setRestaurantIdx(restaurantIdx);
+				imageFileNO++;
+				
+			}
+			sqlSession.insert("mapper.board.insertNewImage", imgFileList);
+		}
+	}
+
 
 	
 

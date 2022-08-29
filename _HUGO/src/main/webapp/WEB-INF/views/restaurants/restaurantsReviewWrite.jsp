@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+<%
+	int restIdx =Integer.parseInt( request.getParameter("restIdx"));
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +24,7 @@ html,body{
 </style>
 </head>
 <body>
-    <form action="${contextPath}/board/addNewReview.do" method="post" id="restaurant-review-write-form" onSubmit="form_check(form)">
+    <form action="${contextPath}/board/addNewReview.do" method="post" id="restaurant-review-write-form" onSubmit="form_check(form)" enctype="multipart/form-data">
         <!-- 히든 속성으로 매장 번호와 사용자 가져오기 -->
         <div class="restaurant-review-write-out"><a onClick="window.close()">✖️</a></div>
         <div class="restaurant-review-write-title"><div id="review-title">title</div><input id="title" type="text" name="title" /></div>
@@ -42,7 +45,7 @@ html,body{
                 </div>
                 </div>
             <div class="restaurant-review-write-section">
-                <textarea class="restaurant-review-write-content" rows="5" id="content" name="content" placeholder="내용 작성" ></textarea>
+                <textarea class="restaurant-review-write-content" rows="5" id="content" name="contents" placeholder="내용 작성" ></textarea>
             </div>
         </div>
             <div class="restaurant-review-write-ImageUpload">
@@ -77,6 +80,8 @@ html,body{
                     	</label>
                </div>
             </div>
+            <input type="hidden" name="restIdx" value="<%=restIdx %>" >
+      
             <div class="restaurant-review-write-btn">
                 <input type="submit" id="restaurant-review-write-submit" value="등록" />
                 <input type="reset" id="restaurant-review-write-reset" value="다시쓰기" />

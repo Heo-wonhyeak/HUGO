@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="mapper.board">
 
-	<resultMap type="boardDTO" id="boardResult">	
-		<result property="articleIdx" column="articleIdx" />	
+	<resultMap type="boardDTO" id="boardResult">
+		<result property="articleIdx" column="articleIdx" />
 		<result property="hotplaceIdx" column="hotplaceIdx" />
 		<result property="contents" column="contents" />
 		<result property="nickName" column="nickName" />
@@ -18,10 +18,10 @@
 		<result property="subImage1" column="subImage1" />
 		<result property="subImage2" column="subImage2" />
 		<result property="subImage3" column="subImage3" />
-		<result property="defaultImage" column="defaultImage"/>
-		<result property="starCount" column="starCount"/>
+		<result property="defaultImage" column="defaultImage" />
+		<result property="starCount" column="starCount" />
 	</resultMap>
-	
+
 	<resultMap type="imageDTO" id="imgResult">
 		<result property="imageFileNO" column="imageFileNO" />
 		<result property="imageFileName" column="imageFileName" />
@@ -29,69 +29,96 @@
 		<result property="articleIdx" column="articleIdx" />
 		<result property="restaurantIdx" column="restaurantIdx" />
 	</resultMap>
-	
+
 	<!-- 추가하는 새글에대한 글번호 추출 -->
-	<!-- <select id="selectNewArticleNo" resultType="int">
+	<select id="selectNewArticleNo" resultType="int">
 		<![CDATA[ 		
-			SELECT NVL(MAX(ARTICLENO),0)+1 AS ARTICLENO 
-			FROM TEST_BOARD
+			SELECT NVL(MAX(articleIdx),0)+1 AS articleIdx FROM Review_board
 		 ]]>
 	</select>
-	
-	글 정보를 Map으로 전달함
+
+	<!-- 추가하는 새글에대한 이미지번호 추출 -->
+	<select id="selectImgCount" resultType="int">
+		<![CDATA[ 		
+			SELECT NVL(MAX(imageFileNo),0)+1 AS imageFileNo FROM Image_INFO
+		 ]]>
+	</select>
+
+	<!-- 글 정보를 Map으로 전달함 -->
 	<insert id="insertNewArticle" parameterType="java.util.Map">
 		<![CDATA[ 		
-			INSERT INTO TEST_BOARD VALUES 
-			(#{articleNO},#{cate},#{title},#{nickname},#{content},sysdate)
+		
+			INSERT INTO REVIEW_BOARD
+			(ARTICLEIDX, CONTENTS, nickname, restaurantIdx)
+			VALUES(#{articleNO},#{contents}, #{nickName}, #{restaurantIdx})
 		 ]]>
-	</insert> -->
-	
+	</insert>
+	<!-- 리뷰 이미지 insert -->
+	<insert id="insertNewImage" parameterType="java.util.Map">
+		<foreach collection="list" item="item" open="INSERT ALL"
+			separator=" " close="SELECT * FROM DUAL">
+			INTO IMAGE_INFO
+			(imageFileNO, imageFileName, articleIdx, restaurantIdx)
+			VALUES
+			(#{item.imageFileNO},#{item.imageFileName},#{item.articleIdx},#{item.restaurantIdx})
+		</foreach>
+
+	</insert>
+
 	<!-- default 리뷰 (최신순) -->
-	<select id="selectAllReviewList" resultType="boardDTO" parameterType="int">
+	<select id="selectAllReviewList" resultType="boardDTO"
+		parameterType="int">
 		<![CDATA[ 		
-			SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = #{restIdx} order by SYSDATE
+			SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = #{restIdx} order by regdate desc
 		 ]]>
 	</select>
-	
+
 	<!-- 리뷰 (별점순) -->
-	<select id="selectAllStemaList" resultType="boardDTO" parameterType="int">
+	<select id="selectAllStemaList" resultType="boardDTO"
+		parameterType="int">
 		<![CDATA[ 		
-			SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = #{restIdx} order by starcount
+			SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = #{restIdx} order by starcount desc
 		 ]]>
 	</select>
-	
+
 	<!-- 리뷰 (방문순) -->
-	<select id="selectAllVisitList" resultType="boardDTO" parameterType="int">
+	<select id="selectAllVisitList" resultType="boardDTO"
+		parameterType="int">
 		<![CDATA[ 		
-			SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = #{restIdx} order by usertotalreview
+			SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = #{restIdx} order by usertotalreview desc
 		 ]]>
 	</select>
-	
+
 	<!-- 내가쓴 리뷰 -->
-	<select id="selectMyList" resultType="boardDTO" parameterType="String">
+	<select id="selectMyList" resultType="boardDTO"
+		parameterType="String">
 		<![CDATA[ 		
-			SELECT * FROM REVIEW_BOARD WHERE nickname = #{nickname} order by SYSDATE
+			SELECT * FROM REVIEW_BOARD WHERE nickname = #{nickname} order by regdate desc
 		 ]]>
 	</select>
 	<!-- 매장 상세정보 모든 리뷰 이미지 불러오기 -->
-	<select id="selectAllReviewImgList" resultType="imageDTO" parameterType="int">
+	<select id="selectAllReviewImgList" resultType="imageDTO"
+		parameterType="int">
 		<![CDATA[ 		
-			SELECT * FROM IMAGE_INFO WHERE ARTICLEIDX = #{reviewIdx} and rownum<=1 order by SYSDATE
+			SELECT * FROM IMAGE_INFO WHERE ARTICLEIDX = #{reviewIdx} and rownum<=1 order by regdate desc
 		 ]]>
 	</select>
-	
+
 	<!-- 리뷰 상세보기 -->
-	<select id="selectReview" resultType="boardDTO" parameterType="int">
+	<select id="selectReview" resultType="boardDTO"
+		parameterType="int">
 		<![CDATA[ 		
 			SELECT * FROM REVIEW_BOARD WHERE ARTICLEIDX = #{reviewIdx} 
 		 ]]>
 	</select>
-	
-	<!-- 리뷰 상세보기 (이미지)-->
+
+	<!-- 리뷰 상세보기 (이미지) -->
 	<select id="selectImg" resultType="imageDTO" parameterType="int">
 		<![CDATA[ 		
 			SELECT * FROM IMAGE_INFO WHERE ARTICLEIDX = #{reviewIdx} 
 		 ]]>
 	</select>
-	
+
+
+
 </mapper>

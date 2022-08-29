@@ -85,13 +85,13 @@
 	<!-- 인기 TOP 50 조회 -->
 	<select id="selectFamousList" resultType="restaurantDTO">
 		<![CDATA[
-			SELECT * FROM (SELECT * FROM RESTAURANT_INFO ORDER BY restVisitCount desc) WHERE rownum <= 50 ORDER BY RESTSTARAVG desc
+			SELECT * FROM (SELECT * FROM RESTAURANT_INFO ORDER BY restVisitCount desc) WHERE rownum <= 50 ORDER BY RESTSTARAVG asc
 		]]>
 	</select>
 	<!-- 메인 이미지 조회 -->
 	<select id="selectImgList" resultType="imageDTO">
 		<![CDATA[
-			SELECT * FROM IMAGE_INFO WHERE RESTAURANTIDX = #{restaurantIdx} AND ROWnum<=1 ORDER BY SYSDATE desc
+			SELECT * FROM IMAGE_INFO WHERE RESTAURANTIDX = #{restaurantIdx} AND ROWnum<=1 ORDER BY regdate desc
 		]]>
 	</select>
 	

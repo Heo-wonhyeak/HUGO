@@ -25,6 +25,10 @@ public interface BoardDAO {
 	public BoardDTO selectReview(int reviewIdx) throws DataAccessException;
 	// 리뷰 상세정보 이미지 가져오기
 	public List<ImageDTO> selectReviewImageOne(int reviewIdx) throws DataAccessException;
+	// 총 리뷰 이미지 갯수 + 1 가져오기
+	public int selectAllImageCount() throws DataAccessException;
+	// 리뷰 쓰기 이미지 insert
+	public void insertNewImage(Map articleMap) throws DataAccessException;
 	
 
 }

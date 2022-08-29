@@ -237,6 +237,13 @@ UPDATE REVIEW_BOARD SET RESTIDX = 25 WHERE ARTICLEIDX = 0;
 
 SELECT * FROM REVIEW_BOARD WHERE RESTAURANTIDX = 1 order by SYSDATE ;
 
+-- 새롭게 추가되는 review 번호
+SELECT NVL(MAX(articleIdx),0)+1 AS articleIdx FROM Review_board;
+
+-- restURL not null 제거 (크롤링용)
+ALTER TABLE Review_board ALTER COLUMN resturl varchar(2000);
+
+
 -- image
 
 DROP TABLE Image_INFO CASCADE CONSTRAINTS;
@@ -252,6 +259,9 @@ INSERT INTO ADMIN.IMAGE_INFO
 (IMAGEFILENO, IMAGEFILENAME, ARTICLEIDX, RESTAURANTIDX, REGDATE)
 VALUES(0, '', 0, 0, sysdate
 );
+
+-- 총 이미지 갯수가져오기
+SELECT count(*) FROM IMAGE_INFO ;
 
 
 -- restaurant

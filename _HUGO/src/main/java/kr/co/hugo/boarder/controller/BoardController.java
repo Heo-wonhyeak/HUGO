@@ -11,6 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface BoardController {
 
-	public ResponseEntity addNewReview(MultipartHttpServletRequest multipartRequest,
+	public ResponseEntity addNewReview( MultipartHttpServletRequest multipartRequest,
 			HttpServletResponse response) throws Exception; 
 }
