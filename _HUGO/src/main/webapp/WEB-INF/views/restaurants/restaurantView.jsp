@@ -240,7 +240,7 @@
 		// 매장 상세보기 수정/삭제 팝업창 이동
 		// 만약 작성자가 아닐시 보이지 않게 하기
 		function popUpFix(isLogOn){
-			if (isLogOn == '' && isLogOn == 'false') {
+			if (isLogOn != '' && isLogOn != 'false') {
 				const url ="${contextPath }/restaurants/restaurantsReviewMod.do"
 				const name = "a";
 				const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";

@@ -40,20 +40,21 @@ public class ResContorollerImpl implements ResController {
 		HttpSession session = request.getSession();
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		String id = null;
-		String nickname = null;
+		String nickName = null;
 		if (memberDTO != null) {
 			id = memberDTO.getId();
-			nickname=memberDTO.getNickname();
+			nickName=memberDTO.getNickname();
 			
 		}
 		Map<String, Object> viewMap = new HashMap<>();
 		viewMap.put("restIdx", restIdx);
 		viewMap.put("id", id);	
+		viewMap.put("nickName", nickName);	
 		// 상세보기 이미지, 정보 요청
 		Map<String, Object> restMap = resService.restaurantView(viewMap);
 		// 상세보기 리뷰 이미지 정보 요청.
 		Map<Object,Object> reviewsMap = new HashMap<>();
-		reviewsMap = boardService.listReviews(restIdx,list,nickname); 	
+		reviewsMap = boardService.listReviews(restIdx,list,nickName); 	
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		reviewsMap.put("id", id);

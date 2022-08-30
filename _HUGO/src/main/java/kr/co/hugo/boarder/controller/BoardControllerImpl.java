@@ -95,9 +95,9 @@ public class BoardControllerImpl implements BoardController {
 		
 		
 		// 로그인 시 세션에 저장된 회원정보에서 아이디(글쓴이)를 Map에 저장
-//		HttpSession session = multipartRequest.getSession();
-//		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-		String nickName = "밥";
+		HttpSession session = multipartRequest.getSession();
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		String nickName = memberDTO.getNickname();
 		articleMap.put("nickName", nickName);
 		
 
