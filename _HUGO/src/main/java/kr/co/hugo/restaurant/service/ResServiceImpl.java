@@ -83,4 +83,9 @@ public class ResServiceImpl implements ResService{
 		return imageFileList;
 	}
 
+	@Override
+	public void resPlusVisitCount(int restIdx) throws Exception {
+		resDAO.plusVisitCount(restIdx);
+	}
+
 }

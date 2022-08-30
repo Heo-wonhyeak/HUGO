@@ -65,9 +65,15 @@ public class ResDAOImpl implements ResDAO{
 	}
 
 	@Override
-	public List<ImageDTO> resImgList(int restIdx) {
+	public List<ImageDTO> resImgList(int restIdx) throws DataAccessException {
 		List<ImageDTO> imgList = sqlSession.selectList("mapper.restaurant.selectAllresImgList",restIdx);
 		return imgList;
+	}
+
+	@Override
+	public void plusVisitCount(int restIdx) throws DataAccessException {
+		sqlSession.update("mapper.restaurant.updatePlusVisitCount",restIdx);
+		
 	}
 
 }

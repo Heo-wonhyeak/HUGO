@@ -36,6 +36,9 @@ public class ResContorollerImpl implements ResController {
 	public ModelAndView restaurantView(@RequestParam("restIdx") int restIdx,@RequestParam("array") int list,
 									HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		// 상세보기 진입시 조회수 1증가
+		resService.resPlusVisitCount(restIdx);
+		
 		String viewName = (String)request.getAttribute("viewName");	
 		HttpSession session = request.getSession();
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");

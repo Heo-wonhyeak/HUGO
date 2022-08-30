@@ -95,6 +95,12 @@
 		]]>
 	</select>
 	
+	<!-- 매장 상세보기 조회수 증가 -->
+	<update id="updatePlusVisitCount" parameterType="int">
+		<![CDATA[ 
+			UPDATE RESTAURANT_INFO SET RESTVISITCOUNT = RESTVISITCOUNT +1 WHERE RESTIDX = #{restIdx}
+		]]>
+	</update>
 	
 
 </mapper>
