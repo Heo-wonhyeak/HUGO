@@ -6,6 +6,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="restaurant" value="${restMap.restaurant }" />
 <c:set var="menuListarr" value="${restMap.menuListarr }" />
+<c:set var="jjimCount" value="${restMap.jjimCount }" />
 <c:set var="imgList" value="${restMap.imgList }" />
 <c:set var="reviewList" value="${reviewsMap.reviewList }" />
 <c:set var="imgList2" value="${reviewsMap.imgList}" />
@@ -55,14 +56,21 @@
 				<div class="restaurants-name">${restaurant.restName }</div>
 				<!-- 별점 ajax로 구현 -->
 				<div class="restaurants-steamed">
-					<input type="button" id="restaurants-star1" value="☆">
+					<c:choose>
+						<c:when test="${jjimCount eq 1}">
+							<input type="button" id="restaurants-star1" value="★" onclick="jjimCancel()">
+						</c:when>
+						<c:otherwise>
+							<input type="button" id="restaurants-star2" value="☆" onclick="jjimAdd('${isLogOn}')">
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 			<div class="restaurants-info-head">
 				<div class="restaurants-count">
 					<span class="restaurants-count-info">⭐
 						${restaurant.restStarAvg }</span> <span class="restaurants-count-info">❤️
-						${restaurant.restReviewCount }</span> <span
+						${restaurant.restJjim }</span> <span
 						class="restaurants-count-info">😀
 						${restaurant.restVisitCount }</span>
 				</div>
@@ -225,7 +233,7 @@
 		// 매장 상세보기 쓰기 팝업창 이동
 		// 로그인 검증 필요 없을시 alert창
 		function popUpWrite(isLogOn,restIdx){
-			if (isLogOn != '' && isLogOn != 'false') {
+			if (isLogOn != '' && isLogOn != false) {
 				const url ="${contextPath }/restaurants/restaurantsReviewWrite.do?restIdx="+restIdx
 					const name = "a";
 					const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
@@ -240,7 +248,8 @@
 		// 매장 상세보기 수정/삭제 팝업창 이동
 		// 만약 작성자가 아닐시 보이지 않게 하기
 		function popUpFix(isLogOn){
-			if (isLogOn != '' && isLogOn != 'false') {
+			// 나중에 수정
+			if (isLogOn == '' && isLogOn == false) {
 				const url ="${contextPath }/restaurants/restaurantsReviewMod.do"
 				const name = "a";
 				const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
@@ -290,10 +299,48 @@
 				});
 			});
 		});
-		// 정렬 별 ajax 구현
-
 		// 찜하기 구현 
-			// ajax 구현
+		const restIdx = "${restaurant.restIdx}";
+		function jjimCancel(){
+			if(confirm("찜 목록에서 삭제하시겠습니까?")==true){
+				$.ajax({
+					url : "${contextPath}/jjim/jjimCancel.do?restIdx="+restIdx,
+					type : "get",
+					async: false,
+					data : "",
+					success:function(data){
+							alert("삭제되었습니다.");
+							location.reload();
+					}
+				});
+			}
+			else{
+				return false;
+			}
+		}
+		function jjimAdd(isLogOn){
+			if (isLogOn != '' && isLogOn != false) {
+				if(confirm("찜 목록에 추가하시겠습니까?")==true){
+					$.ajax({
+						url : "${contextPath}/jjim/jjimAdd.do?restIdx="+restIdx,
+						type : "get",
+						async: false,
+						data : "",
+						success:function(data){
+								alert("추가되었습니다.");
+								location.reload();
+						}
+					});
+				}
+				else{
+					return false;
+				}
+			}
+			else{
+				alert("로그인후 이용가능합니다.");
+				return false;
+			}
+		}
 
 		// id 검증 후 수정/삭제 나타내기  
 			// 연결 후 core 태그 사용

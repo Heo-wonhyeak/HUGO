@@ -102,5 +102,19 @@
 		]]>
 	</update>
 	
+	<!-- 매장 찜 - 1 -->
+	<update id="deleteResJjim" parameterType="int">
+		<![CDATA[ 
+			UPDATE RESTAURANT_INFO SET restJjim = restJjim -1 WHERE RESTIDX = #{restIdx}
+		]]>
+	</update>
+	
+	<!-- 매장 찜 + 1 -->
+	<update id="addResJjim" parameterType="int">
+		<![CDATA[ 
+			UPDATE RESTAURANT_INFO SET restJjim = restJjim +1 WHERE RESTIDX = #{restIdx}
+		]]>
+	</update>
+	
 
 </mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.jjim">
+
+	<resultMap type="jjimDTO" id="jjimResult">
+		<result property="jjimNO" column="jjimNO" />
+		<result property="restaurantIdx" column="restaurantIdx" />
+		<result property="regDate" column="regDate" />
+		<result property="id" column="id" />
+		<result property="nickName" column="nickName" />
+	</resultMap>
+	
+	<!-- 찜 체크 활성화 체크 -->
+	<select id="selectCheckJjimCount" resultType="int" parameterType="java.util.Map">
+		<![CDATA[ 		
+			SELECT count(*) FROM restaurant_Jjim WHERE restaurantIdx = #{restIdx} AND id = #{id}
+		 ]]>
+	</select>
+	
+	<!-- 찜 삭제 기능 -->
+	<delete id="deleteJjim" parameterType="java.util.Map">
+		<![CDATA[
+			DELETE FROM restaurant_Jjim WHERE restaurantIdx = #{restIdx} AND id = #{id}
+		]]>
+	</delete>
+	
+	<!-- 찜 추가 기능 -->
+	<insert id="addJjim" parameterType="java.util.Map">
+		<![CDATA[ 		
+			INSERT INTO restaurant_Jjim
+			(JjimNO, RestaurantIdx, id, nickName)
+			VALUES(#{jjimCount}, #{restIdx}, #{id}, #{nickName})
+		 ]]>
+	</insert>
+	<!-- err -->
+	<!-- 찜 전체 갯수 조회  -->
+	<select id="selectAllJjimCount" resultType="int">
+		<![CDATA[ 		
+			SELECT NVL(MAX(JjimNO),0)+1 AS JjimNO FROM restaurant_Jjim
+		 ]]>
+	</select>
+
+</mapper>

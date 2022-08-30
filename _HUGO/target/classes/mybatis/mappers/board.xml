@@ -49,8 +49,8 @@
 		<![CDATA[ 		
 		
 			INSERT INTO REVIEW_BOARD
-			(ARTICLEIDX, CONTENTS, nickname, restaurantIdx)
-			VALUES(#{articleNO},#{contents}, #{nickName}, #{restaurantIdx})
+			(ARTICLEIDX, CONTENTS, nickname, restaurantIdx,starcount)
+			VALUES(#{articleNO},#{contents}, #{nickName}, #{restaurantIdx},#{starCount})
 		 ]]>
 	</insert>
 	<!-- 리뷰 이미지 insert -->

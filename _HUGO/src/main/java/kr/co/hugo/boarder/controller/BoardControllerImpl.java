@@ -34,6 +34,7 @@ import kr.co.hugo.boarder.dto.BoardDTO;
 import kr.co.hugo.boarder.dto.ImageDTO;
 import kr.co.hugo.boarder.service.BoardService;
 import kr.co.hugo.member.dto.MemberDTO;
+import kr.co.hugo.restaurant.service.ResService;
 
 @Controller
 public class BoardControllerImpl implements BoardController {
@@ -42,6 +43,7 @@ public class BoardControllerImpl implements BoardController {
 	private BoardService boardService;
 	@Autowired
 	private BoardDTO boardDTO;
+	
 
 	private static String OUTPUT_FILE_PATH = "/Users/jeong-won-yeong/Documents/HUGO/RestaurantImage";
 
@@ -70,7 +72,7 @@ public class BoardControllerImpl implements BoardController {
 		// 글정보 저장하기 위한 Map 생성
 		Map<Object,Object> articleMap = new HashMap<>();
 		String title = multipartRequest.getParameter("title");
-		String star = multipartRequest.getParameter("reviewStar");
+		String starCount = multipartRequest.getParameter("reviewStar");
 		String contents = multipartRequest.getParameter("contents");
 		int restaurantIdx =Integer.parseInt(multipartRequest.getParameter("restIdx"));
 		// 업로드 
@@ -89,7 +91,7 @@ public class BoardControllerImpl implements BoardController {
 			articleMap.put("imgFileList", imgFileList);
 		}
 		articleMap.put("title", title);
-		articleMap.put("star", star);
+		articleMap.put("starCount", starCount);
 		articleMap.put("contents", contents);
 		articleMap.put("restaurantIdx",restaurantIdx );
 		
@@ -110,7 +112,6 @@ public class BoardControllerImpl implements BoardController {
 		try {
 			int count = boardService.allImageCount();
 			int articleIdx = boardService.addNewArticle(articleMap); // articleMap을 서비스 클래스로 전달함
-			
 			if (imgFileList != null && imgFileList.size() != 0) {
 				// 첨부한 이미지들을 for문을 이용해 업로드함
 				for (ImageDTO imageDTO : imgFileList) {

@@ -94,7 +94,7 @@
 	                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${steamedImgList[status.index].restaurantIdx}&array=11'">
 	                     	        <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${steamedImgList[status.index].imageFileName}&imageFileNO=${steamedImgList[status.index].imageFileNO}&restaurantIdx=${steamedImgList[status.index].restaurantIdx}" />
 	                         	   <div class="list-info">	
-	                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">❤️ &nbsp;&nbsp;${item.restVisitCount }</span>
+	                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">❤️ &nbsp;&nbsp;${item.restJjim }</span>
 	                            </div>
 	                        </div>
 	                    </div>

@@ -34,9 +34,9 @@ a:hover{
 	<div class="list">
 	<c:forEach items="${lists}" var="list" varStatus="status">
 		<div id="restaurantList">
-			<img class="restaurantList_image" alt="" src="${contextPath}/download.do?imageFileName=${listImg[status.index].imageFileName}&imageFileNO=${listImg[status.index].imageFileNO}&restaurantIdx=${listImg[status.index].restaurantIdx}"/>
+			<img class="restaurantList_image" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11'" alt="" src="${contextPath}/download.do?imageFileName=${listImg[status.index].imageFileName}&imageFileNO=${listImg[status.index].imageFileNO}&restaurantIdx=${listImg[status.index].restaurantIdx}"/>
 			<div class="restaurantList_info">
-				<div class="restaurantList_info_head">${list.restName }</div>
+				<div class="restaurantList_info_head" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11'">${list.restName }</div>
 				<div class="restaurants-count">
 					<span class="restaurantsList-count-info">⭐&nbsp;&nbsp;${list.restStarAvg }</span> 
 						<span class="restaurantsList-count-info">❤️&nbsp;&nbsp;${list.restJjim }</span> 
@@ -58,7 +58,7 @@ a:hover{
 			</div>
 			<div class="restaurantList_most">
 				<div class="restaurantList_more">
-					<a href="${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}">음식점 보러가기</a>
+					<a href="${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11">음식점 보러가기</a>
 				</div>
 			</div>
 		</div>

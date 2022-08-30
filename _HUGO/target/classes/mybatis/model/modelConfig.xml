@@ -9,6 +9,7 @@
 		<typeAlias type="kr.co.hugo.boarder.dto.BoardDTO" alias="boardDTO"/>
 		<typeAlias type="kr.co.hugo.boarder.dto.ImageDTO" alias="imageDTO"/>
 		<typeAlias type="kr.co.hugo.restaurant.dto.RestaurantDTO" alias="restaurantDTO"/>
+		<typeAlias type="kr.co.hugo.jjim.dto.JjimDTO" alias="jjimDTO"/>
 		<typeAlias type="kr.co.hugo.crawler.restinfo.dto.RestInfoDTO" alias="restInfoDTO"/>
 		<typeAlias type="kr.co.hugo.event.dto.EventDTO" alias="eventDTO"/>
 		<typeAlias type="kr.co.hugo.event.dto.EventImageDTO" alias="eventImageDTO"/>

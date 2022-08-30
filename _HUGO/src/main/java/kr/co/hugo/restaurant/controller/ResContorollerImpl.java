@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.hugo.boarder.dto.ImageDTO;
 import kr.co.hugo.boarder.service.BoardService;
+import kr.co.hugo.jjim.service.JjimService;
 import kr.co.hugo.member.dto.MemberDTO;
 import kr.co.hugo.restaurant.dto.RestaurantDTO;
 import kr.co.hugo.restaurant.service.ResService;
@@ -31,45 +32,59 @@ public class ResContorollerImpl implements ResController {
 	@Autowired
 	BoardService boardService;
 
-	@RequestMapping(value="/restaurants/restaurantView.do" , method= {RequestMethod.GET,RequestMethod.POST})
+	@Autowired
+	JjimService jjimService;
+
+	@RequestMapping(value = "/restaurants/restaurantView.do", method = { RequestMethod.GET, RequestMethod.POST })
 	@Override
-	public ModelAndView restaurantView(@RequestParam("restIdx") int restIdx,@RequestParam("array") int list,
-									HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+	public ModelAndView restaurantView(@RequestParam("restIdx") int restIdx, @RequestParam("array") int list,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+
 		// 상세보기 진입시 조회수 1증가
 		resService.resPlusVisitCount(restIdx);
-		
-		String viewName = (String)request.getAttribute("viewName");	
+
+		String viewName = (String) request.getAttribute("viewName");
 		HttpSession session = request.getSession();
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		String id = null;
 		String nickName = null;
+		int jjimCount = 0;
 		if (memberDTO != null) {
 			id = memberDTO.getId();
-			nickName=memberDTO.getNickname();
+			nickName = memberDTO.getNickname();
 			
+			// 찜 활성화 체크
+			Map<Object,Object> jjimCheckMap = new HashMap<>();
+			jjimCheckMap.put("restIdx", restIdx);
+			jjimCheckMap.put("id", id);
+			jjimCount = jjimService.resJjimCheck(jjimCheckMap);
 		}
+		
+		
 		Map<String, Object> viewMap = new HashMap<>();
 		viewMap.put("restIdx", restIdx);
-		viewMap.put("id", id);	
-		viewMap.put("nickName", nickName);	
+		viewMap.put("id", id);
+		viewMap.put("nickName", nickName);
+		
 		// 상세보기 이미지, 정보 요청
 		Map<String, Object> restMap = resService.restaurantView(viewMap);
+		restMap.put("jjimCount", jjimCount);
 		// 상세보기 리뷰 이미지 정보 요청.
-		Map<Object,Object> reviewsMap = new HashMap<>();
-		reviewsMap = boardService.listReviews(restIdx,list,nickName); 	
+		Map<Object, Object> reviewsMap = new HashMap<>();
+		reviewsMap = boardService.listReviews(restIdx, list, nickName);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		reviewsMap.put("id", id);
 		mav.addObject("reviewsMap", reviewsMap);
 		mav.addObject("restMap", restMap);
-		
+
 		return mav;
 	}
+
 	@Override
 	@RequestMapping(value = "/restaurants/restaurantsReviewInfo.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView restaurantsReviewInfo(@RequestParam("articleNO") int reviewIdx, HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	public ModelAndView restaurantsReviewInfo(@RequestParam("articleNO") int reviewIdx, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		// 세션에서 id 가져옴
 		HttpSession session = request.getSession();
@@ -79,7 +94,7 @@ public class ResContorollerImpl implements ResController {
 			id = memberDTO.getId();
 		}
 		// 레스트랑 리뷰 상세보기 정보 요청
-		Map<Object,Object> reviewsMap = new HashMap<>();
+		Map<Object, Object> reviewsMap = new HashMap<>();
 		reviewsMap = boardService.reviewInfo(reviewIdx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("reviewsMap", reviewsMap);
@@ -124,6 +139,7 @@ public class ResContorollerImpl implements ResController {
 
 		return mav;
 	}
+
 	@Override
 	@RequestMapping(value = "/restaurants/restaurantTOP50.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView restaurantTop50(@RequestParam("array") int list, HttpServletRequest request,

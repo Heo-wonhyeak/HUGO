@@ -292,6 +292,31 @@ CREATE TABLE restaurant_info(
 
 SELECT * FROM RESTAURANT_INFO ORDER BY RESTIDX ;
 
+-- 매장 조회수 카운트 ++
 
+UPDATE RESTAURANT_INFO SET RESTVISITCOUNT = RESTVISITCOUNT +1 WHERE RESTIDX = 11;
+ROLLBACK;
+SELECT * FROM RESTAURANT_INFO ri WHERE RESTIDX = 11; 
 
+-- 레스토랑 찜 테이블
+
+DROP TABLE restaurant_Jjim CASCADE CONSTRAINTS;
+CREATE TABLE restaurant_Jjim(
+	JjimNO number(10) PRIMARY KEY, -- pk
+	RestaurantIdx number(10) NOT NULL,
+	id varchar2(1000) NOT null,
+	nickName varchar2(1000) NOT NULL,
+	regDate DATE DEFAULT sysdate
+);
+
+INSERT INTO restaurant_Jjim
+(JjimNO, RestaurantIdx, id, nickName,regDate)
+VALUES(2, 33, 'nicednjsdud', '밥', sysdate
+);
+-- 찜 조회
+SELECT count(*) FROM restaurant_Jjim WHERE restaurantIdx = 11 AND id = 'nicednjsdud';
+SELECT NVL(MAX(JjimNO),0)+1 AS JjimNO FROM restaurant_Jjim;
+-- 찜 삭제
+DELETE FROM restaurant_Jjim WHERE restaurantIdx = 11 AND id = 'nicednjsdud';
+ROLLBACK;
 
