@@ -24,7 +24,7 @@ html,body{
 </style>
 </head>
 <body>
-    <form action="${contextPath}/board/addNewReview.do" method="post" id="restaurant-review-write-form" onSubmit="form_check(form)" enctype="multipart/form-data">
+    <form action="${contextPath}/board/addNewReview.do" method="post" id="restaurant-review-write-form" onSubmit="return form_check(this);" enctype="multipart/form-data">
         <!-- 히든 속성으로 매장 번호와 사용자 가져오기 -->
         <div class="restaurant-review-write-out"><a onClick="window.close()">✖️</a></div>
         <div class="restaurant-review-write-title"><div id="review-title">title</div><input id="title" type="text" name="title" /></div>
@@ -130,11 +130,11 @@ html,body{
 			mainView.focus();
 			return false;
 		}
-		if($("input[name=reviewStar]:radio:checked").length<1){
+		if($(':radio[name="reviewStar"]:checked').length<1){
 			alert("별점을 체크해 주셔야 합니다.");
 			return false;
 		}
-		
+		return true;		
 	}
     </script>
 </body>
