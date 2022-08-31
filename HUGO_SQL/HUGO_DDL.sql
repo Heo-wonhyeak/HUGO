@@ -293,7 +293,7 @@ CREATE TABLE restaurant_info(
 SELECT * FROM RESTAURANT_INFO WHERE RESTIDX = 11 ORDER BY RESTIDX  ;
 
 -- 매장 평균 소수점 첫짜리 까지로 변경
-
+-- int -> double 정밀도 변경	 * 변경 요망 *
 ALTER TABLE restaurant_info ADD (restStarAvg_backup NUMBER(10));
 UPDATE restaurant_info SET restStarAvg_backup =restStarAvg;
 UPDATE restaurant_info SET restStarAvg = NULL;
