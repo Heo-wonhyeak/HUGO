@@ -71,7 +71,7 @@ public class ResContorollerImpl implements ResController {
 		restMap.put("jjimCount", jjimCount);
 		// 상세보기 리뷰 이미지 정보 요청.
 		Map<Object, Object> reviewsMap = new HashMap<>();
-		reviewsMap = boardService.listReviews(restIdx, list, nickName);
+		reviewsMap = boardService.listReviews(restIdx, list, nickName,id);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		reviewsMap.put("id", id);

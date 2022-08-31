@@ -58,7 +58,8 @@
 		<foreach collection="list" item="item" open="INSERT ALL"
 			separator=" " close="SELECT * FROM DUAL">
 			INTO IMAGE_INFO
-			(imageFileNO, imageFileName, articleIdx, restaurantIdx)
+			(imageFileNO, imageFileName,
+			articleIdx, restaurantIdx)
 			VALUES
 			(#{item.imageFileNO},#{item.imageFileName},#{item.articleIdx},#{item.restaurantIdx})
 		</foreach>
@@ -91,9 +92,9 @@
 
 	<!-- 내가쓴 리뷰 -->
 	<select id="selectMyList" resultType="boardDTO"
-		parameterType="String">
+		parameterType="java.util.Map">
 		<![CDATA[ 		
-			SELECT * FROM REVIEW_BOARD WHERE nickname = #{nickname} order by regdate desc
+			SELECT * FROM REVIEW_BOARD WHERE NICKNAME  = #{nickname} AND RESTAURANTIDX = #{restIdx} ORDER BY REGDATE DESC
 		 ]]>
 	</select>
 	<!-- 매장 상세정보 모든 리뷰 이미지 불러오기 -->

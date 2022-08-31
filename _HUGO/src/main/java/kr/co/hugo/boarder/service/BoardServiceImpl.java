@@ -38,7 +38,7 @@ public class BoardServiceImpl implements BoardService {
 
 	/* 매장 상세페이지 모든 리뷰 불러오기 default */
 	@Override
-	public Map<Object,Object> listReviews(int restIdx,int list,String nickname) throws Exception {
+	public Map<Object,Object> listReviews(int restIdx,int list,String nickname,String id) throws Exception {
 		Map<Object,Object> reviewsMap = new HashMap<>();
 		List<ImageDTO> imgList = new ArrayList<>();
 		List<BoardDTO> reviewList = new ArrayList<>();
@@ -56,14 +56,11 @@ public class BoardServiceImpl implements BoardService {
 		}
 		// 내가쓴 리뷰 호출
 		else if(list == 14) {
-			List<BoardDTO> reviewListIdx = new ArrayList<>();
-			reviewListIdx = boardDAO.selectAllReviewsList(restIdx);
-			for(int i=0;i<reviewListIdx.size();i++) {
-				String _nickName = reviewListIdx.get(i).getNickName();
-				if(nickname == _nickName) {
-					boardDAO.selectMyReviewList(restIdx,nickname);
-				}
-			}
+			Map<Object,Object> myReview = new HashMap<>();
+			myReview.put("restIdx", restIdx);
+			myReview.put("id", id);
+			myReview.put("nickname", nickname);
+			reviewList =boardDAO.selectMyReviewList(myReview);	
 		}	
 		for(int i=0;i<reviewList.size();i++) {
 			int reviewIdx = reviewList.get(i).getArticleIdx();

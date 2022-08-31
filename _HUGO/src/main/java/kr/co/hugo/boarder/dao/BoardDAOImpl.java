@@ -55,8 +55,8 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	// 매장 내가 쓴 리뷰 가져오기
 	@Override
-	public List<BoardDTO> selectMyReviewList(int restIdx, String nickname) throws DataAccessException {
-		List<BoardDTO> reviewList = sqlSession.selectList("mapper.board.selectMyList",nickname);
+	public List<BoardDTO> selectMyReviewList(Map<Object, Object> myReview) throws DataAccessException {
+		List<BoardDTO> reviewList = sqlSession.selectList("mapper.board.selectMyList",myReview);
 		return reviewList;
 	}
 	

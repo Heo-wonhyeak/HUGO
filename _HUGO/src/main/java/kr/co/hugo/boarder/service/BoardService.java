@@ -9,7 +9,7 @@ public interface BoardService {
 
 	public int addNewArticle(Map articleMap) throws Exception;
 	// 매장 상세보기 모든 리뷰 가져오기
-	public Map<Object,Object> listReviews(int restIdx,int list,String nickname) throws Exception;
+	public Map<Object,Object> listReviews(int restIdx,int list,String nickname,String id) throws Exception;
 	// 리뷰 상세보기 가져오기
 	public Map<Object, Object> reviewInfo(int reviewIdx) throws Exception;
 	// 리뷰에 저장된 모든 이미지 개수

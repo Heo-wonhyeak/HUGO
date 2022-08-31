@@ -134,7 +134,7 @@ public class BoardControllerImpl implements BoardController {
 			boardService.calResStarAvg(restaurantIdx);
 			message = "<script>";
 			message += " alert('새글을 추가했습니다.');";
-			message += " location.href='window.close();'";
+			message += " self.close();";
 			message += "</script>";
 
 			// 새 글을 추가한 후 메시지를 전달함
@@ -152,7 +152,7 @@ public class BoardControllerImpl implements BoardController {
 			
 			message = "<script>";
 			message += " alert('오류가 발생했습니다. 다시 시도해 주세요.');";
-			message += " location.href='window.close();'";
+			message += " self.close();";
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 
