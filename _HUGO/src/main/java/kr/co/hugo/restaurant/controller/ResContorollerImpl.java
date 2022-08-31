@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.hugo.boarder.dto.BoardSteamedDTO;
 import kr.co.hugo.boarder.dto.ImageDTO;
 import kr.co.hugo.boarder.service.BoardService;
 import kr.co.hugo.jjim.service.JjimService;
@@ -42,36 +43,44 @@ public class ResContorollerImpl implements ResController {
 
 		// 상세보기 진입시 조회수 1증가
 		resService.resPlusVisitCount(restIdx);
-
+		Map<Object, Object> reviewsMap = new HashMap<>();
+		List<BoardSteamedDTO> steamedList = new ArrayList<>();
 		String viewName = (String) request.getAttribute("viewName");
 		HttpSession session = request.getSession();
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-		String id = null;
-		String nickName = null;
+		String id = "default";
+		String nickName = "default";
 		int jjimCount = 0;
 		if (memberDTO != null) {
 			id = memberDTO.getId();
 			nickName = memberDTO.getNickname();
-			
+
 			// 찜 활성화 체크
-			Map<Object,Object> jjimCheckMap = new HashMap<>();
+			Map<Object, Object> jjimCheckMap = new HashMap<>();
 			jjimCheckMap.put("restIdx", restIdx);
 			jjimCheckMap.put("id", id);
 			jjimCount = jjimService.resJjimCheck(jjimCheckMap);
+
+			// 추천해요 중복 체크
+			Map<Object, Object> steamedCheckMap = new HashMap<>();
+			steamedCheckMap.put("restIdx", restIdx);
+			steamedCheckMap.put("id", id);
+			steamedList = boardService.reviewSteamedCount(steamedCheckMap);
+			System.out.println("추천해요 리스트 사이즈 - "+steamedList.size());
 		}
-		
-		
+
 		Map<String, Object> viewMap = new HashMap<>();
 		viewMap.put("restIdx", restIdx);
 		viewMap.put("id", id);
 		viewMap.put("nickName", nickName);
-		
+
 		// 상세보기 이미지, 정보 요청
 		Map<String, Object> restMap = resService.restaurantView(viewMap);
 		restMap.put("jjimCount", jjimCount);
 		// 상세보기 리뷰 이미지 정보 요청.
-		Map<Object, Object> reviewsMap = new HashMap<>();
-		reviewsMap = boardService.listReviews(restIdx, list, nickName,id);
+
+		reviewsMap = boardService.listReviews(restIdx, list, nickName, id);
+		reviewsMap.put("steamedList", steamedList);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		reviewsMap.put("id", id);

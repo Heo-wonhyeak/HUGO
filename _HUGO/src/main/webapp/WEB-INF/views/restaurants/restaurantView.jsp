@@ -10,6 +10,7 @@
 <c:set var="imgList" value="${restMap.imgList }" />
 <c:set var="reviewList" value="${reviewsMap.reviewList }" />
 <c:set var="imgList2" value="${reviewsMap.imgList}" />
+<c:set var="steamedList" value="${reviewsMap.steamedList}" />
 
 
 <%
@@ -136,7 +137,7 @@
 			<a onClick="popUpWrite('${isLogOn}','${restaurant.restIdx }')" target="_parent">✏️ 리뷰 쓰기 </a>
 		</div>
 			<c:choose>
-				<c:when test="${!empty reviewList }">
+				<c:when test="${!empty reviewList}">
 					<c:forEach items="${reviewList}" var="reviewList" varStatus="status">
 						<div class="restaurants-review-list">
 							<div class="restaurants-review-head">
@@ -144,7 +145,7 @@
 								<div class="restaurants-review-head-name">${reviewList.nickName }</div>
 								<div class="restaurants-review-head-star5">⭐&nbsp;${reviewList.starCount } 점</div>
 								<div class="restaurants-review-head-revise">
-									<a onClick="popUpFix(${isLogOn})" target="_parent">✏️ 수정/삭제</a>
+									<a onClick="popUpFix('${isLogOn}')" target="_parent">✏️ 수정/삭제</a>
 								</div>
 							</div>
 			
@@ -160,7 +161,25 @@
 								</div>
 							</div>
 							</div>
-							<div class="restaurants-review-steamed" onClick="goodCheck()">추천해요😀(1)</div>
+							<c:set var="doneLoop" value="false"/>
+							<c:if test="${not doneLoop}">
+							<c:choose>						
+									
+									<c:when test="${!empty steamedList }">
+										<c:forEach items="${steamedList}" var="steamedList" varStatus="status2">				
+											<c:if test="${steamedList.articleIdx == reviewList.articleIdx}">
+												<div class="restaurants-review-steamed" onClick="overlapGoodCheck()">추천해요😀&nbsp;(${reviewList.reviewStamp })</div>
+												<c:set var="doneLoop" value="true"/>
+											</c:if>	
+										</c:forEach>		
+									</c:when>
+									<c:otherwise>
+										<div class="restaurants-review-steamed" onClick="goodCheck('${isLogOn}','${reviewList.articleIdx }','${reviewList.restaurantIdx}')">추천해요😀&nbsp;(${reviewList.reviewStamp })</div>		
+										<c:set var="doneLoop" value="true"/>
+									</c:otherwise>
+								
+							</c:choose>		
+							</c:if>								
 						</div>
 				</c:forEach>
 			</c:when>
@@ -299,8 +318,34 @@
 				});
 			});
 		});
+		
+		// 추천해요 기능 추가
+		function goodCheck(isLogOn,articleIdx,restaurantIdx){
+			if (isLogOn != '' && isLogOn != false) {
+			 	$.ajax({
+			 		url : "${contextPath}/board/goodCheck.do?restIdx="+restaurantIdx+"&articleIdx="+articleIdx,
+			 		type : "get",
+			 		async: false,
+			 		data: "",
+			 		success:function(data){
+			 			alert("추천하였습니다.");
+			 			location.reload();
+		 			}
+			 	});
+			}
+			else{
+				alert("로그인후 이용가능합니다.");
+				return false;
+			}
+		}
+		// 추천해요 중복 체크인 경우
+		function overlapGoodCheck(){
+			alert("이미 추천하셨습니다.");
+			return false;
+			}
+		
 		// 찜하기 구현 
-		const restIdx = "${restaurant.restIdx}";
+		
 		function jjimCancel(){
 			if(confirm("찜 목록에서 삭제하시겠습니까?")==true){
 				$.ajax({
@@ -345,19 +390,8 @@
 		// id 검증 후 수정/삭제 나타내기  
 			// 연결 후 core 태그 사용
 		
-		// 추천해요 기능 추가
-		// function goodCheck(){
-		// 	const query = {id : }
-
-		// 	$.ajax({
-		// 		url : "${contextPath}/bGood.do",
-		// 		type : "get"
-		// 		data: query,
-		// 		success:function(data){
-		// 			location.reload();
-		// 		}
-		// 	})
-		// }
+		
+		
 	</script>
 </body>
 </html>

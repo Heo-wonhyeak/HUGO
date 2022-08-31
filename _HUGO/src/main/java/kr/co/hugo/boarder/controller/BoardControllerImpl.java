@@ -189,4 +189,31 @@ public class BoardControllerImpl implements BoardController {
 		return fileList;
 	}
 
+	@Override
+	@RequestMapping(value = "/board/goodCheck.do", method = RequestMethod.GET)
+	public void goodCheck(@RequestParam("restIdx") int restIdx,@RequestParam("articleIdx") int articleIdx,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// 새로운 추천 번호 가져오기
+		int result = 0;
+		int steamedIdx = boardService.reviewNewSteamCount();
+		HttpSession session = request.getSession();
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		String id = null;
+		Map<Object, Object> steamedMap = new HashMap<>();
+		if (memberDTO != null) {
+			id = memberDTO.getId();
+			steamedMap.put("id", id);
+			steamedMap.put("restIdx", restIdx);
+			steamedMap.put("articleIdx", articleIdx);
+			steamedMap.put("steamedIdx", steamedIdx);
+			result = boardService.AddSteamed(steamedMap);		
+			result = boardService.updateReviewSteamed(articleIdx);
+		}
+		if(result == 0) {
+			System.out.println("찜 추가하기 오류");
+		}
+		else {
+			System.out.println("찜 추가하기 성공");
+		}
+	}
+
 }

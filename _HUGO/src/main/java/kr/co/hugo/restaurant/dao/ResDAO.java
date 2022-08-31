@@ -30,4 +30,5 @@ public interface ResDAO {
 	public void plusVisitCount(int restIdx) throws DataAccessException;
 
 	public void updateStarAvg(Map<Object, Object> resMap) throws DataAccessException;
+
 }

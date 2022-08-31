@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.dao.DataAccessException;
 
 import kr.co.hugo.boarder.dto.BoardDTO;
+import kr.co.hugo.boarder.dto.BoardSteamedDTO;
 import kr.co.hugo.boarder.dto.ImageDTO;
 
 public interface BoardDAO {
@@ -29,6 +30,14 @@ public interface BoardDAO {
 	public int selectAllImageCount() throws DataAccessException;
 	// 리뷰 쓰기 이미지 insert
 	public void insertNewImage(Map articleMap) throws DataAccessException;
+	// 리뷰 추천해요 중복체크
+	public List<BoardSteamedDTO> selectReviewSteamedCount(Map<Object, Object> steamedCheckMap) throws DataAccessException;
+	// 리뷰 추천해요 새로운 번호 생성
+	public int selectNewSteamedCount() throws DataAccessException;
+	// 리뷰 추천해요 추가하기
+	public int addNewSteamed(Map<Object, Object> steamedMap)throws DataAccessException;
+	// 리뷰 추천 1 증가
+	public int updateReviewSteamed(int articleIdx) throws DataAccessException;
 	
 
 }

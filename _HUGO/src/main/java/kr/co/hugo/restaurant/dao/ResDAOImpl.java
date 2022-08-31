@@ -76,11 +76,10 @@ public class ResDAOImpl implements ResDAO{
 		sqlSession.update("mapper.restaurant.updatePlusVisitCount",restIdx);
 		
 	}
-
-
 	@Override
 	public void updateStarAvg(Map<Object, Object> resMap) throws DataAccessException {
 		sqlSession.update("mapper.restaurant.updateStarAvg",resMap);
 	}
+
 
 }

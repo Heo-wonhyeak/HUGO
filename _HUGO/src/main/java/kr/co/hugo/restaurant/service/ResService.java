@@ -20,8 +20,10 @@ public interface ResService {
 	public List<RestaurantDTO> resDistanceList() throws Exception;
 
 	public List<RestaurantDTO> resFamousList() throws Exception;
-	
+
 	public ImageDTO resImgList(int restaurantIdx) throws Exception;
+
 	// 조회수 증가
-	public void resPlusVisitCount(int restIdx) throws Exception; 
+	public void resPlusVisitCount(int restIdx) throws Exception;
+
 }

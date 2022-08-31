@@ -331,3 +331,20 @@ SELECT NVL(MAX(JjimNO),0)+1 AS JjimNO FROM restaurant_Jjim;
 DELETE FROM restaurant_Jjim WHERE restaurantIdx = 11 AND id = 'nicednjsdud';
 ROLLBACK;
 
+-- 리뷰 추천해요 테이블
+
+DROP TABLE Review_GoodCheck CASCADE CONSTRAINTS;
+CREATE TABLE Review_GoodCheck(
+	steamedIdx number(5) PRIMARY KEY,	-- pk
+	articleIdx number(10),
+	restIdx number(5),
+	Id varchar2(1000),
+	regDate DATE DEFAULT sysdate
+);
+
+INSERT INTO ADMIN.REVIEW_GOODCHECK (STEAMEDIDX, ARTICLEIDX,restIdx, ID) VALUES(2, 10263,11, 'nicednjsdud');
+
+SELECT * FROM Review_GoodCheck WHERE ARTICLEIDX = 11 AND USERID = 'nicednjsdud';
+
+SELECT NVL(MAX(steamedIdx),0)+1 as steamedIdx FROM Review_GoodCheck;
+

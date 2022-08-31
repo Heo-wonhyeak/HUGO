@@ -119,7 +119,35 @@
 			SELECT * FROM IMAGE_INFO WHERE ARTICLEIDX = #{reviewIdx} 
 		 ]]>
 	</select>
-
+	
+	<!-- 리뷰 추천해요 중복체크 -->
+	<select id="selectReviewSteamedCount" resultType="boardSteamedDTO"
+		parameterType="java.util.Map">
+		<![CDATA[ 		
+			SELECT * FROM Review_GoodCheck WHERE restIdx = #{restIdx} AND ID = #{id}
+		 ]]>
+	</select>
+	
+	<!-- 추가하는 추천해요에 대한 추천해요번호 추출 -->
+	<select id="selectNewSteamedCount" resultType="int">
+		<![CDATA[ 		
+			SELECT NVL(MAX(steamedIdx),0)+1 as steamedIdx FROM Review_GoodCheck
+		 ]]>
+	</select>
+	
+	<!-- 리뷰 추천해요 추가 -->
+	<insert id="addNewSteamed" parameterType="java.util.Map">
+		<![CDATA[ 		
+			INSERT INTO REVIEW_GOODCHECK (STEAMEDIDX, ARTICLEIDX,restIdx, ID) VALUES(#{steamedIdx},#{articleIdx},#{restIdx},#{id})
+		 ]]>
+	</insert>
+	
+	<!-- 리뷰 추천 1 증가 -->
+	<update id="updateReviewSteamed" parameterType="java.util.Map">
+		<![CDATA[ 
+			UPDATE Review_board SET reviewStamp = reviewStamp + 1 WHERE articleIdx = #{articleIdx}
+		]]>
+	</update>
 
 
 </mapper>

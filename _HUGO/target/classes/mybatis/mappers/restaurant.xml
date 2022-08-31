@@ -122,5 +122,4 @@
 			UPDATE RESTAURANT_INFO SET restStarAvg = #{Avg} WHERE RESTIDX = #{restaurantIdx}
 		]]>
 	</update>
-
 </mapper>

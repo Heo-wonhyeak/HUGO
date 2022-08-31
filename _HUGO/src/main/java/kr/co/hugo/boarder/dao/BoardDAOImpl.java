@@ -1,5 +1,6 @@
 package kr.co.hugo.boarder.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import kr.co.hugo.boarder.dto.BoardDTO;
+import kr.co.hugo.boarder.dto.BoardSteamedDTO;
 import kr.co.hugo.boarder.dto.ImageDTO;
 
 
@@ -106,6 +108,32 @@ public class BoardDAOImpl implements BoardDAO {
 			}
 			sqlSession.insert("mapper.board.insertNewImage", imgFileList);
 		}
+	}
+	// 리뷰 추천해요 중복체크
+	@Override
+	public List<BoardSteamedDTO> selectReviewSteamedCount(Map<Object, Object> steamedCheckMap)
+			throws DataAccessException {
+		List<BoardSteamedDTO> lists = new ArrayList<>();
+		lists = sqlSession.selectList("mapper.board.selectReviewSteamedCount",steamedCheckMap);
+		return lists;
+	}
+	// 리뷰 추천해요 새로운 번호 생성
+	@Override
+	public int selectNewSteamedCount() throws DataAccessException {
+		int count = sqlSession.selectOne("mapper.board.selectNewSteamedCount");
+		return count;
+	}
+	// 리뷰 추천해요 추가하기
+	@Override
+	public int addNewSteamed(Map<Object, Object> steamedMap) throws DataAccessException {
+		int count = sqlSession.insert("mapper.board.addNewSteamed",steamedMap);
+		return count;
+	}
+
+	@Override
+	public int updateReviewSteamed(int articleIdx) throws DataAccessException {
+		int count = sqlSession.update("mapper.board.updateReviewSteamed",articleIdx);
+		return count;
 	}
 
 
