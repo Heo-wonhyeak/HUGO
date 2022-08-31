@@ -14,5 +14,7 @@ public interface BoardService {
 	public Map<Object, Object> reviewInfo(int reviewIdx) throws Exception;
 	// 리뷰에 저장된 모든 이미지 개수
 	public int allImageCount();
+	// 매장 총 리뷰 평균 별점구하기
+	public void calResStarAvg(int restaurantIdx) throws Exception;
 	
 }

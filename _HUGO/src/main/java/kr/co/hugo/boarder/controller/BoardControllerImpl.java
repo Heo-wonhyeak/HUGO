@@ -130,7 +130,8 @@ public class BoardControllerImpl implements BoardController {
 					
 				}
 			}
-
+			// 매장 별점 평균구하기
+			boardService.calResStarAvg(restaurantIdx);
 			message = "<script>";
 			message += " alert('새글을 추가했습니다.');";
 			message += " location.href='window.close();'";
@@ -148,7 +149,7 @@ public class BoardControllerImpl implements BoardController {
 					srcFile.delete();
 				}
 			}
-
+			
 			message = "<script>";
 			message += " alert('오류가 발생했습니다. 다시 시도해 주세요.');";
 			message += " location.href='window.close();'";

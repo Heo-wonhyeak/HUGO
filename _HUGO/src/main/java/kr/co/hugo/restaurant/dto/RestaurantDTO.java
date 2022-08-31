@@ -19,7 +19,7 @@ public class RestaurantDTO {
 	private String restMenuList;
 	private Date restUpdateDate;
 	private String restTag;
-	private int restStarAvg;
+	private double restStarAvg;
 	private int restVisitCount;
 	private int restReviewCount;
 	private int restJjim;
@@ -29,7 +29,7 @@ public class RestaurantDTO {
 	}
 	public RestaurantDTO(int restIdx, String restName, String restAddress, String restJibunAddress, String restPhone,
 			String restMenu, String restPrice, String restPark, String restOpen, String restMenuList,
-			Date restUpdateDate, String restTag, int restStarAvg, int restVisitCount, int restReviewCount, int restJjim,
+			Date restUpdateDate, String restTag, double restStarAvg, int restVisitCount, int restReviewCount, int restJjim,
 			int hotplaceIdx) {
 		this.restIdx = restIdx;
 		this.restName = restName;
@@ -121,10 +121,10 @@ public class RestaurantDTO {
 	public void setRestTag(String restTag) {
 		this.restTag = restTag;
 	}
-	public int getRestStarAvg() {
+	public double getRestStarAvg() {
 		return restStarAvg;
 	}
-	public void setRestStarAvg(int restStarAvg) {
+	public void setRestStarAvg(double restStarAvg) {
 		this.restStarAvg = restStarAvg;
 	}
 	public int getRestVisitCount() {

@@ -116,5 +116,11 @@
 		]]>
 	</update>
 	
+	<!-- 매장 별점 평균 업데이트 -->
+	<update id="updateStarAvg" parameterType="java.util.Map">
+		<![CDATA[ 
+			UPDATE RESTAURANT_INFO SET restStarAvg = #{Avg} WHERE RESTIDX = #{restaurantIdx}
+		]]>
+	</update>
 
 </mapper>

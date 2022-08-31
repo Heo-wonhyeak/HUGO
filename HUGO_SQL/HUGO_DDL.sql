@@ -290,13 +290,24 @@ CREATE TABLE restaurant_info(
 
 -- 매장 전체 정보 조회
 
-SELECT * FROM RESTAURANT_INFO ORDER BY RESTIDX ;
+SELECT * FROM RESTAURANT_INFO WHERE RESTIDX = 11 ORDER BY RESTIDX  ;
 
+-- 매장 평균 소수점 첫짜리 까지로 변경
+
+ALTER TABLE restaurant_info ADD (restStarAvg_backup NUMBER(10));
+UPDATE restaurant_info SET restStarAvg_backup =restStarAvg;
+UPDATE restaurant_info SET restStarAvg = NULL;
+ALTER TABLE restaurant_info modify restStarAvg number(3,1) ;
+UPDATE restaurant_info SET restStarAvg = restStarAvg_backup;
+ALTER TABLE restaurant_info DROP COLUMN restStarAvg_backup;
 -- 매장 조회수 카운트 ++
 
 UPDATE RESTAURANT_INFO SET RESTVISITCOUNT = RESTVISITCOUNT +1 WHERE RESTIDX = 11;
 ROLLBACK;
 SELECT * FROM RESTAURANT_INFO ri WHERE RESTIDX = 11; 
+
+-- 매장 리뷰 별점 평균
+UPDATE RESTAURANT_INFO SET restStarAvg = 3.7 WHERE RESTIDX = 11;
 
 -- 레스토랑 찜 테이블
 

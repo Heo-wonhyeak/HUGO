@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.co.hugo.boarder.dao.BoardDAO;
 import kr.co.hugo.boarder.dto.BoardDTO;
 import kr.co.hugo.boarder.dto.ImageDTO;
+import kr.co.hugo.restaurant.dao.ResDAO;
 
 @Service("boardService")
 @Transactional(propagation = Propagation.REQUIRED)
@@ -20,6 +21,9 @@ public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private BoardDAO boardDAO;
+	
+	@Autowired
+	private ResDAO resDAO;
 
 	@Override
 	public int addNewArticle(Map articleMap) throws Exception {
@@ -87,6 +91,22 @@ public class BoardServiceImpl implements BoardService {
 	public int allImageCount() {
 		int count = boardDAO.selectAllImageCount();
 		return count;
+	}
+	/* 리뷰 추가시 해당 매장 별점 평균 업데이트 */
+	@Override
+	public void calResStarAvg(int restaurantIdx) throws Exception {
+		List<BoardDTO> reviewList = new ArrayList<>();
+		Map<Object,Object> resMap = new HashMap<>();
+		reviewList = boardDAO.selectAllReviewsList(restaurantIdx);
+		int totalAvg = 0;
+		for(int i=0;i<reviewList.size();i++) {
+			totalAvg += reviewList.get(i).getStarCount();
+		}
+		int reviewTotalCount = reviewList.size();
+		double Avg =(Math.round((double)totalAvg/reviewTotalCount*100)/100.0);
+		resMap.put("restaurantIdx", restaurantIdx);
+		resMap.put("Avg", Avg);
+		resDAO.updateStarAvg(resMap);
 	}
 
 

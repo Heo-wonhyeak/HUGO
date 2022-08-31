@@ -3,6 +3,7 @@ package kr.co.hugo.restaurant.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,12 @@ public class ResDAOImpl implements ResDAO{
 	public void plusVisitCount(int restIdx) throws DataAccessException {
 		sqlSession.update("mapper.restaurant.updatePlusVisitCount",restIdx);
 		
+	}
+
+
+	@Override
+	public void updateStarAvg(Map<Object, Object> resMap) throws DataAccessException {
+		sqlSession.update("mapper.restaurant.updateStarAvg",resMap);
 	}
 
 }
