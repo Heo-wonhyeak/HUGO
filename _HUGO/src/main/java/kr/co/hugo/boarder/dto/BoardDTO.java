@@ -19,12 +19,14 @@ public class BoardDTO {
 	private String defaultImage;
 	private int restaurantIdx;
 	private int starCount;
-	
-	public BoardDTO() {}
+	private String title;
+
+	public BoardDTO() {
+	}
 
 	public BoardDTO(int articleIdx, String hotplaceIdx, String contents, String nickName, int userTotalReview,
 			String restURL, String regDate, int reviewStamp, String mainImage, String subImage1, String subImage2,
-			String subImage3, String defaultImage, int restaurantIdx,int starCount) {
+			String subImage3, String defaultImage, int restaurantIdx, int starCount, String title) {
 		this.articleIdx = articleIdx;
 		this.hotplaceIdx = hotplaceIdx;
 		this.contents = contents;
@@ -39,7 +41,8 @@ public class BoardDTO {
 		this.subImage3 = subImage3;
 		this.defaultImage = defaultImage;
 		this.restaurantIdx = restaurantIdx;
-		this.starCount=starCount;
+		this.starCount = starCount;
+		this.title = title;
 	}
 
 	public int getArticleIdx() {
@@ -113,7 +116,6 @@ public class BoardDTO {
 	public void setMainImage(String mainImage) {
 		this.mainImage = mainImage;
 	}
-	
 
 	public int getStarCount() {
 		return starCount;
@@ -163,7 +165,13 @@ public class BoardDTO {
 		this.restaurantIdx = restaurantIdx;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
-	
-	
+
 }

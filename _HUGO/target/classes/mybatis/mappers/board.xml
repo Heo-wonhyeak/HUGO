@@ -20,6 +20,7 @@
 		<result property="subImage3" column="subImage3" />
 		<result property="defaultImage" column="defaultImage" />
 		<result property="starCount" column="starCount" />
+		<result property="title" column="title" />
 	</resultMap>
 
 	<resultMap type="imageDTO" id="imgResult">
@@ -49,8 +50,8 @@
 		<![CDATA[ 		
 		
 			INSERT INTO REVIEW_BOARD
-			(ARTICLEIDX, CONTENTS, nickname, restaurantIdx,starcount)
-			VALUES(#{articleNO},#{contents}, #{nickName}, #{restaurantIdx},#{starCount})
+			(ARTICLEIDX, CONTENTS, nickname, restaurantIdx,starcount,title)
+			VALUES(#{articleNO},#{contents}, #{nickName}, #{restaurantIdx},#{starCount},#{title})
 		 ]]>
 	</insert>
 	<!-- 리뷰 이미지 insert -->

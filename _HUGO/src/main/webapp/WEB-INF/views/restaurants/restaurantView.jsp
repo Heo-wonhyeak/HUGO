@@ -144,9 +144,11 @@
 								<img class="restaurants-review-head-image" alt="default" src="${contextPath }/resources/img/restaurant/user_default.jpg"/>
 								<div class="restaurants-review-head-name">${reviewList.nickName }</div>
 								<div class="restaurants-review-head-star5">⭐&nbsp;${reviewList.starCount } 점</div>
-								<div class="restaurants-review-head-revise">
-									<a onClick="popUpFix('${isLogOn}')" target="_parent">✏️ 수정/삭제</a>
-								</div>
+								<c:if test="${member.nickname == reviewList.nickName }">
+									<div class="restaurants-review-head-revise">
+										<a onClick="popUpFix('${reviewList.articleIdx }')" target="_parent">✏️ 수정/삭제</a>
+									</div>
+								</c:if>
 							</div>
 			
 						<div class="restaurants-review-contents">
@@ -253,7 +255,7 @@
 		// 로그인 검증 필요 없을시 alert창
 		function popUpWrite(isLogOn,restIdx){
 			if (isLogOn != '' && isLogOn != false) {
-				const url ="${contextPath }/restaurants/restaurantsReviewWrite.do?restIdx="+restIdx
+				const url ="${contextPath }/restaurants/restaurantsReviewWrite.do?restIdx="+restIdx;
 					const name = "a";
 					const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 					window.open(url,name,option);
@@ -266,16 +268,11 @@
 		}
 		// 매장 상세보기 수정/삭제 팝업창 이동
 		// 만약 작성자가 아닐시 보이지 않게 하기
-		function popUpFix(isLogOn){
-			// 나중에 수정
-			if (isLogOn == '' && isLogOn == false) {
-				const url ="${contextPath }/restaurants/restaurantsReviewMod.do"
+		function popUpFix(reviewIdx){
+				const url ="${contextPath }/restaurants/restaurantsReviewMod.do?reviewIdx="+reviewIdx;
 				const name = "a";
 				const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 				window.open(url,name,option);
-			}else{
-				alert("본인이 아니면 삭제할수 없습니다.")
-			}
 		}
 		// 사진 상세보기 팝업창 이동
 		function popUpPhoto(){
@@ -385,13 +382,7 @@
 				alert("로그인후 이용가능합니다.");
 				return false;
 			}
-		}
-
-		// id 검증 후 수정/삭제 나타내기  
-			// 연결 후 core 태그 사용
-		
-		
-		
+		}		
 	</script>
 </body>
 </html>

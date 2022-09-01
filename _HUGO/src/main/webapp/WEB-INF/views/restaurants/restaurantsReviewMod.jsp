@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="review" value="${reviewsMap.review }" />
+<c:set var="imgList" value="${reviewsMap.imgList}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +24,8 @@ html,body{
 <body>
     <form action="#" method="post" id="restaurant-review-write-form">
         <!-- 히든 속성으로 매장 번호와 사용자 가져오기 -->
-        <div class="restaurant-review-write-out"><a onClick="window.close()">✖️<a></div>
-        <div class="restaurant-review-write-title"><div id="review-title">title</div><input id="title" type="text" name="title" /></div>
+        <div class="restaurant-review-write-out"><a onClick="window.close()">✖️</a></div>
+        <div class="restaurant-review-write-title"><div id="review-title">title</div><input id="title" type="text" name="title" >${review.title}</input></div>
         <div class="restaurant-review-write-section-wrap">
              <div class="restaurant-review-write-content_star">
                  <p class="content-star">content</p><p class="content-star">별점<p>

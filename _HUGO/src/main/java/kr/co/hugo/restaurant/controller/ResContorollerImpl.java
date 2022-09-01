@@ -137,13 +137,18 @@ public class ResContorollerImpl implements ResController {
 		mav.addObject("restMap", restMap);
 		return mav;
 	}
-
+	@Override
 	@RequestMapping(value = "/restaurants/restaurantsReviewMod.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView restaurantsReviewMod(String id, HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView restaurantsReviewMod(@RequestParam("reviewIdx") int reviewIdx, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
 		String viewName = (String) request.getAttribute("viewName");
+		
+		// 레스트랑 리뷰 상세보기 정보 요청
+		Map<Object, Object> reviewsMap = new HashMap<>();
+		reviewsMap = boardService.reviewInfo(reviewIdx);
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("reviewsMap", reviewsMap);
 		mav.setViewName(viewName);
 
 		return mav;

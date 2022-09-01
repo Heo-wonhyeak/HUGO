@@ -49,7 +49,6 @@ html,body{
             </div>
             <div class="restaurants_review_info_star">⭐&nbsp;️️${review.starCount}&nbsp;️️점</div>
             <div class="restaurants_review_info_contents">${review.contents }</div>
-            <div class="restaurants_review_info_recommend">추천해요😀${review.reviewStamp }</div>
         </div>
     </section>
 

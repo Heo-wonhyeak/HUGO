@@ -16,4 +16,5 @@ public interface BoardController {
 			HttpServletResponse response) throws Exception; 
 	// 추천해요 기능
 	public void goodCheck(@RequestParam("restIdx") int restIdx,@RequestParam("articleIdx") int articleIdx,HttpServletRequest request,HttpServletResponse response) throws Exception;
+//	public ResponseEntity modReview(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
 }
