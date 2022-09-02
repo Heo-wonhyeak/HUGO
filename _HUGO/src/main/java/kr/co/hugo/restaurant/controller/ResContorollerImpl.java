@@ -68,6 +68,9 @@ public class ResContorollerImpl implements ResController {
 			steamedList = boardService.reviewSteamedCount(steamedCheckMap);
 			System.out.println("추천해요 리스트 사이즈 - "+steamedList.size());
 		}
+		else {
+			session.invalidate();
+		}
 
 		Map<String, Object> viewMap = new HashMap<>();
 		viewMap.put("restIdx", restIdx);

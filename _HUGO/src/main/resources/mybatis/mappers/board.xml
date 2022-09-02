@@ -149,6 +149,27 @@
 			UPDATE Review_board SET reviewStamp = reviewStamp + 1 WHERE articleIdx = #{articleIdx}
 		]]>
 	</update>
+	
+	<!-- 리뷰 수정할 이미지 가져오기 -->
+	<select id="selectModImg" resultType="imageDTO" parameterType="int">
+		<![CDATA[ 		
+			SELECT * FROM IMAGE_INFO WHERE ARTICLEIDX = #{articleIdx} 
+		 ]]>
+	</select>
+	
+	<!-- 리뷰 수정하기 원래이미지 정보 삭제 -->
+	<delete id="deleteModImg" parameterType="int">
+		<![CDATA[
+			DELETE FROM IMAGE_INFO WHERE imageFileNO = #{fileName}
+		]]>
+	</delete>
+	
+	<!-- 리뷰 글 수정 -->
+	<update id="updateModArticle" parameterType="java.util.Map">
+		<![CDATA[
+			UPDATE Review_board SET title = #{title}, CONTENTS = #{contents}, STARCOUNT = #{starCount} WHERE ARTICLEIDX = #{articleIdx}
+		]]>
+	</update>
 
 
 </mapper>

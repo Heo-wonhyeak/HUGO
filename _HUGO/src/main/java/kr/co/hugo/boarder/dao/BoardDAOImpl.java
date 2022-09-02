@@ -136,6 +136,24 @@ public class BoardDAOImpl implements BoardDAO {
 		return count;
 	}
 
+	@Override
+	public List<ImageDTO> selectModImg(int articleIdx) throws DataAccessException {
+		List<ImageDTO> listImg = sqlSession.selectList("mapper.board.selectModImg",articleIdx);
+		return listImg;
+	}
+
+	@Override
+	public int deleteModImg(int fileName) throws DataAccessException {
+		int result = sqlSession.delete("mapper.board.deleteModImg",fileName);
+		return result;
+	}
+
+	@Override
+	public int updateModArticle(Map<Object, Object> articleMap) throws DataAccessException {
+		int result = sqlSession.update("mapper.board.updateModArticle",articleMap);
+		return result;
+	}
+
 
 	
 

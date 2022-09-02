@@ -81,8 +81,10 @@ public class BoardServiceImpl implements BoardService {
 		List<ImageDTO> imgList = new ArrayList<>();
 		BoardDTO review = boardDAO.selectReview(reviewIdx);
 		imgList = boardDAO.selectReviewImageOne(reviewIdx);
+		int imgListSize = imgList.size();
 		reviewsMap.put("review", review);
 		reviewsMap.put("imgList", imgList);
+		reviewsMap.put("imgListSize", imgListSize);
 		return reviewsMap;
 	}
 
@@ -139,6 +141,30 @@ public class BoardServiceImpl implements BoardService {
 		int result = 0;
 		result = boardDAO.updateReviewSteamed(articleIdx);
 		return result;
+	}
+
+	@Override
+	public List<ImageDTO> selectModImg(int articleIdx) throws Exception {
+		List<ImageDTO> imgList = boardDAO.selectModImg(articleIdx);
+		return imgList;
+	}
+
+	@Override
+	public int deleteModImg(int fileName) throws Exception {
+		int result = boardDAO.deleteModImg(fileName);
+		int imageFileNo = boardDAO.selectAllImageCount();
+		return imageFileNo;
+	}
+
+	@Override
+	public int modArticle(Map<Object, Object> articleMap) throws Exception {
+		// 글 정보를 저장한 후 글 번호를 가져옴
+		int result = 0;
+		// 글,이미지 업데이트
+		boardDAO.insertNewImage(articleMap);
+		result = boardDAO.updateModArticle(articleMap);
+		return result;
+
 	}
 
 }

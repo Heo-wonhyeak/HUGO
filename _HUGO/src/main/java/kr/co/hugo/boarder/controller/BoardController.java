@@ -10,11 +10,16 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface BoardController {
-	
+
 	// 새 리뷰 추가
-	public ResponseEntity addNewReview( MultipartHttpServletRequest multipartRequest,
-			HttpServletResponse response) throws Exception; 
+	public ResponseEntity addNewReview(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+			throws Exception;
+
 	// 추천해요 기능
-	public void goodCheck(@RequestParam("restIdx") int restIdx,@RequestParam("articleIdx") int articleIdx,HttpServletRequest request,HttpServletResponse response) throws Exception;
-//	public ResponseEntity modReview(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
+	public void goodCheck(@RequestParam("restIdx") int restIdx, @RequestParam("articleIdx") int articleIdx,
+			HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	// 리뷰 수정
+	public ResponseEntity modReview(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+			throws Exception;
 }

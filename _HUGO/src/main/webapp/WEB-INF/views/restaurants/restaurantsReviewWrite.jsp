@@ -53,30 +53,24 @@ html,body{
                     <div class="upload-title">main</div>
                     <input type='file' name='mainImage' id='mainImage' onchange="readURLMain(this, 0)"/>
                     <label for="mainImage">
-                    	<div class="upload-box">
-                    		<img class="img-box"  id="mainView" alt="+" src="#" />
-                    	</div>
+                
+                    		<img class="upload-box"  id="mainView" alt="+&nbsp;" src="#" />
+                    	
                     </label>
                </div>
                <div class="upload-subImage">
                     <div class="upload-title">photo</div>
                     <input type='file' name='subImage1' id='subImage1' onchange="readURL(this, 1)"/>
                     	<label for='subImage1'>
-                    		<div class="upload-box" >
-                    			<img class="img-box" id="subView1" alt="+" src="#" />
-                    		</div>
+                    			<img class="upload-box" id="subView1" alt="+&nbsp;" src="#" />
                     	</label>
                     <input type='file' name='subImage2' id='subImage2' onchange="readURL(this, 2)"/>
                     	<label for='subImage2'>
-                    		<div class="upload-box" >
-                    			<img class="img-box" id="subView2" alt="+" src="#" />
-                    		</div>
+                    			<img class="upload-box" id="subView2" alt="+&nbsp;" src="#" />
                     	</label>
                     <input type='file' name='subImage3' id='subImage3' onchange="readURL(this, 3)"/>
                     	<label for='subImage3'>
-                    		<div class="upload-box" >
-                    			<img class="img-box" id="subView3" alt="+ " src="#" />
-                    		</div>
+                    			<img class="upload-box" id="subView3" alt="+&nbsp; " src="#" />
                     	</label>
                </div>
             </div>

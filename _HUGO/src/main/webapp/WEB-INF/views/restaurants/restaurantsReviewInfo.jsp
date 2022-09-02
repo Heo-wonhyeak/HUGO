@@ -48,12 +48,9 @@ html,body{
                 <div class="restaurants_review_info_out"><a onClick="window.close()">✖️</a></div>
             </div>
             <div class="restaurants_review_info_star">⭐&nbsp;️️${review.starCount}&nbsp;️️점</div>
-            <div class="restaurants_review_info_contents">${review.contents }</div>
+            <div class="restaurants_review_info_contents"><p class="restaurants-review-title">${review.title }</p>${review.contents }</div>
         </div>
     </section>
 
-    <script>
-        // DTO 담아와서 뿌리기
-    </script>
 </body>
 </html>

@@ -39,7 +39,7 @@
 		<div class="swiper-wrapper">
 		<c:forEach items="${imgList}" var="imgList" varStatus="status">
 			<div class="swiper-slide">
-					<img class="slideMainImage" onClick="popUpImage()" target="_parent" alt="" src="${contextPath}/download.do?imageFileName=${imgList.imageFileName}&imageFileNO=${imgList.imageFileNO}&restaurantIdx=${imgList.restaurantIdx}" />
+					<img class="slideMainImage" onClick="popUp('${imgList.articleIdx }')" target="_parent" alt="" src="${contextPath}/download.do?imageFileName=${imgList.imageFileName}&imageFileNO=${imgList.imageFileNO}&restaurantIdx=${imgList.restaurantIdx}" />
 			</div>
 		</c:forEach>
 		</div>
@@ -162,11 +162,10 @@
 									<a onClick="popUp('${reviewList.articleIdx }')" target="_parent">more</a>
 								</div>
 							</div>
-							</div>
+						</div>
 							<c:set var="doneLoop" value="false"/>
 							<c:if test="${not doneLoop}">
-							<c:choose>						
-									
+							<c:choose>								
 									<c:when test="${!empty steamedList }">
 										<c:forEach items="${steamedList}" var="steamedList" varStatus="status2">				
 											<c:if test="${steamedList.articleIdx == reviewList.articleIdx}">
@@ -178,8 +177,7 @@
 									<c:otherwise>
 										<div class="restaurants-review-steamed" onClick="goodCheck('${isLogOn}','${reviewList.articleIdx }','${reviewList.restaurantIdx}')">추천해요😀&nbsp;(${reviewList.reviewStamp })</div>		
 										<c:set var="doneLoop" value="true"/>
-									</c:otherwise>
-								
+									</c:otherwise>						
 							</c:choose>		
 							</c:if>								
 						</div>
@@ -266,26 +264,19 @@
 			}
 			
 		}
+		
 		// 매장 상세보기 수정/삭제 팝업창 이동
 		// 만약 작성자가 아닐시 보이지 않게 하기
 		function popUpFix(reviewIdx){
-				const url ="${contextPath }/restaurants/restaurantsReviewMod.do?reviewIdx="+reviewIdx;
+				const url ="${contextPath }/restaurants/restaurantsReviewMod.do?reviewIdx="+reviewIdx+"&restIdx="+"${restaurant.restIdx}";
 				const name = "a";
 				const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 				window.open(url,name,option);
 		}
+		
 		// 사진 상세보기 팝업창 이동
 		function popUpPhoto(){
 			const url ="${contextPath}/restaurants/restaurantsPhoto.do?restIdx="+"${restaurant.restIdx}"
-			const name = "a";
-			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
-			window.open(url,name,option);
-		}
-		// 슬라이드 이미지 클릭시 상세보기 페이지로 이동
-		function popUpImage(){
-			const id = $('.slideMainImage').val();
-			const a = document.querySelector(".slideMainImage");
-			const url ="${contextPath }/restaurants/restaurantsReviewInfo.do"
 			const name = "a";
 			const option = "width ="+popWidth+", height ="+popHeight+", top="+nTop+", left="+nLeft+",location=no,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no";
 			window.open(url,name,option);

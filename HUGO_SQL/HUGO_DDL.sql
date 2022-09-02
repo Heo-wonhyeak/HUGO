@@ -226,8 +226,11 @@ CREATE TABLE Review_board(
 	defaultImage varchar2(2000) DEFAULT 'x',
 	restaurantIdx number(10) DEFAULT 0
 );
--- review_board 별점 추
+-- review_board 별점 추가
 ALTER TABLE Review_board ADD starCount number(3) DEFAULT 5;
+
+-- review_board 제목 추가
+ALTER TABLE Review_board ADD title varchar(200) DEFAULT 'test';
 
 INSERT INTO ADMIN.REVIEW_BOARD
 (ARTICLEIDX, HOTPLACEIDX, CONTENTS, nickname, USERTOTALREVIEW, RESTIDX, REGDATE, REVIEWSTAMP, MAINIMAGE)
@@ -242,6 +245,10 @@ SELECT NVL(MAX(articleIdx),0)+1 AS articleIdx FROM Review_board;
 
 -- restURL not null 제거 (크롤링용)
 ALTER TABLE Review_board ALTER COLUMN resturl varchar(2000);
+
+-- review 글 수정
+
+UPDATE Review_board SET title = 'test', CONTENTS = 'contents', STARCOUNT = 4 WHERE ARTICLEIDX =;
 
 
 -- image
