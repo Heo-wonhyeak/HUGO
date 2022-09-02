@@ -35,7 +35,6 @@
 		</div>
 		<div class="headerMenu">
 			<a href="${contextPath }/event/runningEventPage.do?boarder=runningEvent">이벤트/쿠폰</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a href="${contextPath }/board/listArticles.do">게시판</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a>고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<c:choose>
 				<c:when test="${isLogOn == true &&  member != null}">
