@@ -433,11 +433,11 @@ a:active {
 
 .restaurants_review_info_contents {
 	margin: auto;
-	width: 80%;
-	height: 50%;
+	width: 90%;
+	height: 80%;
 	margin-top: 30px;
-	padding: 0 50px 0 0;
-	font-size: 1.2em;
+	padding: 0 10px 0 0;
+	font-size: 0.9em;
 }
 
 .restaurants_review_info_userImg {
@@ -644,7 +644,7 @@ a:active {
 	text-align: center;
 }
 .restaurants-review-title{
-	font-size: 1.3em;
+	font-size: 1.2em;
 	font-weight: bold;	
 	
 }

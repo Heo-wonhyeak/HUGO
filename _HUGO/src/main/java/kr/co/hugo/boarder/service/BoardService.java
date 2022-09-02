@@ -43,5 +43,11 @@ public interface BoardService {
 
 	// 리뷰 글 수정하기
 	public int modArticle(Map<Object, Object> articleMap) throws Exception;
+	
+	// 리뷰 삭제하기 (이미지)
+	public int deleteImg(int fileName) throws Exception;
+	
+	// 리뷰 글 삭제하기
+	public int deleteArticle(int articleIdx) throws Exception;
 
 }

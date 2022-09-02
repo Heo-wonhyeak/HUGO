@@ -170,6 +170,27 @@
 			UPDATE Review_board SET title = #{title}, CONTENTS = #{contents}, STARCOUNT = #{starCount} WHERE ARTICLEIDX = #{articleIdx}
 		]]>
 	</update>
+	
+	<!-- 리뷰 삭제하기 (이미지) -->
+	<delete id="deleteImg" parameterType="int">
+		<![CDATA[
+			DELETE FROM IMAGE_INFO WHERE imageFileNO = #{fileName}
+		]]>
+	</delete>
+	
+	<!-- 리뷰 글 삭제하기 -->
+	<delete id="deleteArticle" parameterType="int">
+		<![CDATA[
+			DELETE FROM Review_board WHERE ARTICLEIDX = #{articleIdx}
+		]]>
+	</delete>
+	
+	<!-- 리뷰 글 삭제하기 (추천해요)-->
+	<delete id="deleteGoodCheck" parameterType="int">
+		<![CDATA[
+			DELETE FROM REVIEW_GOODCHECK WHERE ARTICLEIDX = #{articleIdx}
+		]]>
+	</delete>
 
 
 </mapper>

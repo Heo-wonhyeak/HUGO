@@ -167,4 +167,20 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
+	@Override
+	public int deleteImg(int fileName) throws Exception {
+		int result = 0;
+		result = boardDAO.deleteImg(fileName);
+		return result;
+	}
+
+	@Override
+	public int deleteArticle(int articleIdx) throws Exception {
+		int result = 0;
+		result = boardDAO.deleteGoodCheck(articleIdx);
+		if(result == 1)
+			result = boardDAO.deleteArticle(articleIdx);
+		return result;
+	}
+
 }

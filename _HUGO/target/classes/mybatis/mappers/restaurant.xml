@@ -57,7 +57,7 @@
 	<!-- 찜 TOP 50 조회 -->
 	<select id="selectSteamList" resultType="restaurantDTO">
 		<![CDATA[
-			SELECT * FROM RESTAURANT_INFO WHERE rownum <= 50 ORDER BY RESTSTARAVG desc	
+			SELECT * FROM RESTAURANT_INFO WHERE rownum <= 50 ORDER BY restJJIm desc	
 		]]>
 	</select>
 	

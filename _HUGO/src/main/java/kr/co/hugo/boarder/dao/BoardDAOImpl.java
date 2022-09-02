@@ -154,6 +154,24 @@ public class BoardDAOImpl implements BoardDAO {
 		return result;
 	}
 
+	@Override
+	public int deleteImg(int fileName) throws DataAccessException {
+		int result = sqlSession.delete("mapper.board.deleteImg",fileName);
+		return result;
+	}
+
+	@Override
+	public int deleteArticle(int articleIdx) throws DataAccessException {
+		int result = sqlSession.delete("mapper.board.deleteArticle",articleIdx);
+		return result;
+	}
+
+	@Override
+	public int deleteGoodCheck(int articleIdx) throws DataAccessException {
+		int result = sqlSession.delete("mapper.board.deleteGoodCheck",articleIdx);
+		return result;
+	}
+
 
 	
 

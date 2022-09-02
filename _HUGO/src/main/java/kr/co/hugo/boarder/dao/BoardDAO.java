@@ -61,5 +61,14 @@ public interface BoardDAO {
 
 	// 리뷰 수정하기 원래 글 업데이트
 	public int updateModArticle(Map<Object, Object> articleMap) throws DataAccessException;
+	
+	// 리뷰 삭제하기 (이미지)
+	public int deleteImg(int fileName) throws DataAccessException;
+	
+	// 리뷰 글 삭제하기
+	public int deleteArticle(int articleIdx) throws DataAccessException;
+	
+	// 리뷰 글 삭제하기 (추천해요)
+	public int deleteGoodCheck(int articleIdx) throws DataAccessException;
 
 }

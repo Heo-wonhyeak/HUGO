@@ -58,59 +58,11 @@ html,body{
                     <div class="upload-title">main</div>
                     <input type='file' name='mainImage' id='mainImage' onchange="readURLMain(this, 0)"/>
                     	<label for='mainImage'>
-                    		<img class="upload-box"  id="mainView" alt="+" src="${contextPath}/download.do?imageFileName=${imgList[0].imageFileName}&imageFileNO=${imgList[0].imageFileNO}&restaurantIdx=${imgList[0].restaurantIdx}" />
+                    		<img class="upload-box"  id="mainView" alt="+&nbsp;" src="#" />
                     	</label>
                </div>
                <div class="upload-subImage">
                <div class="upload-title">photo</div>
-                 <c:choose>
-               		<%-- 서브이미지가 3개다 있는경우 --%>
-               		<c:when test="${imgListSize == 4}">
-               			<input type='file' name='subImage1' id='subImage1' onchange="readURL(this, 1)"/>
-		           				<label for='subImage1'>                  	
-		              				  <img class="upload-box" id="subView1" alt="+&nbsp;" src="${contextPath}/download.do?imageFileName=${imgList[1].imageFileName}&imageFileNO=${imgList[1].imageFileNO}&restaurantIdx=${imgList[1].restaurantIdx}" />             		
-		          			    </label>
-		                    <input type='file' name='subImage2' id='subImage2' onchange="readURL(this, 2)"/>
-		                    	<label for='subImage2'>
-		                    			<img class="upload-box" id="subView2" alt="+&nbsp;" src="${contextPath}/download.do?imageFileName=${imgList[2].imageFileName}&imageFileNO=${imgList[2].imageFileNO}&restaurantIdx=${imgList[2].restaurantIdx}" />                    		
-		                    	</label>
-		                    <input type='file' name='subImage3' id='subImage3' onchange="readURL(this, 3)"/>
-		                    	<label for='subImage3'>          		
-		                    			<img class="upload-box" id="subView3" alt="+&nbsp;" src="${contextPath}/download.do?imageFileName=${imgList[3].imageFileName}&imageFileNO=${imgList[3].imageFileNO}&restaurantIdx=${imgList[3].restaurantIdx}" />                    		
-		                    	</label>
-               		</c:when>
-               		<%-- 서브이미지가 2개 있는경우 --%>
-               		<c:when test="${imgListSize == 3}">
-               			<input type='file' name='subImage1' id='subImage1' onchange="readURL(this, 1)"/>
-		           				<label for='subImage1'>                  	
-		              				  <img class="upload-box" id="subView1" alt="+&nbsp;" src="${contextPath}/download.do?imageFileName=${imgList[1].imageFileName}&imageFileNO=${imgList[1].imageFileNO}&restaurantIdx=${imgList[1].restaurantIdx}" />             		
-		          			    </label>
-		                <input type='file' name='subImage2' id='subImage2' onchange="readURL(this, 2)"/>
-		                    	<label for='subImage2'>
-		                    			<img class="upload-box" id="subView2" alt="+&nbsp;" src="${contextPath}/download.do?imageFileName=${imgList[2].imageFileName}&imageFileNO=${imgList[2].imageFileNO}&restaurantIdx=${imgList[2].restaurantIdx}" />                    		
-		                    	</label>
-		                 <input type='file' name='subImage3' id='subImage3' onchange="readURL(this, 3)"/>
-		                    	<label for='subImage3'>          		
-		                    			<img class="upload-box" id="subView3" alt="+&nbsp;" src="#" />                    		
-		                    	</label>
-               		</c:when>
-               		<%-- 서브이미지가 1개 있는경우 --%>
-               		<c:when test="${imgListSize == 2}">
-               			<input type='file' name='subImage1' id='subImage1' onchange="readURL(this, 1)"/>
-		           				<label for='subImage1'>                  	
-		              				  <img class="upload-box" id="subView1" alt="+&nbsp;" src="${contextPath}/download.do?imageFileName=${imgList[1].imageFileName}&imageFileNO=${imgList[1].imageFileNO}&restaurantIdx=${imgList[1].restaurantIdx}" />             		
-		          			    </label>
-		          	<input type='file' name='subImage2' id='subImage2' onchange="readURL(this, 2)"/>
-		                    	<label for='subImage2'>
-		                    			<img class="upload-box" id="subView2" alt="+&nbsp;" src="#" >                    		
-		                    	</label>
-		                    <input type='file' name='subImage3' id='subImage3' onchange="readURL(this, 3)"/>
-		                    	<label for='subImage3'>          		
-		                    			<img class="upload-box" id="subView3" alt="+&nbsp;" src="#" />                    		
-		                    	</label>
-               		</c:when>
-               		<%-- 서브이미지가 없는경우 --%>
-               		<c:otherwise>
                			<input type='file' name='subImage1' id='subImage1' onchange="readURL(this, 1)"/>
 		           				<label for='subImage1'>                  	
 		              				  <img class="upload-box" id="subView1" alt="+&nbsp;" src="#" />             		
@@ -123,13 +75,11 @@ html,body{
 		                    	<label for='subImage3'>          		
 		                    			<img class="upload-box" id="subView3" alt="+&nbsp;" src="#" />                    		
 		                    	</label>
-               		</c:otherwise>
-               </c:choose>
             </div>
             </div>
             <div class="restaurant-review-write-btn">
                 <input type="submit" id="restaurant-review-write-submit" value="등록" />
-                <input type="button" id="restaurant-review-write-delete" value="삭제" />
+                <input type="button" id="restaurant-review-write-delete" onClick="deleteCheckConfirm(<%=articleIdx %>)" value="삭제" />
             </div>
     </form>
     <script>
@@ -181,6 +131,25 @@ html,body{
 		}
 		return true;		
 	}
+    // 삭제하기 컨펌
+    function deleteCheckConfirm(articleIdx){
+			if(confirm("리뷰를 삭제하시겠습니까?")==true){
+				$.ajax({
+					url : "${contextPath}/board/deleteReview.do?articleIdx="+articleIdx,
+					type : "get",
+					async: false,
+					data : "",
+					success:function(data){
+							alert("삭제되었습니다.");
+							self.close();
+							opener.parent.location.reload();
+					}
+				});
+			}
+			else{
+				return false;
+			}
+		}
         
     </script>
 </body>

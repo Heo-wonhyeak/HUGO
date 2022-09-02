@@ -180,6 +180,7 @@
 									</c:otherwise>						
 							</c:choose>		
 							</c:if>								
+							<c:set var="doneLoop" value="false"/>
 						</div>
 				</c:forEach>
 			</c:when>

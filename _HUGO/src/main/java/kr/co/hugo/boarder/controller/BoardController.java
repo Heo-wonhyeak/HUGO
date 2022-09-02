@@ -22,4 +22,8 @@ public interface BoardController {
 	// 리뷰 수정
 	public ResponseEntity modReview(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception;
+	
+	// 리뷰 삭제
+	public void deleteReview(@RequestParam("articleIdx") int articleIdx,HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
 }
