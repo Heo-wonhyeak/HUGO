@@ -25,7 +25,7 @@ html,body{
 
 </style>
 </head>
-<body>
+<body class="restaurants-photo-body">
    <section class="restaurants-photo-wrap">
           <!-- Swiper -->
 	<div class="swiper-container gallery-top">

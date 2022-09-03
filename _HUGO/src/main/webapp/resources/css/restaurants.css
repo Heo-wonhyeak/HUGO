@@ -1,14 +1,94 @@
 @charset "UTF-8";
 
-/* slide CSS*/
-#restaurantView_body {
-	width: 100%;
+/* 헤더 CSS */
+.HeaderContainer {
+	width: 90%;
+	margin: 0 auto;
+	height: 150px;
 }
 
+.HeaderLogo {
+	display: inline-block;
+	width: 15%;
+	height: 80%;
+	position: relative;
+	left: 2%;
+	top: 5%;
+}
+
+.headerMenu a {
+	text-decoration: none;
+	color: #9bb7d6;
+}
+/* 마이메뉴css */
+.myMenu {
+	display: none;
+	width: 120px;
+	height: 135px;
+	position: absolute;
+	left: 200px;
+	border: 1px solid #9bb7d6;
+	margin: 0px;
+}
+
+.myMenu ul {
+	list-style: none;
+	margin: 0px;
+	text-align: right;
+}
+
+.search {
+	display: inline-block;
+	width: 70%;
+	height: 20%;
+	position: relative;
+	bottom: 25%;
+	left: 3%;
+}
+
+.searchbox {
+	width: 90%;
+	height: 100%;
+	border-radius: 0.2em;
+	font-size: 15px;
+}
+
+.searchBtn {
+	width: 38px;
+	height: 100%;
+	background-color: #9bb7d6;
+	border-radius: 0.5em;
+}
+
+.headerMenu {
+	display: inline-block;
+	position: relative;
+	bottom: 75%;
+	float: right;
+	color: #9bb7d6;
+}
+
+.serchDTL {
+	display: inline-block;
+	position: relative;
+	float: left;
+	left: 18.5%;
+	bottom: 23%;
+}
+
+.searchDTLBTN {
+	height: 30px;
+	background-color: #9bb7d6;
+	border-radius: 0.5em;
+}
+/* 헤더 CSS 종료 */
+
+/* slide CSS*/
 .swiper-container {
-	margin-top: 40px;
+	margin-top: 250px;
 	width: 100%;
-	height: 50%;
+	height: 100%;
+	margin: auto;
 }
 
 .swiper-wrapper {
@@ -42,38 +122,43 @@
 }
 
 #restaurants-star1 {
-	font-size: 4em;
+	font-size: 6em;
 	width: 100%;
 	height: 100%;
 	line-height: 30px;
 	background-color: white;
 	border: white;
-	color: #9bb7d6;
+	color: #fef01b;
 	cursor: pointer;
-	color: #9bb7d6;
 }
 
 #restaurants-star2 {
-	font-size: 4em;
+	font-size: 6em;
 	width: 100%;
 	height: 100%;
 	line-height: 30px;
 	border: white;
 	background-color: white;
-	color: #9bb7d6;
+	color: #fef01b;
 	cursor: pointer;
 }
 
 .image-more {
 	margin-top: 10px;
-	width: 100%;
-	text-align: right;
+	width: 70%;
+	text-align: center;
+	margin: auto;
+}
+
+.image-more-span {
+	float: right;
+	border: 5px solid #9bb7d6;
+	padding: 0 10px 0 10px;
 }
 
 .image-more a {
-	padding-right: 240px;
 	color: gray;
-	font-size: 25px;
+	font-size: 30px;
 	text-decoration: none;
 }
 
@@ -81,7 +166,6 @@
 	display: flex;
 	flex-direction: row;
 	width: 80%;
-	height: 500px;
 	margin: auto;
 	margin-top: 50px;
 	font-size: 0.8em;
@@ -89,14 +173,14 @@
 
 .restaurants-info {
 	width: 50%;
-	height: 700px;
+	border: 5px solid #9bb7d6;
 }
 
 .restaurants-map {
 	width: 60%;
 	height: 600px;
 	margin-top: 30px;
-	margin-left: 100px;
+	margin-left: 50px;
 	padding: 20px;
 }
 
@@ -107,44 +191,55 @@
 }
 
 .restaurants-info-head {
-	display: flex;
+	margin-top: 10px; 
+	display : flex;
+	flex-decoration: row;
 	width: 100%;
 	height: 60px;
 }
 
 .restaurants-detail {
+	margin-bottom: 10px;
 	padding-top: 10px;
 	width: 90%;
 	height: 300px;
 	margin: auto;
 	font-size: 23px;
-	border-top: 1px solid black;
+	border-top: 3px solid black;
+	border-spacing: 0 10px;
 }
 
 .restaurants-detail td {
 	padding-left: 40px;
+	margin-bottom: 30px;
+}
+
+.restaurants-detail tr th {
+	margin-top: 10px;
 }
 
 .restaurants-name {
-	font-size: 35px;
+	font-size: 50px;
 	font-weight: bold;
 	margin: auto;
 }
 
 .restaurants-steamed {
-	width: 10%;
-	margin-right: 20px;
+	width: 15%;
+	margin-right: 10px;
 	text-align: right;
 }
 
 .restaurants-count-info {
+	margin: auto;
 	font-size: 30px;
 	font-weight: bold;
-	padding-left: 35px;
+	margin-left: 50px;
 }
 
 .restaurants-fixInfo {
-	font-size: 0.9em;
+	margin-left: 15px;
+	font-size: 1.1em;
 	padding-top: 10px;
 	padding-left: 20px;
 }
@@ -153,6 +248,7 @@
 	color: gray;
 	margin-top: 25px;
 	text-align: right;
+	font-size: 1.2em;
 }
 /* slide CSS 종료*/
 
@@ -168,7 +264,7 @@ a {
 .restaurants-review-section {
 	width: 80%;
 	margin: auto;
-	margin-top: 200px;
+	margin-top: 100px;
 	margin-bottom: 200px;
 }
 
@@ -176,22 +272,23 @@ a {
 	margin: auto;
 	width: 100%;
 	height: 50px;
-	font-size: 35px;
+	font-size: 50px;
 	font-weight: bold;
 	padding-left: 30px;
-	color: #9bb7d6;
+	color: #135aab;
 }
 
 .restaurants-review-sort {
 	width: 100%;
 	text-align: right;
-	border-bottom: 2px solid black;
+	border-bottom: 5px solid #9bb7d6;
 	font-size: 25px;
 	height: 50px;
 }
 
 .restaurants-review-sort span {
 	padding: 10px 20px 10px 0;
+	font-weight: bold;
 }
 
 .RestaurantReviewList__Empty {
@@ -218,7 +315,7 @@ a {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	border-bottom: 1px solid gray;
+	border-bottom: 3px solid #9bb7d6;
 }
 
 .restaurants-review-head {
@@ -236,12 +333,12 @@ a {
 	margin: 200px 20px 20px 20px;
 	width: 20%;
 	height: 70px;
-	border: 1px solid black;
+	border: 1px solid white;
 	text-align: center;
 	line-height: 70px;
 	font-size: 1.4em;
 	font-weight: bold;
-	color: black;
+	color: white;
 	background-color: #9bb7d6;
 	cursor: pointer;
 	border-radius: 0.5em;
@@ -253,7 +350,6 @@ a {
 	margin-top: 30px;
 	width: 120px;
 	height: 120px;
-	border: 1px solid black;
 	border-radius: 50%;
 	text-align: center;
 	font-size: 1.7em;
@@ -269,16 +365,16 @@ a {
 	text-align: center;
 	margin-top: 20px;
 	font-weight: bold;
-	font-size: 1.2em;
-	color: #9bb7d6;
+	font-size: 1.5em;
+	color: black;
 }
 
 .restaurants-review-head-star5 {
 	margin: auto;
 	width: 60%;
 	text-align: center;
+	font-size: 1.2em;
 	margin-top: 20px;
-	height: 20px;
 }
 
 .restaurants-review-head-revise {
@@ -297,10 +393,6 @@ a {
 	overflow: hidden;
 }
 
-.restaurants-review-contents-txt p {
-	
-}
-
 .restaurants-review-contents-txt a {
 	font-size: 0.9em;
 	color: gray;
@@ -316,7 +408,7 @@ a {
 }
 
 .restaurants-review-contents-imageInfo {
-	border: 1px solid black;
+	border: 3px solid #9bb7d6;
 	width: 20%;
 	height: 120px;
 	margin-left: 10px;
@@ -386,8 +478,9 @@ a:active {
 }
 
 .restaurants_review_info_mainImage {
-	width: 100%;
+	border: 3px solid #9bb7d6; width : 100%;
 	height: 75%;
+	width: 100%;
 }
 
 .restaurants_review_info_subImages {
@@ -406,15 +499,16 @@ a:active {
 
 .restaurants_review_info_header {
 	display: flex;
-	height: 20%;
+	flex-decoration: row; height : 20%;
 	width: 100%;
-	padding-left: 40px;
+	padding-left: 20px;
+	height: 20%;
 }
 
 .restaurants_review_info_out {
 	background-color: #9bb7d6;
 	color: white;
-	border: 2px solid black;
+	border: 2px solid #9bb7d6;
 	width: 6%;
 	height: 25%;
 	margin-top: 10px;
@@ -435,14 +529,12 @@ a:active {
 .restaurants_review_info_contents {
 	margin: auto;
 	width: 90%;
-	height: 80%;
 	margin-top: 30px;
-	padding: 0 10px 0 0;
-	font-size: 0.9em;
+	font-size: 1.1em;
 }
 
 .restaurants_review_info_userImg {
-	width: 20%;
+	width: 23%;
 	height: 80%;
 	border: 1px solid black;
 	border-radius: 50%;
@@ -460,8 +552,8 @@ a:active {
 .restaurants_review_info_star {
 	width: 85%;
 	height: 7%;
-	font-size: 1.2em;
-	margin: auto;
+	font-size: 1.5em;
+	margin: 20px;
 }
 
 .restaurants_review_info_userInfo table {
@@ -469,20 +561,6 @@ a:active {
 	height: 80%;
 }
 
-.restaurants_review_info_recommend {
-	height: 10%;
-	width: 25%;
-	font-size: 1.4em;
-	text-align: center;
-	border: 1px solid black;
-	line-height: 65px;
-	margin-left: 320px;
-	background-color: #e7e7e7;
-	color: black;
-	cursor: pointer;
-	border-radius: 0.5em;
-	background-color: #9bb7d6;
-}
 /* review 상세보기 종료*/
 
 /* review 쓰기 */
@@ -646,7 +724,7 @@ a:active {
 }
 
 .restaurants-review-title {
-	font-size: 1.2em;
+	font-size: 1.5em;
 	font-weight: bold;
 }
 
@@ -680,49 +758,6 @@ a:active {
 }
 
 /* review 쓰기 종료 */
-
-/* photo more 팝업창 css*/
-.restaurants-photo-wrap {
-	margin-top: 250px;
-	width: 100%;
-	height: 100%;
-	margin: auto;
-}
-
-.swiper-container {
-	width: 80%;
-	height: 80%;
-	margin: 20px auto;
-	padding-top: 100px;
-}
-
-.swiper-slide-container {
-	margin-top: 200px;
-	text-align: center;
-	font-size: 18px;
-	background: #fff;
-	height: 95%;
-	max-width: 800px;
-	margin: auto;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	-webkit-align-items: center;
-	align-items: center;
-}
-
-.gallery-top {
-	height: 80%;
-	width: 80%;
-}
-/* photo more 팝업창 css 종*/
 
 /* list top 50 페이지 */
 .top50List {
@@ -783,13 +818,14 @@ a:active {
 }
 
 .restaurantList_info_head {
-	margin-top:10px;
+	margin-top: 10px;
 	cursor: pointer;
 	width: 100%;
 	height: 40px;
 	font-size: 2.4em;
 	padding-left: 10px;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .restaurantList_address {
@@ -844,7 +880,7 @@ a:active {
 
 .restaurantList_most {
 	width: 15%;
-	margin-right:50px;
+	margin-right: 50px;
 }
 
 .restaurantList_more {
@@ -854,7 +890,7 @@ a:active {
 	text-align: center;
 	margin-top: 230px;
 	height: 50px;
-	margin-right:50px;
+	margin-right: 50px;
 	background-color: #9bb7d6;
 }
 
@@ -884,3 +920,49 @@ a:active {
 	margin-top: 10px;
 	height: 50px;
 }
+/* photo more 팝업창 css*/
+.restaurants-photo-wrap {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	margin-top: 80px;
+}
+
+.swiper-container {
+	width: 40%;
+	height: 80%;
+	margin: auto;
+	padding-top: 100px;
+}
+
+.swiper-slide-container {
+	margin-top: 200px;
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	height: 95%;
+	max-width: 800px;
+	margin: auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.gallery-top {
+	height: 80%;
+	width: 80%;
+}
+
+.swiper-slide {
+	width: 1000px;
+}
+/* photo more 팝업창 css 종*/

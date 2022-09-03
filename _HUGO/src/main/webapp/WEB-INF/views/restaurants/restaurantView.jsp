@@ -48,7 +48,7 @@
 		<div class="swiper-button-prev"></div>
 	</div>
 	<div class="image-more">
-		<a onClick="popUpPhoto()" target="_parent">📷 more</a>
+		<span class="image-more-span"><a onClick="popUpPhoto()" target="_parent">📷 more</a></span>
 	</div>
 	<!-- info and map -->
 	<section class="restaurants-view">
@@ -331,10 +331,10 @@
 		function overlapGoodCheck(){
 			alert("이미 추천하셨습니다.");
 			return false;
-			}
+		}
 		
 		// 찜하기 구현 
-		
+		const restIdx = "${restaurant.restIdx }";
 		function jjimCancel(){
 			if(confirm("찜 목록에서 삭제하시겠습니까?")==true){
 				$.ajax({

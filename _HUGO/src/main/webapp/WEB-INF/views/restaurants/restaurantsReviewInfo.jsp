@@ -37,7 +37,8 @@ html,body{
                     <div class="restaurants_review_info_userInfo">
                         <table>
                             <tr>
-                                <td>${review.nickName}</td><td>${review.regDate}</td>
+                                <td style="font-size:1.2em;">${review.nickName}&nbsp;&nbsp;</td>
+                                <td>${review.regDate}</td>
                             </tr>
                             <tr>
                                 <td>추천&nbsp;&nbsp;${review.reviewStamp}</td><td>쓴 리뷰&nbsp;&nbsp;${review.userTotalReview}</td>
