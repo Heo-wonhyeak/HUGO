@@ -37,7 +37,7 @@ a:hover{
 			<img class="restaurantList_image" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11'" alt="" src="${contextPath}/download.do?imageFileName=${listImg[status.index].imageFileName}&imageFileNO=${listImg[status.index].imageFileNO}&restaurantIdx=${listImg[status.index].restaurantIdx}"/>
 			<div class="restaurantList_info">
 				<div class="restaurantList_info_head" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11'">${list.restName }</div>
-				<div class="restaurants-count">
+				<div class="restaurantList-count">
 					<span class="restaurantsList-count-info">⭐&nbsp;&nbsp;${list.restStarAvg }</span> 
 						<span class="restaurantsList-count-info">❤️&nbsp;&nbsp;${list.restJjim }</span> 
 						<span class="restaurantsList-count-info">😀&nbsp;&nbsp;${list.restVisitCount }</span>
