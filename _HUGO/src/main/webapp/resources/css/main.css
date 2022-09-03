@@ -2,111 +2,119 @@
 /* 헤더 CSS */
 .HeaderContainer {
 	width: 90%;
-	margin : 0 auto;
-	height : 150px;	
+	margin: 0 auto;
+	height: 150px;
 }
+
 .HeaderLogo {
 	display: inline-block;
-	width : 15%;
-	height : 80%;
-	position : relative;
-	left : 2%;
-	top : 5%;
+	width: 15%;
+	height: 80%;
+	position: relative;
+	left: 2%;
+	top: 5%;
 }
-.headerMenu a{
-	text-decoration:none;
-	color : #9bb7d6;
+
+.headerMenu a {
+	text-decoration: none;
+	color: #9bb7d6;
 }
 /* 마이메뉴css */
-.myMenu{
+.myMenu {
 	display: none;
 	width: 120px;
 	height: 135px;
 	position: absolute;
 	left: 200px;
-	border : 1px solid #9bb7d6;
+	border: 1px solid #9bb7d6;
 	margin: 0px;
 }
-.myMenu ul{
+
+.myMenu ul {
 	list-style: none;
 	margin: 0px;
-	text-align:right;
+	text-align: right;
 }
+
 .search {
-	display : inline-block;
-	width : 70%;
-	height : 20%;
-	position : relative;
-	bottom : 25%;
-	left : 3%;
+	display: inline-block;
+	width: 70%;
+	height: 20%;
+	position: relative;
+	bottom: 25%;
+	left: 3%;
 }
 
 .searchbox {
-	width : 90%;
-	height : 100%;
-	border-radius : 0.2em;
+	width: 90%;
+	height: 100%;
+	border-radius: 0.2em;
 	font-size: 15px;
 }
 
-.searchBtn{
-	width : 38px ;
-	height : 100%;
-	background-color: #9bb7d6; 
-	border-radius : 0.5em;
+.searchBtn {
+	width: 38px;
+	height: 100%;
+	background-color: #9bb7d6;
+	border-radius: 0.5em;
 }
-.headerMenu{
-	display : inline-block;
-	position : relative;
+
+.headerMenu {
+	display: inline-block;
+	position: relative;
 	bottom: 75%;
-	float : right;
-	color : #9bb7d6;
+	float: right;
+	color: #9bb7d6;
 }
-.serchDTL{
-	display : inline-block;
-	position : relative;
-	float : left;
-	left : 18.5%;
-	bottom: 23%;	
+
+.serchDTL {
+	display: inline-block;
+	position: relative;
+	float: left;
+	left: 18.5%;
+	bottom: 23%;
 }
-.searchDTLBTN{
-	height : 30px;
-	background-color: #9bb7d6; 
-	border-radius : 0.5em;
+
+.searchDTLBTN {
+	height: 30px;
+	background-color: #9bb7d6;
+	border-radius: 0.5em;
 }
 /* 헤더 CSS 종료 */
 
 /* sidebar CSS */
 #sidebarContainer {
-	position:absolute; 
-	top:560px; 
-	right:42%; 
-	margin-right:-670px;
-	width : 13%;
+	position: absolute;
+	top: 560px;
+	right: 42%;
+	margin-right: -670px;
+	width: 13%;
 }
 
-.sidebarImg { 
-	width : 100%;
+.sidebarImg {
+	width: 100%;
 }
 /* sidebar CSS 종료 */
 
 /* Footer CSS */
 .footer {
-    position:relative;
-    left: 0;
-    bottom: 0px;
-    width: 100%;
-	padding: 30px 0 ;
-	
+	position: relative;
+	left: 0;
+	bottom: 0px;
+	width: 100%;
+	padding: 30px 0;
 	text-align: left;
 	size: 15px;
 	color: white;
 	background: #9bb7d6;
 }
-.select *{
-	font-weight:bold;
+
+.select * {
+	font-weight: bold;
 	vertical-align: middle;
 	text-decoration: none;
 }
+
 .select, .info {
 	padding-left: 30px;
 }
@@ -201,73 +209,88 @@
 
 /* mainsection CSS */
 section {
-	margin-top:50px;
+	margin-top: 50px;
 	overflow: visible;
-	width: 70%;
-	margin-left:6%;
+	width: 80%;
+	margin-left: 6%;
+	margin-bottom: 100px;
+	background-color: white;
 }
 
 #menubox {
-	width: 1100px;
 	height: 50px;
+	width: 80%;
 	margin: auto;
+	height: 50px;
 }
 
 #menulist {
 	display: flex;
+	flex-direction: row;
 	text-align: center;
 	list-style-type: none;
+	margin: auto;
+}
+
+#menulist li {
+	margin: auto;
 }
 
 .top10list {
-	flex-direction: row;
 	background-color: #9bb7d6;
 	border: 1px solid #9bb7d6;
-	font-size: 17px;
+	font-size: 19px;
 	width: 140px;
 	height: 50px;
-	display: block;
-	font-weight: bold;
-	margin: auto;
-	margin-right: 60px;
+	font-weight : bold;
 	cursor: pointer;
+	color: white;
+	font-weight: bold;
 }
 
 .top10head {
 	text-align: left;
 	width: 400px;
 	padding: 20px 0 30px 40px;
-	margin: 0 200px 0 0;
-	font-size: 1.7em;
+	margin: 0 570px 0 0;
+	font-size: 2em;
 	font-weight: bold;
+	color: #135aab;
 }
 
 .list-image {
-	border: 1px solid black;
+	border: 5px solid #9bb7d6;
 	width: 300px;
 	height: 250px;
 	margin-left: 20px;
 }
 
 .list-info {
-	margin-top: 20px;
-	width: 300px;
-	height: 45px;
-	display:flex;
-	flex-direction:row;
+	margin-top:10px;
 	margin-left:20px;
+	width: 300px;
+	height: 90px;
 }
 
 .swiper-container {
-	margin:auto;
+	margin: auto;
 	margin-top: 60px;
 	width: 1200px;
+	height: 470px;
+	border: 5px solid #9bb7d6;
+	background-color: white;
+	margin-bottom: 50px;
+	padding-bottom: 30px;
 }
 
 .swiper-wrapper {
 	display: flex;
 	height: 300px;
-	
+}
+
+.container-header {
+	display: flex;
+	flex-decoration: row;
 }
 
 .swiper-slide {
@@ -279,9 +302,8 @@ section {
 	transition: opacity 0.3s;
 }
 
-.swiper-slide-active,
-.swiper-slide-active+.swiper-slide,
-.swiper-slide-active+.swiper-slide+.swiper-slide {
+.swiper-slide-active, .swiper-slide-active+.swiper-slide,
+	.swiper-slide-active+.swiper-slide+.swiper-slide {
 	opacity: 1
 }
 
@@ -307,26 +329,30 @@ section {
 }
 
 .view-more {
+	padding-top: 25px;
 	text-align: right;
-	margin-right: 30px;
-	font-size:1.2em;
+	font-size: 1.3em;
+	height: 30px;
 }
 
 .view-more a {
 	color: gray;
+	font-size: 1.2em;
 }
 
 .list-info-name {
-	padding-top:10px;
-	text-align: right;
-	font-size: 1.1em;
-	margin: 0 20px 0 10px;
+	text-align: center;
+	font-size: 1.7em;
+	font-weight: bold;
+	margin:auto;
 }
 
 .list-info-value {
-	padding-top:5px;
-	margin-left:10px;
-	font-size: 1.5em;
+	padding-top:10px;
+	margin:auto;
+	font-size: 1.8em;
+	text-align: center;
+	color: #135aab;
 }
 
 #place_cate {
@@ -342,5 +368,5 @@ section {
 
 /* layout */
 .clear {
-	clear : both;
+	clear: both;
 }

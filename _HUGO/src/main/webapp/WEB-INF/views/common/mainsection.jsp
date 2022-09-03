@@ -38,22 +38,25 @@
                 <ul id="menulist">
                     <li><input type="button" class="top10list" onclick="listfocus()" id="star-view" value="별점" /></li>
                     <li><input type="button" class="top10list" onclick="listfocus()" id="visit" value="방문횟수" /></li>
-                    <li><input type="button" class="top10list" onclick="listfocus()" id="steamed" value="가장 많은 찜" />
-                    </li>
+                    <li><input type="button" class="top10list" onclick="listfocus()" id="steamed" value="가장 많은 찜" /></li>
                     <li><input type="button" class="top10list" onclick="listfocus()" id="distance" value="거리순" /></li>
                     <li><input type="button" class="top10list" onclick="listfocus()" id="popularity" value="인기순" /></li>
                     <li><input type="button" class="top10list" onclick="listfocus()" value="(TOP 10)" disabled /></li>
                 </ul>
             </div>
             <div class="swiper-container" id="star-first">
-                <h3 class="top10head" id="star-view-focus">별점 TOP 10</h3>
+            	<div class="container-header">
+            		<h3 class="top10head" id="star-view-focus">별점 TOP 10</h3>
+            		<span class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=1">TOP 50 더보기</a></span>
+            	</div>        
                 <div class="swiper-wrapper">
 					<c:forEach items="${starList}" var="starList" varStatus="status" end="10">
 						<div class="swiper-slide">
 	                        <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${starImgList[status.index].restaurantIdx}&array=11'">
 	                            <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${starImgList[status.index].imageFileName}&imageFileNO=${starImgList[status.index].imageFileNO}&restaurantIdx=${starImgList[status.index].restaurantIdx}"></img>
 	                            <div class="list-info">
-	                                <span class="list-info-name">${starList.restName }</span><span class="list-info-value">⭐&nbsp;&nbsp;${starList.restStarAvg }</span>
+	                                <div class="list-info-name">${starList.restName }</div>
+	                                <div class="list-info-value">⭐&nbsp;&nbsp;${starList.restStarAvg }</div>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -62,19 +65,25 @@
                 <!-- 양옆 좌우버튼 -->
                 <div class="swiper-button-next Nbtn1"></div>
                 <div class="swiper-button-prev Pbtn1"></div>
-                <p class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=1">더보기</a></p>
+               
             </div>
+            	
+            	
             
 
             <div class="swiper-container" id="visit-second">
-                <h3 class="top10head" id="visit-focus">방문횟수 TOP 10</h3>
+           		<div class="container-header">
+               		 <h3 class="top10head" id="visit-focus">방문횟수 TOP 10</h3>
+               		 <span class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=2">TOP 50 더보기</a></span>
+                </div>
                 <div class="swiper-wrapper">
                     <c:forEach items="${visitList}" var="visitList" varStatus="status" end="10">
 						<div class="swiper-slide">
 	                        <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${visitImgList[status.index].restaurantIdx}&array=11'">
 	                            <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${visitImgList[status.index].imageFileName}&imageFileNO=${visitImgList[status.index].imageFileNO}&restaurantIdx=${visitImgList[status.index].restaurantIdx}"></img>
 	                            <div class="list-info">
-	                                <span class="list-info-name">${visitList.restName }</span><span class="list-info-value">😀&nbsp;&nbsp;${visitList.restVisitCount }</span>
+	                                <div class="list-info-name">${visitList.restName }</div>
+	                                <div class="list-info-value">😀&nbsp;&nbsp;${visitList.restVisitCount }</div>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -83,38 +92,45 @@
                 <div class="swiper-button-next Nbtn2"></div>
                 <div class="swiper-button-prev Pbtn2"></div>
 
-                <p class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=2">더보기</a></p>
+               
             </div>
 
             <div class="swiper-container" id="steamed-third">
-                <h3 class="top10head" id="steamed-focus">가장 많은 찜 TOP 10</h3>
+            	<div class="container-header">
+              	  <h3 class="top10head" id="steamed-focus">가장 많은 찜 TOP 10</h3>
+              	  <span class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=3">TOP 50 더보기</a></span>
+              	</div>
                 <div class="swiper-wrapper">
                		  <c:forEach items="${steamedList}" var="item" varStatus="status" end="10">
 							<div class="swiper-slide">
 	                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${steamedImgList[status.index].restaurantIdx}&array=11'">
 	                     	        <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${steamedImgList[status.index].imageFileName}&imageFileNO=${steamedImgList[status.index].imageFileNO}&restaurantIdx=${steamedImgList[status.index].restaurantIdx}" />
 	                         	   <div class="list-info">	
-	                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">❤️ &nbsp;&nbsp;${item.restJjim }</span>
+	                              	  <div class="list-info-name">${item.restName }</div>
+	                              	  <div class="list-info-value">❤️ &nbsp;&nbsp;${item.restJjim }</div>
 	                            </div>
 	                        </div>
 	                    </div>
 					</c:forEach>
                 </div>
                 <div class="swiper-button-next Nbtn3"></div>
-                <div class="swiper-button-prev Pbtn3"></div>
-                <p class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=3">더보기</a></p>
+                <div class="swiper-button-prev Pbtn3"></div>             
             </div>
 
 
             <div class="swiper-container" id="distance-fourth">
-                <h3 class="top10head" id="distance-focus">거리순 TOP 10</h3>
+            	<div class="container-header">
+             	   <h3 class="top10head" id="distance-focus">거리순 TOP 10</h3>
+             	    <span class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=4">TOP 50 더보기</a></span>
+             	</div>
                 	<div class="swiper-wrapper">
 	                	<c:forEach items="${distanceList}" var="item" varStatus="status" end="10">
 								<div class="swiper-slide">						
 		                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${distanceImgList[status.index].restaurantIdx}&array=11'">
 		                     	      <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${distanceImgList[status.index].imageFileName}&imageFileNO=${distanceImgList[status.index].imageFileNO}&restaurantIdx=${distanceImgList[status.index].restaurantIdx}"/>
 		                         	   <div class="list-info">	
-		                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">️ &nbsp;&nbsp;100&nbsp;&nbsp;m</span>
+		                              	  <div class="list-info-name">${item.restName }</div>
+		                              	  <div class="list-info-value">️ &nbsp;&nbsp;100&nbsp;&nbsp;m</div>
 		                            </div>
 		                        </div>
 		                    </div>                   
@@ -122,18 +138,21 @@
                 </div>
                 <div class="swiper-button-next Nbtn4"></div>
                 <div class="swiper-button-prev Pbtn4"></div>
-                <p class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=4">더보기</a></p>
             </div>
 
             <div class="swiper-container" id="popularity-fifth">
-                <h3 class="top10head" id="popularity-focus">인기순 TOP 10</h3>
+            	<div class="container-header">
+              	 	 <h3 class="top10head" id="popularity-focus">인기순 TOP 10</h3>
+              	  	 <span class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=5">TOP 50 더보기</a></span>
+              	 </div>
                 	<div class="swiper-wrapper">
 	                	<c:forEach items="${famousList}" var="item" varStatus="status" end="10">
 								<div class="swiper-slide">
 		                     	   <div class="slide-image" id="star1" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${famousImgList[status.index].restaurantIdx}&array=11'">
 		                     	       <img class="list-image" alt="" src="${contextPath}/download.do?imageFileName=${famousImgList[status.index].imageFileName}&imageFileNO=${famousImgList[status.index].imageFileNO}&restaurantIdx=${famousImgList[status.index].restaurantIdx}"></img>
 		                         	   <div class="list-info">	
-		                              	  <span class="list-info-name">${item.restName }</span><span class="list-info-value">️👍 &nbsp;&nbsp;${item.restStarAvg }</span>
+		                              	  <div class="list-info-name">${item.restName }</div>
+		                              	  <div class="list-info-value">️👍 &nbsp;&nbsp;${item.restStarAvg }</div>
 		                            </div>
 		                        </div>
 		                    </div>
@@ -141,7 +160,6 @@
                 </div>
                 <div class="swiper-button-next Nbtn5"></div>
                 <div class="swiper-button-prev Pbtn5"></div>
-                <p class="view-more"><a href="${contextPath}/restaurants/restaurantTOP50.do?array=5">더보기</a></p>
             </div>
         </section>
         <script>

@@ -248,7 +248,7 @@ ALTER TABLE Review_board ALTER COLUMN resturl varchar(2000);
 
 -- review 글 수정
 
-UPDATE Review_board SET title = 'test', CONTENTS = 'contents', STARCOUNT = 4 WHERE ARTICLEIDX =;
+UPDATE Review_board SET title = 'test', CONTENTS = 'contents', STARCOUNT = 4 WHERE ARTICLEIDX = 10263;
 
 
 -- image
