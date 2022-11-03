@@ -61,7 +61,6 @@ public class RestReviewController {
 
 		}
 	}
-
 	// 크롤링한 리뷰들 imageURL(리뷰에 image없을시 image_url을 메인이미지로 사용) 들 각 매장idx의 articleIdx
 	// 폴더에 저장
 	@RequestMapping(value = "crawler/imageDoing", method = { RequestMethod.GET, RequestMethod.POST })

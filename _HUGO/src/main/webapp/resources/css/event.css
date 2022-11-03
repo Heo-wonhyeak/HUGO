@@ -4,70 +4,93 @@
 }
 /* 헤더 CSS */
 .HeaderContainer {
-	width: 90%;
-	margin : 0 auto;
-	height : 150px;	
+	padding-top:10px;
+	width: 100%;
+	margin: 0 auto;
+	height: 180px;
+	display:flex;
+	flex-decoration:row;
 }
+
 .HeaderLogo {
-	display: inline-block;
-	width : 15%;
-	height : 80%;
-	position : relative;
-	left : 2%;
-	top : 5%;
+	@charset "UTF-8";
+/* 헤더 CSS */
+.HeaderContainer {
+	padding-top:10px;
+	width: 100%;
+	margin: 0 auto;
+	height: 180px;
+	display:flex;
+	flex-decoration:row;
+}
+
+.HeaderLogo {
+
+	width: 15%;
+	height: 80%;
+	left: 2%;
+	top: 5%;
+}
+
+.headerMenu a {
+	text-decoration: none;
+	color: #9bb7d6;
 }
 /* 마이메뉴css */
-.myMenu{
+.myMenu {
 	display: none;
-	width: 100px;
-	height: 150px;
-	position: absolute;
-	left: 300px;
-	border : 1px solid #9bb7d6;
+	width: 120px;
+	left: 200px;
+	border: 1px solid #9bb7d6;
 	margin: 0px;
 }
-.myMenu ul{
+
+.myMenu ul {
 	list-style: none;
-}
-.search {
-	display : inline-block;
-	width : 70%;
-	height : 20%;
-	position : relative;
-	bottom : 26%;
-	left : 3%;
+	margin: 0px;
+	text-align: right;
 	
 }
+
+.search {
+	margin-top:50px;
+	margin:auto;
+	line-height: 85px;
+	width: 50%;
+
+}
+
 .searchbox {
-	width : 90%;
-	height : 100%;
-	border-radius : 0.2em;
-	font-size: 15px;
+	width: 90%;
+	height: 100%;
+	font-size: 35px;
+	border-radius: 0.2em;
+	border:1px solid black;
 }
-.searchBtn{
-	width : 38px ;
-	height : 100%;
-	background-color: #9bb7d6; 
-	border-radius : 0.5em;
+
+.searchBtn {
+	width: 38px;
+	height: 100%;
+	background-color: #9bb7d6;
+	border-radius: 0.5em;
+	padding: 12px 0 6px 0;
+	margin-bottom : 5px;
 }
-.headerMenu{
-	display : inline-block;
-	position : relative;
-	bottom: 75%;
-	float : right;
-	color : #9bb7d6;
+
+.headerMenu {
+	margin-right:50px;
+	color: #9bb7d6;
 }
-.serchDTL{
-	display : inline-block;
-	position : relative;
-	float : left;
-	left : 18.5%;
-	bottom: 20%;	
+
+.serchDTL {
+	left: 18.5%;
+	bottom: 23%;
 }
-.searchDTLBTN{
-	height : 30px;
-	background-color: #9bb7d6; 
-	border-radius : 0.5em;
+
+.searchDTLBTN {
+	height: 30px;
+	background-color: #9bb7d6;
+	border-radius: 0.5em;
 }
 /* 헤더 CSS 종료 */
 

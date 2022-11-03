@@ -49,7 +49,6 @@ public class JjimControllerImpl implements JjimController {
 			System.out.println("찜 삭제하기 성공");
 		}
 	}
-
 	@Override
 	@RequestMapping(value = "/jjim/jjimAdd.do", method = RequestMethod.GET)
 	public void jjimAdd(@RequestParam("restIdx") int restIdx, HttpServletRequest request,

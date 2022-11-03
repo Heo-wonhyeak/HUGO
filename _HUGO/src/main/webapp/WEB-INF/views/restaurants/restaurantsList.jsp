@@ -22,6 +22,7 @@ a:hover{
 <body>
 	<section class="top50List">
 	<h1 class="restaurant_top50List_head">TOP 50 List </h1>
+	<!-- 리스트 별 정렬 -->
 	<div class="restaurant_top50List_array">
 		<ul class="restaurant_top50List_array_ul">
 			<li><a class="restaurant_top50List_arrayList" href="${contextPath}/restaurants/restaurantTOP50.do?array=1">별점</a></li>
@@ -31,39 +32,40 @@ a:hover{
 			<li><a class="restaurant_top50List_arrayList" href="${contextPath}/restaurants/restaurantTOP50.do?array=5">인기순</a></li>
 		</ul>
 	</div>
-	<div class="list">
-	<c:forEach items="${lists}" var="list" varStatus="status">
-		<div id="restaurantList">
-			<img class="restaurantList_image" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11'" alt="" src="${contextPath}/download.do?imageFileName=${listImg[status.index].imageFileName}&imageFileNO=${listImg[status.index].imageFileNO}&restaurantIdx=${listImg[status.index].restaurantIdx}"/>
-			<div class="restaurantList_info">
-				<div class="restaurantList_info_head" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11'">${list.restName }</div>
-				<div class="restaurantList-count">
-					<span class="restaurantsList-count-info">⭐&nbsp;&nbsp;${list.restStarAvg }</span> 
-						<span class="restaurantsList-count-info">❤️&nbsp;&nbsp;${list.restJjim }</span> 
-						<span class="restaurantsList-count-info">😀&nbsp;&nbsp;${list.restVisitCount }</span>
-						<span class="restaurantsList-count-info">✏️&nbsp;&nbsp;${list.restReviewCount }</span>
+		<!-- 각 리스트별 50개 까지 조회 -->
+		<div class="list">
+		<c:forEach items="${lists}" var="list" varStatus="status">
+			<div id="restaurantList">
+				<img class="restaurantList_image" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11'" alt="" src="${contextPath}/download.do?imageFileName=${listImg[status.index].imageFileName}&imageFileNO=${listImg[status.index].imageFileNO}&restaurantIdx=${listImg[status.index].restaurantIdx}"/>
+				<div class="restaurantList_info">
+					<div class="restaurantList_info_head" onclick="location.href='${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11'">${list.restName }</div>
+					<div class="restaurantList-count">
+						<span class="restaurantsList-count-info">⭐&nbsp;&nbsp;${list.restStarAvg }</span> 
+							<span class="restaurantsList-count-info">❤️&nbsp;&nbsp;${list.restJjim }</span> 
+							<span class="restaurantsList-count-info">😀&nbsp;&nbsp;${list.restVisitCount }</span>
+							<span class="restaurantsList-count-info">✏️&nbsp;&nbsp;${list.restReviewCount }</span>
+					</div>
+					<div class="restaurantList_address">
+						<div class="restaurantList_imoji">🏠</div>
+						<div class="restaurantList_address_address">${list.restAddress }<br/><span class="restaurantList_jibun">지번</span> ${list.restJibunAddress }</div>
+					</div>
+					<div class="restaurantList_open_info">
+						<div class="restaurantList_imoji">⏰</div>
+						<div class="restaurantList_openTime">${list.restOpen }</div>
+					</div>
+					<div class="restaurantList_phone_info">
+						<div class="restaurantList_imoji">📞</div>
+						<div class="restaurantList_phone">${list.restPhone }</div>
+					</div>
 				</div>
-				<div class="restaurantList_address">
-					<div class="restaurantList_imoji">🏠</div>
-					<div class="restaurantList_address_address">${list.restAddress }<br/><span class="restaurantList_jibun">지번</span> ${list.restJibunAddress }</div>
-				</div>
-				<div class="restaurantList_open_info">
-					<div class="restaurantList_imoji">⏰</div>
-					<div class="restaurantList_openTime">${list.restOpen }</div>
-				</div>
-				<div class="restaurantList_phone_info">
-					<div class="restaurantList_imoji">📞</div>
-					<div class="restaurantList_phone">${list.restPhone }</div>
+				<div class="restaurantList_most">
+					<div class="restaurantList_more">
+						<a href="${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11">음식점 보러가기</a>
+					</div>
 				</div>
 			</div>
-			<div class="restaurantList_most">
-				<div class="restaurantList_more">
-					<a href="${contextPath}/restaurants/restaurantView.do?restIdx=${list.restIdx}&array=11">음식점 보러가기</a>
-				</div>
+			</c:forEach>
 			</div>
-		</div>
-		</c:forEach>
-		</div>
 	</section>
 </body>
 </html>

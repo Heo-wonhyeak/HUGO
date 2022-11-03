@@ -1,8 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+
+	AOP를 어노테이션으로 설정
+	<aop:aspectj-autoproxy />
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	PropertyPlaceholderConfigurer 클래스 이용해 db 설정 관련 정보를 jdbc.properties 파일에서 읽어 들임
+	<bean id="propertyPlaceholderConfigurer" 
+					class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>/WEB-INF/config/jdbc/jdbc.properties</value>
+		</property>
+	</bean>
+	
+	PooledDataSource 이용해서 dataSource 빈 생성
+	<bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
+		<property name="driver" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	SqlSessionFactoryBean 클래스 이용해  dataSource 속성에 dataSource 빈을 설정
+	configLocation 속성에 modelConfig.xml을 설정
+	mapperLocations 속성에 mybatis/mappers 패키지의 모든 매퍼 파일들을 읽어 들여와 설정
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis/model/modelConfig.xml" />
+		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
+	</bean>
+	
+	SqlSessionTemplate 클래스를 이용해 sqlSession 빈을 생성 
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+	</bean>	
+
 </beans>
+ -->

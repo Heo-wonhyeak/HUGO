@@ -38,12 +38,10 @@ public class ResInfoController {
 				String url = lists.get(i).getUrl();
 				int restIdx = lists.get(i).getUrlNO();
 				Connection conn = Jsoup.connect(url);
-
 				Document html = conn.get();
 				// 식당이름
 				Element _restaurant_name = html.getElementsByClass("restaurant_name").get(0);
 				String restName = _restaurant_name.text();
-
 				// 주소
 				String restAddress = "";
 				String restJibunAddress = "";
@@ -59,7 +57,6 @@ public class ResInfoController {
 					Element phone_info = html.getElementsByClass("only-desktop").get(1);
 					restPhone = phone_info.getElementsByTag("td").get(0).text();
 				}
-
 				// 음식 종류
 				String restMenu = "";
 				if (!(html.getElementsByTag("tr")).isEmpty()) {

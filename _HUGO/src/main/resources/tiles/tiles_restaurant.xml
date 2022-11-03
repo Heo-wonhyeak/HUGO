@@ -39,6 +39,12 @@
 	<definition name="/restaurants/restaurantTOP50" extends="baseLayout" >
 		<put-attribute name="title" value="HUGO-매장TOP 50 리스트" />
 		<put-attribute name="body" value="/WEB-INF/views/restaurants/restaurantsList.jsp"/>
+	</definition>
+	
+	<!-- 매장 검색 리스트-->
+	<definition name="/main/search" extends="baseLayout" >
+		<put-attribute name="title" value="HUGO-매장 검색 리스트" />
+		<put-attribute name="body" value="/WEB-INF/views/restaurants/restaurantsSearchList.jsp"/>
 	</definition>	
 	
 </tiles-definitions>

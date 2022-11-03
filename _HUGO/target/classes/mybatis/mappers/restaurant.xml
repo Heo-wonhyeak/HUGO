@@ -110,7 +110,7 @@
 	</update>
 	
 	<!-- 매장 찜 + 1 -->
-	<update id="addResJjim" parameterType="int">
+	<update id="addResJjim" parameterType="int" >
 		<![CDATA[ 
 			UPDATE RESTAURANT_INFO SET restJjim = restJjim +1 WHERE RESTIDX = #{restIdx}
 		]]>
@@ -122,4 +122,19 @@
 			UPDATE RESTAURANT_INFO SET restStarAvg = #{Avg} WHERE RESTIDX = #{restaurantIdx}
 		]]>
 	</update>
+	
+	<!-- 매장 검색 조회 -->
+	<select id="selectSearchList" resultType="restaurantDTO" parameterType="java.util.Map">
+		<![CDATA[
+			SELECT * FROM RESTAURANT_INFO WHERE trim(RESTADDRESS) LIKE '%${search}%' 
+											 OR trim(RESTNAME) LIKE '%${search}%'  
+											 OR trim(RESTJIBUNADDRESS) LIKE '%${search}%'  
+											 OR trim(RESTPHONE) LIKE '%${search}%'  
+											 OR trim(RESTMENU) LIKE '%${search}%'  
+											 OR trim(RESTPARK) LIKE '%${search}%'  
+											 OR trim(RESTMENULIST) LIKE '%${search}%'  
+											 OR trim(RESTTAG) LIKE '%${search}%' 
+											 ORDER BY ${array} desc
+		]]>
+	</select>
 </mapper>

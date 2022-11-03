@@ -32,7 +32,9 @@ html,body{
 			<div class="swiper-wrapper">
 				<c:forEach items="${imgList}" var="imgList" varStatus="status">
 					<div class="swiper-slide">
-						<img alt="" src="${contextPath}/download.do?imageFileName=${imgList.imageFileName}&imageFileNO=${imgList.imageFileNO}&restaurantIdx=${imgList.restaurantIdx}" class="swiper-slide-container" />
+						<div class="swiper-slide-container">
+							<img class="plus-imgList" alt="" src="${contextPath}/download.do?imageFileName=${imgList.imageFileName}&imageFileNO=${imgList.imageFileNO}&restaurantIdx=${imgList.restaurantIdx}"  />
+						</div>
 					</div>
             	</c:forEach>	
 			</div>

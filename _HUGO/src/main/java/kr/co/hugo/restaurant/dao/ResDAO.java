@@ -31,4 +31,6 @@ public interface ResDAO {
 
 	public void updateStarAvg(Map<Object, Object> resMap) throws DataAccessException;
 
+	public List<RestaurantDTO> selectSearchList(Map<Object,Object> resArrayMap) throws DataAccessException;
+
 }

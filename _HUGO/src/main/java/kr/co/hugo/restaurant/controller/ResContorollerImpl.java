@@ -71,7 +71,6 @@ public class ResContorollerImpl implements ResController {
 		else {
 			session.invalidate();
 		}
-
 		Map<String, Object> viewMap = new HashMap<>();
 		viewMap.put("restIdx", restIdx);
 		viewMap.put("id", id);

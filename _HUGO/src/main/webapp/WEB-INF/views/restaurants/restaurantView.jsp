@@ -199,7 +199,7 @@
 			// 상단 이미지 슬라이드
 			const mySwiper = new Swiper('#restaurants-swiperImage', {
 				slidesPerView : 3, // 슬라이드 한번에 3개를 보여줌
-				slidesPerGroup : 3, // 그룹으로 묶을 수
+				slidesPerGroup : 0, // 그룹으로 묶을 수
 				observer : true,
 				observeParents : true,
 				spaceBetween : 0, // 슬라이드간 간격

@@ -26,4 +26,6 @@ public interface ResService {
 	// 조회수 증가
 	public void resPlusVisitCount(int restIdx) throws Exception;
 
+	public Map<Object,Object> resSearchList(String search,int list) throws Exception;
+
 }

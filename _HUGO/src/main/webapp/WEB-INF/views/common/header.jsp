@@ -20,6 +20,13 @@
 				$(".myMenu").css("display","none")
 			}
 		}
+		function search(){
+			const searchValue = document.getElementById("searchbox");
+			if(searchValue.value == null || searchValue.value == ""){
+				alert("검색어를 입력해 주세요.");
+				return false;
+			}
+		}
 	</script>
 </head>
 <body>
@@ -30,12 +37,15 @@
 			</a>
 		</div>
 		<div class="search">
-			<input type="text" class="searchbox"/>
-			<button class="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+			<form action="${contextPath }/main/search.do" method="get" id="searchFrm">
+			<input type="text" class="searchbox" id="searchbox" name="searchbox"/>
+			<input type="hidden" id="array" name="array" value= "1"/>
+			<button type="submit" class="searchBtn" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
+			</form>
 		</div>
 		<div class="headerMenu">
 			<a href="${contextPath }/event/runningEventPage.do?boarder=runningEvent">이벤트/쿠폰</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a>고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a>HUGO</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<c:choose>
 				<c:when test="${isLogOn == true &&  member != null}">
 					<a onclick="return showMenu()"><i class="fa-solid fa-chalkboard-user" class="user_info"></i></a>
@@ -52,12 +62,9 @@
 					<li><a href="${contextPath }/memberInfo/viewMemberInfo.do">회원정보</a></li>
 					<li><a href="${contextPath }/memberInfo/couponList.do">쿠폰함</a></li>
 					<li><a href="${contextPath }/memberInfo/wishList.do">찜리스트</a></li>
-					<a href="${contextPath}/member/logout.do">로그 아웃</a> 
+					<li><a href="${contextPath}/member/logout.do">로그 아웃</a></li> 
 				</ul>
 			</div>
-		</div>
-		<div class="serchDTL">
-			<button class="searchDTLBTN">세부검색</button>
 		</div>
 	</div>
 </body>

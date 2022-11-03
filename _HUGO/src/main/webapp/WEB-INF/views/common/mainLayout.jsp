@@ -21,9 +21,9 @@
 			
 			<tiles:insertAttribute name="mainslider"/>
 			
-			<aside>
+		<%-- 	<aside>
 				<tiles:insertAttribute name="side" />
-			</aside>
+			</aside> --%>
 			
 			<article>
 				<tiles:insertAttribute name="body" />

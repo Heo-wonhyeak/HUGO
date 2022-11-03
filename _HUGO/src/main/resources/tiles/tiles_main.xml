@@ -10,7 +10,7 @@
 		<put-attribute name="title" value="레이아웃 페이지" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
 		<put-attribute name="mainslider" value="/WEB-INF/views/common/mainslider.jsp"/>
-		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" /> 
+		<!-- <put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />  -->
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>

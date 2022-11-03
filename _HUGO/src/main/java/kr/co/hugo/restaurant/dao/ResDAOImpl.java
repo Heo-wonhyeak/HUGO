@@ -81,5 +81,11 @@ public class ResDAOImpl implements ResDAO{
 		sqlSession.update("mapper.restaurant.updateStarAvg",resMap);
 	}
 
+	@Override
+	public List<RestaurantDTO> selectSearchList(Map<Object,Object> resArrayMap) throws DataAccessException {
+		List<RestaurantDTO> resSearchList = sqlSession.selectList("mapper.restaurant.selectSearchList",resArrayMap);
+		return resSearchList;
+	}
+
 
 }

@@ -88,10 +88,8 @@ public class BoardControllerImpl implements BoardController {
 
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-
 		String message;
 		ResponseEntity resEnt = null;
-
 		try {
 			int count = boardService.allImageCount();
 			int articleIdx = boardService.addNewArticle(articleMap); // articleMap을 서비스 클래스로 전달함
@@ -101,7 +99,6 @@ public class BoardControllerImpl implements BoardController {
 					// temp => articleNO 이미지 이동.
 					imageFileName = imageDTO.getImageFileName();
 					File srcFile = new File(OUTPUT_FILE_PATH + "/" + "temp" + "/" + imageFileName);
-
 					File destFile = new File(OUTPUT_FILE_PATH + "/" + restaurantIdx);
 					FileUtils.moveFileToDirectory(srcFile, destFile, true);
 

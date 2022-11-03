@@ -97,7 +97,7 @@
 		<div class="mySlides fade">
 			<div class="numbertext">1 / 6</div>
 			<img
-				src="https://ifh.cc/g/lXcVTR.png"
+				src="https://ifh.cc/g/hbZ8Ky.jpg"
 				style="width: 100%">
 			<div class="text">HUGO</div>
 		</div>

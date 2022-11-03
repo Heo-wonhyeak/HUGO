@@ -1,16 +1,18 @@
 @charset "UTF-8";
 /* 헤더 CSS */
 .HeaderContainer {
-	width: 90%;
+	padding-top:10px;
+	width: 100%;
 	margin: 0 auto;
-	height: 150px;
+	height: 180px;
+	display:flex;
+	flex-decoration:row;
 }
 
 .HeaderLogo {
-	display: inline-block;
+	margin-left: 100px;
 	width: 15%;
 	height: 80%;
-	position: relative;
 	left: 2%;
 	top: 5%;
 }
@@ -23,8 +25,6 @@
 .myMenu {
 	display: none;
 	width: 120px;
-	height: 135px;
-	position: absolute;
 	left: 200px;
 	border: 1px solid #9bb7d6;
 	margin: 0px;
@@ -34,22 +34,23 @@
 	list-style: none;
 	margin: 0px;
 	text-align: right;
+	
 }
 
 .search {
-	display: inline-block;
-	width: 70%;
-	height: 20%;
-	position: relative;
-	bottom: 25%;
-	left: 3%;
+	margin-top:50px;
+	margin:auto;
+	line-height: 85px;
+	width: 50%;
+
 }
 
 .searchbox {
 	width: 90%;
 	height: 100%;
+	font-size: 35px;
 	border-radius: 0.2em;
-	font-size: 15px;
+	border:1px solid black;
 }
 
 .searchBtn {
@@ -57,20 +58,16 @@
 	height: 100%;
 	background-color: #9bb7d6;
 	border-radius: 0.5em;
+	padding: 12px 0 6px 0;
+	margin-bottom : 5px;
 }
 
 .headerMenu {
-	display: inline-block;
-	position: relative;
-	bottom: 75%;
-	float: right;
+	margin-right:50px;
 	color: #9bb7d6;
 }
 
 .serchDTL {
-	display: inline-block;
-	position: relative;
-	float: left;
 	left: 18.5%;
 	bottom: 23%;
 }
@@ -209,10 +206,12 @@
 
 /* mainsection CSS */
 section {
-	margin-top: 50px;
+	/* margin-top: 50px; */
 	overflow: visible;
 	width: 80%;
-	margin-left: 6%;
+	/* margin-left: 6%; */
+	padding-top:100px;
+	margin:auto;
 	margin-bottom: 100px;
 	background-color: white;
 }
@@ -242,7 +241,7 @@ section {
 	font-size: 19px;
 	width: 140px;
 	height: 50px;
-	font-weight : bold;
+	font-weight: bold;
 	cursor: pointer;
 	color: white;
 	font-weight: bold;
@@ -266,8 +265,8 @@ section {
 }
 
 .list-info {
-	margin-top:10px;
-	margin-left:20px;
+	margin-top: 10px;
+	margin-left: 20px;
 	width: 300px;
 	height: 90px;
 }
@@ -344,12 +343,12 @@ section {
 	text-align: center;
 	font-size: 1.7em;
 	font-weight: bold;
-	margin:auto;
+	margin: auto;
 }
 
 .list-info-value {
-	padding-top:10px;
-	margin:auto;
+	padding-top: 10px;
+	margin: auto;
 	font-size: 1.8em;
 	text-align: center;
 	color: #135aab;
